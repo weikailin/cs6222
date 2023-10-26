@@ -51,10 +51,12 @@ $$
 
 env align*
 
+$$
 \begin{align*}
 3x-1 &= -10 \\
   3x &= -9 \\
 \end{align*}
+$$
 
 env cases (need config and include package)
 
