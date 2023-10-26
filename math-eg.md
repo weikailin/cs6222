@@ -143,4 +143,9 @@ this is a note, block-level.
 {: .proof-title}
 > Proof of Theorem:
 > 
-> (customized title)
+> (customized title)> 
+
+See [this post](https://11011110.github.io/blog/2019/10/17/mathjax-3-jekyll.html) about Kramdown rendering:
+~~~
+In kramdown, you don’t use the same delimiters for math. Kramdown expects to see mathematical formulas delimited by $$ ... $$ in its marked-up text input, always. It will determine from context whether it’s an inline formula or a display formula. It also doesn’t use the default delimiters in the html that it generates. Instead it outputs html that puts inline formulas inside <script type="math/tex"> ... </script> html tags, and, similarly, puts display formulas inside <script type="math/tex; mode=display"> ... </script> tags.
+~~~
