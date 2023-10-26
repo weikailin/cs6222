@@ -35,6 +35,7 @@ quote display
 
 list display
 - it holds that
+
   $$
   \frac{1}{2}\cdot \sum_{i=0}^n x_i
   $$
