@@ -15,6 +15,11 @@ Cryptographic primitives are applied almost everywhere on the network, for insta
 
 Please send me an email if you have questions.
 
+Prerequisites
+---------
+[CS 3120 Discrete Mathematics and Theory 2]() or equivalent course is necessary.
+Also, Probability (APMA 3100) is good-to-have.
+
 Classroom
 ---------
 
