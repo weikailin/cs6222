@@ -47,11 +47,11 @@ $$
 3x-1 &= -10 \\
   3x &= -9 \\
    x &= -3
-\htmlId{eq:test}{\tag{1}}
+\htmlId{eq:test}{\tag{aa}}
 \end{align}
 $$
 
-Link to equation $$\href{#eq:test}{(1)}$$.
+Link to equation $$\href{#eq:test}{(aa)}$$.
 env align*
 
 $$
