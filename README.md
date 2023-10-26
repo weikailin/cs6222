@@ -17,7 +17,7 @@ Please send me an email if you have questions.
 
 Prerequisites
 ---------
-[CS 3120 Discrete Mathematics and Theory 2]() or equivalent course is necessary.
+[CS 3120 Discrete Mathematics and Theory 2](https://uvatoc.github.io/) or equivalent course is necessary.
 Also, Probability (APMA 3100) is good-to-have.
 
 Classroom
