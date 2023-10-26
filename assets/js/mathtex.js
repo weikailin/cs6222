@@ -46,8 +46,8 @@ scripts.forEach(function(script) {
         katex.render(script.text, katexElement, {
           displayMode: display,
           globalGroup: true,
-          trust: true,
-          strict: false,
+          trust: true,   // [WK: to enable htmlId and href, see below]
+          strict: false, // [WK: https://katex.org/docs/support_table.html]
           throwOnError: false,
           macros
         });
