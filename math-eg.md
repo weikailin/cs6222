@@ -14,7 +14,7 @@ $$
 $$
 {: .d-none}
 
-inline $$f(x) = 0$$
+inline $$f(x) = 0$$ default two dollor-signs
 
 Display
 
@@ -51,12 +51,10 @@ $$
 
 env align*
 
-$$
 \begin{align*}
 3x-1 &= -10 \\
   3x &= -9 \\
 \end{align*}
-$$
 
 env cases (need config and include package)
 
@@ -67,16 +65,16 @@ x \cdot y & o.w.
 \end{cases}
 $$
 
-test macro $\N$
+test macro $$\N$$
 
 Uncool "Kramdown" Renderer
 ------------------------
 
-- Do we need to escape vertical pipes $| S |$? 
-  Unfortunately need to escape vertical pipes $\vert S \vert$ due to over sensitive table in kramdown.
+- Do we need to escape vertical pipes $$| S |$$? 
+  Unfortunately need to escape vertical pipes $$\vert S \vert$$ due to over sensitive table in kramdown.
 
 - However, table begins from a block so
-  putting this on second line $| S |$ escapes it.
+  putting this on second line $$| S |$$ escapes it.
 
 - Do we need to escape vertical pipes \\(| S |\\)? 
   Unfortunately need to escape vertical pipes $\vert S \vert$ due to over sensitive table in kramdown.
