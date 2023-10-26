@@ -7,4 +7,4 @@ Gemfile.lock
 _site/
 node_modules/
 vendor/
-cs6222.sublime-workspace
+*.sublime-workspace
