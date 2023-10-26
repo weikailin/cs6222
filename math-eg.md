@@ -92,7 +92,7 @@ Uncool "Kramdown" Renderer
 
 - Also need to escape "star $*$" unless there is only one in the block.
 
-- Sometimes need to escape underscores especially in inline math, such as $H^0_n := g'(s), H^1_n := U_1$.
+- Sometimes need to escape underscores especially in inline math, such as $$H^0_n := g'(s), H^1_n := U_1$$.
   Unclear when italic is triggered.
 
 - oracle $$O[t]_{i,j}(\cdot)$$ such that is similar to $H_{i,j}$
