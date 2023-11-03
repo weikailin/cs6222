@@ -142,3 +142,6 @@ The Foundations of Cryptography. Oded Goldreich.
 \[Vadhan, V\]
 Pseudorandomness.
 [https://people.seas.harvard.edu/~salil/pseudorandomness/pseudorandomness-published-Dec12.pdf](https://people.seas.harvard.edu/~salil/pseudorandomness/pseudorandomness-published-Dec12.pdf)
+
+The Joy of Cryptography. Mike Rosulek 
+[https://joyofcryptography.com/](https://joyofcryptography.com/)
