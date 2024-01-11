@@ -102,8 +102,9 @@ We will cover:
 ![Topics in a tree](assets/images/outline-tree-plain.svg)
 
 Related but almost NOT cover:
- - System security, cybersecurity (such as [CS 3710: Introduction to Cybersecurity](https://aaronbloomfield.github.io/ics/uva/index.html))
- - Blockchain
+ - System security, cybersecurity 
+   (such as [CS 3710: Introduction to Cybersecurity](https://aaronbloomfield.github.io/ics/uva/index.html), 
+   [CS 4630: Defense Against the Dark Arts](https://cs4630-uva.github.io/)), blockchain (see [Cryptocurrency](aaronbloomfield.github.io/ccc/))
  - (Really math) Number theory
  - Quantum comp
 
