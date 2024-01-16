@@ -11,7 +11,7 @@ seo:
 Welcome to CS 4501, Cryptography!
 ----------------------------------------
 
-Cryptographic primitives are applied almost everywhere on the network, for instance, encryption and authentication. In this course, we will start from the theoretic foundations that consolidates our belief in cryptography, and then we will visit some essential protocols as well as recent advances in cryptography. A major theme of this course is "provable security," that is, to define the desired security and then to rigorously prove the security is achieved. Hence, students are expected to be familiar with algorithms and mathematical proofs.
+Cryptographic primitives are applied almost everywhere on the network, for instance, encryption and authentication are necessary. In this course, we will start from the theoretic foundations that consolidates our belief in cryptography, and then we will visit some essential protocols as well as recent advances in cryptography. A major theme of this course is "provable security," that is, to define the desired security and then to rigorously prove the security is achieved. Hence, students are expected to be familiar with algorithms and mathematical proofs.
 
 Please send me an email if you have questions.
 
@@ -21,6 +21,7 @@ Prerequisites
 Also, Probability (APMA 3100) is good-to-have.
 
 This course requires DMT2 (CS3120) because it heavily relies on the concepts such as reductions, decision problems, NP-complete and computation models like Turing machines, and some ideas from complexity. The concepts are covered in DMT2 (and sometimes partly in DSA2, CS3100). Because they are required in both BSCS and BACS, they are used directly as preliminary knowledge in the course.
+Also, reading and writing formal math proofs is necessary.
 
 Classroom
 ---------
@@ -39,9 +40,9 @@ Instructor Contact Information
 Office Hours
 ------------
 
-**Days and Times:** TBD (or make an appointment using email)
+**Days and Times:** Thursdays 3:30-4:30pm (after Thursday classes)
 
-**Location:** TBD
+**Location:** Rice 505
 
 Administration
 --------------
@@ -49,9 +50,12 @@ Administration
 We will use the [Canvas](https://canvas.its.virginia.edu) website to manage homework, exam, and grades. Please also use the discuss page on Canvas if you have course related questions.
 
 The course work is still tentative and subject to change as of Oct/Nov 2023.
-A potential plan will be:
 
-> There will be 4 homeworks (16% each), 1 midterm exam (18%), and 1 final exam (18%). There will be occasional in-class quizzes that give bonus points (10%). 
+- (50%) Written homework
+- (24%) Programming project
+- (10%) In class activity and discussion
+- (16%) Final exam, written
+- (5%, bonus) Quizzes, occasional
 
 The final grade will follow the [CS Department guidelines](https://uvacsadvising.org/policies.html#cs-department-grading-guidelines).
 
