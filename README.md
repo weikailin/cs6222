@@ -44,10 +44,8 @@ Office Hours
 
 **Location:** Rice 505
 
-Administration
+Course Work
 --------------
-
-We will use the [Canvas](https://canvas.its.virginia.edu) website to manage homework, exam, and grades. Please also use the discuss page on Canvas if you have course related questions.
 
 The course work is still tentative and subject to change as of Oct/Nov 2023.
 
@@ -58,6 +56,8 @@ The course work is still tentative and subject to change as of Oct/Nov 2023.
 - (5%, bonus) Quizzes, occasional
 
 The final grade will follow the [CS Department guidelines](https://uvacsadvising.org/policies.html#cs-department-grading-guidelines).
+
+We will use the [Canvas](https://canvas.its.virginia.edu) website to manage homework, exam, and grades. Please also use the discuss page on Canvas if you have course related questions.
 
 ### Homework Policy
 
