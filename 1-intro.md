@@ -202,7 +202,7 @@ Note: this definition is simpler and easier to use.
 {: .proof-title}
 > Proof:
 > 
-> Suppose that $(\cM,\cK,\Gen,\Enc,\Dec)$ is perfectly secret. For any $D$, any $c$, and any $\bar m$, we have
+> Suppose that $$(\cM,\cK,\Gen,\Enc,\Dec)$$ is perfectly secret. For any $$D$$, any $$c$$, and any $$\bar m$$, we have
 > 
 > $$
 > \Pr_{k,m}[m = \bar m | \Enc_k(m) = c] = \Pr_{k,m}[m = \bar m \cap \Enc_k(m) = c] / \Pr_{k,m}[\Enc_k(m) = c].
@@ -218,8 +218,8 @@ Note: this definition is simpler and easier to use.
 > \end{align*}
 > $$
 > 
-> We will write $\Pr_{k}[\Enc_k(\bar m)]$ instead of $\Pr_{k,m}[\Enc_k(m) = c | m = \bar m]$, 
-> and we want to show it equals to $\Pr_{k,m}[\Enc_k(m)]$ (note $\bar m$ is not r.v. but $m$ is).
+> We will write $$\Pr_{k}[\Enc_k(\bar m)]$$ instead of $$\Pr_{k,m}[\Enc_k(m) = c | m = \bar m]$$, 
+> and we want to show it equals to $$\Pr_{k,m}[\Enc_k(m)]$$ (note $$\bar m$$ is not r.v. but $$m$$ is).
 > 
 > $$
 > \begin{align*}
@@ -231,7 +231,7 @@ Note: this definition is simpler and easier to use.
 > $$
 > 
 > The first eq is just sum of prob.
-> The second use *perfect secrecy*: $\Pr_{k}[\Enc_k(\bar m) = c] = \Pr_{k}[\Enc_k(m') = c]$ for any $\bar m$ and $m'$.
+> The second use *perfect secrecy*: $$\Pr_{k}[\Enc_k(\bar m) = c] = \Pr_{k}[\Enc_k(m') = c]$$ for any $$\bar m$$ and $$m'$$.
 > The third is also sum of prob.
 > That implies
 > 
@@ -262,15 +262,15 @@ One-Time Pad
 #### **Definition:** One-Time Pad.
 
 {: .defn}
->The *One-Time Pad* encryption scheme is described by the following 5-tuple $(\cM, \cK, \Gen, \Enc, \Dec)$:
+>The *One-Time Pad* encryption scheme is described by the following 5-tuple $$(\cM, \cK, \Gen, \Enc, \Dec)$$:
 >
->- $\cM = \{0, 1\}^n$
->- $\cK = \{0, 1\}^n$
->- $\Gen$: $k := k_1 k_2 \dots k_n \gets \{0, 1\}^n$
->- $\Enc_k(m_1m_2\dots m_n)$: $c_1 c_2 \dots c_n$ where $c_i = m_i \oplus k_i$
->- $\Dec_k(c_1c_2\dots c_n)$: $m_1 m_2 \dots m_n$ where $m_i = c_i \oplus k_i$
+>- $$\cM = \{0, 1\}^n$$
+>- $$\cK = \{0, 1\}^n$$
+>- $$\Gen$$: $$k := k_1 k_2 \dots k_n \gets \{0, 1\}^n$$
+>- $$\Enc_k(m_1m_2\dots m_n)$$: $$c_1 c_2 \dots c_n$$ where $$c_i = m_i \oplus k_i$$
+>- $$\Dec_k(c_1c_2\dots c_n)$$: $$m_1 m_2 \dots m_n$$ where $$m_i = c_i \oplus k_i$$
 >
-> The $\oplus$ operator represents the binary XOR operation.
+> The $$\oplus$$ operator represents the binary XOR operation.
 
 #### **Theorem:**
 
@@ -283,7 +283,7 @@ One-Time Pad
 > We need to prove correctness and privacy.
 
 
-The cost of OTP is the long key $k$.
+The cost of OTP is the long key $$k$$.
 
 One-Time Pad is Optimal in Key Length
 --------------------------------------------
@@ -291,22 +291,22 @@ One-Time Pad is Optimal in Key Length
 #### **Theorem:** (Shannon)
 
 {: .theorem}
-> If scheme $(\cM, \cK, \Gen, \Enc, \Dec)$ is a perfectly secret private-key encryption scheme, then $\card{\cK} \geq \card{\cM}$.
+> If scheme $$(\cM, \cK, \Gen, \Enc, \Dec)$$ is a perfectly secret private-key encryption scheme, then $$\card{\cK} \geq \card{\cM}$$.
 
 {: .proof-title}
 > Proof:
 > 
-> Let $c \gets \Enc_k(m)$ be a fixed ciphertext for some fixed $k, m$.
-> Let $P := \\{m : \Dec_k'(c) = m \text{ for any } k' \\}$.
-> We have $\card{P} \leq \card{\cK} \lt \card{\cM}$ as $\Dec$ is deterministic.
-> So, there exists $m_2 \notin P$.
+> Let $$c \gets \Enc_k(m)$$ be a fixed ciphertext for some fixed $$k, m$$.
+> Let $$P := \\{m : \Dec_k'(c) = m \text{ for any } k' \\}$$.
+> We have $$\card{P} \leq \card{\cK} \lt \card{\cM}$$ as $$\Dec$$ is deterministic.
+> So, there exists $$m_2 \notin P$$.
 > Then, it follows that
 > 
 > $$
 > \Pr_k[\Enc_k(m_2) = c] = 0
 > $$
 > 
-> by correctness. However, we have $\Pr_k[\Enc_k(m) = c] \gt 0$, and it violates perfect secrecy.
+> by correctness. However, we have $$\Pr_k[\Enc_k(m) = c] \gt 0$$, and it violates perfect secrecy.
 
-Notice that we can quantify the difference of probability (which yields a stronger theorem) by quantifying $\card{\cK}$.
+Notice that we can quantify the difference of probability (which yields a stronger theorem) by quantifying $$\card{\cK}$$.
 
