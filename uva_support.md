@@ -50,7 +50,7 @@ Engaging in your career development is an important part of your student experie
 Illness and other absences
 ------------------------
 
-If you are ill, you are encouraged to stay away from classes even on days when quizzes or exams are given. In this case, please email me for corresponding supports and accommondations.
+If you are ill, you are encouraged to take a bread from classes even on days when quizzes or exams are given. In this case, please email me for corresponding supports and accommondations.
 
 Student support team
 ------------------------
