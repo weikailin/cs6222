@@ -5,52 +5,18 @@ nav_order: 1
 nav_exclude: false
 ---
 
-$
+$$
 \newcommand{\Enc}{\mathsf{Enc}}
 \newcommand{\Dec}{\mathsf{Dec}}
 \newcommand{\Gen}{\mathsf{Gen}}
 \newcommand{\cM}{\mathcal{M}}
 \newcommand{\cK}{\mathcal{K}}
 \newcommand{\card}[1]{\vert{#1}\vert}
-$
+$$
 {: .d-none}
 
 Introduction
 ============
-
-About me
---------------------------------------------
- - PhD: Cornell, postdoc: Northeastern
- - Undergrad major: chemistry
- - Worked in the industry as SE
-
-About this course
---------------------------------------------
- - Goal: provable security, 1) define the desired security, 2) construct and prove a system
- - Rigorous and theoretic approach, comfortable with mathematical proofs
- - Prerequisites: Discrete Mathematics, Probability, Theory of Computation
-
-Logistics
---------------------------------------------
- - Website (weikailin.github.io/cs6222-fa23), my email (wklin-course)
- - Office hours (Tue 9:30, Rice Hall 505)
- - Course works: 4 HW, final proj, final exam, quizzes
- - HW policies:
-
-   The goal: critical def, rigorous proof, to solve future challenges
-   
-   1. in-class, reference, office hours
-   2. other in-class students (ack)
-   3. other pub (cite)
-   4. ready-made solutions like other people, AI, solutions in prev courses (avoid)
-
-   Eg, wrote your own, then google without edit. Good.
-   Another eg, wrote your own, then google and edit. Shall cite or ack.
-
-   Internalize your writeup. No direct copying. Must be explainable orally. Edit history (Overleaf) is recommended.
-
-   See website for details.
- - Survey (quiz) due on Aug 23
 
 A toy example: match-making
 --------------------------------------------
@@ -111,16 +77,16 @@ Related but almost NOT cover:
 Classical cryptography: hidden writing
 --------------------------------------------
 Historically, human considered the scenario of *encryption* in communication.
- - Alice ~~~ $m$ ~~~> Bob
+ - Alice ~~~ $$m$$ ~~~> Bob
 Eavesdropper Eve, an adversary, may be listening on the channel. 
 
-Alice/Bob want to hide the message from Eve. To do so, they share two algorithms $\Enc, \Dec$ secretly and before the communication.
- - Alice ~~~ $ct$ ~~~>Bob
- - $ct \gets \Enc(m)$, ciphertext, where $m$ is the plaintext
- - Bob recovers plaintext by $\Dec(ct)$
- - $y \gets A(x)$ denotes algo $A$ computes on input $x$ and gets output $y$.
+Alice/Bob want to hide the message from Eve. To do so, they share two algorithms $$\Enc, \Dec$$ secretly and before the communication.
+ - Alice ~~~ $$ct$$ ~~~>Bob
+ - $$ct \gets \Enc(m)$$, ciphertext, where $$m$$ is the plaintext
+ - Bob recovers plaintext by $$\Dec(ct)$$
+ - $$y \gets A(x)$$ denotes algo $$A$$ computes on input $$x$$ and gets output $$y$$.
 
-Notice: it is important that which info is *public* (known to all A/B/E) and which is *private*. What if Eve knows $\Enc$ or $\Dec$?
+Notice: it is important that which info is *public* (known to all A/B/E) and which is *private*. What if Eve knows $$\Enc$$ or $$\Dec$$?
 
 ### Kerchoff's principle
 
@@ -137,9 +103,11 @@ Generalize: sample key $k \gets \Gen$
 Note: $(\Gen, \Enc, \Dec)$ can not be all deterministic. What if only $\Gen$ is randomized?
 
 ### Classical encryption
-Rotation, substitution, enigma, .... They are mostly broken now. DES? AES?
+Rotation, substitution, enigma, .... They are mostly broken now. DES is introduced in 70s and broken 90s.
+AES is introduced in 90s, but now?
 
 [Breaking German Army Ciphers](https://cryptocellar.org/bgac/)
+[Jefferson disk](https://en.wikipedia.org/wiki/Jefferson_disk)
 
 Modern cryptography: provable security
 --------------------------------------------
@@ -174,28 +142,28 @@ The adversary may already learned something even not looking at ct.
 
 ### Formal definition
 
-Let $\cK$ be the space of keys, and let $\cM$ be the space of all messages.
+Let $$\cK$$ be the space of keys, and let $$\cM$$ be the space of all messages.
 We want to model the *information* as probability distributions.
 
 #### **Definition:** Private-key encryption.
 
 {: .defn}
-> $(\Gen,\Enc,\Dec)$ is said to be a *private-key encryption scheme* over the messages space $\cM$ and the keyspace $\cK$ 
+> $$(\Gen,\Enc,\Dec)$$ is said to be a *private-key encryption scheme* over the messages space $$\cM$$ and the keyspace $$\cK$$ 
 > if the following syntax holds.
 > 
-> 1. $\Gen$ is a randomized algorithm that returns a key $k \in \cK$. We denote by $k \gets \Gen$ the process of generating $k$.
-> 2. $\Enc$ is a potentially randomized algorithm that on input a key $k\in\cK$ and a message $m \in \cM$, outputs a ciphertext $c$.
->    We denote by $c \gets \Enc_k(m)$ the computation of $\Enc$ on $k$ and $m$.
-> 3. $\Dec$ is a deterministic algorithm that on input input a key $k$ and a ciphertext $c$ outputs a message $m \in \cM$.
->    We denote by $m' \gets \Dec_k(c)$ the computation of $\Dec$.
-> 4. (Correctness.) For all $m \in \cM$,
+> 1. $$\Gen$$ is a randomized algorithm that returns a key $$k \in \cK$$. We denote by $$k \gets \Gen$$ the process of generating $$k$$.
+> 2. $$\Enc$$ is a potentially randomized algorithm that on input a key $$k\in\cK$$ and a message $$m \in \cM$$, outputs a ciphertext $$c$$.
+>    We denote by $$c \gets \Enc_k(m)$$ the computation of $$\Enc$$ on $$k$$ and $$m$$.
+> 3. $$\Dec$$ is a deterministic algorithm that on input input a key $$k$$ and a ciphertext $$c$$ outputs a message $$m \in \cM$$.
+>    We denote by $$m' \gets \Dec_k(c)$$ the computation of $$\Dec$$.
+> 4. (Correctness.) For all $$m \in \cM$$,
 >
 >    $$
 >    \Pr[k \gets \Gen : \Dec_k(\Enc_k(m)) = m] = 1.
 >    $$  
 >
->    (the probability is taken over the randomness of $\Gen, \Enc$.)
->
+>    (the probability is taken over the randomness of $$\Gen, \Enc$$.)
+
 
 #### **Definition:** Shannon Secrecy.
 
