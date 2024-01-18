@@ -168,25 +168,25 @@ We want to model the *information* as probability distributions.
 #### **Definition:** Shannon Secrecy.
 
 {: .defn}
-> The private-key encryption scheme $(\cM,\cK,\Gen,\Enc,\Dec)$ is *Shannon-secret with respect to the distribution $D$* over $\cM$ 
-> if for all $m' \in \cM$ and for all $c$, 
+> The private-key encryption scheme $$(\cM,\cK,\Gen,\Enc,\Dec)$$ is *Shannon-secret with respect to the distribution $$D$$* over $$\cM$$ 
+> if for all $$m' \in \cM$$ and for all $$c$$, 
 > 
 > $$
 > \Pr[k \gets \Gen; m \gets D : \qquad m = m' \ | \  \Enc_k(m) = c] \quad = \quad \Pr[m \gets D : m = m'].
 > $$
 >
-> An encryption scheme is said to be *Shannon secret* if it is Shannon secret with respect to all distributions $D$ over $\cM$.
+> An encryption scheme is said to be *Shannon secret* if it is Shannon secret with respect to all distributions $$D$$ over $$\cM$$.
 
-The RHS is the distribution of messages without $c$. The LHS is the distribution *conditioned on observing $c$*.
-Is the definition good if we skip the quantifier for "all distribution $D$"?
+The RHS is the distribution of messages without $$c$$. The LHS is the distribution *conditioned on observing $$c$$*.
+Is the definition good if we skip the quantifier for "all distribution $$D$$"?
 
 An alternative intuition is that the distribution of ciphertexts for any two messages are identical.
 
 #### **Definition:** Perfect Secrecy.
 
 {: .defn}
-> The private-key encryption scheme $(\cM,\cK,\Gen,\Enc,\Dec)$ is *perfectly secret* 
-> if for all $m_1, m_2 \in \cM$, and for all $c$,  
+> The private-key encryption scheme $$(\cM,\cK,\Gen,\Enc,\Dec)$$ is *perfectly secret* 
+> if for all $$m_1, m_2 \in \cM$$, and for all $$c$$,  
 >
 > $$
 > \Pr[k \gets \Gen : \Enc_k(m_1) = c] \quad = \quad \Pr[k \gets \Gen : \Enc_k(m_2) = c].
