@@ -2,7 +2,10 @@
 	"folders":
 	[
 		{
-			"path": "."
-		}
-	]
+			"path": ".",
+		},
+		{
+			"path": "C:\\Users\\twc7zv\\repos\\cs4501-crypto-sp24-priv"
+		},
+	],
 }

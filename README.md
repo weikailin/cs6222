@@ -30,19 +30,20 @@ Classroom
 
 **Location:** Thornton Hall E303 ![UVA Engineering](assets/images/uva-eng.png)
 
-Instructor Contact Information
+Instructor and TA Information
 ------------------------------
 
-**Name:** Wei-Kai Lin [(audio)](https://www.name-coach.com/wei-kai-lin-4568fe92-7831-4780-a68c-361f76dee197)
+**Instructor:** Wei-Kai Lin [(audio)](https://www.name-coach.com/wei-kai-lin-4568fe92-7831-4780-a68c-361f76dee197), email: wklin-course (at virginia dot edu)
 
-**Email:** wklin-course (at virginia dot edu)
+**TA:** Elena Long
 
 Office Hours
 ------------
 
-**Days and Times:** Thursdays 3:30-4:30pm (after Thursday classes)
+**Office hour:** Thursdays 3:30-4:30pm (after Thursday classes).
+Location: Rice 505.
 
-**Location:** Rice 505
+**TA hour:** Tuesdays 3:30-4:30pm (after classes).
 
 Course Work
 --------------
