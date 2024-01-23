@@ -206,11 +206,11 @@ Note: this definition is simpler and easier to use.
 > 
 > $$
 > \begin{align*}
-> \Pr_{k,m}[m 
-> & = \bar m | \Enc_k(m) = c] = \Pr_{k,m}[m = \bar m \cap \Enc_k(m) = c] / \Pr_{k,m}[\Enc_k(m) = c]\\
+> \Pr_{k,m}[m = \bar m | \Enc_k(m) = c] = \Pr_{k,m}[m = \bar m \cap \Enc_k(m) = c] / \Pr_{k,m}[\Enc_k(m) = c]\\
 > & = \Pr_{k,m}[\Enc_k(m) = c | m = \bar m] \Pr_m[m = \bar m] / \Pr_{k,m}[\Enc_k(m) = c]\\
 > \end{align*}
 > $$
+> 
 > Notice that $$m$$ is a *shared* random variable in both events, so, 
 > we can not say that they are independent events.
 > 
