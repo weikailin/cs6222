@@ -18,8 +18,6 @@ $$
 \newcommand{\eps}{\epsilon}
 \newcommand{\card}[1]{\vert{#1}\vert}
 \newcommand{\set}[1]{\\{#1\\}}
-\newcommand{\bit}{\set{0,1}}
-\newcommand{\bits}{\bit^\*}
 \newcommand{\mul}{\mathrm{mul}}
 \newcommand{\univ}{\mathrm{univ}}
 $$
