@@ -3,12 +3,10 @@
 
 // import katex from "katex";
 
-      // "\\bit": "\\{0,1\\}",
-      // "\\bits": "\\bit^\\ast",
 const my_macros = {
+      "\\TestMacroKatex": "Test Macro \\KaTex",
       "\\set": "\\{#1\\}",
-      "\\bit": "{0,1}",
-      "\\testmacro": "tesmacro",
+      "\\bit": "\\{0,1\\}",
       "\\bits": "\\bit^\\ast",
       "\\N": "\\mathbb{N}",
       "\\eps": "\\epsilon",
@@ -32,7 +30,6 @@ const my_macros = {
       "\\pk": "\\mathit{pk}",
       "\\sk": "\\mathit{sk}",
     };
-// const macros = {};
 
 let scripts = document.body.getElementsByTagName("script");
 scripts = Array.prototype.slice.call(scripts);
@@ -53,7 +50,7 @@ scripts.forEach(function(script) {
           trust: true,   // [WK: to enable htmlId and href, see below]
           strict: false, // [WK: https://katex.org/docs/support_table.html]
           throwOnError: false,
-          macros: my_macros,
+          macros: my_macros, // [WK: fixed from sample code]
         });
     } catch (err) {
         //console.error(err); linter doesn't like this

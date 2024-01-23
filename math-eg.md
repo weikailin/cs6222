@@ -70,8 +70,9 @@ x \cdot y & o.w.
 \end{cases}
 $$
 
-test macro $$\N$$, $$\bits$$, $$\bit$$
-$$\testmacro$$
+Test macro: $$\N$$, $$\bits$$, $$\bit$$
+
+$$\TestMacroKatex$$
 
 Uncool "Kramdown" Renderer
 ------------------------
