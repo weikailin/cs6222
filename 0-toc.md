@@ -11,6 +11,7 @@ Table of Lecture Notes
 | Date      | Topic                                     | References  |
 | --------- | ----------------------------------------- | ----------- |
 | Jan 18    | [Course outline, security definition](1-intro.md)  | [Ps 1.1-1.3], [KL 1.1,1.2,1.4,2.1] |
+| Jan 23    | [Perfect security, one-time pads](1-intro.md)    | [Ps 1.3], [KL 2.1-2.3] |
 
 <!-- 
 | Aug 28    | [Perfect security, one-time pads](1-intro.md)    | [Ps 1.3], [KL 2.1-2.3] |
