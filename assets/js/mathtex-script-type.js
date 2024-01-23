@@ -32,6 +32,7 @@
 //       "\\pk": "\\mathit{pk}",
 //       "\\sk": "\\mathit{sk}",
 //     };
+const macros = {};
 
 let scripts = document.body.getElementsByTagName("script");
 scripts = Array.prototype.slice.call(scripts);
