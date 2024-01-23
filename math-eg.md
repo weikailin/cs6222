@@ -70,7 +70,7 @@ x \cdot y & o.w.
 \end{cases}
 $$
 
-test macro $$\N$$
+test macro $$\N$$, $$\bits$$
 
 Uncool "Kramdown" Renderer
 ------------------------
