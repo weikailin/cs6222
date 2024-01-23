@@ -7,6 +7,7 @@ const macros = {
       "\\set": "\\{#1\\}",
       // "\\bit": "\\{0,1\\}",
       "\\bit": "{0,1}",
+      "\\testmacro": "tesmacro",
       // "\\bits": "\\bit^\\ast",
       "\\bits": "\\bit^\\ast",
       "\\N": "\\mathbb{N}",
