@@ -236,7 +236,7 @@ Note: this definition is simpler and easier to use.
 > \Pr_{k}[\Enc_k(\bar m) = c] = \Pr_{k,m}[\Enc_k(m) = c].
 > $$
 > 
-> That givens Shannon secrecy:
+> That gives Shannon secrecy:
 > 
 > $$
 > \begin{align*}

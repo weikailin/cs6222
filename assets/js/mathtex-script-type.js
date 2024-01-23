@@ -6,6 +6,7 @@
 const my_macros = {
       "\\TestMacroKatex": "Test Macro \\KaTex",
       "\\set": "\\{#1\\}",
+      "\\card": "\\left| #1 \\right|",
       "\\bit": "\\{0,1\\}",
       "\\bits": "\\bit^\\ast",
       "\\N": "\\mathbb{N}",
