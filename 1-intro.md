@@ -205,18 +205,14 @@ Note: this definition is simpler and easier to use.
 > Suppose that $$(\cM,\cK,\Gen,\Enc,\Dec)$$ is perfectly secret. For any $$D$$, any $$c$$, and any $$\bar m$$, we have
 > 
 > $$
-> \Pr_{k,m}[m = \bar m | \Enc_k(m) = c] = \Pr_{k,m}[m = \bar m \cap \Enc_k(m) = c] / \Pr_{k,m}[\Enc_k(m) = c].
-> $$
-> 
-> Then, we want to split the joint prob. so that we can cancel it with the denominator.
-> They are not independent, so we rearrange
-> 
-> $$
 > \begin{align*}
-> & \Pr_{k,m}[m = \bar m \cap \Enc_k(m) = c] \\
-> = & \Pr_{k,m}[\Enc_k(m) = c | m = \bar m] \Pr_m[m = \bar m]\\
+> \Pr_{k,m}[m 
+> & = \bar m | \Enc_k(m) = c] = \Pr_{k,m}[m = \bar m \cap \Enc_k(m) = c] / \Pr_{k,m}[\Enc_k(m) = c]\\
+> & = \Pr_{k,m}[\Enc_k(m) = c | m = \bar m] \Pr_m[m = \bar m] / \Pr_{k,m}[\Enc_k(m) = c]\\
 > \end{align*}
 > $$
+> Notice that $$m$$ is a *shared* random variable in both events, so, 
+> we can not say that they are independent events.
 > 
 > We will write $$\Pr_{k}[\Enc_k(\bar m)]$$ instead of $$\Pr_{k,m}[\Enc_k(m) = c | m = \bar m]$$, 
 > and we want to show it equals to $$\Pr_{k,m}[\Enc_k(m)]$$ (note $$\bar m$$ is not r.v. but $$m$$ is).
