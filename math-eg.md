@@ -71,6 +71,7 @@ x \cdot y & o.w.
 $$
 
 test macro $$\N$$, $$\bits$$, $$\bit$$
+$$\testmacro$$
 
 Uncool "Kramdown" Renderer
 ------------------------
