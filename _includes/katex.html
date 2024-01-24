@@ -11,13 +11,14 @@
 </script>
 
 <!-- To automatically render math in text elements, include the auto-render extension: -->
+ <!-- // [WK: my_macros is defined in mathtex-script-type.js] -->
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
 onload="renderMathInElement(document.body, {
   globalGroup: true,
   trust: true,
   strict: false,
   throwOnError: false,
-  macros: my_macros, // [WK: my_macros is defined in mathtex-script-type.js]
+  macros: my_macros,
 });"></script>
 
 <!-- The KaTeX default is 1.21em, see https://katex.org/docs/font.html#font-size-and-lengths -->
