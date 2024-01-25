@@ -55,9 +55,14 @@ We want to provide "efficient computation" to the honest users.
 #### **Definition:** Deterministic Algorithm
 
 {: .defn}
-> An algo $$\cA$$ is a deterministic Turing Machine with input and output as bit strings, $$\bit^\ast$$.
+> An algorithm $$\cA$$ is defined to be a deterministic Turing Machine with input and output as bit strings, $$\bit^\ast$$.
 
-Note: TM is by definition *uniform*, that is, its description size is constant for all unbounded long inputs.
+Recall that a Turing Machine is by definition *uniform*, that is, 
+
+- The description length of $$\cA$$ is constant for all inputs (no matter how long it is).
+
+Also notice that the definitiona of algorithm here is different from some algorithm textbooks, e.g.,
+we do not require an algorithm to halt in finite time (unless explicitly specified, see next).
 
 #### **Definition:** Polynomial Running-Time
 
@@ -70,20 +75,20 @@ Note: TM is by definition *uniform*, that is, its description size is constant f
 #### **Definition:** Efficient Computation
 
 {: .defn}
-> We say an algo is *efficient* if it runs in polynomial time.
+> We say an algorithm is *efficient* if it runs in polynomial time.
 
 Justification of poly time:
 
 - Indep of computation models (TM, circuit, ...)
-- Closed under compositions of algos
-- From human experience: poly-time become cubic, but super-poly remain hard
+- Closed under compositions of algorithms
+- From human experience: many poly-time algorithms are improved later to cubic time, but many super-polynomial time algorithm/problems are unclear if we can solve in polynomial time.
 
-As discussed in perfect secrecy, we need randomized algo to construct encryption (and more generally crypto).
+As discussed in perfect secrecy, we need randomized algorithms to construct encryption (and more generally crypto).
 
 #### **Definition:** Randomized (or Probabilistic) Algorithm
 
 {: .defn}
-> A *randomized* algorithm $$\cA$$, also called a probabilistic polynomial-time Turing Machine
+> A *randomized* algorithm $$\cA$$, also called a *probabilistic* polynomial-time Turing Machine
 > and abbreviated as PPT, is a deterministic algorithm equipped with an extra random tape. 
 > Each bit of the random tape is uniformly and independently chosen.
 > 
@@ -102,12 +107,12 @@ As an example, we define efficient and correct encryption.
 > 4. Correctness: $$\forall n \in \N$$, $$m \in \bit^n$$,
 > 
 > $$
-> \Pr [k \gets \Gen(1^n) : \Dec_k(\Enc_k(m)) = m]] = 1.
+> \Pr \left[k \gets \Gen(1^n) : \Dec_k(\Enc_k(m)) = m \right] = 1.
 > $$
 
-Note: the notation $1^n$ means the string of $n$ copies 1's, it is called the *security parameter*.
-The purpose is to instantiate the "security" of the scheme, e.g., $n$-bit key.
-We write unary $1^n$ (but not $n$ as binary) because "poly-time" is defined by the input length.
+Note: the notation $$1^n$$ means the string of $$n$$ copies 1's, it is called the *security parameter*.
+The purpose is to instantiate the "security" of the scheme, e.g., $$n$$-bit key.
+We write unary $$1^n$$ (but not $$n$$ as binary) because "poly-time" is defined by the input length.
 
 ### Adversaries: Non-Uniform
 
