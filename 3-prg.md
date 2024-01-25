@@ -131,56 +131,56 @@ Fortunately, it implies the following.
 #### **Corollary:**
 
 {: .theorem}
-> For any ensembles $\cX, \cY, \cZ$, if $\cX \approx \cY$ and $\cY \approx \cZ$,
-> then it follows that $\cX \approx \cZ$.
+> For any ensembles $$\cX, \cY, \cZ$$, if $$\cX \approx \cY$$ and $$\cY \approx \cZ$$,
+> then it follows that $$\cX \approx \cZ$$.
 
 {: .proof}
 > (left as exercise)
 
 **Discuss**{: .label}
 If the number of hybrid distributions (between two ensembles) depends on 
-the size $n$ (of the distributions in the ensembles), the above corollary is tricky.
-Consider two ensembles $\cX = \set{X_n}_n, \cY=\set{Y_n}_n$, and suppose that
-the machine $D$ distinguishes $\cX, \cY$ w.p. $p(n)$ (that depends on $n$),
-and then suppose that the sequence $(X_n = X_n^{(1)}, ... , X_n^{(m(n))} = Y_n)$
-consists of $m(n)$ distributions such that $m$ depends on $n$.
-Then, we *can not* define $m(n)$ ensembles between $\cX$ and $\cY$ due to the dependence 
-(i.e., the length of the sequence depends on $n$).
-This is indeed the case when we have many hybrids, e.g., going from $(n+1)$-bit PRG to $2n$-bit PRG.
+the size $$n$$ (of the distributions in the ensembles), the above corollary is tricky.
+Consider two ensembles $$\cX = \set{X_n}_n, \cY=\set{Y_n}_n$$, and suppose that
+the machine $$D$$ distinguishes $$\cX, \cY$$ w.p. $$p(n)$$ (that depends on $$n$$),
+and then suppose that the sequence $$(X_n = X_n^{(1)}, ... , X_n^{(m(n))} = Y_n)$$
+consists of $$m(n)$$ distributions such that $$m$$ depends on $$n$$.
+Then, we *can not* define $$m(n)$$ ensembles between $$\cX$$ and $$\cY$$ due to the dependence 
+(i.e., the length of the sequence depends on $$n$$).
+This is indeed the case when we have many hybrids, e.g., going from $$(n+1)$$-bit PRG to $$2n$$-bit PRG.
 There are two ways to treat this case, the formal one and the more popular one.
-In the formal way, we assume for contra that exists $D$ and $p(n)$ s.t. 
-for inf many $n\in\N$, $D$ distinguishes $(X_n, Y_n)$ w.p. at least $p(n)$;
-we then construct a reduction $B$ such that *guesses* an index $j \in [m(n)-1]$ 
-and hoping that $j = i$, where $i$ is the index given by hybrid lemma, 
-so that $B$ runs $D$ to distinguish and solve the challenge specified by the $j$-th hybrid.
+In the formal way, we assume for contra that exists $$D$$ and $$p(n)$$ s.t. 
+for inf many $$n\in\N$$, $$D$$ distinguishes $$(X_n, Y_n)$$ w.p. at least $$p(n)$$;
+we then construct a reduction $$B$$ such that *guesses* an index $$j \in [m(n)-1]$$ 
+and hoping that $$j = i$$, where $$i$$ is the index given by hybrid lemma, 
+so that $$B$$ runs $$D$$ to distinguish and solve the challenge specified by the $$j$$-th hybrid.
 The popular way is less rigorous but more intuitive:
-we just claim that the two distributions $X_n^{(j)}, X_n^{(j+1)}$ are "indistinguishable"
-for each $j, n$, and thus $X_n, Y_n$ are "indistinguishable";
-this is informal because fixing any $j$ means that $n$ is also fixed and $X_n, Y_n$ are two distributions (not ensembles), 
+we just claim that the two distributions $$X_n^{(j)}, X_n^{(j+1)}$$ are "indistinguishable"
+for each $$j, n$$, and thus $$X_n, Y_n$$ are "indistinguishable";
+this is informal because fixing any $$j$$ means that $$n$$ is also fixed and $$X_n, Y_n$$ are two distributions (not ensembles), 
 but indistinguishability is defined asymptotically on ensembles.
 
 Example:
-Let $\cX, \cY, \cZ, \cZ'$ be ensembles.
-Suppose that $(\cX, \cZ) \approx (\cX, \cZ')$ and $(\cY, \cZ) \approx (\cY, \cZ')$.
-Does $(\cX, \cY, \cZ) \approx (\cX, \cY, \cZ')$?
+Let $$\cX, \cY, \cZ, \cZ'$$ be ensembles.
+Suppose that $$(\cX, \cZ) \approx (\cX, \cZ')$$ and $$(\cY, \cZ) \approx (\cY, \cZ')$$.
+Does $$(\cX, \cY, \cZ) \approx (\cX, \cY, \cZ')$$?
 
 #### **Lemma:** Prediction Lemma
 
 {: .theorem}
-> Let $\set{X^0_n}_n$ and $\set{X^1_n}_n$ be two ensembles where $X^0_n, X^1_n$ are 
-> probability distributions over $\bit^{\ell(n)}$ for some polynomial $\ell(\cdot)$, 
-> and let $D$ be a NUPPT machine that distinguishes between $\set{X^0_n}_n$ and $\set{X^1_n}_n$
-> with probability $\ge p(·)$ for infinitely many $n \in \N$.
-> Then there exists a NUPPT $A$ such that
+> Let $$\set{X^0_n}_n$$ and $$\set{X^1_n}_n$$ be two ensembles where $$X^0_n, X^1_n$$ are 
+> probability distributions over $$\bit^{\ell(n)}$$ for some polynomial $$\ell(\cdot)$$, 
+> and let $$D$$ be a NUPPT machine that distinguishes between $$\set{X^0_n}_n$$ and $$\set{X^1_n}_n$$
+> with probability $$\ge p(·)$$ for infinitely many $$n \in \N$$.
+> Then there exists a NUPPT $$A$$ such that
 > 
 > $$
 > \Pr[b \gets \bit, t \gets X^b_n : A(t) = b] \ge \frac{1}{2} + \frac{p(n)}{2}
 > $$
 > 
-> for infinitely many $n \in \N$.
+> for infinitely many $$n \in \N$$.
 
 {: .proof}
-> Remove the absolute value in the def of comp. ind. by negating the distinguisher $D$,
+> Remove the absolute value in the def of comp. ind. by negating the distinguisher $$D$$,
 > and then standard probability. 
 
 Note: the converse the easier to prove. Hence, prediction and distinguishing is essentially equivalent.
@@ -191,10 +191,10 @@ Pseudo-Random Generator
 #### **Definition:** Pseudo-random Ensembles.
 
 {: .defn}
-> The probability ensemble $\set{X\_n}\_n$, where $X\_n$ is a probability distribution
-> over $\bit^{l(n)}$ for some polynomial $l(\cdot)$, is said to be pseudorandom 
-> if $\set{X\_n}\_n \approx \set{U\_{l(n)}}\_n$,
-> where $U\_m$ is the uniform distribution over $\bit^m$.
+> The probability ensemble $$\set{X\_n}\_n$$, where $$X\_n$$ is a probability distribution
+> over $$\bit^{l(n)}$$ for some polynomial $$l(\cdot)$$, is said to be pseudorandom 
+> if $$\set{X\_n}\_n \approx \set{U\_{l(n)}}\_n$$,
+> where $$U\_m$$ is the uniform distribution over $$\bit^m$$.
 
 Note:
 - this definition says that a pseudorandom distribution must pass 
@@ -205,53 +205,53 @@ Note:
 #### **Definition:** Pseudo-random Generators.
 
 {: .defn}
-> A function $g : \bit^\ast \to \bit^\ast$ is a *Pseudo-random Generator (PRG)* 
+> A function $$g : \bit^\ast \to \bit^\ast$$ is a *Pseudo-random Generator (PRG)* 
 > if the following holds.
-> 1. (efficiency): $g$ can be computed in PPT.
+> 1. (efficiency): $$g$$ can be computed in PPT.
 > 2. (expansion): 
->    $|g(x)| \gt |x|$
-> 3. The ensemble $\set{x \gets U_n : g(x)}_n$ is pseudorandom.
+>    $$|g(x)| \gt |x|$$
+> 3. The ensemble $$\set{x \gets U_n : g(x)}_n$$ is pseudorandom.
 
-We sometimes say that the expansion of PRG $g$ is $t$ 
-if $|g(x)| - |x| \ge t$ for all $x$.
+We sometimes say that the expansion of PRG $$g$$ is $$t$$ 
+if $$|g(x)| - |x| \ge t$$ for all $$x$$.
 
-Example: if $g: \bit^n \to \bit^{n+1}$ for all $n$ is a PRG, then $g$ is a OWF.
+Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a OWF.
 (proof left as exercise, why expansion is necessary?)
 
 #### **Lemma:** Expansion of a PRG
 
 {:.theorem}
-> Let $g:\bit^n \to \bit^{n+1}$ to be a PRG for all $n \in\N$. 
-> For any polynomial $\ell(n) \gt n$, define $g': \bit^n \to \bit^{\ell(n)}$ as follows:
+> Let $$g:\bit^n \to \bit^{n+1}$$ to be a PRG for all $$n \in\N$$. 
+> For any polynomial $$\ell(n) \gt n$$, define $$g': \bit^n \to \bit^{\ell(n)}$$ as follows:
 > 
 > $$
 > g'(s) \to b_1 b_2 ... b_{\ell},
 > $$
 > 
 > where 
-> $\ell := \ell(|s|)$, $x_0 \gets s, x_{i+1} \\| b_{i+1} \gets g(x_i)$. Then $g'$ is a PRG.
+> $$\ell := \ell(|s|)$$, $$x_0 \gets s, x_{i+1} \\| b_{i+1} \gets g(x_i)$$. Then $$g'$$ is a PRG.
 
 {:.proof-title}
 > Proof, warmup:
 > 
-> Suppose that $\ell = 2$, no expansion, but we want to show pseudorandomness.
+> Suppose that $$\ell = 2$$, no expansion, but we want to show pseudorandomness.
 > Define distributions 
 > 
 > $$
 > H^0_n := g'(s), H^1_n := U_1 \| g(s)[n+1], H^2\_n := U\_2
 > $$
 > 
-> for $n \in \N$, and define $\cH^i := \set{H^i_n}_n$ for $i=0,1,2$.
-> Since $g'(s) = g(s)[n+1] \\| g(g(s)[1...n])[n+1]$, by $g(s) \approx U\_{n+1}$ and closure,
-> we have $\cH^0 \approx \cH^1$.
-> By $g(x)$ is pseudorandom and closure, $g(U\_n)[n+1] \approx U\_1$, which implies $\cH^1 \approx \cH^2$.
-> By the corollary of hybrid lemma, we have $\cH^0 \approx \cH^2$.
+> for $$n \in \N$$, and define $$\cH^i := \set{H^i_n}_n$$ for $$i=0,1,2$$.
+> Since $$g'(s) = g(s)[n+1] \\| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U\_{n+1}$$ and closure,
+> we have $$\cH^0 \approx \cH^1$$.
+> By $$g(x)$$ is pseudorandom and closure, $$g(U\_n)[n+1] \approx U\_1$$, which implies $$\cH^1 \approx \cH^2$$.
+> By the corollary of hybrid lemma, we have $$\cH^0 \approx \cH^2$$.
 
 {:.proof-title}
 > Proof of PRG Expansion
 > 
-> It is slightly tricky when $\ell$ depends on $n$.
-> Define the prefix $h$ and last bit $s$ of iterating $g$ as:
+> It is slightly tricky when $$\ell$$ depends on $$n$$.
+> Define the prefix $$h$$ and last bit $$s$$ of iterating $$g$$ as:
 > 
 > $$
 > h^i(x) := \begin{cases}
@@ -269,9 +269,9 @@ Example: if $g: \bit^n \to \bit^{n+1}$ for all $n$ is a PRG, then $g$ is a OWF.
 > \end{cases}
 > $$
 > 
-> We have $g'(x) = s^1 \\| s^2 \\| ...s^{\ell}$, and we want to prove it through Hybrid Lemma.
-> Given $n$, define hybrid distributions $H_0 := g'(x)$, $H_{\ell} := U_{\ell}$,
-> and define $H_i$ for $i = 1,...,\ell-1$ as 
+> We have $$g'(x) = s^1 \\| s^2 \\| ...s^{\ell}$$, and we want to prove it through Hybrid Lemma.
+> Given $$n$$, define hybrid distributions $$H_0 := g'(x)$$, $$H_{\ell} := U_{\ell}$$,
+> and define $$H_i$$ for $$i = 1,...,\ell-1$$ as 
 > 
 > $$
 > H_i := U_i \| s^{1} \| ...s^{\ell(n)-i},
