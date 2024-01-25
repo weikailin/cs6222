@@ -352,7 +352,7 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 In the above, we proved it formally and preserved the uniformity (if $$D$$ is a uniform TM, then $$D'$$ is also uniform). 
 We did not apply Hybrid Lemma (and no triangular ineq), nor did we use Closure Lemma.
 Alternatively after (AC), one may apply Hybrid Lemma which claims that exists $$j^\ast$$
-s.t. $$H$$_{j^\ast}$$ is distinguishable from $$H^{j^\ast+1}$$ w.p. at least $$1/(\ell p)$$,
+s.t. $$H_{j^\ast}$$ is distinguishable from $$H^{j^\ast+1}$$ w.p. at least $$1/(\ell p)$$,
 and then hardwire $$j^\ast$$ into $$D'$$ in order to distinguish $$g(x)$$.
 This would make $$D'$$ **non-uniform** because $$j^\ast$$ would depend on each $n$$ 
 and we would not have an efficient way to find $$j^\ast$$.
