@@ -121,15 +121,15 @@ Next we want to model adversaries with a stronger capability than honest.
 #### **Definition:** Non-Uniform PPT
 
 {: .defn}
-> A *non-uniform* PPT machine (abbreviated nuPPT) $\cA$ is a sequence
-> of algos $\cA = \set{\cA_1, \cA_2, \dots}$ s.t.:
-> - $\cA_i$ computes on inputs of length $i$, and
-> - exists a polynomial $d$ s.t. the description size $|A_i| \lt d(i)$ 
->   and the time $\cA_i$ is also less than $d(i)$. 
-> We write $\cA(x)$ to denote the computation $\cA_{|x|}(x)$.
+> A *non-uniform* PPT machine (abbreviated nuPPT) $$\cA$$ is a sequence
+> of algos $$\cA = \set{\cA_1, \cA_2, \dots}$$ s.t.:
+> - $$\cA_i$$ computes on inputs of length $$i$$, and
+> - exists a polynomial $$d$$ s.t. the description size $$|A_i| \lt d(i)$$ 
+>   and the time $$\cA_i$$ is also less than $$d(i)$$. 
+> We write $$\cA(x)$$ to denote the computation $$\cA_{|x|}(x)$$.
 > 
-> Alternatively, an nuPPT algo can be defined as a *uniform* PPT $\cA$ that
-> takes an additional *advice* string of poly length $d(i)$ for each input length $i$.
+> Alternatively, an nuPPT algo can be defined as a *uniform* PPT $$\cA$$ that
+> takes an additional *advice* string of poly length $$d(i)$$ for each input length $$i$$.
 
 Purpose: 
 non-uniform gives adv extra power and models many real scenario, 
