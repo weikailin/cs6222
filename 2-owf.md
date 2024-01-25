@@ -97,14 +97,14 @@ As discussed in perfect secrecy, we need randomized algorithms to construct encr
 
 As an example, we define efficient and correct encryption.
 
-#### **Definition:** Efficient Private-key Encryption.
+#### **Example:** Efficient Private-key Encryption.
 
 {: .defn}
-> $$(\Gen, \Enc, \Dec)$$ is called an *efficient private-key encryption scheme* if:
+> $$(\Gen, \Enc, \Dec)$$ is called an *efficient private-key encryption scheme* w.r.t. message space $$\cM$$ if:
 > 1. $$k \gets \Gen(1^n)$$ is PPT s.t. for every $$n \in \N$$, it samples $$k$$.
-> 2. $$c \gets \Enc_k(m)$$ is PPT s.t. $$k, m \in \bit^n$$, outputs $$c$$.
-> 3. $$m \gets \Dec_k(c)$$ is PPT s.t. $$c, k$$, outputs $$m \in \bit^n \cup\bot$$.
-> 4. Correctness: $$\forall n \in \N$$, $$m \in \bit^n$$,
+> 2. $$c \gets \Enc_k(m)$$ is PPT s.t. $$k, m \in \cM$$, outputs $$c$$.
+> 3. $$m \gets \Dec_k(c)$$ is PPT s.t. $$c, k$$, outputs $$m \in \cM \cup\bot$$.
+> 4. Correctness: $$\forall n \in \N$$, $$m \in \cM$$,
 > 
 > $$
 > \Pr \left[k \gets \Gen(1^n) : \Dec_k(\Enc_k(m)) = m \right] = 1.
