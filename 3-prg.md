@@ -277,8 +277,8 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > H_i := U_i \| s^{1} \| ...s^{\ell(n)-i},
 > $$
 > 
-> where $U_i$ denotes sampling an $i$-bit string uniformly at random.
-> Observe that for each $i=0,1,...,\ell-1$, $H_i$ and $H_{i+1}$ differ by a $g(x)$, that is,
+> where $$U_i$$ denotes sampling an $$i$$-bit string uniformly at random.
+> Observe that for each $$i=0,1,...,\ell-1$$, $$H_i$$ and $$H_{i+1}$$ differ by a $$g(x)$$, that is,
 > 
 > $$
 > \begin{align*}
@@ -288,21 +288,21 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > \end{align*}
 > $$
 > 
-> for all $i = 0, 1, ..., \ell$.
+> for all $$i = 0, 1, ..., \ell$$.
 > 
-> Assume for contra (AC), there exists NUPPT $D$, poly $p(n)$ s.t. for inf many $n\in\N$,
-> $D$ distinguishes $\set{x\gets\bit^n : g(x)}\_n$ and $U\_{\ell(n)}$ w.p. at least $1/p(n)$.
-> The intuition is to apply Hybrid Lemma so that there exists $j^\ast$ 
-> such that $H\_{j^*}, H\_{j^\ast+1}$ are distinguishable, 
-> and thus by Closure Lemma $g(x)$ is distinguishable from uniform.
+> Assume for contra (AC), there exists NUPPT $$D$$, poly $$p(n)$$ s.t. for inf many $$n\in\N$$,
+> $$D$$ distinguishes $$\set{x\gets\bit^n : g(x)}\_n$$ and $$U\_{\ell(n)}$$ w.p. at least $$1/p(n)$$.
+> The intuition is to apply Hybrid Lemma so that there exists $$j^\ast$$ 
+> such that $$H\_{j^*}, H\_{j^\ast+1}$$ are distinguishable, 
+> and thus by Closure Lemma $$g(x)$$ is distinguishable from uniform.
 > 
-> We prove it formally by constructing $D'$ that aims to distinguish $g(x)$.
-> Given input $t \in \bit^{n+1}$, $D'$ performs:
-> 1. Samplable $i \gets \set{0,...,\ell-1}$ (where $\ell \gets \ell(n)$)
-> 2. $t_0 \gets U_i$, $t_1 \gets t[n+1]$, and $t_2 \gets s^1(t[1...n]) \\| s^2(t[1...n]) \\| ...s^{\ell-i-1}(t[1...n])$
-> 3. output $D(t_0 \\| t_1 \\| t_2)$
+> We prove it formally by constructing $$D'$$ that aims to distinguish $$g(x)$$.
+> Given input $$t \in \bit^{n+1}$$, $$D'$$ performs:
+> 1. Samplable $$i \gets \set{0,...,\ell-1}$$ (where $$\ell \gets \ell(n)$$)
+> 2. $$t_0 \gets U_i$$, $$t_1 \gets t[n+1]$$, and $$t_2 \gets s^1(t[1...n]) \\| s^2(t[1...n]) \\| ...s^{\ell-i-1}(t[1...n])$$
+> 3. output $$D(t_0 \\| t_1 \\| t_2)$$
 > 
-> To show that $D'$ succeed with non-negl prob., we partition the event as follows:
+> To show that $$D'$$ succeed with non-negl prob., we partition the event as follows:
 > 
 > $$
 > \begin{align*}
@@ -313,9 +313,9 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > \end{align*}
 > $$
 > 
-> where the random variable $i \gets \set{0,1,...,\ell-1}$ is sampled exactly the same as in $D'$. 
+> where the random variable $$i \gets \set{0,1,...,\ell-1}$$ is sampled exactly the same as in $$D'$$. 
 > 
-> Notice that conditioned on $i = j$ for any fixed $j$, the distribution $t_0 \\| t_1 \\| t_2$ (given to $D$)
+> Notice that conditioned on $$i = j$$ for any fixed $$j$$, the distribution $$t_0 \\| t_1 \\| t_2$$ (given to $$D$$)
 > is identical to 
 > 
 > $$
@@ -346,28 +346,28 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > $$
 > 
 > where the last inequality follows by (AC).
-> That is, $D'$ distinguishes $g(x)$ w.p. at least $\frac{1}{\ell(n)p(n)}$, contradicting $g$ is a PRG.
+> That is, $$D'$$ distinguishes $$g(x)$$ w.p. at least $$\frac{1}{\ell(n)p(n)}$$, contradicting $g$$ is a PRG.
 
 **Discuss**{:.label}
-In the above, we proved it formally and preserved the uniformity (if $D$ is a uniform TM, then $D'$ is also uniform). 
+In the above, we proved it formally and preserved the uniformity (if $D$$ is a uniform TM, then $$D'$$ is also uniform). 
 We did not apply Hybrid Lemma (and no triangular ineq), nor did we use Closure Lemma.
-Alternatively after (AC), one may apply Hybrid Lemma which claims that exists $j^\ast$
-s.t. $H_{j^\ast}$ is distinguishable from $H^{j^\ast+1}$ w.p. at least $1/(\ell p)$,
-and then hardwire $j^\ast$ into $D'$ in order to distinguish $g(x)$.
-This would make $D'$ **non-uniform** because $j^\ast$ would depend on each $n$ 
-and we would not have an efficient way to find $j^\ast$.
+Alternatively after (AC), one may apply Hybrid Lemma which claims that exists $$j^\ast$$
+s.t. $H$_{j^\ast}$$ is distinguishable from $$H^{j^\ast+1}$$ w.p. at least $$1/(\ell p)$$,
+and then hardwire $$j^\ast$$ into $$D'$$ in order to distinguish $$g(x)$$.
+This would make $$D'$$ **non-uniform** because $$j^\ast$$ would depend on each $n$$ 
+and we would not have an efficient way to find $$j^\ast$$.
 
 We proved in the above that a PRG with 1-bit expansion is sufficient to build any poly-long expansion.
 We have not yet give any candidate construct of PRG (even 1-bit expansion), 
 but it is useful to firstly see what we can achieve using PRGs.
 
 Example:
-Now suppose that we have a PRG $g$ with $n \mapsto \ell(n)$ expansion for any poly $\ell$.
+Now suppose that we have a PRG $g$$ with $$n \mapsto \ell(n)$$ expansion for any poly $$\ell$$.
 We can construct a *computationally* secure encryption by 
-sampling key $k$ as an $n$-bit string and then bitwise XORing $g(k)$ with the message.
-That $m \oplus g(k)$ encrypts one message.
+sampling key $k$$ as an $n$$-bit string and then bitwise XORing $$g(k)$$ with the message.
+That $$m \oplus g(k)$$ encrypts one message.
 We can encrypt more messages by attaching to each message a sequence number,
-such as $(m_1 \oplus g(k)[1...n], 1), (m_2 \oplus g(k)[n...2n], 2)$, and so on.
+such as $$(m_1 \oplus g(k)[1...n], 1), (m_2 \oplus g(k)[n...2n], 2)$$, and so on.
 
 What's the downside of the above multi-message encryption?
 
@@ -381,25 +381,25 @@ We begin with defining (truly) random function.
 #### **Definition:** Random Functions
 
 {: .defn}
-> A random function $f: \bit^n \to \bit^n$ is a random variable sampled uniformly 
-> from the set $\RF_n := \set{f : \bit^n \to \bit^n}$.
+> A random function $$f: \bit^n \to \bit^n$$ is a random variable sampled uniformly 
+> from the set $$\RF_n := \set{f : \bit^n \to \bit^n}$$.
 
 We can view a random function in two ways.
-In the combinatorial view, any function $f: \bit^n \to \bit^n$ is described by
-a table of $2^n$ entries, each entry is the $n$-bit string, $f(x)$.
+In the combinatorial view, any function $$f: \bit^n \to \bit^n$$ is described by
+a table of $$2^n$$ entries, each entry is the $$n$$-bit string, $$f(x)$$.
 
-$f(0000...00),f(0000...01), ...,f(1111...11)$
+$$f(0000...00),f(0000...01), ...,f(1111...11)$$
 
-In the computational view, a random function $f$ is a data structure that on any input $x$,
+In the computational view, a random function $$f$$ is a data structure that on any input $$x$$,
 perform the following:
-1. initialize a map $m$ to empty before any query
-2. if $x \notin m$, then sample $y \gets \bit^n$ and set $m[x] \gets y$
-3. output $m[x]$
+1. initialize a map $$m$$ to empty before any query
+2. if $$x \notin m$$, then sample $$y \gets \bit^n$$ and set $$m[x] \gets y$$
+3. output $$m[x]$$
 
-In both views, the random function needs $2^n \cdot n$ bits to describe,
-and thus there are $2^{n2^n}$ random functions in $\RF_n$.
+In both views, the random function needs $$2^n \cdot n$$ bits to describe,
+and thus there are $$2^{n2^n}$$ random functions in $$\RF_n$$.
 
-Note: the random function $F\gets \RF_n$ is also known as *random oracle* in the literature.
+Note: the random function $$F\gets \RF_n$$ is also known as *random oracle* in the literature.
 
 Intuitively, a *pseudo-random* function (PRF) shall look similar to a random function.
 That is, indistinguishable by any NUPPT Turing machine that is *capable of interacting with the function*.
