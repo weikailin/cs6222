@@ -41,7 +41,7 @@ However, for any $$|g(x)| \gt |x|$$, the input / output distributions are far.
 The point is "random-looking" at best.
 
 $$
-m \oplus g(s), ~ |m| = |g(s)|, \text{ but } |s| \ll |m|.
+m \oplus g(s), ~ |m| = |g(s)|, \text{ but } |s| \ll |m| = |g(s)|.
 $$
 
 We will introduce computational indistinguishability, and then define pseudo-random generator (PRG) and pseudo-random function (PRF).
@@ -101,26 +101,26 @@ which include the following.
 #### **Lemma:** Closure Under Efficient Operations
 
 {: .theorem}
-> If the pair of ensembles $\set{X_n}_n \approx \set{Y_n}_n$, 
-> then for any NUPPT $M$, $\set{M(X_n)}_n \approx \set{M(Y_n)}_n$.
+> If the pair of ensembles $$\set{X_n}_n \approx \set{Y_n}_n$$, 
+> then for any NUPPT $$M$$, $$\set{M(X_n)}_n \approx \set{M(Y_n)}_n$$.
 
 {: .proof}
 > (By standard reduction) 
 
 Examples:
 
-1. $M$ ignores its input. Clearly, $M(X_n) \equiv M(Y_n)$ for all $n$.
-2. $M$ is identity, i.e., its output is exactly the input. $\set{M(X_n) = X_n}_n \approx \set{M(Y_n)=Y_n}_n$.
-3. $M$ outputs the first half of the input, 
-   i.e., $M(x) := x[1, ..., |x|/2]$.
+1. $$M$$ ignores its input. Clearly, $$M(X_n) \equiv M(Y_n)$$ for all $$n$$.
+2. $$M$$ is identity, i.e., its output is exactly the input. $$\set{M(X_n) = X_n}_n \approx \set{M(Y_n)=Y_n}_n$$.
+3. $$M$$ outputs the first half of the input, 
+   i.e., $$M(x) := x[1, ..., |x|/2]$$.
 
 #### **Lemma:** Hybrid Lemma
 
 {: .theorem}
-> Let $X^{(1)}, X^{(2)}, ..., X^{(m)}$ be a sequence of probability distributions. 
-> Assume that the machine $D$ distinguishes $X^{(1)}$ and $X^{(m)}$ with probability $p$. 
-> Then there exists some $i \in \set{1, ..., m − 1}$ s.t. 
-> $D$ distinguishes $X^{(1)}$ and $X^{(m)}$ with probability $p/m$.
+> Let $$X^{(1)}, X^{(2)}, ..., X^{(m)}$$ be a sequence of probability distributions. 
+> Assume that the machine $$D$$ distinguishes $$X^{(1)}$$ and $$X^{(m)}$$ with probability $$p$$. 
+> Then there exists some $$i \in \set{1, ..., m − 1}$$ s.t. 
+> $$D$$ distinguishes $$X^{(1)}$$ and $$X^{(m)}$$ with probability $$p/m$$.
 
 {: .proof}
 > (By triangular ineq) 

@@ -92,8 +92,9 @@ As discussed in perfect secrecy, we need randomized algorithms to construct encr
 > and abbreviated as PPT, is a deterministic algorithm equipped with an extra random tape. 
 > Each bit of the random tape is uniformly and independently chosen.
 > 
-> We denote the computation by $$y \gets \cA(x ; r)$$ but sometimes omit $$r$$.
-> Note that the running-time is bounded by a poly for all $$(x,r)$$.
+> We denote the computation by $$y \gets \cA(x ; r)$$ but sometimes omit $$r$$. 
+> When we say a randomized algorithm runs in time $$T(n)$$, 
+> the running time shall be $$\le T$$ for all $$(x,r)$$.
 
 As an example, we define efficient and correct encryption.
 
