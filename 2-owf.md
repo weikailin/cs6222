@@ -147,70 +147,70 @@ We try to define OWF using efficient computation and efficient adversary.
 The first may come from NP-hardness.
 
 #### **Attempt:** (Worst-Case)
-> A function $f : \bits \to \bits$ is one-way if both of the following hold:
-> 1. Easy to compute. There is a PPT $C$ that computes $f (x)$ on all inputs $x \in \bits$.
-> 2. Hard to Invert. No nuPPT adversary $\cA$, for all $n\in\N$ and $x \in \bit^n$, 
+> A function $$f : \bits \to \bits$$ is one-way if both of the following hold:
+> 1. Easy to compute. There is a PPT $$C$$ that computes $$f (x)$$ on all inputs $$x \in \bits$$.
+> 2. Hard to Invert. No nuPPT adversary $$\cA$$, for all $$n\in\N$$ and $$x \in \bit^n$$, 
 > 
 >    $$
 >    \Pr[\cA(1^n, f (x)) \in f^{-1}( f (x))] = 1.
 >    $$
 
-This is implied by $NP \not\subseteq BPP$, which is
+This is implied by $$NP \not\subseteq BPP$$, which is
 a long-open complexity problem.
-Majority of $x$ are easy (even we set prob $\ge 1 - 1/poly$), open if it is useful for encryption.
+Majority of $$x$$ are easy (even we set prob $$\ge 1 - 1/poly$$), open if it is useful for encryption.
 
 Note: nuPPT can store any poly, so there may be more than poly are hard.
 
 #### **Attempt:**
-> A function $f : \bits \to \bits$ is one-way if both of the following hold:
-> 1. Easy to compute. There is a PPT $C$ that computes $f (x)$ on all inputs $x \in \bits$.
-> 2. Hard to Invert. For all nuPPT adversary $\cA$, for all $n\in\N$ and $x \in \bit^n$, 
+> A function $$f : \bits \to \bits$$ is one-way if both of the following hold:
+> 1. Easy to compute. There is a PPT $$C$$ that computes $$f (x)$$ on all inputs $$x \in \bits$$.
+> 2. Hard to Invert. For all nuPPT adversary $$\cA$$, for all $$n\in\N$$ and $$x \in \bit^n$$, 
 > 
 >    $$
 >    \Pr[\cA(1^n, f (x)) \in f^{-1}( f (x))] \leq 2^{-n}.
 >    $$
 
-Impossible: too strong, $\cA$ is NU and could have many $(x, f(x))$ pairs. 
-Note: $\cA$ takes $1^n$ as the security parameter in case $|f(x)| \ll n$.
+Impossible: too strong, $$\cA$$ is NU and could have many $$(x, f(x))$$ pairs. 
+Note: $$\cA$$ takes $$1^n$$ as the security parameter in case $$|f(x)| \ll n$$.
 
-Randomize $x$:
+Randomize $$x$$:
 
 #### **Attempt:**
 
-> 2\. Hard to Invert. For any nuPPT adversary $\cA$, for all $n\in\N$, 
+> 2\. Hard to Invert. For any nuPPT adversary $$\cA$$, for all $$n\in\N$$, 
 > 
 >    $$
 >    \Pr[x \gets \bit^n; y \gets f(x) : f(\cA(1^n, y)) = y] \leq 2^{-n}.
 >    $$
 
-Still too strong: $\cA$ can take poly time to slash some of the possible $x$.
+Still too strong: $$\cA$$ can take poly time to slash some of the possible $$x$$.
 
-We may relax by $poly(n) / 2^n$ or $2^{-0.1 n}$ on the RHS, but they still too strong to find a candidate.
+We may relax by $$poly(n) / 2^n$$ or $$2^{-0.1 n}$$ on the RHS, but they still too strong to find a candidate.
 We formalize "very small" as follows.
 
 #### **Definition:** Negligible Function
 
 {: .defn}
-> Func $\eps(n)$ is *negligible* if for every $c$, there exists some $n_0$ s.t.
-> $\forall n > n_0, \eps(n) \le 1/n^c$.
+> Func $$\eps(n)$$ is *negligible* if for every $$c$$, there exists some $$n_0$$ s.t.
+> $$\forall n > n_0, \eps(n) \le 1/n^c$$.
 
-Note: $\eps$ is smaller than any inverse poly for sufficiently large $n$.
+Note: $$\eps$$ is smaller than any inverse poly for sufficiently large $$n$$.
 
-Note: when the probability is $\ge 1-\eps(n)$, we often call it "overwhelming".
+Note: when the probability is $$\ge 1-\eps(n)$$, we often call it "overwhelming".
 
 #### **Definition:** (Strong) One-Way Function
 
 {: .defn}
-> A function $f : \bits \to \bits$ is *one-way* if both of the following hold:
-> 1. Easy to compute. There is a PPT $C$ that computes $f (x)$ on all inputs $x \in \bits$.
-> 2. Hard to Invert. For any nuPPT adversary $\cA$, there exists a negligible function $\eps$ 
->    that for any $n\in\N$,
+> A function $$f : \bits \to \bits$$ is *one-way* if both of the following hold:
+> 1. Easy to compute. There is a PPT $$C$$ that computes $$f (x)$$ on all inputs $$x \in \bits$$.
+> 2. Hard to Invert. For any nuPPT adversary $$\cA$$, there exists a negligible function $$\eps$$ 
+>    that for any $$n\in\N$$,
 > 
 >    $$
 >    \Pr[x \gets \bit^n; y \gets f(x) : f(\cA(1^n, y)) = y] \leq \eps(n).
 >    $$
 
-Note: each $\cA$ has a different $\eps$. The definition is asymptotic.
+Note: each $$\cA$$ has a different $$\eps$$. The definition is asymptotic.
 
 The above definition is standard in literature, but it is still hard to construct:
 any adversary can only invert a tiny fraction.
@@ -220,17 +220,17 @@ We relax it:
 #### **Definition:** Weak One-Way Function
 
 {: .defn}
-> A function $f : \bits \to \bits$ is *weak one-way* if (... same as strong OWF.)
+> A function $$f : \bits \to \bits$$ is *weak one-way* if (... same as strong OWF.)
 > 
-> 2\. Hard to Invert. There exists a polynomial $q: \N \to \N$ such that for any nuPPT adversary $\cA$, 
->    for sufficiently large $n\in \N$,
+> 2\. Hard to Invert. There exists a polynomial $$q: \N \to \N$$ such that for any nuPPT adversary $$\cA$$, 
+>    for sufficiently large $$n\in \N$$,
 > 
 >    $$
 >    \Pr[x \gets \bit^n; y \gets f(x) : f(\cA(1^n, y)) = y] \leq 1 - 1/q(n).
 >    $$
 
-Note: here the prob. $1-1/q$ is *the same* for all adv $\cA$, 
-but in the strong OWF, the prob. $\eps$ is different and *depends* on $\cA$.
+Note: here the prob. $$1-1/q$$ is *the same* for all adv $$\cA$$, 
+but in the strong OWF, the prob. $$\eps$$ is different and *depends* on $$\cA$$.
 
 Primes and Factoring
 --------------------
