@@ -12,6 +12,7 @@ Table of Lecture Notes
 | --------- | ----------------------------------------- | ----------- |
 | Jan 18    | [Course outline, security definition](1-intro.md)  | [Ps 1.1-1.3], [KL 1.1,1.2,1.4,2.1] |
 | Jan 23    | [Perfect security, one-time pads](1-intro.md)    | [Ps 1.3], [KL 2.1-2.3] |
+| Jan 25    | [Efficient computation, adversary](2-owf.md#efficient-computation-and-efficient-adversaries)    | [Ps 2.1,3.1-3.2], [KL 3.1-3.3] |
 
 <!-- 
 | Sep 4     | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
