@@ -349,7 +349,7 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > That is, $$D'$$ distinguishes $$g(x)$$ w.p. at least $$\frac{1}{\ell(n)p(n)}$$, contradicting $g$$ is a PRG.
 
 **Discuss**{:.label}
-In the above, we proved it formally and preserved the uniformity (if $D$$ is a uniform TM, then $$D'$$ is also uniform). 
+In the above, we proved it formally and preserved the uniformity (if $$D$$ is a uniform TM, then $$D'$$ is also uniform). 
 We did not apply Hybrid Lemma (and no triangular ineq), nor did we use Closure Lemma.
 Alternatively after (AC), one may apply Hybrid Lemma which claims that exists $$j^\ast$$
 s.t. $H$_{j^\ast}$$ is distinguishable from $$H^{j^\ast+1}$$ w.p. at least $$1/(\ell p)$$,
