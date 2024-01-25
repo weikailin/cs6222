@@ -5,7 +5,7 @@ nav_order: 3
 nav_exclude: false
 ---
 
-$
+$$
 \newcommand{\RF}{\mathsf{RF}}
 \newcommand{\PRF}{\mathsf{PRF}}
 \newcommand{\Enc}{\mathsf{Enc}}
@@ -13,7 +13,7 @@ $
 \newcommand{\Gen}{\mathsf{Gen}}
 \newcommand{\Expr}{\mathsf{Expr}}
 \newcommand{\state}{\mathsf{state}}
-$
+$$
 {: .d-none}
 
 Indistinguishability and Pseudo-Randomness
@@ -34,10 +34,10 @@ We can use the seemingly random to encrypt messages as in OTP, yet it is efficie
 Is that possible?
 How to formally define "random-looking"?
 
-Let $g$ be the above function with short input $x$ and long output $g(x)$.
-We want Alice and Bob share the same $g(x)$ to decrypt correctly, so $g$ must be deterministic. 
+Let $$g$$ be the above function with short input $$x$$ and long output $$g(x)$$.
+We want Alice and Bob share the same $$g(x)$$ to decrypt correctly, so $$g$$ must be deterministic. 
 Mathematically, we have def for the distance between two probability distributions.
-However, for any $|g(x)| \gt |x|$, the input / output distributions are far.
+However, for any $$|g(x)| \gt |x|$$, the input / output distributions are far.
 The point is "random-looking" at best.
 
 $$
@@ -67,27 +67,27 @@ We will formalize the concept asymptotically.
 #### **Definition:** Ensembles of Probability Distributions
 
 {: .defn}
-> A sequence $\set{X_n}_{n\in\N}$ is called an *ensemble* if for each $n \in \N$, 
-> $X_n$ is a probability distribution over $\bits$.
-> (We often write $\cX = \set{X_n}_n$ when the context is clear.)
+> A sequence $$\set{X_n}_{n\in\N}$$ is called an *ensemble* if for each $$n \in \N$$, 
+> $$X_n$$ is a probability distribution over $$\bits$$.
+> (We often write $$\cX = \set{X_n}_n$$ when the context is clear.)
 
-E.g., supposing $X_n$ is a distribution over $n$-bit strings for all $n\in\N$, $\set{X_n}_{n\in\N}$ is an ensemble.
+E.g., supposing $$X_n$$ is a distribution over $$n$$-bit strings for all $$n\in\N$$, $$\set{X_n}_{n\in\N}$$ is an ensemble.
 
 #### **Definition:** Computational Indistinguishability
 
 {: .defn}
-> Let $\cX = \set{X_n}_n$ and $\cY = \set{Y_n}_n$ be ensembles 
-> where $X_n, Y_n$ are distributions over $\bit^{\ell(n)}$ for some polynomial $\ell(·)$. 
-> We say that $\cX$ and $\cY$ are *computationally indistinguishable*
-> (denoted by $\cX \approx \cY$) 
-> if for all NUPPT $D$ (called the “distinguisher”), there exists a negligible function $\eps$
-> such that $\forall n \in \N$,
+> Let $$\cX = \set{X_n}_n$$ and $$\cY = \set{Y_n}_n$$ be ensembles 
+> where $$X_n, Y_n$$ are distributions over $$\bit^{\ell(n)}$$ for some polynomial $$\ell(·)$$. 
+> We say that $$\cX$$ and $$\cY$$ are *computationally indistinguishable*
+> (denoted by $$\cX \approx \cY$$) 
+> if for all NUPPT $$D$$ (called the “distinguisher”), there exists a negligible function $$\eps$$
+> such that $$\forall n \in \N$$,
 > 
 > $$
 > \Big| \Pr[t \gets X_n, D(t) = 1] − \Pr[t \gets Y_n, D(t) = 1] \Big| \lt \eps(n).
 > $$
 
-Note: 
+Note: /
 - "=1" is a convention in literature
 - "absolute" is not necessary due to "for all D"
 
