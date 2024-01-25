@@ -346,13 +346,13 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > $$
 > 
 > where the last inequality follows by (AC).
-> That is, $$D'$$ distinguishes $$g(x)$$ w.p. at least $$\frac{1}{\ell(n)p(n)}$$, contradicting $g$$ is a PRG.
+> That is, $$D'$$ distinguishes $$g(x)$$ w.p. at least $$\frac{1}{\ell(n)p(n)}$$, contradicting $$g$$ is a PRG.
 
 **Discuss**{:.label}
 In the above, we proved it formally and preserved the uniformity (if $$D$$ is a uniform TM, then $$D'$$ is also uniform). 
 We did not apply Hybrid Lemma (and no triangular ineq), nor did we use Closure Lemma.
 Alternatively after (AC), one may apply Hybrid Lemma which claims that exists $$j^\ast$$
-s.t. $H$_{j^\ast}$$ is distinguishable from $$H^{j^\ast+1}$$ w.p. at least $$1/(\ell p)$$,
+s.t. $$H$$_{j^\ast}$$ is distinguishable from $$H^{j^\ast+1}$$ w.p. at least $$1/(\ell p)$$,
 and then hardwire $$j^\ast$$ into $$D'$$ in order to distinguish $$g(x)$$.
 This would make $$D'$$ **non-uniform** because $$j^\ast$$ would depend on each $n$$ 
 and we would not have an efficient way to find $$j^\ast$$.
@@ -362,9 +362,9 @@ We have not yet give any candidate construct of PRG (even 1-bit expansion),
 but it is useful to firstly see what we can achieve using PRGs.
 
 Example:
-Now suppose that we have a PRG $g$$ with $$n \mapsto \ell(n)$$ expansion for any poly $$\ell$$.
+Now suppose that we have a PRG $$g$$ with $$n \mapsto \ell(n)$$ expansion for any poly $$\ell$$.
 We can construct a *computationally* secure encryption by 
-sampling key $k$$ as an $n$$-bit string and then bitwise XORing $$g(k)$$ with the message.
+sampling key $$k$$ as an $$n$$-bit string and then bitwise XORing $$g(k)$$ with the message.
 That $$m \oplus g(k)$$ encrypts one message.
 We can encrypt more messages by attaching to each message a sequence number,
 such as $$(m_1 \oplus g(k)[1...n], 1), (m_2 \oplus g(k)[n...2n], 2)$$, and so on.
