@@ -307,9 +307,9 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > for all $$i = 0, 1, ..., \ell$$.
 > 
 > Assume for contra (AC), there exists NUPPT $$D$$, poly $$p(n)$$ s.t. for inf many $$n\in\N$$,
-> $$D$$ distinguishes $$\set{x\gets\bit^n : g(x)}\_n$$ and $$U\_{\ell(n)}$$ w.p. at least $$1/p(n)$$.
+> $$D$$ distinguishes $$\set{x\gets\bit^n : g(x)}_n$$ and $$U_{\ell(n)}$$ w.p. at least $$1/p(n)$$.
 > The intuition is to apply Hybrid Lemma so that there exists $$j^\ast$$ 
-> such that $$H\_{j^*}, H\_{j^\ast+1}$$ are distinguishable, 
+> such that $$H_{j^*}, H_{j^\ast+1}$$ are distinguishable, 
 > and thus by Closure Lemma $$g(x)$$ is distinguishable from uniform.
 > 
 > We prove it formally by constructing $$D'$$ that aims to distinguish $$g(x)$$.
@@ -423,7 +423,7 @@ That is, indistinguishable by any NUPPT Turing machine that is *capable of inter
 #### **Definition:** Oracle Indistinguishability
 
 {:.defn}
-> Let $\set{\cO\_n}\_{n\in\N}$ and $\set{\cO\_n}\_{n\in\N}$ be ensembles 
+> Let $\set{\cO_n}_{n\in\N}$ and $\set{\cO\_n}\_{n\in\N}$ be ensembles 
 > where $\cO\_n, \cO'\_n$ are probability distributions over functions.
 > We say that $\set{\cO\_n}\_{n}$ and $\set{\cO\_n}\_{n}$ are *computationally indistinguishable*
 > if if for all NUPPT machines D that is given oracle accesses to a function, 
