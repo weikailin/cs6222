@@ -119,11 +119,26 @@ Examples:
 {: .theorem}
 > Let $$X^{(1)}, X^{(2)}, ..., X^{(m)}$$ be a sequence of probability distributions. 
 > Assume that the machine $$D$$ distinguishes $$X^{(1)}$$ and $$X^{(m)}$$ with probability $$p$$. 
-> Then there exists some $$i \in \set{1, ..., m − 1}$$ s.t. 
-> $$D$$ distinguishes $$X^{(1)}$$ and $$X^{(m)}$$ with probability $$p/m$$.
+> Then there exists some $$i \in \set{1, ..., m - 1}$$ s.t. 
+> $$D$$ distinguishes $$X^{(i)}$$ and $$X^{(i+1)}$$ with probability $$p/(m-1)$$.
 
 {: .proof}
-> (By triangular ineq) 
+> By triangular inequality. 
+> Namely, fixing any $$D$$, for any $$ i,j \in [m]$$, define 
+> 
+> $$
+> d(i,j) := \card{ \Pr_{t\gets X^{(i)}[D(t)=1] - \Pr_{t\gets X^{(j)}[D(t)=1] }.
+> $$
+> 
+> Then, we have
+> 
+> $$
+> \begin{align*}
+> d(1,m) \le d(1,2)+d(2,3)+ ... +d(m-1, m).
+> \end{align*}
+> $$
+> 
+> Hence, given that $$d(1,m) = p$$, we have that $$d(i,i+1) \ge p/(m-1)$$ for some $$i\in[m-1]$$.
 
 Notice that this lemma applies to distributions, *not ensembles*.
 Fortunately, it implies the following.
