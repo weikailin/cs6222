@@ -258,7 +258,7 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > $$
 > 
 > for $$n \in \N$$, and define $$\cH^i := \set{H^i_n}_n$$ for $$i=0,1,2$$.
-> Since $$g'(s) = g(s)[n+1] \\| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U_{n+1}$$ and closure,
+> Since $$g'(s) = g(s)[n+1] \| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U_{n+1}$$ and closure,
 > we have $$\cH^0 \approx \cH^1$$.
 > By $$g(x)$$ is pseudorandom and closure, $$g(U_n)[n+1] \approx U_1$$, which implies $$\cH^1 \approx \cH^2$$.
 > By the corollary of hybrid lemma, we have $$\cH^0 \approx \cH^2$$.
@@ -285,7 +285,7 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > \end{cases}
 > $$
 > 
-> We have $$g'(x) = s^1 \\| s^2 \\| ...s^{\ell}$$, and we want to prove it through Hybrid Lemma.
+> We have $$g'(x) = s^1 \| s^2 \| ...s^{\ell}$$, and we want to prove it through Hybrid Lemma.
 > Given $$n$$, define hybrid distributions $$H_0 := g'(x)$$, $$H_{\ell} := U_{\ell}$$,
 > and define $$H_i$$ for $$i = 1,...,\ell-1$$ as 
 > 
@@ -315,8 +315,8 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > We prove it formally by constructing $$D'$$ that aims to distinguish $$g(x)$$.
 > Given input $$t \in \bit^{n+1}$$, $$D'$$ performs:
 > 1. Samplable $$i \gets \set{0,...,\ell-1}$$ (where $$\ell \gets \ell(n)$$)
-> 2. $$t_0 \gets U_i$$, $$t_1 \gets t[n+1]$$, and $$t_2 \gets s^1(t[1...n]) \\| s^2(t[1...n]) \\| ...s^{\ell-i-1}(t[1...n])$$
-> 3. output $$D(t_0 \\| t_1 \\| t_2)$$
+> 2. $$t_0 \gets U_i$$, $$t_1 \gets t[n+1]$$, and $$t_2 \gets s^1(t[1...n]) \| s^2(t[1...n]) \| ...s^{\ell-i-1}(t[1...n])$$
+> 3. output $$D(t_0 \| t_1 \| t_2)$$
 > 
 > To show that $$D'$$ succeed with non-negl prob., we partition the event as follows:
 > 
@@ -331,7 +331,7 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > 
 > where the random variable $$i \gets \set{0,1,...,\ell-1}$$ is sampled exactly the same as in $$D'$$. 
 > 
-> Notice that conditioned on $$i = j$$ for any fixed $$j$$, the distribution $$t_0 \\| t_1 \\| t_2$$ (given to $$D$$)
+> Notice that conditioned on $$i = j$$ for any fixed $$j$$, the distribution $$t_0 \| t_1 \| t_2$$ (given to $$D$$)
 > is identical to 
 > 
 > $$
@@ -834,7 +834,7 @@ The construct and analysis of $B$ is involved, so we will start from a couple of
 > To invert $y \gets f'(x)$, the construction of $B_1(1^n, y)$ is simple:
 > 1. For $i = 1, 2, ..., n$, do the following
 >    1. Let $e_i$ be the $n$-bit string that only the $i$-th bit is 1 (0 otherwise)
->    2. Run $x'_i \gets A(1^{2n}, y \\| e_i)$
+>    2. Run $x'_i \gets A(1^{2n}, y \| e_i)$
 > 2. Output $x' := x'_1 x'_2 ... x'_n$
 > To see why $B_1$ inverts $y \gets f'(x)$, observe that $x'_i = h(x) = x \odot e_i = x_i$,
 > where $x = x_1 x_2 ... x_n$.
@@ -867,7 +867,7 @@ Note: the above assumed "for all $r$" and "w.p. $=1$", both are much stronger th
 > 1. For each $i = 1, 2, ..., n$, do
 >    1. For $j = 1$ to $m$, do
 >       - $r \gets \bit^n$
->       - Run $z_{i,j} \gets A(1^{2n}, y \\| e_i\oplus r) \oplus A(1^{2n}, y \\| r)$
+>       - Run $z_{i,j} \gets A(1^{2n}, y \| e_i\oplus r) \oplus A(1^{2n}, y \| r)$
 >    2. Let $x'\_i$ be the majority of $\set{z\_{i,j}}\_{j\in[m]}$
 > 2. Output $x' := x'_1 x'_2 ... x'_n$
 > 
@@ -904,7 +904,7 @@ Note: the above assumed "for all $r$" and "w.p. $=1$", both are much stronger th
 >> which contradicts Warmup Assumption 2.
 > 
 > Now, suppose that $x \in G$.
-> $A$ fails to invert $y \\| e_i \oplus r$ or $y \\| r$ w.p. $\lt 1/2 - \alpha$ by union bound.
+> $A$ fails to invert $y \| e_i \oplus r$ or $y \| r$ w.p. $\lt 1/2 - \alpha$ by union bound.
 > So, for any fixed $i$, $\Pr[z_{i,j} = x_i] \ge 1/2 + \alpha$ for each $j$ independently.
 > By Chernoff bound, the majority of $z_{i,j}$ is $x_i$ w.p. $\ge 1 - e^{-m\alpha^2 /2}$.
 > Choosing $m = np^2(n)$, the probability is exponentially close to 1.
@@ -917,7 +917,7 @@ To complete the full proof, We want to lower from $3/4$ to $1/2$.
 The "good set" still holds when modified to $1/2$ (since it is a simple averaging).
 The main challenges from the previous $3/4$ proof is:
 
-- The union bound of inverting both $y \\| e_i \oplus r$ and $y \\| r$. 
+- The union bound of inverting both $y \| e_i \oplus r$ and $y \| r$. 
   For $1/2$, that lowers to only $\alpha$, 
   and then that is too low for the following majority and Chernoff bound.
 
@@ -925,7 +925,7 @@ The first idea is to *guess* the inner product $x \odot r$ uniformly at random,
 which is a correct guess w.p. $1/2$.
 Supposing that $p(n)$ is a constant, we can choose $m(n) = O(\log n)$,
 all $m$ guesses are correct w.p. $1/2^m = 1 / \poly(n)$, 
-then conditioned on correct guesses, we have $A(y \\| e_i \oplus r)$ correct w.p. $1/2 + \alpha$ (when $x$ is good),
+then conditioned on correct guesses, we have $A(y \| e_i \oplus r)$ correct w.p. $1/2 + \alpha$ (when $x$ is good),
 and then we can continue with Chernoff bound (w.p. $1/\poly(n)$ to fail) and finish the prove.
 For large $p(n)$, the guesses are too many and $1/2^m$ is negligible.
 
@@ -984,7 +984,7 @@ Now we are ready to prove the full theorem.
 >>    (so that for any $x$, $g_{i,j} = x \odot r_j$ and $b_k = x \odot u_k$ for all $k$).
 >> 3. For each $i=1,2, .., n$,
 >>    1. For each $j=1,2,..., m$,
->>       - Run $z_{i,j} \gets A(1^{2n}, y \\| e_i \oplus r_j) \oplus g_{i,j}$.
+>>       - Run $z_{i,j} \gets A(1^{2n}, y \| e_i \oplus r_j) \oplus g_{i,j}$.
 >>
 >>       Let $x'\_i$ be the majority of $\set{z\_{i,j}}\_{j\in[m]}$
 >> 4. Output $x' := x'_1 x'_2 ... x'_n$
@@ -1044,10 +1044,10 @@ it was unclear how to guess efficiently if we had not applied the Chebychev boun
 **Discuss**{:.label}
 How far does the Hard-core Lemma extend to? 
 Suppose $f'$ is OWF, and suppose $h'$ is a hard-core predicate for $f'$.
-- Is $f(x) := f'(x) \\| h'(x)$ a OWF?
-- Let $f(x,t,r) := f'(x) \\| t \\| r$, and let $h(x,t,r) := x \odot r$. 
+- Is $f(x) := f'(x) \| h'(x)$ a OWF?
+- Let $f(x,t,r) := f'(x) \| t \| r$, and let $h(x,t,r) := x \odot r$. 
   Is $f$ a OWF? If so, is $h$ a hard-core predicate for $f$?
-- Let $f(x,t,r) := f'(x) \\| t \\| x \odot t \\| r$, and let $h(x,t,r) := x \odot r$. 
+- Let $f(x,t,r) := f'(x) \| t \| x \odot t \| r$, and let $h(x,t,r) := x \odot r$. 
   Is $f$ a OWF? If so, is $h$ a hard-core predicate for $f$?
 
 The questions are highly relevant when we want to construct PRG from any one-way *function*.
