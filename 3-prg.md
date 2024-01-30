@@ -127,7 +127,7 @@ Examples:
 > Namely, fixing any $$D$$, for any $$i,j \in [m]$$, define 
 > 
 > $$
-> d(i,j) := \card{ \Pr_{t\gets X^{(i)}[D(t)=1] - \Pr_{t\gets X^{(j)}[D(t)=1] }.
+> d(i,j) := \card{ \Pr_{t\gets X^{(i)}}[D(t)=1] - \Pr_{t\gets X^{(j)}}[D(t)=1] }.
 > $$
 > 
 > Then, we have
