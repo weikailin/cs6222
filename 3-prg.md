@@ -191,10 +191,10 @@ Pseudo-Random Generator
 #### **Definition:** Pseudo-random Ensembles.
 
 {: .defn}
-> The probability ensemble $$\set{X\_n}\_n$$, where $$X\_n$$ is a probability distribution
+> The probability ensemble $$\set{X_n}_n$$, where $$X_n$$ is a probability distribution
 > over $$\bit^{l(n)}$$ for some polynomial $$l(\cdot)$$, is said to be pseudorandom 
-> if $$\set{X\_n}\_n \approx \set{U\_{l(n)}}\_n$$,
-> where $$U\_m$$ is the uniform distribution over $$\bit^m$$.
+> if $$\set{X_n}_n \approx \set{U_{l(n)}}_n$$,
+> where $$U_m$$ is the uniform distribution over $$\bit^m$$.
 
 Note:
 - this definition says that a pseudorandom distribution must pass 
@@ -354,7 +354,7 @@ We did not apply Hybrid Lemma (and no triangular ineq), nor did we use Closure L
 Alternatively after (AC), one may apply Hybrid Lemma which claims that exists $$j^\ast$$
 s.t. $$H_{j^\ast}$$ is distinguishable from $$H^{j^\ast+1}$$ w.p. at least $$1/(\ell p)$$,
 and then hardwire $$j^\ast$$ into $$D'$$ in order to distinguish $$g(x)$$.
-This would make $$D'$$ **non-uniform** because $$j^\ast$$ would depend on each $n$$ 
+This would make $$D'$$ **non-uniform** because $$j^\ast$$ would depend on each $$n$$ 
 and we would not have an efficient way to find $$j^\ast$$.
 
 We proved in the above that a PRG with 1-bit expansion is sufficient to build any poly-long expansion.
