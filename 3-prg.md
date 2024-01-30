@@ -244,7 +244,8 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > $$
 > 
 > where 
-> $$\ell := \ell(|s|)$$, $$x_0 \gets s, x_{i+1} \\| b_{i+1} \gets g(x_i)$$. Then $$g'$$ is a PRG.
+> $$\ell := \ell(|s|)$$, 
+> $$x_0 \gets s, x_{i+1} \| b_{i+1} \gets g(x_i)$$. Then $$g'$$ is a PRG.
 
 {:.proof-title}
 > Proof, warmup:
@@ -253,13 +254,13 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 > Define distributions 
 > 
 > $$
-> H^0_n := g'(s), H^1_n := U_1 \| g(s)[n+1], H^2\_n := U\_2
+> H^0_n := g'(s), H^1_n := U_1 \| g(s)[n+1], H^2_n := U_2
 > $$
 > 
 > for $$n \in \N$$, and define $$\cH^i := \set{H^i_n}_n$$ for $$i=0,1,2$$.
-> Since $$g'(s) = g(s)[n+1] \\| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U\_{n+1}$$ and closure,
+> Since $$g'(s) = g(s)[n+1] \\| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U_{n+1}$$ and closure,
 > we have $$\cH^0 \approx \cH^1$$.
-> By $$g(x)$$ is pseudorandom and closure, $$g(U\_n)[n+1] \approx U\_1$$, which implies $$\cH^1 \approx \cH^2$$.
+> By $$g(x)$$ is pseudorandom and closure, $$g(U_n)[n+1] \approx U_1$$, which implies $$\cH^1 \approx \cH^2$$.
 > By the corollary of hybrid lemma, we have $$\cH^0 \approx \cH^2$$.
 
 {:.proof-title}
