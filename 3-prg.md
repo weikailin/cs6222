@@ -236,7 +236,7 @@ Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a
 #### **Example:** Existence of PRG implies $$NP \neq P$$
 
 {:.theorem}
-> Suppose that $$g: \bits to \bits$$ is a PRG.
+> Suppose that $$g: \bits \to \bits$$ is a PRG.
 > Then, the language $$L := \set{g(s) : s \in \bits} \in NP$$ and $$L \notin P$$.
 
 {:.proof}
