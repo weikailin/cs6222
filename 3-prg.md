@@ -257,7 +257,7 @@ Ideally, even we can not prove or disprove $$NP \neq P$$, we want the "win-win" 
   Ideally, we want to utilize the hard problems to build cryptographic objects
   (so that any polynomial-time adversary can not break).
 
-This explained why cryptography needs assumptions, but **what** is a good assumption? 
+This explained why cryptography needs assumptions, but **what is a good assumption?**
 Ideally, the minimal assumption would be $$NP \neq P$$, or equivalently, $$SAT \notin P$$.
 Unfortunately, we do not know how to build crypto assuming only $$NP \neq P$$.
 So far, cryptography is build on factoring, RSA, ..., we will discuss more on them.
