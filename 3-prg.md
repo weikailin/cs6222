@@ -233,6 +233,54 @@ if $$|g(x)| - |x| \ge t$$ for all $$x$$.
 Example: if $$g: \bit^n \to \bit^{n+1}$$ for all $$n$$ is a PRG, then $$g$$ is a OWF.
 (proof left as exercise, why expansion is necessary?)
 
+#### **Example:** Existence of PRG implies $$NP \neq P$$
+
+{:.theorem}
+> Suppose that $$g: \bits to \bits$$ is a PRG.
+> Then, the language $$L := \set{g(s) : s \in \bits} \in NP$$ and $$L \notin P$$.
+
+{:.proof}
+> It is direct to see $$L \in NP$$.
+> To see $$L \notin P$$, suppose for contradiction, there exists a polynomial time algorithm $$A$$
+> that decides $$L$$, then $$A$$ can easily break the pseudorandomness of $$g$$, a contradition.
+
+This is indeed the case for all cryptographic objects:
+$$NP \neq P$$ is necessary for the objects to exist.
+Since $$NP \neq P$$ is long open, cryptography is built on **assumptions**.
+Ideally, even we can not prove or disprove $$NP \neq P$$, we want the "win-win" scenario:
+
+- If $$NP = P$$, then we can solve all $$NP$$ problems efficiently in polynomial time.
+  This is a world called Algorithmica, but we do not have cryptography.
+
+- Otherwise $$NP \neq P$$, then there exist some hard problems in $$NP$$ 
+  that can not be solved in polynomial time.
+  Ideally, we want to utilize the hard problems to build cryptographic objects
+  (so that any polynomial-time adversary can not break).
+
+This explained why cryptography needs assumptions, but **what** is a good assumption? 
+Ideally, the minimal assumption would be $$NP \neq P$$, or equivalently, $$SAT \notin P$$.
+Unfortunately, we do not know how to build crypto assuming only $$NP \neq P$$.
+So far, cryptography is build on factoring, RSA, ..., we will discuss more on them.
+Notice that we still have the win-win w.r.t. the assumptions, e.g.,
+either we can solve factoring in polynomial time (which would solve a century-old problem),
+or we have cryptography.
+
+Here, PRG is the assumption that gives us encryption.
+It is currently an abstract object, but 
+later we will show how PRG connects cryptography and other assumptions.
+
+It also partly explains why we still can have crypto even when 
+we can use quantum computers to break factoring, RSA, and 
+other number-theoretic assumptions:
+there are other problems in $$NP$$ that still resist quantum algorithms.
+It is interesting to observe that the thousand-year seek of secure encryption 
+is deeply rooted in complexity (e.g., DES, MD5, Enigma, ... are broken).
+
+Also notice again that the discussion is asymptotic for all problem sizes,
+and that some real-world cryptographic constructions are not asymptotic
+and thus they do not fit in
+(e.g., AES and SHA are defined only for 128, 256, and 512)
+
 #### **Lemma:** Expansion of a PRG
 
 {:.theorem}
