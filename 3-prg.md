@@ -11,8 +11,6 @@ $$
 \newcommand{\Enc}{\mathsf{Enc}}
 \newcommand{\Dec}{\mathsf{Dec}}
 \newcommand{\Gen}{\mathsf{Gen}}
-\newcommand{\state}{\mathsf{state}}
-% \newcommand{\Expr}{\mathsf{Expr}}
 $$
 {: .d-none}
 
