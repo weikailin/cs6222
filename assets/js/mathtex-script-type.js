@@ -4,7 +4,7 @@
 // import katex from "katex";
 
 const my_macros = {
-      "\\TestMacroKatex": "Test Macro \\KaTex",
+      "\\TestMacroKatex": "Test Macro \\KaTeX",
       "\\set": "\\{#1\\}",
       "\\card": "\\left| #1 \\right|",
       "\\bit": "\\{0,1\\}",
@@ -28,6 +28,7 @@ const my_macros = {
       "\\cY": "\\mathcal{Y}",
       "\\cZ": "\\mathcal{Z}",
       "\\Gen": "\\mathsf{Gen}",
+      "\\Expr": "\\mathit{Expr}",
       "\\pk": "\\mathit{pk}",
       "\\sk": "\\mathit{sk}",
     };
