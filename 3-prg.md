@@ -618,7 +618,7 @@ Secure Encryption Scheme
 Perfect secrecy considers that the adversary gets the ciphertext *only* (but nothing else).
 However, there are other natural adversarial models in practical scenarios.
 
-- Known plaintext attack: The adversary may get to see pairs of form $(m_0, \Enc_k(m_0)) ...$
+- Known plaintext attack: The adversary may get to see pairs of form $$(m_0, \Enc_k(m_0)) ...$$
 - Chosen plain text, CPA: 
   The adversary gets access to an *encryption oracle* before and after selecting messages.
 - Chosen ciphertext attack, CCA1:
@@ -634,29 +634,29 @@ We formalize CPA-security next (but leave CCA1/CCA2 later in authentication).
 #### **Definition:** Chose-Plaintext-Attack Encryption (CPA)
 
 {: .defn}
-> Let $\Pi = (\Gen, \Enc, \Dec)$ be an encryption scheme.
-> For any NUPPT adversary $A$, for any $n\in\N, b\in\bit$, 
-> define the experiment $\Expr_b^{\Pi, A}(1^n)$ to be:
+> Let $$\Pi = (\Gen, \Enc, \Dec)$$ be an encryption scheme.
+> For any NUPPT adversary $$A$$, for any $$n\in\N, b\in\bit$$, 
+> define the experiment $$\Expr_b^{\Pi, A}(1^n)$$ to be:
 > 
 > {: .defn}
->> Experiment $\Expr_b^{\Pi, A}(1^n)$:
+>> Experiment $$\Expr_b^{\Pi, A}(1^n)$$:
 >> 
->> 1. $k \gets \Gen(1^n)$
->> 2. $(m_0, m_1, \state) \gets A^{\Enc_k(\cdot)}(1^n)$
->> 3. $c \gets \Enc_k(m_b)$
->> 4. Output $A^{\Enc_k(\cdot)}(c, \state)$
+>> 1. $$k \gets \Gen(1^n)$$
+>> 2. $$(m_0, m_1, \state) \gets A^{\Enc_k(\cdot)}(1^n)$$
+>> 3. $$c \gets \Enc_k(m_b)$$
+>> 4. Output $$A^{\Enc_k(\cdot)}(c, \state)$$
 > 
-> Then we say $\Pi$ is CPA secure if for all NUPPT $A$,
+> Then we say $$\Pi$$ is CPA secure if for all NUPPT $$A$$,
 > 
 > $$
 > \left\{\Expr_0^{\Pi,A}(1^n)\right\}_n \approx
 > \left\{\Expr_1^{\Pi,A}(1^n)\right\}_n.
 > $$
 
-Note: the experiment $\Expr$ is often equivalently described as 
-"the adversary $A$ interacts a challenger $C$, 
-where $C$ performs all other steps that are not belong to $A$ 
-(such as $\Gen$, $\Enc$, and answering the queries to $\Enc_k(\cdot)$)".
+Note: the experiment $$\Expr$$ is often equivalently described as 
+"the adversary $$A$$ interacts a challenger $$C$$, 
+where $$C$$ performs all other steps that are not belong to $$A$$ 
+(such as $$\Gen$$, $$\Enc$$, and answering the queries to $$\Enc_k(\cdot)$$)".
 
 Compared to Shannon/perfect secrecy, what are the differences?
 - comp. bounded
@@ -670,17 +670,17 @@ Can we get a PRG/PRF? Can we get a OWF?
 #### **Theorem:** CPA-Secure Encryption from PRF
 
 {: .theorem}
-> Let $\PRF = \set{f_s : \bit^{|s|} \to \bit^{|s|}}_{s\in\bit^\ast}$ be a family of PRFs.
-> Then the following $(\Gen, \Enc, \Dec)$ is a CPA-secure encryption scheme.
+> Let $$\PRF = \set{f_s : \bit^{|s|} \to \bit^{|s|}}_{s\in\bit^\ast}$$ be a family of PRFs.
+> Then the following $$(\Gen, \Enc, \Dec)$$ is a CPA-secure encryption scheme.
 > 
-> - $\Gen(1^n)$: sample and output $k \gets \bit^n$.
-> - $\Enc_k(m)$: given input $m \in \bit^n$, sample $r \gets \bit^n$, and then output
+> - $$\Gen(1^n)$$: sample and output $$k \gets \bit^n$$.
+> - $$\Enc_k(m)$$: given input $$m \in \bit^n$$, sample $$r \gets \bit^n$$, and then output
 >   
 >   $$
 >   c := m \oplus f_k(r) ~\|~ r.
 >   $$
 >   
-> - $\Dec_k(c)$: given input $c = c' \| r' \in \bit^{2n}$, output 
+> - $$\Dec_k(c)$$: given input $$c = c' \| r' \in \bit^{2n}$$, output 
 > 
 >   $$
 >   m := c' \oplus f_k(r').
@@ -690,45 +690,45 @@ The correctness and efficiency of the construction follows from PRF directly.
 It remains to prove CPA security.
 
 {: .proof}
-> To show $\Expr_0$ and $\Expr_1$ are comp. ind., we define hybrid experiments $H_0, H_1$ as follows.
+> To show $$\Expr_0$$ and $$\Expr_1$$ are comp. ind., we define hybrid experiments $$H_0, H_1$$ as follows.
 > 
 > {: .defn}
->> Hybrid $H_b^{A}(1^n)$:
+>> Hybrid $$H_b^{A}(1^n)$$:
 >> 
->> 1. $F \gets \RF_n$, and then let $O_F$ to be the following oracle:
+>> 1. $$F \gets \RF_n$$, and then let $$O_F$$ to be the following oracle:
 >>    
 >>    $$
 >>    O_F(x) := x \oplus F(r) \| r,
 >>    $$
 >>    
->>    where $r \gets \bit^n$ is sampled uniformaly.
->> 2. $(m_0, m_1, \state) \gets A^{O_F(\cdot)}(1^n)$
->> 3. $r \gets \bit^n, c \gets m_b\oplus F(r) \| r$
->> 4. Output $A^{O_F(\cdot)}(c, \state)$
+>>    where $$r \gets \bit^n$$ is sampled uniformaly.
+>> 2. $$(m_0, m_1, \state) \gets A^{O_F(\cdot)}(1^n)$$
+>> 3. $$r \gets \bit^n, c \gets m_b\oplus F(r) \| r$$
+>> 4. Output $$A^{O_F(\cdot)}(c, \state)$$
 > 
-> By oracle indistinguishability of $\PRF$ and $\RF$ and closure under efficient operations, 
+> By oracle indistinguishability of $$\PRF$$ and $$\RF$$ and closure under efficient operations, 
 > we have 
-> $\set{\Expr_0^{\Pi, A}(1^n)}_n \approx \set{H_0^{A}(1^n)}_n$ and
-> $\set{\Expr_1^{\Pi, A}(1^n)}_n \approx \set{H_1^{A}(1^n)}_n$.
-> (Notice that $\PRF$ and $\RF$ are oracle ind., but $\Expr$ and $H$ are comp. ind. of strings.)
+> $$\set{\Expr_0^{\Pi, A}(1^n)}_n \approx \set{H_0^{A}(1^n)}_n$$ and
+> $$\set{\Expr_1^{\Pi, A}(1^n)}_n \approx \set{H_1^{A}(1^n)}_n$$.
+> (Notice that $$\PRF$$ and $$\RF$$ are oracle ind., but $$\Expr$$ and $$H$$ are comp. ind. of strings.)
 > 
-> Hence, it suffices to prove that the ensembles $H_0$ and $H_1$ are ind.
+> Hence, it suffices to prove that the ensembles $$H_0$$ and $$H_1$$ are ind.
 > They seem to be indentically distributed (as in OTP).
-> However, there is a difference: $A$ gets oracle accesses to $O_F$ 
-> (before and after choosing $m_b$), and $O_F$ could sample the same $r$ in the cipher $c$
+> However, there is a difference: $$A$$ gets oracle accesses to $$O_F$$ 
+> (before and after choosing $$m_b$$), and $$O_F$$ could sample the same $$r$$ in the cipher $$c$$
 > and in another oracle accesses.
-> Fortunately, hitting the same $r$ twice in polynomial time happens with negligible probability.
+> Fortunately, hitting the same $$r$$ twice in polynomial time happens with negligible probability.
 > 
-> We formally prove $\set{H_0^{A}(1^n)}_n \approx \set{H_1^{A}(1^n)}_n$ next.
-> Define $R$ to be the set 
+> We formally prove $$\set{H_0^{A}(1^n)}_n \approx \set{H_1^{A}(1^n)}_n$$ next.
+> Define $$R$$ to be the set 
 > 
 > $$
 > R := \set{r \in \bit^n : r \text{ is sampled when } A^{O_F(\cdot)}},
 > $$
 > 
-> and let $r$ be the random variable sampled for the cipher $c$.
-> We want to show that $|\Pr[H_0^A(1^n)=1] - \Pr[H_0^A(1^n)=1]|$ is negligible for all NUPPT $A$.
-> Let $H_0$ and $H_1$ be the events for short.
+> and let $$r$$ be the random variable sampled for the cipher $$c$$.
+> We want to show that $$|\Pr[H_0^A(1^n)=1] - \Pr[H_0^A(1^n)=1]|$$ is negligible for all NUPPT $$A$$.
+> Let $$H_0$$ and $$H_1$$ be the events for short.
 > 
 > $$
 > \begin{align*}
@@ -740,8 +740,8 @@ It remains to prove CPA security.
 > $$
 > 
 > where 
-> $\gamma := |R| / 2^n$.
-> We also have $\Pr[H_0 | r \notin R] = \Pr[H_1 | r \notin R]$,
+> $$\gamma := |R| / 2^n$$.
+> We also have $$\Pr[H_0 | r \notin R] = \Pr[H_1 | r \notin R]$$,
 > thus
 > 
 > $$
@@ -753,8 +753,8 @@ It remains to prove CPA security.
 > \end{align*}
 > $$
 > 
-> Given that $|R|$ is polynomial in $n$ for any NUPPT $A$, 
-> it follows that $\gamma$ is negligible in $n$, which concludes the proof.
+> Given that $$|R|$$ is polynomial in $$n$$ for any NUPPT $$A$$, 
+> it follows that $$\gamma$$ is negligible in $$n$$, which concludes the proof.
 
 Notice that we could have constructed an efficient CPA-secure encryption from PRG, 
 but using a PRF significantly simplified the construction and the proof.
