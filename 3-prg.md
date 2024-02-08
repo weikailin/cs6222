@@ -11,7 +11,7 @@ $$
 \newcommand{\Enc}{\mathsf{Enc}}
 \newcommand{\Dec}{\mathsf{Dec}}
 \newcommand{\Gen}{\mathsf{Gen}}
-\newcommand{\Expr}{\mathsf{Expr}}
+\gdef\Expr{\mathsf{Expr}}
 \newcommand{\state}{\mathsf{state}}
 $$
 {: .d-none}
@@ -662,7 +662,7 @@ Compared to Shannon/perfect secrecy, what are the differences?
 - comp. bounded
 - orcale before
 - orcale after
-- choose $m$
+- choose $$m$$
 
 Suppose that we have a secure encryption even without CPA oracle but the key is shorter than the message.
 Can we get a PRG/PRF? Can we get a OWF?
