@@ -6,6 +6,7 @@ nav_exclude: false
 ---
 
 $$
+\newcommand{\state}{\mathsf{state}}
 \newcommand{\RF}{\mathsf{RF}}
 \newcommand{\PRF}{\mathsf{PRF}}
 \newcommand{\Enc}{\mathsf{Enc}}
