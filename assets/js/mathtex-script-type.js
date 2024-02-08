@@ -54,7 +54,7 @@ scripts.forEach(function(script) {
           macros: my_macros, // [WK: fixed from sample code]
         });
     } catch (err) {
-        //console.error(err); linter doesn't like this
+        console.error(err); //linter doesn't like this
         katexElement.textContent = script.text;
     }
     script.parentNode.replaceChild(katexElement, script);
