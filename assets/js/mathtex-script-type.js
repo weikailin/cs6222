@@ -27,8 +27,6 @@ const my_macros = {
       "\\cX": "\\mathcal{X}",
       "\\cY": "\\mathcal{Y}",
       "\\cZ": "\\mathcal{Z}",
-      "\\Gen": "\\mathsf{Gen}",
-      // "\\Expr": "\\mathit{Expr}",
       "\\pk": "\\mathit{pk}",
       "\\sk": "\\mathit{sk}",
     };

@@ -6,13 +6,13 @@ nav_exclude: false
 ---
 
 $$
-\newcommand{\state}{\mathsf{state}}
 \newcommand{\RF}{\mathsf{RF}}
 \newcommand{\PRF}{\mathsf{PRF}}
 \newcommand{\Enc}{\mathsf{Enc}}
 \newcommand{\Dec}{\mathsf{Dec}}
-\newcommand{\Expr}{\mathsf{Expr}}
 \newcommand{\Gen}{\mathsf{Gen}}
+\newcommand{\Expr}{\mathsf{Expr}}
+\newcommand{\state}{\mathsf{state}}
 $$
 {: .d-none}
 
