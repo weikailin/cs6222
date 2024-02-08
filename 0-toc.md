@@ -15,6 +15,7 @@ Table of Lecture Notes
 | Jan 25    | [Efficient computation, adversary](2-owf.md#efficient-computation-and-efficient-adversaries), [PRG](3-prg#pseudo-random-generator)    | [Ps 2.1,3.1-3.2], [KL 3.1-3.3] |
 | Jan 30    | [Computational indistinguishability](3-prg.md)    | [Ps 3.1] |
 | Feb 1     | [Computational indistinguishability](3-prg.md)    | [Ps 3.1] |
+| Feb 6     | [PRG](3-prg#pseudo-random-generator)    | [Ps 3.3], [KL 3.3] |
 
 <!-- 
 | Sep 4     | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
