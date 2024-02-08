@@ -471,19 +471,19 @@ That is, indistinguishable by any NUPPT Turing machine that is *capable of inter
 #### **Definition:** Oracle Indistinguishability
 
 {:.defn}
-> Let $\set{\cO_n}_{n\in\N}$ and $\set{\cO\_n}\_{n\in\N}$ be ensembles 
-> where $\cO\_n, \cO'\_n$ are probability distributions over functions.
-> We say that $\set{\cO\_n}\_{n}$ and $\set{\cO\_n}\_{n}$ are *computationally indistinguishable*
+> Let $$\set{\cO_n}_{n\in\N}$$ and $$\set{\cO\_n}\_{n\in\N}$$ be ensembles 
+> where $$\cO\_n, \cO'\_n$$ are probability distributions over functions.
+> We say that $$\set{\cO\_n}\_{n}$$ and $$\set{\cO\_n}\_{n}$$ are *computationally indistinguishable*
 > if if for all NUPPT machines D that is given oracle accesses to a function, 
-> there exists a negligible function $\eps(\cdot)$ such that for all $n\in\N$,
+> there exists a negligible function $$\eps(\cdot)$$ such that for all $$n\in\N$$,
 >   
 > $$
 > \Pr[F\gets\cO : D^{F(\cdot)}(1^n) = 1] - \Pr[F\gets\cO' : D^{F(\cdot)}(1^n) = 1] \le \eps(n).
 > $$
 
-Note: $D^{f(\cdot)}$ denotes that the TM $D$ may interact with the function $f$ 
+Note: $$D^{f(\cdot)}$$ denotes that the TM $$D$$ may interact with the function $$f$$ 
 through black-box input and output, while each input-output takes time to read/write 
-but computing $f$ takes 0 time.
+but computing $$f$$ takes 0 time.
 
 It is easy to verify that oracle indistinguishability satisfies “closure under efficient operations”, 
 the Hybrid Lemma, and the Prediction Lemma.
@@ -496,13 +496,13 @@ of strings (see CPA-secure encryption below).
 #### **Definition:** Pseudo-random Functions (PRFs)
 
 {:.defn}
-> A family of functions $\set{f_s: \bit^{|s|} \to \bit^{|s|}}_{s \in \bits}$
+> A family of functions $$\set{f_s: \bit^{|s|} \to \bit^{|s|}}_{s \in \bits}$$
 > is *pseudo-random* if
 > 
-> - (Easy to compute): $f_s(x)$ can be computed by a PPT algo that is given input $s,x$.
-> - (Pseudorandom): $\set{s\gets \bit^n : f_s}_n \approx \set{F \gets \RF_n : F}_n$.
+> - (Easy to compute): $$f_s(x)$$ can be computed by a PPT algo that is given input $$s,x$$.
+> - (Pseudorandom): $$\set{s\gets \bit^n : f_s}_n \approx \set{F \gets \RF_n : F}_n$$.
 
-Note: similar to PRG, the seed $s$ is not revealed to $D$ (otherwise it is trivial to distinguish).
+Note: similar to PRG, the seed $$s$$ is not revealed to $$D$$ (otherwise it is trivial to distinguish).
 
 #### **Theorem:** Construct PRF from PRG
 
@@ -510,70 +510,70 @@ Note: similar to PRG, the seed $s$ is not revealed to $D$ (otherwise it is trivi
 > If a pseudorandom generator exists, then pseudorandom functions exist.
 
 We have shown that a PRG with 1-bit expansion implies any PRG with poly expansion.
-So, let $g$ be a length-doubling PRG, i.e., $|g(x)| = 2 |x|$.
-Also, define $g_0, g_1$ to be 
+So, let $$g$$ be a length-doubling PRG, i.e., $$|g(x)| = 2 |x|$$.
+Also, define $$g_0, g_1$$ to be 
 
 $$
 g_0(x) := g(x)[1...n], \text{ and } g_1:= g(x)[n...2n],
 $$
 
 where 
-$n := |x|$ is the input length.
+$$n := |x|$$ is the input length.
 
-We define $f_s$ as follows to be a PRF:
+We define $$f_s$$ as follows to be a PRF:
 
 $$
 f_s(b_1 b_2 ... b_n) := g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_1}(s).
 $$
 
-That is, we evaluate $g$ on $s$, but keep only one side of the output depending on $b_1$,
-and then keep applying $g$ on the kept side, and then continue to choose the side by $b_2$, and so on.
+That is, we evaluate $$g$$ on $$s$$, but keep only one side of the output depending on $$b_1$$,
+and then keep applying $$g$$ on the kept side, and then continue to choose the side by $$b_2$$, and so on.
 
 This constructs a binary tree. 
 The intuition is from expanding the 1-bit PRG,
 but now we want that any sub-string of the expansion can be efficiently computed.
 (We CS people love binary trees.)
-Clearly, $f_s$ is easy to compute, and we want to prove it is pseudorandom.
+Clearly, $$f_s$$ is easy to compute, and we want to prove it is pseudorandom.
 
 {:.proof}
-> There are $2^n$ leaves in the tree, too many so that we can not use the
+> There are $$2^n$$ leaves in the tree, too many so that we can not use the
 > "switch one more PRG to uniform in each hybrid" technique as in expanding PRG.
-> The trick is that the distinguisher $D$ can only query $f_s$ at most polynomial many times
-> since $D$ is poly-time.
+> The trick is that the distinguisher $$D$$ can only query $$f_s$$ at most polynomial many times
+> since $$D$$ is poly-time.
 > Each query correspond to a path in the binary tree, and there are at most 
 > polynomial many nodes in all queries.
-> Hence, we will switch the $g(x)$ evaluations from root to leaves of the tree
+> Hence, we will switch the $$g(x)$$ evaluations from root to leaves of the tree
 > and from the first query to the last query.
 > 
-> Note: switching *each instance* of $g(x)$ (for each $x$) is a reduction
-> that runs $D$ to distinguish *one instance* of $g(x)$; 
+> Note: switching *each instance* of $$g(x)$$ (for each $$x$$) is a reduction
+> that runs $$D$$ to distinguish *one instance* of $$g(x)$$; 
 > therefore, we switch *exactly one* in each hybrid.
 > 
-> More formally, assume for contra (AC), there exists NUPPT $D$, poly $p$ s.t.
-> for inf many $n\in\N$, $D$ distinguishes $f_s$ from RF (in the oracle interaction).
-> We want to construct $D'$ that distinguishes $g(x)$.
-> We define hybrid oracles $H_i(b_1 ... b_n)$ as follows:
+> More formally, assume for contra (AC), there exists NUPPT $$D$$, poly $$p$$ s.t.
+> for inf many $$n\in\N$$, $$D$$ distinguishes $$f_s$$ from RF (in the oracle interaction).
+> We want to construct $$D'$$ that distinguishes $$g(x)$$.
+> We define hybrid oracles $$H_i(b_1 ... b_n)$$ as follows:
 > 
-> 1. the map $m$ is initialized to empty
-> 2. if the prefix $b_1 ... b_i \notin m$, then sample $s(b_{i} b_{i-1} ... b_{1}) \gets \bit^n$ 
->    and set $m[b_i ... b_1] \gets s(b_{i} b_{i-1} ... b_{1})$
-> 3. output $g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i-1}}(m[b_{i} ... b_{1}])$
+> 1. the map $$m$$ is initialized to empty
+> 2. if the prefix $$b_1 ... b_i \notin m$$, then sample $$s(b_{i} b_{i-1} ... b_{1}) \gets \bit^n$$ 
+>    and set $$m[b_i ... b_1] \gets s(b_{i} b_{i-1} ... b_{1})$$
+> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i-1}}(m[b_{i} ... b_{1}])$$
 > 
-> Notice that $H_i$ is a function defined using the computational view.
+> Notice that $$H_i$$ is a function defined using the computational view.
 > 
-> Let $\PRF_n := \set{f_s : s \gets \bit^n}$ be the distribution of $f_s$ for short.
-> We have $H_0 \equiv \PRF_n$ and $H_n \equiv \RF_n$, 
-> but there are still too many switches between $H_i, H_{i+1}$.
+> Let $$\PRF_n := \set{f_s : s \gets \bit^n}$$ be the distribution of $$f_s$$ for short.
+> We have $$H_0 \equiv \PRF_n$$ and $$H_n \equiv \RF_n$$, 
+> but there are still too many switches between $$H_i, H_{i+1}$$.
 > The key observation is that,
-> given $D$ is PPT, we know a poly $T(n)$ that is the running time of $D$ on $1^n$,
-> and then we just need to switch at most $T(n)$ instances of $g(x)$.
-> That is to define sub-hybrids $H_{i,j}$,
+> given $$D$$ is PPT, we know a poly $$T(n)$$ that is the running time of $$D$$ on $$1^n$$,
+> and then we just need to switch at most $$T(n)$$ instances of $$g(x)$$.
+> That is to define sub-hybrids $$H_{i,j}$$,
 > 
-> 1. the map $m$ is initialized to empty
-> 2. if the prefix $b_1 ... b_i b_{i+1} \notin m$, 
->    then depending on the "number of queries" that are made to $H_{i,j}$ so far, including the current query,
+> 1. the map $$m$$ is initialized to empty
+> 2. if the prefix $$b_1 ... b_i b_{i+1} \notin m$$, 
+>    then depending on the "number of queries" that are made to $$H_{i,j}$$ so far, including the current query,
 >    do the following:
->    sample $s \gets \bit^n$, set 
+>    sample $$s \gets \bit^n$$, set 
 >    
 >    $$
 >    m[b_{i+1} b_i ... b_1] \gets 
