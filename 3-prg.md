@@ -627,7 +627,7 @@ However, there are other natural adversarial models in practical scenarios.
 - Chosen ciphertext attack, CCA2:
   This is just like a CCA1 attack except that the adversary also has access to 
   decryption oracle *after* selecting the messages. 
-  It is not allowed to decrypt the challenge ciphertext however. [Rackoff and Simon]
+  It is not allowed to decrypt the challenge ciphertext however. [See Rackoff and Simon, Crypto 1992.](https://link.springer.com/chapter/10.1007/3-540-46766-1_35)
 
 We formalize CPA-security next (but leave CCA1/CCA2 later in authentication).
 
