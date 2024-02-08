@@ -11,8 +11,8 @@ $$
 \newcommand{\PRF}{\mathsf{PRF}}
 \newcommand{\Enc}{\mathsf{Enc}}
 \newcommand{\Dec}{\mathsf{Dec}}
-\newcommand{\Gen}{\mathsf{Gen}}
 \newcommand{\Expr}{\mathsf{Expr}}
+\newcommand{\Gen}{\mathsf{Gen}}
 $$
 {: .d-none}
 
