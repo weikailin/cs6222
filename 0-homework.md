@@ -12,6 +12,7 @@ Please typeset your solutions in LaTaX and submit the PDF to [UVA Canvas](https:
 You shall also use LaTeX template for each homework on Canvas.
 
 - [Homework 1](assets/pdf/hw1.pdf). Due: Feb 6, 2023.
+- [Homework 2](assets/pdf/hw2.pdf). Due: Feb 26, 2023.
 
 
 
