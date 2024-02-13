@@ -504,7 +504,7 @@ of strings (see CPA-secure encryption below).
 
 Note: similar to PRG, the seed $$s$$ is not revealed to $$D$$ (otherwise it is trivial to distinguish).
 
-#### **Theorem:** Construct PRF from PRG
+#### **Theorem:** Construct PRF from PRG [Goldreich-Goldwasser-Micali 84]
 
 {:.theorem}
 > If a pseudorandom generator exists, then pseudorandom functions exist.
