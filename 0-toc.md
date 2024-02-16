@@ -18,16 +18,14 @@ Table of Lecture Notes
 | Feb 6     | [PRG](3-prg#pseudo-random-generator)    | [Ps 3.3], [KL 3.3] |
 | Feb 8     | [Pseudo-random functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 8.5] |
 | Feb 13    | [CPA-secure encryption](3-prg.md#secure-encryption-scheme)    | [Ps 3.9] [KL 3.2, 3.4] |
+| Feb 15    | [Pseudo-random functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 8.5], [Abhishek@JHU](https://www.cs.jhu.edu/~abhishek/classes/CS600-642-442-Fall2018/L05.pdf), [Goldwasser@Berkeley](
+https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec5.pdf), [Wichs@Northeastern](https://www.khoury.northeastern.edu/home/wichs/class/crypto-fall15/lecture9.pdf) |
 
 <!-- 
 | Sep 4     | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
 | Sep 6     | [From weak to strong OWF](2-owf.md#from-weak-owf-to-strong-owf)    | [Ps 2.4], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec7.pdf), [LTW05](https://lucatrevisan.github.io/pubs/LTW05.pdf) |
 | Sep 11    | [Primality testing](2-owf.md#primality-testing)    | [KL 9.2.2] |
 | Sep 13    | [Finish Miller-Rabin, universal OWF](2-owf.md#a-universal-owf)    | [Ps 2.13], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf) |
-| Sep 18    | [Computational indistinguishability](3-prg.md)    | [Ps 3.1] |
-| Sep 20    | [Pseudo-random generators](3-prg.md#pseudo-random-generator)    | [Ps 3.3.5] [KL 3.3, 8.4.2] |
-| Sep 25    | [Pseudo-random functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 8.5] |
-| Sep 27    | [CPA-secure encryption](3-prg.md#secure-encryption-scheme)    | [Ps 3.9] [KL 3.2, 3.4] |
 | Oct 4     | [Construct PRG, hard-core lemma](3-prg.md#hard-core-bits-from-any-owf)    | [Ps 3.4] [KL 8.1.3,8.2,8.3] |
 | Oct 9     | [Hard-core lemma](3-prg.md#hard-core-bits-from-any-owf)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
 | Oct 11    | [Recitation, pairwise independent hash, entropy](3-1-prg-const.md)    | [V, Pseudorandomness] [Barak@Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf) |
