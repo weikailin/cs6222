@@ -12,11 +12,6 @@ $$
 \newcommand{\Gen}{\mathsf{Gen}}
 \newcommand{\Samp}{\mathsf{Samp}}
 \newcommand{\pp}{\mathrm{pp}}
-\newcommand{\cM}{\mathcal{M}}
-\newcommand{\cK}{\mathcal{K}}
-\newcommand{\cA}{\mathcal{A}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\eps}{\epsilon}
 \newcommand{\univ}{\mathrm{univ}}
 \newcommand{\tinv}{\text{ inv}}
 \newcommand{\tnotinv}{\text{ not}\tinv}
