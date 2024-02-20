@@ -446,26 +446,26 @@ $$
 \end{align*}
 $$
 
-We will choose $r_1(n) := n \cdot r_2(n)$ to get $(1-1/r_2)^{r_1} \le e^{-n}$.
+We will choose $$r_1$(n) := n \cdot r_2(n)$$ to get $$(1-1/r_2)^{r_1} \le e^{-n}$$.
 
-Then, $B$ inverts w.p. $\gt 1-1/q$, and it is contradicting that $f$ is weak OWF.
+Then, $$B$$ inverts w.p. $$\gt 1-1/q$$, and it is contradicting that $$f$$ is weak OWF.
 It remains to prove the claim.
 
 {: .proof-title}
 > Proof of Claim:
 > 
-> Intuition: $G_n$ is $B_0$, but essentially $B_0$ is running $A$.
-> If $G_0$ is small, then $A$ should not invert w.p. $\ge 1/p$, and thus contra (AC).
+> Intuition: $$G_n$$ is $$B_0$$, but essentially $$B_0$$ is running $$A$$.
+> If $$G_0$$ is small, then $$A$$ should not invert w.p. $$\ge 1/p$$, and thus contra (AC).
 > 
 > Assume for contra (AC2), 
-> $|G_0| \lt (1-1/2q) \cdot 2^n$. 
+> $$|G_0| \lt (1-1/2q) \cdot 2^n$$. 
 > We have 
 > 
 > $$
 > \Pr[ A \tinv] = \Pr[A \tinv \cap \tall x_i \in G_n] + \Pr[A \tinv \cap \tsome x_i \notin G_n]
 > $$
 > 
-> Since the "easy" set $G_n$ is small, it is unlikely all $x_i$ are easy.
+> Since the "easy" set $$G_n$$ is small, it is unlikely all $x_i$ are easy.
 > Formally, by (AC2)
 > 
 > $$
@@ -474,8 +474,8 @@ It remains to prove the claim.
 > \end{align*}
 > $$
 > 
-> Note: this is where the repetition $m$ kicks in (in the construction of $g$), 
-> and we choose $m(n) := n \cdot 2q(n)$ to get the ineq.
+> Note: this is where the repetition $$m$$ kicks in (in the construction of $$g$$), 
+> and we choose $$m(n) := n \cdot 2q(n)$$ to get the ineq.
 > 
 > Also, by union bound,
 > 
@@ -488,9 +488,9 @@ It remains to prove the claim.
 > $$
 > 
 > Observe that 
-> $\Pr[A \tinv | x_i \notin G]$ is very close to $\Pr[B_0(y) \tinv | x \notin G]$ as that of the claim. 
-> The only difference is that $B_0$ plant $y$ in random position.
-> Indeed, for any fixed $i \in [m]$,
+> $$\Pr[A \tinv | x_i \notin G]$$ is very close to $$\Pr[B_0(y) \tinv | x \notin G]$$ as that of the claim. 
+> The only difference is that $$B_0$$ plant $$y$$ in random position.
+> Indeed, for any fixed $$i \in [m]$$,
 > 
 > $$
 > \begin{align*}
@@ -527,7 +527,7 @@ It remains to prove the claim.
 > \Pr[A \tinv] \lt e^{-n} + m \cdot 1/ r_2.
 > $$
 > 
-> We choose $r_2(n) = 2m \cdot p(n)$ so that $\Pr[A \tinv] \lt 1/p$, contradicting (AC).
+> We choose $$r_2(n) = 2m \cdot p(n)$$ so that $$\Pr[A \tinv] \lt 1/p$$, contradicting (AC).
 
 
 Primality Testing
@@ -537,12 +537,12 @@ Primality Testing
 #### **Definition:** Group
 
 {: .defn}
-> A group $G$ is a set of elements with a binary operator
-> $\ast$ that satisfies the following properties:
-> 1. Closuer: $\forall a,b \in G, a \ast b \in G$
-> 2. Identity: $\exists 1 \in G$ s.t. $\forall a \in G, 1 \ast a = a \ast 1 = a$.
-> 3. Associativity: $\forall a, b, c \in G, (a\ast b) \ast c = a \ast (b \ast c)$.
-> 4. Inverse: $\forall a \in G, \exists b \in G$ s.t. $a \ast b = b \ast a = 1$.
+> A group $$G$$ is a set of elements with a binary operator
+> $$\ast$$ that satisfies the following properties:
+> 1. Closuer: $$\forall a,b \in G, a \ast b \in G$$
+> 2. Identity: $$\exists 1 \in G$$ s.t. $$\forall a \in G, 1 \ast a = a \ast 1 = a$$.
+> 3. Associativity: $$\forall a, b, c \in G, (a\ast b) \ast c = a \ast (b \ast c)$$.
+> 4. Inverse: $$\forall a \in G, \exists b \in G$$ s.t. $$a \ast b = b \ast a = 1$$.
 
 #### **Definition:** Euler's Totient Function
 
