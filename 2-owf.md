@@ -18,6 +18,10 @@ $$
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\eps}{\epsilon}
 \newcommand{\univ}{\mathrm{univ}}
+\newcommand{\tinv}{\text{ inv}}
+\newcommand{\tnotinv}{\text{ not}\tinv}
+\newcommand{\tall}{\text{all }}
+\newcommand{\tsome}{\text{some }}
 $$
 {: .d-none}
 
@@ -339,81 +343,81 @@ We begin with a warmup.
 > \Pr[x_1,x_2 \gets \bit^n; y = g(x_1,x_2) : g(A(1^{2n}, y)) = y] \gt 1/p(n).
 > $$
 > 
-> We construct nuPPT $B$ that inverts $f$.
+> We construct nuPPT $$B$$ that inverts $$f$$.
 > 
->> Algorithm $B(1^n, y)$:
->> 1. $x_2 \gets \bit^n$ and $y_2 = f(x_2)$.
->> 2. Run $x'_1, x'_2 \gets A(1^{2n}, (y,y_2))$.
->> 3. Output $x'_1$ if $f(x'_1) = y$.
+>> Algorithm $$B(1^n, y)$$:
+>> 1. $$x_2 \gets \bit^n$$ and $$y_2 = f(x_2)$$.
+>> 2. Run $$x'_1, x'_2 \gets A(1^{2n}, (y,y_2))$$.
+>> 3. Output $$x'_1$$ if $$f(x'_1) = y$$.
 > 
-> For uniform $z\gets \bit^n$, the above $(y,y_2)$ is the same distribution 
-> as obtaining the output $g(x_1,x_2)$ by sampling $(x_1,x_2)\gets \bit^{2n}$.
+> For uniform $$z\gets \bit^n$$, the above $$(y,y_2)$$ is the same distribution 
+> as obtaining the output $$g(x_1,x_2)$$ by sampling $$(x_1,x_2)\gets \bit^{2n}$$.
 > 
-> Also, when $A$ inverts $(y,y_2)$, we have that $B$ inverts $z$ successfully.
-> By (AC), $A$ inverts w.p. $\gt 1/p$, greater than any negligible function, 
-> and it contradicts that $f$ is a strong OWF.
+> Also, when $$A$$ inverts $$(y,y_2)$$, we have that $$B$$ inverts $$z$$ successfully.
+> By (AC), $$A$$ inverts w.p. $$\gt 1/p$$, greater than any negligible function, 
+> and it contradicts that $$f$$ is a strong OWF.
 
 Note: this is a typical template to prove security by reduction. 
 The quantifiers of (AC) is often the same (to negate negligible).
 
-Observation: the definition of weak states that *exist* poly $q(n)$ *for all* nuPPT;
-that is, even weak, there is a good fraction, $1/q$, of instances that are hard for all.
+Observation: the definition of weak states that *exist* poly $$q(n)$$ *for all* nuPPT;
+that is, even weak, there is a good fraction, $$1/q$$, of instances that are hard for all.
 
-Idea: we repeat the weak $f$ for poly many instances and ask the Adv to invert all,
+Idea: we repeat the weak $$f$$ for poly many instances and ask the Adv to invert all,
 so that Adv fails with high prob.
 
 #### **Theorem:**
 
 {: .theorem}
-> For any weak OWF $f_n: \bit^n \to \bit^l$, there exists a poly $m(n)$ such that 
+> For any weak OWF $$f_n: \bit^n \to \bit^l$$, there exists a poly $$m(n)$$ such that 
 > 
 > $$
 > g(x_1, ..., x_m) := (f(x_1), ..., f(x_m))
 > $$
 > 
-> from $g: \bit^{mn} \to \bit^{ml}$ is a strong OWF.
+> from $$g: \bit^{mn} \to \bit^{ml}$$ is a strong OWF.
 
-Note: by def, there exists a poly $q(n)$ s.t. no adv can invert $f$ w.p. $1-1/q(n)$.
+Note: by def, there exists a poly $$q(n)$$ s.t. no adv can invert $$f$$ w.p. $$1-1/q(n)$$.
 
 #### **Proof:**
 
-Assume for contradiction (AC), there exists a nuPPT adv $A$ and poly $p(n)$ 
-s.t. for inf many $n\in\N$, $A$ inverts $g$ w.p. $\ge 1/p$, i.e.,
+Assume for contradiction (AC), there exists a nuPPT adv $$A$$ and poly $$p(n)$$ 
+s.t. for inf many $$n\in\N$$, $$A$$ inverts $$g$$ w.p. $$\ge 1/p$$, i.e.,
 
 $$
 \Pr[\set{x_i\gets\bit^n, y_i \gets f(x_i)}_{i\in[m]}, y \gets (y_1...y_m) : g(A(1^n, y)) = y] \ge 1/p(n).
 $$
 
-We want to construct a nuPPT $B$ to invert $y=f(x)$ for uniform $x \gets \bit^n$ by running $A$.
-So, the idea is to transform $y$ into an output of $g$, that is $(y_1,..., y_m)$.
-How? $(y,y, ..., y)$? $(y,y_2, ..., y_m)$? 
+We want to construct a nuPPT $$B$$ to invert $$y=f(x)$$ for uniform $$x \gets \bit^n$$ by running $$A$$.
+So, the idea is to transform $$y$$ into an output of $$g$$, that is $$(y_1,..., y_m)$$.
+How? $$(y,y, ..., y)$$? $$(y,y_2, ..., y_m)$$? 
 
-We construct $B_0$ as below to run $A$.
-
-{: .defn}
-> Algorithm $B_0(1^n, y)$:
-> 
-> 1. $j \gets [m]$
-> 2. $x_1, ..., x_m \gets \bit^{n}$
-> 3. let $y_i \gets f(x_i)$ for all $i$
-> 4. let $y_j \gets y$
-> 5. run $x'_1, .., x'_m \gets A(1^{mn}, (y_1,..., y_m))$
-> 6. if $f(x'_j) = y$, output $x_j$, otherwise output $\bot$.
-
-Note: $B_0$ inverts $y$ w.p. roughly $1/p$ by (AC), but our goal is to invert w.p. $1-1/q \gg 1/p$.
-Hence, repeating $B_0(y)$ is necessary.
+We construct $$B_0$$ as below to run $$A$$.
 
 {: .defn}
-> Algorithm $B(1^n, y)$:
+> Algorithm $$B_0(1^n, y)$$:
 > 
-> 1. repeatedly run $B_0(y)$ poly $r_1(n)$ many times using fresh randomness
-> 2. output the first non $\bot$ output of $B_0$.
+> 1. $$j \gets [m]$$
+> 2. $$x_1, ..., x_m \gets \bit^{n}$$
+> 3. let $$y_i \gets f(x_i)$$ for all $$i$$
+> 4. let $$y_j \gets y$$
+> 5. run $$x'_1, .., x'_m \gets A(1^{mn}, (y_1,..., y_m))$$
+> 6. if $$f(x'_j) = y$$, output $$x_j$$, otherwise output $$\bot$$.
 
-Note: we use the same $y$ as input, and that makes the probability analysis involved 
+Note: $$B_0$$ inverts $$y$$ w.p. roughly $$1/p$$ by (AC), but our goal is to invert w.p. $$1-1/q \gg 1/p$$.
+Hence, repeating $$B_0(y)$$ is necessary.
+
+{: .defn}
+> Algorithm $$B(1^n, y)$$:
+> 
+> 1. repeatedly run $$B_0(y)$$ poly $$r_1(n)$$ many times using fresh randomness
+> 2. output the first non $$\bot$$ output of $$B_0$$.
+
+Note: we use the same $$y$$ as input, and that makes the probability analysis involved 
 since the repetition is *dependent*.
 
-By (AC), inverting $g$ is easy, intuitively there are many $(x,y=f(x))$ that can be inverted by $B_0(y)$.
-Clearly that holds for $A$, but as mentioned, we need to prove it for $B_0$.
+By (AC), inverting $$g$$ is easy, intuitively there are many $$(x,y=f(x))$$ that can be inverted by $$B_0(y)$$.
+Clearly that holds for $$A$$, but as mentioned, we need to prove it for $$B_0$$.
 
 The following claim is the key.
 
@@ -421,22 +425,18 @@ The following claim is the key.
 
 {: .theorem}
 > Suppose that (AC) holds.
-> There exists a "large" set $G_n$ of "easy" instances, 
+> There exists a "large" set $$G_n$$ of "easy" instances, 
 > 
 > $$
 > G_n := \set{x \in \bit^n : \Pr_{x, y=f(x)}[f(B_0(y)) = y] \geq 1/r_2(n)}
 > $$
 > 
-> for some poly $r_2(n)$, 
-> and $|G| \geq (1 - 1/2q)\cdot 2^n$.
+> for some poly $$r_2(n)$$, 
+> and $$|G| \geq (1 - 1/2q)\cdot 2^n$$.
 
-If the claim holds, then $B$ can invert by repeating $B_0$:
+If the claim holds, then $$B$$ can invert by repeating $$B_0$$:
 
 $$
-\newcommand{\tinv}{\text{ inv}}
-\newcommand{\tnotinv}{\text{ not}\tinv}
-\newcommand{\tall}{\text{all }}
-\newcommand{\tsome}{\text{some }}
 \begin{align*}
 \Pr_{x,y}[B \tnotinv] 
  & = \Pr[B \tnotinv \cap x \in G] + \Pr[B \tnotinv \cap x \notin G] \\
