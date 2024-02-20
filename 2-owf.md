@@ -441,7 +441,7 @@ $$
 \end{align*}
 $$
 
-We will choose $$r_1$(n) := n \cdot r_2(n)$$ to get $$(1-1/r_2)^{r_1} \le e^{-n}$$.
+We will choose $$r_1(n) := n \cdot r_2(n)$$ to get $$(1-1/r_2)^{r_1} \le e^{-n}$$.
 
 Then, $$B$$ inverts w.p. $$\gt 1-1/q$$, and it is contradicting that $$f$$ is weak OWF.
 It remains to prove the claim.
