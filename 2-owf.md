@@ -273,7 +273,7 @@ x \cdot y & \text{o.w.}
 \end{cases}
 $$
 
-Easy to compute. For many $(x,y)$ are "easy" to invert: w.p. at least 3/4 when $xy$ even.
+Easy to compute. For many $$(x,y)$$ are "easy" to invert: w.p. at least 3/4 when $$xy$$ even.
 It is not strong OWF.
 
 #### **Assumption:** Factoring
