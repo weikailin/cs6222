@@ -229,6 +229,38 @@ We relax it:
 Note: here the prob. $$1-1/q$$ is *the same* for all adv $$\cA$$, 
 but in the strong OWF, the prob. $$\eps$$ is different and *depends* on $$\cA$$.
 
+#### **Example:** some functinos are easy to invert
+
+{:.theorem}
+> For any string $$x \in \bits$$, there are many easy-to-compute functions:
+>
+> - Identity, $$f(x) := x$$
+> - Constant, $$f(x) := 0$$
+> - Constant output length, $$f: \bits \to \bit^4$$
+>
+> All of them are easy to invert.
+> Actually, for constant output length, we can invert with constant probability
+> even without looking at $$f(x)$$.
+
+#### **Example:** Expanding input or output length
+
+{:.theorem}
+> Suppose $$f: \bit^n \to \bit^{\ell(n)}$$ for all $$n \in \N$$ is a OWF,
+> where $$\ell(n)$$ is a polynomial.
+> We can obtain another OWF $$g$$ such that the output length is the same as input.
+> 
+> - If output is longer, $$\ell(n) > n$$, define $$g$$ to be
+>   $$
+>   g(x) := f(x[1...n]), |x| = \ell(n).
+>   $$
+> - If input is longer, $$\ell(n) < n$$, define $$g$$ to be
+>   $$
+>   g(x) := f(x) \| 0^{n - \ell(n)}.
+>   $$
+>   
+> Clearly, such padding is poly-time computable since $$\ell$$ is polynomial.
+> The proof of "hard to invert" is a standard reduction.
+
 Primes and Factoring
 --------------------
 
