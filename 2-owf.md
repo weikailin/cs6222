@@ -6,6 +6,7 @@ nav_exclude: false
 ---
 
 $$
+\newcommand{\mul}{\mathrm{mul}}
 \newcommand{\Enc}{\mathsf{Enc}}
 \newcommand{\Dec}{\mathsf{Dec}}
 \newcommand{\Gen}{\mathsf{Gen}}
@@ -16,9 +17,6 @@ $$
 \newcommand{\cA}{\mathcal{A}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\eps}{\epsilon}
-\newcommand{\card}[1]{\vert{#1}\vert}
-\newcommand{\set}[1]{\\{#1\\}}
-\newcommand{\mul}{\mathrm{mul}}
 \newcommand{\univ}{\mathrm{univ}}
 $$
 {: .d-none}
@@ -235,7 +233,7 @@ but in the strong OWF, the prob. $$\eps$$ is different and *depends* on $$\cA$$.
 Primes and Factoring
 --------------------
 
-Define $f_\mul: \N^2 \to \N$ by
+Define $$f_\mul: \N^2 \to \N$$ by
 
 $$
 f_\mul(x,y) = \begin{cases}
@@ -250,36 +248,36 @@ It is not strong OWF.
 #### **Assumption:** Factoring
 
 {: .defn}
-> For any adv $\cA$, there exists a negligible function $\eps$ s.t.
+> For any adv $$\cA$$, there exists a negligible function $$\eps$$ s.t.
 > 
 > $$
 > \Pr[(p,q) \gets \Pi_n^2; N \gets pq : \cA(N) \in \set{p,q}] \lt \eps(n),
 > $$
 > 
-> where $\Pi_n := \set{p \lt 2^n : p \text{ prime}}$ is the set of primes less than $2^n$.
+> where $$\Pi_n := \set{p \lt 2^n : p \text{ prime}}$$ is the set of primes less than $$2^n$$.
 
 ### The Prime Number Theorem
 
-Define $\pi(x)$ as the number of primes $\le x$.
+Define $$\pi(x)$$ as the number of primes $$\le x$$.
 PNT states that primes are dense.
 
 #### **Theorem:** (Chebychev, 1848)
 
 {: .theorem}
-> For all $x>1$, $\pi(x) \gt \frac{x}{2 \log x}$.
+> For all $$x>1$$, $$\pi(x) \gt \frac{x}{2 \log x}$$.
 
-Note: the above is easier to prove, but the famous *Prime Number Theorem* is $\pi(x) \sim x / \ln x$ when $x \to \infty$.
-The above $\log$ is base 2.
+Note: the above is easier to prove, but the famous *Prime Number Theorem* is $$\pi(x) \sim x / \ln x$$ when $$x \to \infty$$.
+The above $$\log$$ is base 2.
 
 #### **Theorem:**
 
 {: .theorem}
-> If the factoring assumption is true, then $f_\mul$ is a weak OWF.
+> If the factoring assumption is true, then $$f_\mul$$ is a weak OWF.
 
 {: .proof} 
-> $f_\mul$ is easy to compute. Hard to invert?
+> $$f_\mul$$ is easy to compute. Hard to invert?
 > 
-> Assume for contradiction (AC), for all poly $q$, exists nuPPT $A$, s.t. for infinitely many $n\in \N$,
+> Assume for contradiction (AC), for all poly $$q$$, exists nuPPT $$A$$, s.t. for infinitely many $$n\in \N$$,
 > 
 > $$
 > \Pr[(x,y)\gets \bit^n; z = xy : f_\mul(A(1^{2n}, z)) = z] \gt 1- \frac{1}{q(n)}.
@@ -287,24 +285,24 @@ The above $\log$ is base 2.
 > 
 > Note: the negation of weak OWF.
 > 
-> Then, we construct an adversary $B$ breaks factoring.
+> Then, we construct an adversary $$B$$ breaks factoring.
 > 
 > {: .defn-title}
->> Algorithm $B(1^{2n}, z)$:
+>> Algorithm $$B(1^{2n}, z)$$:
 >> 
->> 1. Sample $(x,y) \gets \bit^n$
->> 2. If both $x,y$ prime, let $\bar z \gets z$; otherwise, let $\bar z \gets f_\mul(x,y)$.
->> 3. Run $(\bar x, \bar y) \gets A(1^{2n}, \bar z)$
->> 4. Output $(\bar x, \bar y)$ if both $x,y$ are prime and $z = \bar x \bar y$.
+>> 1. Sample $$(x,y) \gets \bit^n$$
+>> 2. If both $$x,y$$ prime, let $$\bar z \gets z$$; otherwise, let $$\bar z \gets f_\mul(x,y)$$.
+>> 3. Run $$(\bar x, \bar y) \gets A(1^{2n}, \bar z)$$
+>> 4. Output $$(\bar x, \bar y)$$ if both $$x,y$$ are prime and $$z = \bar x \bar y$$.
 > 
-> We intentionally make the input to $A$ uniform in $\bit^{2n}$.
+> We intentionally make the input to $$A$$ uniform in $$\bit^{2n}$$.
 > 
-> By Chebychev, both $x,y$ prime w.p. $\gt 1/ (2 \log 2^n)^{2} = 1/(4n^2)$.
-> Hence, $B$ fails to pass $z$ to $A$ w.p. at most $1 - 1/(4n^2)$.
+> By Chebychev, both $$x,y$$ prime w.p. $$\gt 1/ (2 \log 2^n)^{2} = 1/(4n^2)$$.
+> Hence, $$B$$ fails to pass $$z$$ to $$A$$ w.p. at most $$1 - 1/(4n^2)$$.
 > 
-> By eq (AC), $A$ fails to invert $\bar z$ w.p. at most $1/q(n)$. Choose $q(n) := 8n^2$ and $A$ correspondingly.
+> By eq (AC), $$A$$ fails to invert $$\bar z$$ w.p. at most $$1/q(n)$$. Choose $$q(n) := 8n^2$$ and $$A$$ correspondingly.
 > 
-> By union bound, the failure probability of $B$ is at most 
+> By union bound, the failure probability of $$B$$ is at most 
 > 
 > $$
 > \Pr[z\neq \bar z \cup A \text{ fails}] 
@@ -312,7 +310,7 @@ The above $\log$ is base 2.
 > \le 1 - 1/(4n^2)+1/8n^2 = 1 - 1/8n^2,
 > $$ 
 > 
-> and thus $B$ breaks factoring w.p. at least $1/8n^2$, greater than negl, contradicting Factoring Assumption.
+> and thus $$B$$ breaks factoring w.p. at least $$1/8n^2$$, greater than negl, contradicting Factoring Assumption.
 
 Note: the above reduction assumes efficient primality testing. That is not necessary, left as exercise.
 
@@ -330,12 +328,12 @@ We begin with a warmup.
 #### **Claim:**
 
 {: .theorem}
-> If $\set{f_n: \bit^n \to \bit^l}_{n\in\N}$ is a strong OWF, 
-> then $g(x_1,x_2) := (f(x_1), f(x_2))$ is also a strong OWF.
+> If $$\set{f_n: \bit^n \to \bit^l}_{n\in\N}$$ is a strong OWF, 
+> then $$g(x_1,x_2) := (f(x_1), f(x_2))$$ is also a strong OWF.
 
 {: .proof}
-> Assume for contradiction (AC), there exist poly $p(n)$ and a nuPPT adv $A$ such that 
-> for infinitely many $n\in\N$, 
+> Assume for contradiction (AC), there exist poly $$p(n)$$ and a nuPPT adv $$A$$ such that 
+> for infinitely many $$n\in\N$$, 
 > 
 > $$
 > \Pr[x_1,x_2 \gets \bit^n; y = g(x_1,x_2) : g(A(1^{2n}, y)) = y] \gt 1/p(n).
