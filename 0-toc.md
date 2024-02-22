@@ -20,9 +20,10 @@ Table of Lecture Notes
 | Feb 13    | [CPA-secure encryption](3-prg.md#secure-encryption-scheme)    | [Ps 3.9] [KL 3.2, 3.4] |
 | Feb 15    | [Pseudo-random functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 8.5], [Abhishek@JHU](https://www.cs.jhu.edu/~abhishek/classes/CS600-642-442-Fall2018/L05.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec5.pdf), [Wichs@Northeastern](https://www.khoury.northeastern.edu/home/wichs/class/crypto-fall15/lecture9.pdf) |
 | Feb 20    | [One-way functions](2-owf.md#definition-of-one-way-functions)    | [Ps 2.2] [KL 8.1] |
-| Feb 22    | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.2] [KL 8.1] |
+| Feb 22    | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
 
 <!-- 
+| Sep 4     | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
 | Sep 6     | [From weak to strong OWF](2-owf.md#from-weak-owf-to-strong-owf)    | [Ps 2.4], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec7.pdf), [LTW05](https://lucatrevisan.github.io/pubs/LTW05.pdf) |
 | Sep 11    | [Primality testing](2-owf.md#primality-testing)    | [KL 9.2.2] |
 | Sep 13    | [Finish Miller-Rabin, universal OWF](2-owf.md#a-universal-owf)    | [Ps 2.13], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf) |
