@@ -613,16 +613,16 @@ Primality Testing
 #### **Definition:** Euler's Totient Function
 
 {: .defn}
-> Let $Z_n^* := \set{a \in \N : a < n, \gcd(a,n)=1}$ be the multiplicative group modulo $n$.
-> Let $\phi(n) := |Z_n^*|$ be the Euler's totient.
+> Let $$Z_n^* := \set{a \in \N : a < n, \gcd(a,n)=1}$$ be the multiplicative group modulo $$n$$.
+> Let $$\phi(n) := |Z_n^*|$$ be the Euler's totient.
 
-Note: $\phi(n) = p_1^{k_1-1}(p_1-1) \cdot p_2^{k_2-1}(p_2-1) ...$
-for $n = p_1^{k_1} \cdot p_2^{k_2} ...$ where $p_i$ are distinct primes.
+Note: $$\phi(n) = p_1^{k_1-1}(p_1-1) \cdot p_2^{k_2-1}(p_2-1) ...$$
+for $$n = p_1^{k_1} \cdot p_2^{k_2} ...$$ where $$p_i$$ are distinct primes.
 
 #### **Theorem:** Chinese Remainder Theorem (CRT), or Extended Euclidean Algo
 
 {: .theorem}
-> For any $n_1, n_2 \in \N$ s.t. $\gcd(n_1, n_2) = 1$,
+> For any $$n_1, n_2 \in \N$$ s.t. $$\gcd(n_1, n_2) = 1$$,
 > 
 > $$
 > Z_{n_1 n_2}^\ast \cong Z_{n_1}^\ast \times Z_{n_2}^\ast,
@@ -638,20 +638,20 @@ for $n = p_1^{k_1} \cdot p_2^{k_2} ...$ where $p_i$ are distinct primes.
 > $$
 
 {: .proof}
-> Let $a \in Z_n^\ast$, and let $S := \set{ax : x \in Z_n^\ast}$.
-> We have $S = Z_n^*$ (otherwise, we have $x_1 \neq x_2$ but $ax_1 = ax_2$, a contradiction given $a^{-1}$ exists).
+> Let $$a \in Z_n^\ast$$, and let $$S := \set{ax : x \in Z_n^\ast}$$.
+> We have $$S = Z_n^*$$ (otherwise, we have $$x_1 \neq x_2$$ but $$ax_1 = ax_2$$, a contradiction given $$a^{-1}$$ exists).
 > Then, by commutative for the first equality,
 > 
 > $$
 > \prod_{x \in Z_n^\ast} x = \prod_{b \in S} b = \prod_{x \in Z_n^\ast} ax = a^{\phi(n)} \prod_{x \in Z_n^\ast} x.
 > $$
 > 
-> That implies $a^{\phi(n)} = 1$.
+> That implies $$a^{\phi(n)} = 1$$.
 
 #### **Corollary:** (Fermat's Little Theorem)
 
 {: .theorem}
-> For all prime $p$,
+> For all prime $$p$$,
 > 
 > $$
 > \forall a \in Z_p^*, a^{p-1} = 1 \mod p
@@ -660,41 +660,41 @@ for $n = p_1^{k_1} \cdot p_2^{k_2} ...$ where $p_i$ are distinct primes.
 #### **Definition:**
 
 {: .defn}
-> For any composite $n \in \N$, we say that $a \in Z_n^\*$ 
-> is a *witness* if $a^{n-1} \neq 1 \mod n$.
+> For any composite $$n \in \N$$, we say that $$a \in Z_n^\*$$ 
+> is a *witness* if $$a^{n-1} \neq 1 \mod n$$.
 
 #### **Lemma:** strict subgroup is small
 
 {: .theorem}
-> Let $G$ be a finite group.
-> If $H \subset G$ is a strict subgroup of $G$,
-> then $|H| \le |G| / 2$.
+> Let $$G$$ be a finite group.
+> If $$H \subset G$$ is a strict subgroup of $$G$$,
+> then $$|H| \le |G| / 2$$.
 
 {: .proof}
-> Let $b \in G$ be an element s.t. $b \notin H$.
-> Consider elements in the set $B:=\set{ab : a \in H}$.
-> If there exists $ab \in H$, then we have $a^{-1}ab = b \in H$, contradiction.
-> Hence, $B \cap H = \emptyset$, and it remains to show that $|B| = |H|$.
-> Suppose for contradiction that $|B| < |H|$, then there exist $a_1\neq a_2 \in H$ s.t. $a_1 b = a_2 b$,
-> a contradiction since we can multiply $b^{-1}$ on both sides.
+> Let $$b \in G$$ be an element s.t. $$b \notin H$$.
+> Consider elements in the set $$B:=\set{ab : a \in H}$$.
+> If there exists $$ab \in H$$, then we have $$a^{-1}ab = b \in H$$, contradiction.
+> Hence, $$B \cap H = \emptyset$$, and it remains to show that $$|B| = |H|$$.
+> Suppose for contradiction that $$|B| < |H|$$, then there exist $$a_1\neq a_2 \in H$$ s.t. $$a_1 b = a_2 b$$,
+> a contradiction since we can multiply $$b^{-1}$$ on both sides.
 
 #### **Lemma:**
 
 {: .theorem}
-> For all $n\in \N$, if there exists a witness, then there are at least $\phi(n) / 2$ witnesses.
+> For all $$n\in \N$$, if there exists a witness, then there are at least $$\phi(n) / 2$$ witnesses.
 
 {: .proof}
-> Let $H \subset Z_n^*$ be the subset of none witnesses.
-> We have $1 \in H$, and $H$ is a subgroup modular $n$.
-> Given that there exists a witness, $H$ is a strict subgroup.
+> Let $$H \subset Z_n^*$$ be the subset of none witnesses.
+> We have $$1 \in H$$, and $$H$$ is a subgroup modular $$n$$.
+> Given that there exists a witness, $$H$$ is a strict subgroup.
 > We can then show that any strict subgroup is at most half size of the supergroup,
-> ie, $|H| \le \phi(n) / 2$.
+> ie, $$|H| \le \phi(n) / 2$$.
 
 #### **Definition:** Strong witness
 
 {: .defn}
-> For any composite $n \in \N$, write $n-1 = 2^r \cdot d$ for some integer $r\in \N$ and odd $d$.
-> We say that $a \in Z_n^\*$ 
+> For any composite $$n \in \N$$, write $$n-1 = 2^r \cdot d$$ for some integer $$r\in \N$$ and odd $$d$$.
+> We say that $$a \in Z_n^\*$$ 
 > is a *strong* witness if 
 > 
 > $$
@@ -707,27 +707,27 @@ for $n = p_1^{k_1} \cdot p_2^{k_2} ...$ where $p_i$ are distinct primes.
 #### **Lemma:** (warm up)
 
 {: .theorem}
-> If $a$ is a witness, then $a$ is also a strong witness.
+> If $$a$$ is a witness, then $$a$$ is also a strong witness.
 
 {: .proof}
-> Assume for contradiction that $a$ is not a strong witness.
-> Then the sequence $a^d, a^{2d}, ..., a^{2^r d}$ is either
-> - $(\pm 1, 1, 1, ..., 1)$, or
-> - $(\star, \star, ..., -1, 1,1, ..., 1)$.
+> Assume for contradiction that $$a$$ is not a strong witness.
+> Then the sequence $$a^d, a^{2d}, ..., a^{2^r d}$$ is either
+> - $$(\pm 1, 1, 1, ..., 1)$$, or
+> - $$(\star, \star, ..., -1, 1,1, ..., 1)$$.
 > 
-> Hence, $a$ is not a witness, a contradiction.
+> Hence, $$a$$ is not a witness, a contradiction.
 
 
 #### **Lemma:** (Miller-Rabin, every prime has no strong witness)
 
 {: .theorem}
-> If $n$ prime, then there is no strong witness in $Z_n^*$.
+> If $$n$$ prime, then there is no strong witness in $$Z_n^*$$.
 
 {: .proof}
-> If $n$ prime, then the only solution to $x^2 = 1 \mod n$ is $\pm 1$ (need proof).
-> By Fermat's Little Theorem, for any $a \in Z_n^*$, $a^{2^r d} = 1 \mod n$, and $a^{2^{r-1} d} = \pm 1 \mod n$.
-> If $-1$, then it is not a strong witness.
-> Otherwise, $1$, we can continue the next square root $r-2$, and so on, until $a^d$, which must be $\pm 1$.
+> If $$n$$ prime, then the only solution to $$x^2 = 1 \mod n$$ is $$\pm 1$$ (need proof).
+> By Fermat's Little Theorem, for any $$a \in Z_n^*$$, $$a^{2^r d} = 1 \mod n$$, and $$a^{2^{r-1} d} = \pm 1 \mod n$$.
+> If $$-1$$, then it is not a strong witness.
+> Otherwise, $$1$$, we can continue the next square root $$r-2$$, and so on, until $$a^d$$, which must be $$\pm 1$$.
 
 It remains to show that every composite has many strong witnesses.
 The first step is to exclude perfect powers.
@@ -736,23 +736,23 @@ The second step is to show that other composites have many strong witnesses.
 #### **Lemma:**(Miller-Rabin, every composite has many strong witnesses)
 
 {: .theorem}
-> If $n$ is composite such that $n = n_1 \cdot n_2$ for some coprime $n_1,n_2$, 
-> then there are at least half strong witness in $Z_n^*$.
+> If $$n$$ is composite such that $$n = n_1 \cdot n_2$$ for some coprime $$n_1,n_2$$, 
+> then there are at least half strong witness in $$Z_n^*$$.
 
 {: .proof}
-> Let $H:=\set{a \in Z_n^\ast : a \text{ is a not a strong witness}}$. 
-> We will show that there exists $\bar H \supset H$ s.t. $\bar H$ is a strict subgroup of $Z_n^*$,
-> which is sufficient (as $|H| \le |\bar H| \le |Z_n^\ast|/2$).
+> Let $$H:=\set{a \in Z_n^\ast : a \text{ is a not a strong witness}}$$. 
+> We will show that there exists $$\bar H \supset H$$ s.t. $$\bar H$$ is a strict subgroup of $$Z_n^*$$,
+> which is sufficient (as $$|H| \le |\bar H| \le |Z_n^\ast|/2$$).
 > 
-> Let $2^r d = n-1$.
-> For each $a \in H$, consider the sequence $a^d, a^{2d}, ..., a^{2^r d}$. 
-> Let $j$ be the largest index such that 
+> Let $$2^r d = n-1$$.
+> For each $$a \in H$$, consider the sequence $$a^d, a^{2d}, ..., a^{2^r d}$$. 
+> Let $$j$$ be the largest index such that 
 > 
-> $\exists a \in H, a^{2^j d} = -1 \mod n$ 
+> $$\exists a \in H, a^{2^j d} = -1 \mod n$$ 
 > 
-> (so that for all $a\in H$, $a^{2^{j+1}d} = 1 \mod n$).
+> (so that for all $$a\in H$$, $$a^{2^{j+1}d} = 1 \mod n$$).
 > 
-> Such $j < r$ exists because $(-1)^d = -1 \mod n$ since $d$ odd.
+> Such $$j < r$$ exists because $$(-1)^d = -1 \mod n$$ since $$d$$ odd.
 > Now, define 
 > 
 > $$
@@ -777,8 +777,8 @@ The second step is to show that other composites have many strong witnesses.
 > a_1^J = a^J = -1 \mod n_1,
 > $$
 > 
-> where the second equality holds by $n=n_1n_2$ and $\gcd(n_1,n_2)=1$.
-> Let $b_1=a_1 \mod n_1$ and $b_2=1 \mod n_2$, and let 
+> where the second equality holds by $$n=n_1n_2$$ and $$\gcd(n_1,n_2)=1$$.
+> Let $$b_1=a_1 \mod n_1$$ and $$b_2=1 \mod n_2$$, and let 
 > 
 > $$
 > b = b_1 \mod n_1 = b_2 \mod n_2
@@ -794,41 +794,41 @@ The second step is to show that other composites have many strong witnesses.
 > \end{align*}
 > $$
 > 
-> Because $1 = 1 \mod n_1 = 1 \mod n_2$ and $-1 = -1 \mod n_1 = -1 \mod n_2$ are unique,
-> $b^J \neq \pm 1 \mod n$, which implies $b \notin \bar H$.
+> Because $$1 = 1 \mod n_1 = 1 \mod n_2$$ and $$-1 = -1 \mod n_1 = -1 \mod n_2$$ are unique,
+> $$b^J \neq \pm 1 \mod n$$, which implies $$b \notin \bar H$$.
 
 #### **Algorithm:** Miller-Rabin Primality Testing
 
 {: .defn}
-> Input: $n$
+> Input: $$n$$
 > 
-> 1. Output 'No' if $n$ even.
-> 2. Output 'No' if $n = x^y$ is a perfect power for some $x,y \in \N$.
-> 3. Write $n-1$ as $2^r d$.
-> 4. Repeat $\lambda$ times:
-> 	- Sample uniformly $a \gets Z_n^\ast$ (by computing $\gcd(a,n)$).
-> 	- If $a$ is a strong witness, output 'No'.
+> 1. Output 'No' if $$n$$ even.
+> 2. Output 'No' if $$n = x^y$$ is a perfect power for some $$x,y \in \N$$.
+> 3. Write $$n-1$$ as $$2^r d$$.
+> 4. Repeat $$\lambda$$ times:
+> 	- Sample uniformly $$a \gets Z_n^\ast$$ (by computing $$\gcd(a,n)$$).
+> 	- If $$a$$ is a strong witness, output 'No'.
 > 5. Output 'Yes'.
 > 
 > Theorem: 
-> For any prime $n$, this algo outputs 'Yes' w.p. 1.
-> For any composite $n$, this algo outputs 'Yes' w.p. $\le 2^{-\lambda}$.
+> For any prime $$n$$, this algo outputs 'Yes' w.p. 1.
+> For any composite $$n$$, this algo outputs 'Yes' w.p. $$\le 2^{-\lambda}$$.
 
 > See also: Solovay-Strassen Primality Test
 > 
 > [Article on Wikipedia](https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_test)
 > 
-> For odd $n$ and integer $a$, let $J(a,n)$ be the Jacobi symbol.
-> The Solovay-Strassen primality test checks the given input $n$ by 
-> 1. Sample random $a$
-> 2. Compute $J(a,n)$
-> 3. Output "NOT PRIME" if $a^{(n-1)/2} \neq J(a,n) \mod n$.
+> For odd $$n$$ and integer $$a$$, let $$J(a,n)$$ be the Jacobi symbol.
+> The Solovay-Strassen primality test checks the given input $$n$$ by 
+> 1. Sample random $$a$$
+> 2. Compute $$J(a,n)$$
+> 3. Output "NOT PRIME" if $$a^{(n-1)/2} \neq J(a,n) \mod n$$.
 > 
-> Similar to Miller-Rabin, any prime $n$ always passes the test:
-> $J(a,n)$ is exactly the Legengre symbol, 
+> Similar to Miller-Rabin, any prime $$n$$ always passes the test:
+> $$J(a,n)$$ is exactly the Legengre symbol, 
 > and the test is [Euler's criteria](https://en.wikipedia.org/wiki/Euler%27s_criterion). 
-> For composit $n$, there are witnesses and liars such that 
-> $a$ is a witness iff $a$ yields NOT PRIME.
+> For composit $$n$$, there are witnesses and liars such that 
+> $$a$$ is a witness iff $$a$$ yields NOT PRIME.
 > It can be shown that 1) the existence of witness and 2)
 > the liars are a subgroup.
 > That implies that there are at least half witnesses.
@@ -840,41 +840,41 @@ A Universal OWF
 
 The idea is to construct a function that computes all easy-to-compute functions.
 
-#### **Function:** $f_\univ$
+#### **Function:** $$f_\univ$$
 
 {: .defn}
-> Input: $y$, 
-> let $n := |y|$.
+> Input: $$y$$, 
+> let $$n := |y|$$.
 > 
-> 1. Interpret $y$ as a pair $(M,x)$ of Turing machine and bitstring,
->    where $|M| = \log n$
-> 2. Run $M$ on $x$ for $T=n^2$ steps
-> 3. If $M$ halts in $T$ steps, output $(M,M(x))$; otherwise, output $\bot$.
+> 1. Interpret $$y$$ as a pair $$(M,x)$$ of Turing machine and bitstring,
+>    where $$|M| = \log n$$
+> 2. Run $$M$$ on $$x$$ for $$T=n^2$$ steps
+> 3. If $$M$$ halts in $$T$$ steps, output $$(M,M(x))$$; otherwise, output $$\bot$$.
 
 #### **Theorem:** A Universal Weak OWF
 
 {: .theorem}
-> If there exists a OWF, then the above function $f_\univ$ is a weak OWF.
+> If there exists a OWF, then the above function $$f_\univ$$ is a weak OWF.
 
 To prove it, we will use the following lemma.
 
-#### **Lemma:** Strong OWF in time $O(n^2)$
+#### **Lemma:** Strong OWF in time $$O(n^2)$$
 
 {: .theorem}
-> If there exists a strongly one-way function $g$ , then there exists 
-> a strongly one-way function $g'$ that is computable in time $O(n^2)$.
+> If there exists a strongly one-way function $$g$$ , then there exists 
+> a strongly one-way function $$g'$$ that is computable in time $$O(n^2)$$.
 
 Intuition: 
-If there exists a strong OWF $g$ in time $O(n^2)$, then there exists (at least) a TM $M_g$ that computes $g$ in $O(n^2)$ steps
-such that the description length $|M_g| = d$ is a constant.
-WLOG, assume the description of any TM can be padded with a special $\bot$ symbol to arbitrary long.
-For any $s \ge |M_g|$, let $M_{g,s}$ be the description of $M_g$ padded to $s$ bits.
-Then, for all sufficiently large $n$, 
-the $\log n$-bit random prefix of $y$ is exactly $M_{g,\log n}$ w.p. $1/n$.
-Hence, $f_\univ(y)$ is hard to invert.
+If there exists a strong OWF $$g$$ in time $$O(n^2)$$, then there exists (at least) a TM $$M_g$$ that computes $$g$$ in $$O(n^2)$$ steps
+such that the description length $$|M_g| = d$$ is a constant.
+WLOG, assume the description of any TM can be padded with a special $$\bot$$ symbol to arbitrary long.
+For any $$s \ge |M_g|$$, let $$M_{g,s}$$ be the description of $$M_g$$ padded to $$s$$ bits.
+Then, for all sufficiently large $$n$$, 
+the $$\log n$$-bit random prefix of $$y$$ is exactly $$M_{g,\log n}$$ w.p. $$1/n$$.
+Hence, $$f_\univ(y)$$ is hard to invert.
 
 Formally, assume for contra (AC),
-for all poly $q(n)$, there exists NUPPT $A$ s.t. for infinitely many $n\in\N$,
+for all poly $$q(n)$$, there exists NUPPT $$A$$ s.t. for infinitely many $$n\in\N$$,
 
 $$
 \Pr[y\gets \bit^n, z \gets f_\univ(y) : f_\univ(A(1^n, z)) = z] \gt 1 - 1/q.
