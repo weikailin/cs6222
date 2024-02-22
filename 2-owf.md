@@ -880,16 +880,16 @@ $$
 \Pr[y\gets \bit^n, z \gets f_\univ(y) : f_\univ(A(1^n, z)) = z] \gt 1 - 1/q.
 $$
 
-We construct NUPPT $B$ that inverts $z' \gets g(x)$ for $x\gets \bit^{n-\log n}$ by
+We construct NUPPT $$B$$ that inverts $$z' \gets g(x)$$ for $$x\gets \bit^{n-\log n}$$ by
 
-1. Run $y \gets A(1^n, (M_g,z'))$.
-2. Interpret $y$ as $(M, x)$.
-3. If $M = M_g$ and $z' = g(x)$, output $x$; otherwise, output $\bot$.
+1. Run $$y \gets A(1^n, (M_g,z'))$$.
+2. Interpret $$y$$ as $$(M, x)$$.
+3. If $$M = M_g$$ and $$z' = g(x)$$, output $$x$$; otherwise, output $$\bot$$.
 
 
 **Notice**{: .label}
-We uses $M_g$ in $B$ because $B$ is asked to invert $g$, 
-which means that we know $g$ in this proof.
+We uses $$M_g$$ in $$B$$ because $$B$$ is asked to invert $$g$$, 
+which means that we know $$g$$ in this proof.
 Alternatively, we prove it *without* AC in lecture, 
 and there is only probability analysis which does not depend on $g$. 
 
@@ -916,28 +916,28 @@ $$
 \Pr[B \tnotinv] \le n / q(n).
 $$
 
-Choosing $q(n) = n^2$ and $A$ correspondingly, we have $B$ inverts w.p. at least $1-1/n$,
-that is greater than $1/p(m)$ for some polynomial $p$ and the input size $m:= n - \log n$ of $g$,
-contradicts $g$ is a strong OWF.
+Choosing $$q(n) = n^2$$ and $$A$$ correspondingly, we have $$B$$ inverts w.p. at least $$1-1/n$$,
+that is greater than $$1/p(m)$$ for some polynomial $$p$$ and the input size $$m:= n - \log n$$ of $$g$$,
+contradicts $$g$$ is a strong OWF.
 
 {: .proof-title}
-> Proof of Lemma (Strong OWF in time $O(n^2)$)
+> Proof of Lemma (Strong OWF in time $$O(n^2)$$)
 > 
-> Suppose we can compute $g$ in time $n^c$ for some const $c \gt 2$.
-> Then, for any input $x \bit^{n^c}$,
-> interpret $x = x_1\|x_2$ s.t. $|x_1| = n^c - n$,
+> Suppose we can compute $$g$$ in time $$n^c$$ for some const $$c \gt 2$$.
+> Then, for any input $$x \bit^{n^c}$$,
+> interpret $$x = x_1\|x_2$$ s.t. $$|x_1| = n^c - n$$,
 > and then define
 > $$
 > g'(x) = g'(x_1\|x_2) := x_1 \| g(x_2).
 > $$
-> Let $m=n^c$ be the input size of $g'$
-> It is easy to see that $g'$ is computable in $O(m^2)$ time, and it follows by standard reduction 
-> that $g'$ is hard to invert if $g$ is a OWF.
+> Let $$m=n^c$$ be the input size of $$g'$$
+> It is easy to see that $$g'$$ is computable in $$O(m^2)$$ time, and it follows by standard reduction 
+> that $$g'$$ is hard to invert if $$g$$ is a OWF.
 
 Note:
 The above construction is impractical due to inefficiency. 
 Suppose there exists a OWF that is easy to compute by a TM of 1000 bits.
-The above needs a "sufficiently long" input so that $\log n \ge 1000$ to be a weak OWF, which means $|x| \ge 2^{1000}$.
+The above needs a "sufficiently long" input so that $$\log n \ge 1000$$ to be a weak OWF, which means $$|x| \ge 2^{1000}$$.
 
 
 Collection of OWFs
