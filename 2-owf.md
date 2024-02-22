@@ -261,6 +261,45 @@ but in the strong OWF, the prob. $$\eps$$ is different and *depends* on $$\cA$$.
 > Clearly, such padding is poly-time computable since $$\ell$$ is polynomial.
 > The proof of "hard to invert" is a standard reduction.
 
+#### **Fact:** $$\exists OWF \Rightarrow NP \neq P$$
+
+{:.theorem}
+> Suppose that there exists a OWF $$f$$, 
+> then there exists a language $$L \in NP$$ such that $$L \notin P$$.
+
+{:.proof}
+> The idea is to 
+> 1. define the language $$L \in NP$$ using $$f$$,
+> 2. assume for contradiction that $$NP = P$$ so that we have a poly-time algorithm $$D$$
+>    that decides $$L$$,
+> 3. to construct a reduction that uses $$D$$ to invert $$f$$, which is a contradiction.
+> 
+> A first attempt is to define
+> 
+> $$
+> L := \set{f(x) : x \in \bits}.
+> $$
+> 
+> We have $$L \in NP$$ directly since for every $$y \in L$$, the witness of $$y$$
+> is $$x$$ such that $$f(x) = y$$, and correspondingly for $$y \notin L$$, there is no witness.
+> However, such $$L$$ is unhelpful to invert $$f$$:
+> $$D$$ outputs 1 bit that does not tell us anything bout $$x$$,
+> and even worse, $$L$$ could be all binary strings when $$f$$ is a permutation
+> (i.e., if $$f$$ is a *one-way permutation*, then deciding $$L$$ is trivial).
+> To overcome it, we augment $$L$$ with *all the prefixes* of $$x$$, that is,
+> 
+> $$
+> L := \set{(f(x), x[1...i]) : x \in \bits, i \in [|x|]}.
+> $$
+> 
+> This way, for any $$y = f(x)$$, 
+> the reduction can easily get the first bit of the pre-image by running iteratively
+> $$
+> D(y, b_1), D(y, b_1 b_2), D(y, b_1 b_2 b_3) ... D(y, b_1 b_2 b_3 ... b_n).
+> $$
+> In each iteration, the next bit $$i$$ is learned if $$D(y, b_1 ... b_{i-1}b_i)$$ accepts.
+> This concludes the proof, and this proof can be extended to imply $$NP \not\subseteq BPP$$.
+
 Primes and Factoring
 --------------------
 
@@ -492,7 +531,7 @@ It remains to prove the claim.
 > \Pr[ A \tinv] = \Pr[A \tinv \cap \tall x_i \in G_n] + \Pr[A \tinv \cap \tsome x_i \notin G_n]
 > $$
 > 
-> Since the "easy" set $$G_n$$ is small, it is unlikely all $x_i$ are easy.
+> Since the "easy" set $$G_n$$ is small, it is unlikely all $$x_i$$ are easy.
 > Formally, by (AC2)
 > 
 > $$
