@@ -945,13 +945,13 @@ Collection of OWFs
 
 To construct OWFs efficiently, many mathematical / computational assumptions are considered.
 The intuition is to consider *efficiently sampleable* distributions instead of uniformly random strings.
-The typical syntax is PPT algos $(\Gen, \Samp)$:
+The typical syntax is PPT algos $$(\Gen, \Samp)$$:
 
-- $\pp \gets \Gen(1^n)$
-- $x \gets \Samp(1^n, \pp)$
-- $f_\pp : \bit^n \to \bit^\ast$
+- $$\pp \gets \Gen(1^n)$$
+- $$x \gets \Samp(1^n, \pp)$$
+- $$f_\pp : \bit^n \to \bit^\ast$$
 
-And then, for all NUPPT adversary $A$, there exists a negligible function $\eps$ such that
+And then, for all NUPPT adversary $$A$$, there exists a negligible function $$\eps$$ such that
 
 $$
 \Pr[\pp\gets\Gen(1^n), x \gets \Samp(1^n, \pp), y \gets f_\pp(x) : f_\pp(A(1^n, \pp, y)) = 1] \le \eps(n).
@@ -959,9 +959,9 @@ $$
 
 For example, given the factoring assumption, we can construct a collection of OWF by 
 
-- let $\Gen$ output $n$ directly,
-- let $\Samp$ output two $n$-bit primes uniformly at random (using primality testing), and 
-- let $f_\pp$ be the $n$-bit multiplication.
+- let $$\Gen$$ output $$n$$ directly,
+- let $$\Samp$$ output two $$n$$-bit primes uniformly at random (using primality testing), and 
+- let $$f_\pp$$ be the $$n$$-bit multiplication.
 
 Other collections (such as RSA, discrete logarithm, or Rabin) are more involved in their constructions,
 and they provide additional "properties" on top of OWF.
