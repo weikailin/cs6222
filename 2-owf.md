@@ -596,6 +596,164 @@ It remains to prove the claim.
 > We choose $$r_2(n) = 2m \cdot p(n)$$ so that $$\Pr[A \tinv] \lt 1/p$$, contradicting (AC).
 
 
+A Universal OWF
+--------------------
+
+The idea is to construct a function that computes all easy-to-compute functions.
+
+#### **Function:** $$f_\univ$$
+
+{: .defn}
+> Input: $$y$$, 
+> let $$n := |y|$$.
+> 
+> 1. Interpret $$y$$ as a pair $$(M,x)$$ of Turing machine and bitstring,
+>    where $$|M| = \log n$$
+> 2. Run $$M$$ on $$x$$ for $$T=n^2$$ steps
+> 3. If $$M$$ halts in $$T$$ steps, output $$(M,M(x))$$; otherwise, output $$\bot$$.
+
+#### **Theorem:** A Universal Weak OWF
+
+{: .theorem}
+> If there exists a OWF, then the above function $$f_\univ$$ is a weak OWF.
+
+To prove it, we will use the following lemma.
+
+#### **Lemma:** Strong OWF in time $$O(n^2)$$
+
+{: .theorem}
+> If there exists a strongly one-way function $$g$$ , then there exists 
+> a strongly one-way function $$g'$$ that is computable in time $$O(n^2)$$.
+
+Intuition: 
+If there exists a strong OWF $$g$$ in time $$O(n^2)$$, then there exists (at least) a TM $$M_g$$ that computes $$g$$ in $$O(n^2)$$ steps
+such that the description length $$|M_g| = d$$ is a constant.
+WLOG, assume the description of any TM can be padded with a special $$\bot$$ symbol to arbitrary long.
+For any $$s \ge |M_g|$$, let $$M_{g,s}$$ be the description of $$M_g$$ padded to $$s$$ bits.
+Then, for all sufficiently large $$n$$, 
+the $$\log n$$-bit random prefix of $$y$$ is exactly $$M_{g,\log n}$$ w.p. $$1/n$$.
+Hence, $$f_\univ(y)$$ is hard to invert.
+
+Formally, assume for contra (AC),
+for all poly $$q(n)$$, there exists NUPPT $$A$$ s.t. for infinitely many $$n\in\N$$,
+
+$$
+\Pr[y\gets \bit^n, z \gets f_\univ(y) : f_\univ(A(1^n, z)) = z] \gt 1 - 1/q.
+$$
+
+We construct NUPPT $$B$$ that inverts $$z' \gets g(x)$$ for $$x\gets \bit^{n-\log n}$$ by
+
+1. Run $$y \gets A(1^n, (M_g,z'))$$.
+2. Interpret $$y$$ as $$(M, x)$$.
+3. If $$M = M_g$$ and $$z' = g(x)$$, output $$x$$; otherwise, output $$\bot$$.
+
+
+**Notice**{: .label}
+We uses $$M_g$$ in $$B$$ because $$B$$ is asked to invert $$g$$, 
+which means that we know $$g$$ in this proof.
+Alternatively, we prove it *without* AC in lecture, 
+and there is only probability analysis which does not depend on $$g$$. 
+
+By (AC), we have
+
+$$
+\begin{align*}
+1/q
+& \ge \Pr[A \tnotinv] \\
+& \ge \Pr[A \tnotinv | y = (M_g, \star)] \Pr[y = (M_g, \star)] \\
+= \Pr[A \tnotinv | y = (M_g, \star)] \cdot (1/n).
+\end{align*}
+$$
+
+Notice that 
+
+$$
+\Pr[A \tnotinv | y = (M_g, \star)] = \Pr[x\gets\bit^{n-\log n}, z' \gets g(x) : B \tnotinv].
+$$
+
+Hence, we have 
+
+$$
+\Pr[B \tnotinv] \le n / q(n).
+$$
+
+Choosing $$q(n) = n^2$$ and $$A$$ correspondingly, we have $$B$$ inverts w.p. at least $$1-1/n$$,
+that is greater than $$1/p(m)$$ for some polynomial $$p$$ and the input size $$m:= n - \log n$$ of $$g$$,
+contradicts $$g$$ is a strong OWF.
+
+{: .proof-title}
+> Proof of Lemma (Strong OWF in time $$O(n^2)$$)
+> 
+> Suppose we can compute $$g$$ in time $$n^c$$ for some const $$c \gt 2$$.
+> Then, for any input $$x \bit^{n^c}$$,
+> interpret $$x = x_1\|x_2$$ s.t. $$|x_1| = n^c - n$$,
+> and then define
+> $$
+> g'(x) = g'(x_1\|x_2) := x_1 \| g(x_2).
+> $$
+> Let $$m=n^c$$ be the input size of $$g'$$
+> It is easy to see that $$g'$$ is computable in $$O(m^2)$$ time, and it follows by standard reduction 
+> that $$g'$$ is hard to invert if $$g$$ is a OWF.
+
+Note:
+The above construction is impractical due to inefficiency. 
+Suppose there exists a OWF that is easy to compute by a TM of 1000 bits.
+The above needs a "sufficiently long" input so that $$\log n \ge 1000$$ to be a weak OWF, which means $$|x| \ge 2^{1000}$$.
+
+
+Collection of OWFs
+--------------------
+
+To construct OWFs efficiently, many mathematical / computational assumptions are considered.
+The intuition is to consider *efficiently sampleable* distributions instead of uniformly random strings.
+The typical syntax is PPT algos $$(\Gen, \Samp)$$:
+
+- $$\pp \gets \Gen(1^n)$$
+- $$x \gets \Samp(1^n, \pp)$$
+- $$f_\pp : \bit^n \to \bit^\ast$$
+
+And then, for all NUPPT adversary $$A$$, there exists a negligible function $$\eps$$ such that
+
+$$
+\Pr[\pp\gets\Gen(1^n), x \gets \Samp(1^n, \pp), y \gets f_\pp(x) : f_\pp(A(1^n, \pp, y)) = 1] \le \eps(n).
+$$
+
+For example, given the factoring assumption, we can construct a collection of OWF by 
+
+- let $$\Gen$$ output $$n$$ directly,
+- let $$\Samp$$ output two $$n$$-bit primes uniformly at random (using primality testing), and 
+- let $$f_\pp$$ be the $$n$$-bit multiplication.
+
+Other collections (such as RSA, discrete logarithm, or Rabin) are more involved in their constructions,
+and they provide additional "properties" on top of OWF.
+
+<!-- 
+Other stuff, wanted to say discrete logarithm.
+Z*_p can be proved to be a cyclic group, and it is a permutation such that the range is exactly the domain,
+but its generator can be hard to find, and it can even be easy to solve DL due to the even order.
+Choosing p = 2q + 1 for both p, q prime and then choosing the subgroup G_q of Z*_p is good DL,
+every element is generator, but the domain is Z_q while the range g^x in G_q is represented in Z*_p,
+and we may not have good way to map it back to Z_q.
+
+Maybe leave it to PKE, or just use LWE then.
+
+#### **Theorem:** generators are dense
+
+{: .theorem}
+> If $n$ is prime, such a number x (called a primitive root of n) will always exist; 
+> see exercise 3.2.1.2–16. In fact, primitive roots are rather numerous. 
+> There are φ(n − 1) of them, and this is quite a substantial number, since n/φ(n − 1) = O(log log n).
+> 
+> (Knuth, TA of CP, vol 2, Sec 4.5.4)
+
+Basic number theory, DL assumption
+
+OWP
+-->
+
+
+
+
 Primality Testing
 --------------------
 
@@ -660,7 +818,7 @@ for $$n = p_1^{k_1} \cdot p_2^{k_2} ...$$ where $$p_i$$ are distinct primes.
 #### **Definition:**
 
 {: .defn}
-> For any composite $$n \in \N$$, we say that $$a \in Z_n^\*$$ 
+> For any composite $$n \in \N$$, we say that $$a \in Z_n^*$$ 
 > is a *witness* if $$a^{n-1} \neq 1 \mod n$$.
 
 #### **Lemma:** strict subgroup is small
@@ -694,7 +852,7 @@ for $$n = p_1^{k_1} \cdot p_2^{k_2} ...$$ where $$p_i$$ are distinct primes.
 
 {: .defn}
 > For any composite $$n \in \N$$, write $$n-1 = 2^r \cdot d$$ for some integer $$r\in \N$$ and odd $$d$$.
-> We say that $$a \in Z_n^\*$$ 
+> We say that $$a \in Z_n^*$$ 
 > is a *strong* witness if 
 > 
 > $$
@@ -834,160 +992,3 @@ The second step is to show that other composites have many strong witnesses.
 > That implies that there are at least half witnesses.
 > 
 > Ref: [Martin Dietzfelbinger, Primality Testing in Polynomial Time](https://link.springer.com/book/10.1007/b12334)
-
-A Universal OWF
---------------------
-
-The idea is to construct a function that computes all easy-to-compute functions.
-
-#### **Function:** $$f_\univ$$
-
-{: .defn}
-> Input: $$y$$, 
-> let $$n := |y|$$.
-> 
-> 1. Interpret $$y$$ as a pair $$(M,x)$$ of Turing machine and bitstring,
->    where $$|M| = \log n$$
-> 2. Run $$M$$ on $$x$$ for $$T=n^2$$ steps
-> 3. If $$M$$ halts in $$T$$ steps, output $$(M,M(x))$$; otherwise, output $$\bot$$.
-
-#### **Theorem:** A Universal Weak OWF
-
-{: .theorem}
-> If there exists a OWF, then the above function $$f_\univ$$ is a weak OWF.
-
-To prove it, we will use the following lemma.
-
-#### **Lemma:** Strong OWF in time $$O(n^2)$$
-
-{: .theorem}
-> If there exists a strongly one-way function $$g$$ , then there exists 
-> a strongly one-way function $$g'$$ that is computable in time $$O(n^2)$$.
-
-Intuition: 
-If there exists a strong OWF $$g$$ in time $$O(n^2)$$, then there exists (at least) a TM $$M_g$$ that computes $$g$$ in $$O(n^2)$$ steps
-such that the description length $$|M_g| = d$$ is a constant.
-WLOG, assume the description of any TM can be padded with a special $$\bot$$ symbol to arbitrary long.
-For any $$s \ge |M_g|$$, let $$M_{g,s}$$ be the description of $$M_g$$ padded to $$s$$ bits.
-Then, for all sufficiently large $$n$$, 
-the $$\log n$$-bit random prefix of $$y$$ is exactly $$M_{g,\log n}$$ w.p. $$1/n$$.
-Hence, $$f_\univ(y)$$ is hard to invert.
-
-Formally, assume for contra (AC),
-for all poly $$q(n)$$, there exists NUPPT $$A$$ s.t. for infinitely many $$n\in\N$$,
-
-$$
-\Pr[y\gets \bit^n, z \gets f_\univ(y) : f_\univ(A(1^n, z)) = z] \gt 1 - 1/q.
-$$
-
-We construct NUPPT $$B$$ that inverts $$z' \gets g(x)$$ for $$x\gets \bit^{n-\log n}$$ by
-
-1. Run $$y \gets A(1^n, (M_g,z'))$$.
-2. Interpret $$y$$ as $$(M, x)$$.
-3. If $$M = M_g$$ and $$z' = g(x)$$, output $$x$$; otherwise, output $$\bot$$.
-
-
-**Notice**{: .label}
-We uses $$M_g$$ in $$B$$ because $$B$$ is asked to invert $$g$$, 
-which means that we know $$g$$ in this proof.
-Alternatively, we prove it *without* AC in lecture, 
-and there is only probability analysis which does not depend on $g$. 
-
-By (AC), we have
-
-$$
-\begin{align*}
-1/q
-& \ge \Pr[A \tnotinv] \\
-& \ge \Pr[A \tnotinv | y = (M_g, \star)] \Pr[y = (M_g, \star)] \\
-= \Pr[A \tnotinv | y = (M_g, \star)] \cdot (1/n).
-\end{align*}
-$$
-
-Notice that 
-
-$$
-\Pr[A \tnotinv | y = (M_g, \star)] = \Pr[x\gets\bit^{n-\log n}, z' \gets g(x) : B \tnotinv].
-$$
-
-Hence, we have 
-
-$$
-\Pr[B \tnotinv] \le n / q(n).
-$$
-
-Choosing $$q(n) = n^2$$ and $$A$$ correspondingly, we have $$B$$ inverts w.p. at least $$1-1/n$$,
-that is greater than $$1/p(m)$$ for some polynomial $$p$$ and the input size $$m:= n - \log n$$ of $$g$$,
-contradicts $$g$$ is a strong OWF.
-
-{: .proof-title}
-> Proof of Lemma (Strong OWF in time $$O(n^2)$$)
-> 
-> Suppose we can compute $$g$$ in time $$n^c$$ for some const $$c \gt 2$$.
-> Then, for any input $$x \bit^{n^c}$$,
-> interpret $$x = x_1\|x_2$$ s.t. $$|x_1| = n^c - n$$,
-> and then define
-> $$
-> g'(x) = g'(x_1\|x_2) := x_1 \| g(x_2).
-> $$
-> Let $$m=n^c$$ be the input size of $$g'$$
-> It is easy to see that $$g'$$ is computable in $$O(m^2)$$ time, and it follows by standard reduction 
-> that $$g'$$ is hard to invert if $$g$$ is a OWF.
-
-Note:
-The above construction is impractical due to inefficiency. 
-Suppose there exists a OWF that is easy to compute by a TM of 1000 bits.
-The above needs a "sufficiently long" input so that $$\log n \ge 1000$$ to be a weak OWF, which means $$|x| \ge 2^{1000}$$.
-
-
-Collection of OWFs
---------------------
-
-To construct OWFs efficiently, many mathematical / computational assumptions are considered.
-The intuition is to consider *efficiently sampleable* distributions instead of uniformly random strings.
-The typical syntax is PPT algos $$(\Gen, \Samp)$$:
-
-- $$\pp \gets \Gen(1^n)$$
-- $$x \gets \Samp(1^n, \pp)$$
-- $$f_\pp : \bit^n \to \bit^\ast$$
-
-And then, for all NUPPT adversary $$A$$, there exists a negligible function $$\eps$$ such that
-
-$$
-\Pr[\pp\gets\Gen(1^n), x \gets \Samp(1^n, \pp), y \gets f_\pp(x) : f_\pp(A(1^n, \pp, y)) = 1] \le \eps(n).
-$$
-
-For example, given the factoring assumption, we can construct a collection of OWF by 
-
-- let $$\Gen$$ output $$n$$ directly,
-- let $$\Samp$$ output two $$n$$-bit primes uniformly at random (using primality testing), and 
-- let $$f_\pp$$ be the $$n$$-bit multiplication.
-
-Other collections (such as RSA, discrete logarithm, or Rabin) are more involved in their constructions,
-and they provide additional "properties" on top of OWF.
-
-<!-- 
-Other stuff, wanted to say discrete logarithm.
-Z*_p can be proved to be a cyclic group, and it is a permutation such that the range is exactly the domain,
-but its generator can be hard to find, and it can even be easy to solve DL due to the even order.
-Choosing p = 2q + 1 for both p, q prime and then choosing the subgroup G_q of Z*_p is good DL,
-every element is generator, but the domain is Z_q while the range g^x in G_q is represented in Z*_p,
-and we may not have good way to map it back to Z_q.
-
-Maybe leave it to PKE, or just use LWE then.
-
-#### **Theorem:** generators are dense
-
-{: .theorem}
-> If $n$ is prime, such a number x (called a primitive root of n) will always exist; 
-> see exercise 3.2.1.2–16. In fact, primitive roots are rather numerous. 
-> There are φ(n − 1) of them, and this is quite a substantial number, since n/φ(n − 1) = O(log log n).
-> 
-> (Knuth, TA of CP, vol 2, Sec 4.5.4)
-
-Basic number theory, DL assumption
-
-OWP
--->
-
-
