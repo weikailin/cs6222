@@ -470,7 +470,9 @@ We construct $$B_0$$ as below to run $$A$$.
 > 5. run $$x'_1, .., x'_m \gets A(1^{mn}, (y_1,..., y_m))$$
 > 6. if $$f(x'_j) = y$$, output $$x_j$$, otherwise output $$\bot$$.
 
-Note: $$B_0$$ inverts $$y$$ w.p. roughly $$1/p$$ by (AC), but our goal is to invert w.p. $$1-1/q \gg 1/p$$.
+Note: $$B_0$$ inverts $$y$$ w.p. roughly $$1/p$$ by (AC), where the probability
+is taken over $$y$$ and the random tapes.
+However, our goal is to invert w.p. $$1-1/q \gg 1/p$$.
 Hence, repeating $$B_0(y)$$ is necessary.
 
 {: .defn}
