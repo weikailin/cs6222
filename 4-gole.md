@@ -19,6 +19,16 @@ $$
 Contruct PRG from OWF
 ==========================================
 
+We have shown that given a PRG, we can construct a CPA-secure encryption.
+We also showed that PRG, PRF, and CPA-secure encryption implies OWF, 
+so OWFs are necessary if we want cryptography.
+We also have a universal OWF that is as strong as any candidate OWF.
+It remains to construct PRG from OWF.
+The construction implies that
+OWF is necessary and sufficient for PRG, PRF, and encryption,
+and that we have an encryption (and PRG and PRF) that is as strong as any encryption
+(by universal OWF).
+
 Hard-Core Bits from any OWF 
 ---------------------------
 
