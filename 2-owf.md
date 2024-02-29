@@ -601,7 +601,31 @@ It remains to prove the claim.
 A Universal OWF
 --------------------
 
+> Cryptgraphers seldom sleep well
+> 
+> --Silvio Micali
+
+The above shows that, if we believe factoring is hard, then we can construct a one-way function.
+Unfortunately, we do not know how to prove factoring is hard,
+and [[Shor '94]](https://en.wikipedia.org/wiki/Shor%27s_algorithm)
+is indeed an evidence that factoring might be easy.
+Fortunately for cryptographers, even if factoring is in polynomial time,
+we may still have OWFs that are constructed from other assumptions
+(since factoring is not powerful enough to solve many other problems).
+Still, given so many candidate OWFs, can we have a OWF that is as strong as all of them?
+Also, there are many candidate OWFs we don't yet know. 
+Can we construct a OWF that is as strong as any OWF, even those we don't yet know?
+
+That is the idea of **Universal** One-Way Functions.
+Alternatively speaking,
+we want to **construct** a OWF from the assumption that the **existence** of OWFs
+(notice the difference between the existence and the construction).
+It is like a "complete" function of OWFs.
+
 The idea is to construct a function that computes all easy-to-compute functions.
+Since any OWF must be easy to compute with a constant size TM,
+using random strings, we can sample such TM with almost constant probability
+even we do not know which TM it is.
 
 #### **Function:** $$f_\univ$$
 
@@ -663,7 +687,7 @@ $$
 1/q
 & \ge \Pr[A \tnotinv] \\
 & \ge \Pr[A \tnotinv | y = (M_g, \star)] \Pr[y = (M_g, \star)] \\
-= \Pr[A \tnotinv | y = (M_g, \star)] \cdot (1/n).
+& = \Pr[A \tnotinv | y = (M_g, \star)] \cdot (1/n).
 \end{align*}
 $$
 
@@ -700,7 +724,8 @@ contradicts $$g$$ is a strong OWF.
 Note:
 The above construction is impractical due to inefficiency. 
 Suppose there exists a OWF that is easy to compute by a TM of 1000 bits.
-The above needs a "sufficiently long" input so that $$\log n \ge 1000$$ to be a weak OWF, which means $$|x| \ge 2^{1000}$$.
+The above needs a "sufficiently long" input so that $$\log n \ge 1000$$ to be a weak OWF, 
+but that means the universal OWF is only hard for $$n = |x| \ge 2^{1000}$$.
 
 
 Collection of OWFs
