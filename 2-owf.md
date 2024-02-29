@@ -621,6 +621,9 @@ Alternatively speaking,
 we want to **construct** a OWF from the assumption that the **existence** of OWFs
 (notice the difference between the existence and the construction).
 It is like a "complete" function of OWFs.
+Similar to proving the first NP-complete problem, here we show a universal OWF 
+(and then we can construct other OWFs from here).
+It is amazing as we get the strongest of all candidate OWFs.
 
 The idea is to construct a function that computes all easy-to-compute functions.
 Since any OWF must be easy to compute with a constant size TM,
