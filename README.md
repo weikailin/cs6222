@@ -28,7 +28,7 @@ Classroom
 
 **Days and Times:** Tueday/Thursday 2:00-3:15 pm
 
-**Location:** Thornton Hall E303 ![UVA Engineering](assets/images/uva-eng.png)
+**Location:** Thornton Hall E303 ![UVA Engineering](assets/images/uva-eng.png){:style="vertical-align: middle;"}
 
 Instructor and TA Information
 ------------------------------
