@@ -130,13 +130,13 @@ The tentative topics are listed below.
 4.  Private-key encryption, computational indistinguishability 
 5.  Pseudo-random generators (PRG)
 6.  CPA-secure encryption, pseudo-random functions (PRF)
-7.  Message authentication codes (MAC). 
 8.  One-way functions (OWF).
-9.  Strong OWF from weak OWF (hardness amplification). Universal OWF.
-10. Prime Number Theorem. Factoring problem. Miller-Rabin primality testing. 
+10. Prime Number Theorem. Factoring problem.
 11. OWF from factoring assumption. 
+9.  Strong OWF from weak OWF (hardness amplification). Universal OWF.
 12. Hard-core predicates. PRG from hard-core bits.
 13. PRG from any OWF. 
+7.  Message authentication codes (MAC). 
 14. Digital signature. Identification. 
 15. Collision-resistant hash functions. Birthday attack. 
 16. Zero-Knowledge proofs, commitment. 
