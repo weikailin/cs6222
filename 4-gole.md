@@ -199,7 +199,7 @@ Note: the above assumed "for all $$r$$" and "w.p. $$=1$$", both are much stronge
 >    1. For $$j = 1$$ to $$m$$, do
 >       - $$r \gets \bit^n$$
 >       - Run $$z_{i,j} \gets A(1^{2n}, y \| e_i\oplus r) \oplus A(1^{2n}, y \| r)$$
->    2. Let $$x'\_i$$ be the majority of $$\set{z\_{i,j}}\_{j\in[m]}$$
+>    2. Let $$x'_i$$ be the majority of $$\set{z_{i,j}}_{j\in[m]}$$
 > 2. Output $$x' := x'_1 x'_2 ... x'_n$$
 > 
 > To prove $$B_2$$ succeeds with high prob., we first prove that there are many good $$x$$'s.
@@ -317,7 +317,7 @@ Now we are ready to prove the full theorem.
 >>    1. For each $$j=1,2,..., m$$,
 >>       - Run $$z_{i,j} \gets A(1^{2n}, y \| e_i \oplus r_j) \oplus g_{i,j}$$.
 >>
->>       Let $$x'\_i$$ be the majority of $$\set{z\_{i,j}}\_{j\in[m]}$$
+>>       Let $$x'_i$$ be the majority of $$\set{z_{i,j}}_{j\in[m]}$$
 >> 4. Output $$x' := x'_1 x'_2 ... x'_n$$
 > 
 > We begin with claiming the number of good instances of $$x$$.
