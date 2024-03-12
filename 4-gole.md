@@ -25,28 +25,30 @@ so OWFs are necessary if we want cryptography.
 We also have a universal OWF that is as strong as any candidate OWF.
 It remains to construct PRG from OWF.
 The construction implies that
-OWF is necessary and sufficient for PRG, PRF, and encryption,
+OWF is **necessary and sufficient** for PRG, PRF, and encryption,
 and that we have an encryption (and PRG and PRF) that is as strong as any encryption
 (by universal OWF).
+
+![OWF vs others](assets/images/hclemma-plain.svg)
 
 Hard-Core Bits from any OWF 
 ---------------------------
 
 So far we have not yet have a candidate construction of PRG (even with 1-bit expansion).
-We will next construct a PRG from one-way *permutations*.
-
-![OWF vs others](assets/images/hclemma-plain.svg)
+We will next construct a PRG from one-way *permutations* (which is easier).
 
 The construct of PRG comes from two properties of OWF:
-- The output of $$f(x)$$ must be sufficiently random when the input $$x$$ is uniform; 
-  otherwise, $$f$$ is constant (for most $$x$$), then we can invert easily.
-- A sufficiently random $$f(x)$$ can still be easily inverted (such as indentity func).
-  By hard to invert, there must be *some bits* of $$x$$ that are hard to guess when $$f(x)$$ is given.
-  How many bits are hard to guess for any polynomial-time adversary? Must be $$\omega(\log n)$$.
+- The output of $$f(x)$$ must be sufficiently random when the input $$x$$ is uniform.
+  (If the random variable $$y := f(x)$$ is constant or taken over a small support for most $$x$$, 
+  then we can invert $$y$$ with good probability.)
+- A sufficiently random $$f(x)$$ can still be easily inverted (such as indentity function).
+  By hard to invert, there must be *some bits* of $$x$$ 
+  that are hard to guess even when $$f(x)$$ is given.
+  How many bits are hard to guess for any polynomial-time adversary? 
+  Must be $$\omega(\log n)$$ (otherwise, it can be guessed correctly w.p. $$1/poly(n)$$).
 
-Suppose $$f$$ is OWP, then we have "fully random" $$f(x)$$ (that is stronger than the first propery).
-Additionally utilizing the second property, it seems we can take just 1 bit from the "hard bits"
-of $$x$$ to obtain a 1-bit PRG.
+Suppose that $$f$$ is OWP, then we have "fully random" $$f(x)$$.
+That is good in terms of the first property.
 
 #### **Definition:** One-way Permutations
 
@@ -54,7 +56,14 @@ of $$x$$ to obtain a 1-bit PRG.
 > An OWF $$f: \bit^n \to \bit^n$$ for all $$n\in\N$$ is called a *one-way permutations*
 > if $$f$$ is a bijection.
 
-#### **Definition:** Hard-core Bits
+To utilize the second property, we want to obtain some of the "hard bits" from the input $$x$$.
+If we can get 1 extra hard bit, we have a construction of PRG 
+by putting together the output of OWP and the extra hard bit.
+The hard bit must be depend on the output mathematically,
+but it shall be *hard to compute* even given the output.
+The hard bit is formalized below.
+
+#### **Definition:** Hard-core bits
 
 {: .defn}
 > A predicate $$h : \bit^\ast \to \bit$$ is a *hard-core predicate* 
@@ -66,7 +75,12 @@ of $$x$$ to obtain a 1-bit PRG.
 > \Pr[x \gets \bit^n: A(1^n, f(x)) = h(x)] \le \frac{1}{2} + \eps(n).
 > $$
 
-This is indeed the case for some OWPs, such as RSA.
+Notice that here we are not restricting $$f$$ to OWP nor OWF.
+(If $$f$$ never use a bit in the input, then that bit is hard-core.
+However, such $$f$$ is not permutation and is more challenging for us.
+We will focus on OWP in this section.)
+
+That is indeed the case for some OWPs, such as RSA.
 If we construct OWP from the RSA assumption, 
 then the least significant bit of $$x$$ is that "hard to guess" one,
 and then we can obtain PRG from RSA assumption.
@@ -88,12 +102,12 @@ and then we can obtain PRG from RSA assumption.
 However, we want to obtain PRG from *any* OWP 
 or any OWF (without depending on specific assumptions). That is unfortunately unclear.
 
-Fortunately, Goldreich-Levin showed that for any OWF $$f'$$, 
-we can obtain another OWF $$f$$ that we know its hard-core predicate.
+Fortunately, Goldreich-Levin showed that for any OWF (or OWP) $$f'$$, 
+we can obtain another OWF (or OWP) $$f$$ that we know its hard-core predicate.
 The intuition is: given $$f'$$ is hard to invert, in the preimage of $$f(x)$$,
 there must be at least $$\omega(\log n)$$ bits that are hard to guess
-(otherwise, a poly-time adv can invert).
-Hard-core predicate formalizes those bits.
+(otherwise, a poly-time adversary can invert).
+The hard-core predicate formalizes those bits.
 Even we do not know which bits are hard, 
 we can sample randomly and hope to obtain 1 bit out of them.
 
