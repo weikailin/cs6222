@@ -23,6 +23,7 @@ Table of Lecture Notes
 | Feb 22    | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
 | Feb 27    | [From weak to strong OWF](2-owf.md#from-weak-owf-to-strong-owf)    | [Ps 2.4], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec7.pdf), [LTW05](https://lucatrevisan.github.io/pubs/LTW05.pdf) |
 | Feb 29    | [Universal OWF](2-owf.md#a-universal-owf)    | [Ps 2.13], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf) |
+| Mar 12    | [Hard-core lemma](4-gole.md)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
 
 
 <!-- 
