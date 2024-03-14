@@ -197,8 +197,8 @@ Note: the above assumed "for all $$r$$" and "w.p. $$=1$$", both are much stronge
 > To invert $$y \gets f'(x)$$, the construction of $$B_2(1^n, y)$$ is below:
 > 1. For each $$i = 1, 2, ..., n$$, do
 >    1. For $$j = 1$$ to $$m$$, do
->       - $$r \gets \bit^n$$
->       - Run $$z_{i,j} \gets A(1^{2n}, y \| e_i\oplus r) \oplus A(1^{2n}, y \| r)$$
+>       1. Sample $$r \gets \bit^n$$
+>       2. Run $$z_{i,j} \gets A(1^{2n}, y \| e_i\oplus r) \oplus A(1^{2n}, y \| r)$$
 >    2. Let $$x'_i$$ be the majority of $$\set{z_{i,j}}_{j\in[m]}$$
 > 2. Output $$x' := x'_1 x'_2 ... x'_n$$
 > 
@@ -219,7 +219,7 @@ Note: the above assumed "for all $$r$$" and "w.p. $$=1$$", both are much stronge
 >> $$|G| \ge 2^n \cdot \alpha / 2$$.
 > 
 > {: .proof}
->> (This is actually a standard averaging argument or a Markov ineq.)
+>> This is actually a standard averaging argument (or a Markov inequality).
 >> Suppose not, $$|G| \lt 2^n \cdot \alpha / 2$$.
 >> Then,
 >> 
@@ -238,18 +238,18 @@ Note: the above assumed "for all $$r$$" and "w.p. $$=1$$", both are much stronge
 > $$A$$ fails to invert $$y \| e_i \oplus r$$ or $$y \| r$$ w.p. $$\lt 1/2 - \alpha$$ by union bound.
 > So, for any fixed $$i$$, $$\Pr[z_{i,j} = x_i] \ge 1/2 + \alpha$$ for each $$j$$ independently.
 > By Chernoff bound, the majority of $$z_{i,j}$$ is $$x_i$$ w.p. $$\ge 1 - e^{-m\alpha^2 /2}$$.
-> Choosing $$m = np^2(n)$$, the probability is exponentially close to 1.
-> By union bound over all $$i\in[n]$$, $$B_2$$ recovers $$x$$ w.p. close to 1.
+> Choosing $$m = np^2(n)$$, the probability is at least $$1 - e^{-\Omega(n)}$$.
+> By union bound over all $$i\in[n]$$, $$B_2$$ recovers $$x$$ except w.p. $$e^{-\Omega(n)}$$.
 > 
 > Finally, $$B_2$$ succeeds w.p. $$\ge \alpha / 4$$ for all $$x$$ uniformly sampled
 > by failing for all $$x \notin G$$.
 
-To complete the full proof, We want to lower from $$3/4$$ to $$1/2$$.
+To complete the full proof, We want to lower the probability from $$3/4$$ to $$1/2$$.
 The "good set" still holds when modified to $$1/2$$ (since it is a simple averaging).
 The main challenges from the previous $$3/4$$ proof is:
 
-- The union bound of inverting both $$y \| e_i \oplus r$$ and $$y \| r$$. 
-  For $$1/2$$, that lowers to only $$\alpha$$, 
+- It is too weak to take the union bound of inverting both $$y \| e_i \oplus r$$ and $$y \| r$$. 
+  For $$1/2$$, that probability is lowered to only $$\alpha$$, 
   and then that is too low for the following majority and Chernoff bound.
 
 The first idea is to *guess* the inner product $$x \odot r$$ uniformly at random, 
