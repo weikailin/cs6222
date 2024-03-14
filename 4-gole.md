@@ -258,7 +258,8 @@ Supposing that $$p(n)$$ is a constant, we can choose $$m(n) = O(\log n)$$,
 all $$m$$ guesses are correct w.p. $$1/2^m = 1 / \poly(n)$$, 
 then conditioned on correct guesses, we have $$A(y \| e_i \oplus r)$$ correct w.p. $$1/2 + \alpha$$ (when $$x$$ is good),
 and then we can continue with Chernoff bound (w.p. $$1/\poly(n)$$ to fail) and finish the prove.
-For large $$p(n)$$, the guesses are too many and $$1/2^m$$ is negligible.
+For large $$p(n)$$, the guesses are too many, 
+and thus the success probability $$1/2^m$$ is negligible in $$n$$.
 
 The second idea is to use *pairwise independent* guesses.
 Particularly, we have Chebychev's bound for the measure concentration of pairwise indep. r.v.
@@ -308,16 +309,17 @@ Now we are ready to prove the full theorem.
 > {:.defn-title}
 >> Algorithm $$B(1^n, y)$$
 >> 
+>> 0. Let $$m(n)$$ be a polynomial to choose later. 
 >> 1. Let $$\ell := \log m$$, $$(u_1, ..., u_\ell)$$ be fully independent and $$(r_1,..., r_m)$$ be pairwise independent
->>    $$n$$-bit random strings as in Fact of pairwise indep.
+>>    $$n$$-bit random strings as in [sampling pairwise independent](#fact-sampling-pairwise-independent-random-strings).
 >> 2. For each $$k \in [\ell]$$, sample guess bit $$b_k$$ uniformly. For each $$j \in [m]$$, 
->>    compute the bit $$g_{i,j}$$ from $$(b_1, ..., b_\ell)$$ in the same way as $$r_j$$
+>>    compute the pairwise independent bits $$g_{i,j}$$ from $$(b_1, ..., b_\ell)$$ in the same way as $$r_j$$
 >>    (so that for any $$x$$, $$g_{i,j} = x \odot r_j$$ and $$b_k = x \odot u_k$$ for all $$k$$).
 >> 3. For each $$i=1,2, .., n$$,
 >>    1. For each $$j=1,2,..., m$$,
 >>       - Run $$z_{i,j} \gets A(1^{2n}, y \| e_i \oplus r_j) \oplus g_{i,j}$$.
 >>
->>       Let $$x'_i$$ be the majority of $$\set{z_{i,j}}_{j\in[m]}$$
+>>    2. Let $$x'_i$$ be the majority of $$\set{z_{i,j}}_{j\in[m]}$$
 >> 4. Output $$x' := x'_1 x'_2 ... x'_n$$
 > 
 > We begin with claiming the number of good instances of $$x$$.
@@ -340,11 +342,18 @@ Now we are ready to prove the full theorem.
 > 
 > We condition on the good event that $$x \in G$$.
 > Next, we condition on the "lucky event" that 
-> the guess $$b_k$$ equals to $$x \odot u_k$$ for all $$k$$, which happens w.p. $$1/m$$.
-> That implies $$(g_{i,1}, ..., g_{i,m})$$ are all correct.
-> With the conditioning, for any $$j \neq j'$$, $$r_j$$ and $$r_{j'}$$ are still pairwise indep.,
-> and thus $$(g_{i,j}, g_{i,j'})$$ are pairwise indep. as well.
-> Therefore, by Chebychev's ineq., the majority of $$g_{i,j}$$ equals to $$x \odot e_i$$
+> for all $$k$$, the guess $$b_k$$ equals to $$x \odot u_k$$, which happens w.p. $$1/m$$.
+> That implies $$(g_{i,1}, ..., g_{i,m})$$ are all correct:
+> for any $$j \in [m]$$, let $$S := \set{k : k\text{-th bit of } j \text{ is 1}}$$,  
+> we have that
+> 
+> $$
+> g_{i,j} = \bigoplus_{k \in S} b_{i,k} = \bigoplus_{k \in S} x \odot u_k = x \odot r_j.
+> $$
+> 
+> With the conditioning, for any $$j \neq j'$$, $$r_j$$ and $$r_{j'}$$ are still pairwise independent,
+> and thus $$(g_{i,j}, g_{i,j'})$$ are pairwise independent as well.
+> Therefore, by Chebychev's inequality, the majority of $$g_{i,j}$$ equals to $$x \odot e_i$$
 > w.p.
 > 
 > $$
