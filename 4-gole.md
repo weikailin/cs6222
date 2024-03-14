@@ -385,10 +385,13 @@ where $$p(n)$$ depends on the (hypothetical) NUPPT $$A$$.
 Since the guessed bits entails information about $$x$$,
 the proof formally implies that for any OWF, there must be $$\omega(\log n)$$ bits 
 that are hard to invert (from $$f(x)$$ to $$x$$).
-Still, having an *efficient and uniform attack* is non-trivial:
-since we do not know which are the hard bits,
-and the number of subsets $${n \choose c \log n} \ge (n/c \log n)^{c\log n}$$ is a super-polynomial,
-it was unclear how to guess efficiently if we had not applied the Chebychev bound.
+Still, having an *efficient and uniform attack* is non-trivial.
+Put it in another view. 
+The output of adversary $$A$$ gives a probabilistic bit conveying information about $$x$$,
+and the reduction is to *learn* $$x$$ by repeatedly querying $$A$$ with
+carefully chosen inputs, so that the probability of finding correct $$x$$ is high
+and the time and query is small.
+Hence, the reduction is related to learning at a high level.
 
 **Discuss**{:.label}
 How far does the Hard-core Lemma extend to? 
