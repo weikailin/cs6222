@@ -383,7 +383,7 @@ Now we are ready to prove the full theorem.
 The number of bits we guessed is $$\log m = O(\log p(n)) = O(\log n)$$, 
 where $$p(n)$$ depends on the (hypothetical) NUPPT $$A$$.
 Since the guessed bits entails information about $$x$$,
-the proof implies (again) that there must be $$\omega(\log n)$$ bits 
+the proof formally implies that for any OWF, there must be $$\omega(\log n)$$ bits 
 that are hard to invert (from $$f(x)$$ to $$x$$).
 Still, having an *efficient and uniform attack* is non-trivial:
 since we do not know which are the hard bits,
