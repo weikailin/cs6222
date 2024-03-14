@@ -344,7 +344,7 @@ Now we are ready to prove the full theorem.
 > Next, we condition on the "lucky event" that 
 > for all $$k$$, the guess $$b_k$$ equals to $$x \odot u_k$$, which happens w.p. $$1/m$$.
 > That implies $$(g_{i,1}, ..., g_{i,m})$$ are all correct:
-> for any $$j \in [m]$$, let $$S := \set{k : k\text{-th bit of } j \text{ is 1}}$$,  
+> for any $$j \in [m]$$, let $$S := \set{k : k\text{-th bit of } j \text{ is 1}}$$,
 > we have that
 > 
 > $$
@@ -357,18 +357,27 @@ Now we are ready to prove the full theorem.
 > w.p.
 > 
 > $$
-> \Pr[ m (1 + \alpha)/2 - X \ge m \alpha/2] \le \frac{1}{m (\alpha/2)^2},
+> \Pr[ m (1 + \alpha)/2 - X \ge m \alpha/2] \le \frac{1}{m \cdot (\alpha/2)^2},
 > $$
 > 
 > where $$X = \sum_j X_j$$, and $$X_j$$ denotes the event that $$A$$ outputs $$x\odot(e_i \oplus r_j)$$ correctly.
 > Choosing $$m(n) := 8n p^2(n)$$, we have that $$\Pr[x'_i \neq x_i] \le 1/2n$$.
-> Taking union bound for all $$i$$, $$\Pr[x' = x] \ge 1/2$$, conditioning on $$x \in G$$ and all $$b_i$$'s are correct.
+> 
+> The above shows that each bit $$x_i$$ is correctly recovered with a good marginal probability.
+> We want that all bits $$x'_i$$'s are correct with a good joint probability,
+> but the different $$x'_i$$'s come from the *same* randomness $$u_k$$'s and $$b_k$$'s.
+> (It is necessary to use the same $$b_k$$'s 
+> because we want the number of guessed bits to be strictly logarithmic in $$n$$).
+> 
+> Fortunately, union bound works with dependent events.
+> Taking union bound for all $$i\in[n]$$, $$\Pr[x' = x] \ge 1/2$$, 
+> conditioning on $$x \in G$$ and all $$b_i$$'s are correct.
 > Removing the conditional events\* takes $$\alpha/2$$ and $$1/m$$, but $$B$$ still inverts $$y$$
 > w.p. $$\ge 1/(4p(n)m(n)) = 1 / 32 n p^3(n)$$, contradicting $$f'$$ is OWF.
 > 
-> (\*For any events $$A,B,C$$, 
-> $$\Pr[A] \ge \Pr[A \| B \cap C] \Pr[B \cap C]$$, where $$A$$ is $$x' = x$$, $$B$$ is $$x \in G$$, 
-> $$C$$ is all $$b_i$$'s are correct.)
+> \* For any events $$A,B,C$$, $$\Pr[A] \ge \Pr[A | B \cap C] \Pr[B \cap C]$$.
+> The above applied that $$A$$ is $$x' = x$$, $$B$$ is $$x \in G$$, and
+> $$C$$ is the event that $$b_k = A(y\| u_k)$$ is correct for all $$k \in [\ell].
 
 **Discuss**{:.label}
 The number of bits we guessed is $$\log m = O(\log p(n)) = O(\log n)$$, 
