@@ -417,6 +417,16 @@ Min-Entropy and Leftover Hash Lemma
 > 
 > [V, Definition 6.2, p169]
 
+#### **Fact:** (Statistical close to uniform, warmup)
+
+{:.theorem}
+> Let $$n \in \N$$, $$\eps \in [0,1]$$, and random variable $$X \in \bit^n$$.
+> If $$X$$ is $$\eps$$-close to $$U_n$$, then 
+> $$
+> \Pr[ y \gets U_n: y \in \Supp(X)] \ge 1-\eps,
+> $$
+> where $$\Supp(X) := \set{x : \Pr[X = x] \gt 0}$$ denotes the support of $$X$$.
+
 #### **Definition:** Min-entropy
 
 {:.defn}
@@ -431,7 +441,24 @@ Min-Entropy and Leftover Hash Lemma
 > 
 > [V, Definition 6.7, p171]
 
-#### **Theorem:** Leftover Hash Lemma
+{:proof-title}
+> Example:
+> 
+> We say a function $$f: \bit^n \to \bit^n$$ is $$M$$-regular if
+> it is $$M$$-to-one for every input, i.e., for all $$y \in \bit^n$$, 
+> it holds that $$|f^{-1}(y)| = M$$.
+> We have $$H_\infty(f(U_n)) = \log(2^n / M)$$.
+> Let $$k := H_\infty(f(U_n))$$, and let $$m := \log M$$ (so that $$n = k+m$$).
+> 
+> Suppose someone secretly sampled $$x \gets U_n$$ and computed $$f(x)$$.
+> We have the following:
+> - Given nothing, we can only guess $$x$$ correctly w.p. $$2^{-n}$$.
+> - Given nothing, we can only guess $$f(x)$$ correctly w.p. $$2^{-k}$$, by the min-entropy of $$f(x)$$.
+> - Given $$f(x)$$, we can guess $$x$$ correctly w.p. $$2^{-m}$$.
+>   Thus, $$m$$ is viewed as the min-entropy of $$x$$ given $$f(x)$$
+>   (we avoid the formalization of conditional min-entropy).
+
+#### **Theorem:** Leftover Hash Lemma [Mazor-Pass 2023, Lemma 3.4]
 
 {:.theorem}
 > Let $$n\in\N, \eps \in [0,1]$$, and let $$X$$ be a random variable over $$\bit^n$$.
@@ -446,4 +473,19 @@ Min-Entropy and Leftover Hash Lemma
 > where $$M\odot x$$ denotes the matrix multiplication modulo 2,
 > $$(z)_{1..\ell}$$ denotes the first $$\ell$$ bits of $$z$$,
 > and $$U_\ell$$ denotes the uniform distribution over $$\bit^\ell$$.
+
+{:proof-title}
+> Example:
+> 
+> Consider a distribution $$X \in \bit^n$$ such that 
+> $$H_\infty(X) = k$$ for some $$k \in [0,n]$$.
+> Let $$M$$ be the matrix sampled as in LHL, 
+> and let $$\ell$$ be defined w.r.t. $$k$$ as in LHL.
+> Sample $$z \gets \bit^\ell$$ uniformly at random.
+> Then, for any $$\eps \in [0,1]$$, we have that
+> $$
+> \Pr_{M,z}[\exists x \text{~s.t.~} p_X(x) > 0] \ge 1 - \eps,
+> $$
+> where $$p_X(\cdot)$$ denotes the probability mass function of $$X$$.
+
 
