@@ -404,6 +404,46 @@ Suppose $$f'$$ is OWF, and suppose $$h'$$ is a hard-core predicate for $$f'$$.
 
 The questions are highly relevant when we want to construct PRG from any one-way *function*.
 
+Min-Entropy and Leftover Hash Lemma 
+---------------------------
 
-<!-- #### **Definition:** Chose-Ciphertext-Attack Encryption (CCA 1/2) -->
+#### **Definition:** statistical difference
+
+{:.defn}
+> For random variables $$X$$ and $$Y$$ taking values in $$U$$, 
+> their *statistical difference* (also known as *variation distance*) is 
+> $$\Delta(X, Y) := \max_{T \subseteq U} | \Pr[X \in T ] − \Pr[Y \in T]|$$. 
+> We say that $$X$$ and $$Y$$ are $$\eps$$-close if $$\Delta(X, Y ) \leq \eps$$.
+> 
+> [V, Definition 6.2, p169]
+
+#### **Definition:** Min-entropy
+
+{:.defn}
+> Let $$X$$ be a random variable. Then
+> the min-entropy of $$X$$ is:
+> 
+> $$
+> H_\infty(X) = \min_{x}\left\{\log \frac{1}{\Pr[X=x]}\right\}.
+> $$
+>   
+> where all logs are base 2.
+> 
+> [V, Definition 6.7, p171]
+
+#### **Theorem:** Leftover Hash Lemma
+
+{:.theorem}
+> Let $$n\in\N, \eps \in [0,1]$$, and let $$X$$ be a random variable over $$\bit^n$$.
+> Let $$M \gets \bit^{n\times n}$$ and a random matrix, and let 
+> $$
+> \ell \le H_\infty(X) - 3 \log(1/\eps) - 4 \log n - 4.
+> $$
+> Then,
+> $$
+> \Delta((M,(M\odot x)_{1..\ell}), (M, U_\ell)) \le \eps,
+> $$
+> where $$M\odot x$$ denotes the matrix multiplication modulo 2,
+> $$(z)_{1..\ell}$$ denotes the first $$\ell$$ bits of $$z$$,
+> and $$U_\ell$$ denotes the uniform distribution over $$\bit^\ell$$.
 
