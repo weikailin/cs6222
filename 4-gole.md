@@ -479,6 +479,8 @@ Min-Entropy and Leftover Hash Lemma
 > where $$M\odot x$$ denotes the matrix multiplication modulo 2,
 > $$(z)_{1..\ell}$$ denotes the first $$\ell$$ bits of $$z$$,
 > and $$U_\ell$$ denotes the uniform distribution over $$\bit^\ell$$.
+> 
+> (See [Mazor-Pass 2023] for a simple proof from Goldreich-Levin's hard-core lemma.)
 
 {:proof-title}
 > Example:
@@ -496,4 +498,19 @@ Min-Entropy and Leftover Hash Lemma
 > 
 > where $$p_X(\cdot)$$ denotes the probability mass function of $$X$$.
 
+{:proof-title}
+> Example:
+> 
+> Consider the distribution $$X$$, the random matrix $$M$$, the parameter $$\ell$$
+> defined as the above.
+> Then, for any $$\eps \in [0,1]$$, we have that the following two distributions
+> - $$(M, (M\odot x_1)_{1..\ell}), (M\odot x_2)_{1..\ell})$$ and
+> - $$(M, U_{1,\ell}, U_{2,\ell})$$
+> are $$2\eps$$-close, where $$U_{1,\ell}$$ and $$U_{2,\ell}$$ are two independent
+> and uniformly random $$\ell$$-bit strings.
+> 
+> (The proof is a simple hybrid.)
+
+Notice that in the above example, $$x_1$$ and $$x_2$$ did not need to be the same distribution,
+and they didn't even need to be independent.
 
