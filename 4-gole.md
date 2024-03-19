@@ -422,9 +422,11 @@ Min-Entropy and Leftover Hash Lemma
 {:.theorem}
 > Let $$n \in \N$$, $$\eps \in [0,1]$$, and random variable $$X \in \bit^n$$.
 > If $$X$$ is $$\eps$$-close to $$U_n$$, then 
+> 
 > $$
 > \Pr[ y \gets U_n: y \in \Supp(X)] \ge 1-\eps,
 > $$
+> 
 > where $$\Supp(X) := \set{x : \Pr[X = x] \gt 0}$$ denotes the support of $$X$$.
 
 #### **Definition:** Min-entropy
@@ -463,13 +465,17 @@ Min-Entropy and Leftover Hash Lemma
 {:.theorem}
 > Let $$n\in\N, \eps \in [0,1]$$, and let $$X$$ be a random variable over $$\bit^n$$.
 > Let $$M \gets \bit^{n\times n}$$ and a random matrix, and let 
+> 
 > $$
 > \ell \le H_\infty(X) - 3 \log(1/\eps) - 4 \log n - 4.
 > $$
+> 
 > Then,
+> 
 > $$
 > \Delta((M,(M\odot x)_{1..\ell}), (M, U_\ell)) \le \eps,
 > $$
+> 
 > where $$M\odot x$$ denotes the matrix multiplication modulo 2,
 > $$(z)_{1..\ell}$$ denotes the first $$\ell$$ bits of $$z$$,
 > and $$U_\ell$$ denotes the uniform distribution over $$\bit^\ell$$.
@@ -483,9 +489,11 @@ Min-Entropy and Leftover Hash Lemma
 > and let $$\ell$$ be defined w.r.t. $$k$$ as in LHL.
 > Sample $$z \gets \bit^\ell$$ uniformly at random.
 > Then, for any $$\eps \in [0,1]$$, we have that
+> 
 > $$
 > \Pr_{M,z}[\exists x \text{~s.t.~} p_X(x) > 0] \ge 1 - \eps,
 > $$
+> 
 > where $$p_X(\cdot)$$ denotes the probability mass function of $$X$$.
 
 
