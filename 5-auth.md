@@ -172,6 +172,37 @@ There are several formal definitions, and we discuss only two below.
 
 Ref: [Ps 5.5] [KL 9.3]
 
+#### **Definition:** Universal One-Way Hash Functions
+
+{:.defn}
+> A set of functions 
+> $$H = \set{h_k : \bit^{d(n)} \to \bit^{r(n)}, n = |k|}_{k \in \bit^\ast}$$ is 
+> a family of *universal one-way hash functions (UOWHF)* if:
+> 
+> - (compression) $$r(n) \lt d(n)$$.
+> - (ease of evaluation) Given $$k \in \bit^n$$ and $$x \in \bit^{r(n)}$$, the computation of $$h_k(x)$$ can be done in PPT in $$n$$.
+> - (collision resistance) for all NUPPT $$A$$, there exists a negligible $$\eps$$ such that $$\forall n \in \N$$,
+>   $$A$$ wins the following game w.p. $$\le \eps(n)$$:
+>   
+>   1. $$(x, state) \gets A(1^n)$$
+>   2. $$k \gets \bit^n$$
+>   3. $$x' \gets A(1^n, k, state)$$
+>   4. $$A$$ wins if $$x' \neq x$$ and $$f_k(x') = f_k(x)$$
+
+{:.proof-title}
+> Example:
+> 
+> Suppose $$H = \set{h_i: \bit^* \to \bit^{|i|}}_{i \in \bit^*}$$ is a family of UOWHF.
+> Let $$(\Gen, \Tag, \Ver)$$ be a MAC for $$2n$$ bit messages,
+> where $$n$$ is the security parameter (given to $$\Gen$$).
+> Then the following is also a MAC for arbitrarily long (polynomial in $$n$$) messages:
+> 
+> - $$\Gen'$$ is identical to $$\Gen$$.
+> - $$\Tag'_k(m)$$: sample $$i \gets \bit^n$$, compute $$y \gets h_i(m)$$, 
+>   then output $$(i \| y \| \Tag_k(i \| y))$$.
+> - $$\Tag'_k(m, \sigma = i' \| y' \| \sigma')$$: 
+>   accept iff $$h_{i'}(m) = y'$$ and $$\Ver_k(i'\|y', \sigma')$$ accepts.
+
 #### **Definition:** Collision-Resistant Hash Functions
 
 {:.defn}
@@ -195,45 +226,12 @@ otherwise, a non-uniform $$A$$ can just remember a colliding pair $$(x,x')$$
 for every problem size $$n\in \N$$.
 Many practical hash functions (such as SHA) are unkeyed and do not satisfy this definition.
 
-#### **Definition:** Universal One-Way Hash Functions
-
-{:.defn}
-> A set of functions 
-> $$H = \set{h_k : \bit^{d(n)} \to \bit^{r(n)}, n = |k|}_{k \in \bit^\ast}$$ is 
-> a family of *universal one-way hash functions (UOWHF)* if:
-> 
-> - (compression) $$r(n) \lt d(n)$$.
-> - (ease of evaluation) Given $$k \in \bit^n$$ and $$x \in \bit^{r(n)}$$, the computation of $$h_k(x)$$ can be done in PPT in $$n$$.
-> - (collision resistance) for all NUPPT $$A$$, there exists a negligible $$\eps$$ such that $$\forall n \in \N$$,
->   $$A$$ wins the following game w.p. $$\le \eps(n)$$:
->   
->   1. $$(x, state) \gets A(1^n)$$
->   2. $$k \gets \bit^n$$
->   3. $$x' \gets A(1^n, k, state)$$
->   4. $$A$$ wins if $$x' \neq x$$ and $$f_k(x') = f_k(x)$$
-
 A CRHF is a UOWHF and also a OWF, and we can construct UOWHF from OWF.
 However, it is long open whether we can get CRHF from OWF.
 Instead, CRHF is contructed from various concrete assumptions, 
 and CRHF is also constructed from "trapdoor permutations", 
 which is yet another primitive that we do not know how to obtain from OWF.
 We will use *discrete logarithm* assumption below.
-
-
-{:.proof-title}
-> Example:
-> 
-> Suppose $$H = \set{h_i: \bit^* \to \bit^{|i|}}_{i \in \bit^*}$$ is a family of UOWHF.
-> Let $$(\Gen, \Tag, \Ver)$$ be a MAC for $$2n$$ bit messages,
-> where $$n$$ is the security parameter (given to $$\Gen$$).
-> Then the following is also a MAC for arbitrarily long (polynomial in $$n$$) messages:
-> 
-> - $$\Gen'$$ is identical to $$\Gen$$.
-> - $$\Tag'_k(m)$$: sample $$i \gets \bit^n$$, compute $$y \gets h_i(m)$$, 
->   then output $$(i \| y \| \Tag_k(i \| y))$$.
-> - $$\Tag'_k(m, \sigma = i' \| y' \| \sigma')$$: 
->   accept iff $$h_{i'}(m) = y'$$ and $$\Ver_k(i'\|y', \sigma')$$ accepts.
-
 
 Digital Signature Schemes
 -------------------------
