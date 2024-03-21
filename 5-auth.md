@@ -6,6 +6,7 @@ nav_exclude: false
 ---
 
 $$
+\newcommand{\Gen}{\mathsf{Gen}}
 \newcommand{\Tag}{\mathsf{Tag}}
 \newcommand{\Ver}{\mathsf{Ver}}
 \newcommand{\Sign}{\mathsf{Sign}}
