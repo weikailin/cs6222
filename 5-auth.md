@@ -200,8 +200,13 @@ Ref: [Ps 5.5] [KL 9.3]
 > - $$\Gen'$$ is identical to $$\Gen$$.
 > - $$\Tag'_k(m)$$: sample $$i \gets \bit^n$$, compute $$y \gets h_i(m)$$, 
 >   then output $$(i \| y \| \Tag_k(i \| y))$$.
-> - $$\Tag'_k(m, \sigma = i' \| y' \| \sigma')$$: 
+> - $$\Ver'_k(m, \sigma = i' \| y' \| \sigma')$$: 
 >   accept iff $$h_{i'}(m) = y'$$ and $$\Ver_k(i'\|y', \sigma')$$ accepts.
+>   
+> Here, we upgraded the MAC to work for messages longer than $$2n$$.
+
+Question: in the definition of UOWHF, we allow $$A$$ to choose $$x$$. 
+Why or where we use such property in the example?
 
 #### **Definition:** Collision-Resistant Hash Functions
 
