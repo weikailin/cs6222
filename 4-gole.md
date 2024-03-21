@@ -480,7 +480,7 @@ Min-Entropy and Leftover Hash Lemma
 > $$(z)_{1..\ell}$$ denotes the first $$\ell$$ bits of $$z$$,
 > and $$U_\ell$$ denotes the uniform distribution over $$\bit^\ell$$.
 > 
-> (See [Mazor-Pass 2023] for a simple proof from Goldreich-Levin's hard-core lemma.)
+> (See [[Mazor-Pass 2023](https://eprint.iacr.org/2023/1451.pdf)] for a simple proof from Goldreich-Levin's hard-core lemma.)
 
 {:proof-title}
 > Example:
@@ -513,4 +513,57 @@ Min-Entropy and Leftover Hash Lemma
 
 Notice that in the above example, $$x_1$$ and $$x_2$$ did not need to be the same distribution,
 and they didn't even need to be independent.
+
+PRG from any OWF
+---------------------------
+
+In this subsection, we begin with describing the construction of Mazor and Pass [[MP23](https://eprint.iacr.org/2023/1451.pdf)].
+
+#### **Construction:** Mazor-Pass PRG
+
+{: .defn}
+> Let $f: \bit^n \to \bit^n$ be a function for all $n\in\N$.
+> Define the following functions.
+> 
+> - $h_M(x) := M\odot f(x) \| M\odot x$, where $x\in\bit^n$, and
+>   $M\in \bit^{n\times n}$ is a matrix that will be given later. 
+>   Looking forward, we will compute $h_M(x)$ for different $x$'s but the same $M$.
+> - $\bar h_M(x_1, ..., x_{t}) := h_M(x_1) \| ... \| h_M(x_{t})$,
+>   which is simply repeatedly applying $h_M$ on $t$ independent strings $x_i\in\bit^n$
+>   and concatenate the outputs.
+> 
+> The function $g$ is defined by the following (deterministic) algorithm, where 
+> - $s,t = \poly(n)$ are parameters to be determined later, 
+> - $s' := s \cdot \ceil{\frac{n + \log n}{2n}}$ is also a parameter, 
+> - $M \in \bit^{n\times n}$, $x_{i,j} \in \bit^n$, $r_i \in [2n]$, and $R \in \bit^{s' \times s}$ 
+>   are all inputs ($r_i$ is represented in a $(\log n)$-bit binary string).
+> 
+>> Function $g(M, (x_{i,j} : i \in [s], j\in [t]), (r_i : i \in [s]), R)$:
+>> 1. For all $i \in [s]$, compute $y'_i \gets \har h_M(x_{i,1}, ..., x_{i,t})$.
+>>    This is called a "row," which consists of $2nt$ bits.
+>> 2. For each $i \in [s]$, remove from $y'_i$ the prefix $r_i$ bits and suffix $2n - r_i$ bits;
+>>    call the resulting $2n(t-1)$-bit string as $y_i$.
+>> 3. Define $R(\hat y) := R \odot \hat y$ for any $s$-bit $y$.
+>> 4. For each $j \in [2n(t-1)]$, define $\hat y_j := y_{1,j} \| y_{2,j} \| ... \| y_{s,j}$.
+>>    That is, $\hat y_j$ is the concatenation of the $j$-th bits of all $y_1, y_2, ..., y_s$,
+>>    and thus each $\hat y_j$ is $s$-bit.
+>> 5. Output $M\| R\| R(\hat y_1) \| R(\hat y_2) \| ... \| R(\hat y_{2n(t-1)})$.
+
+We claim that if $f$ is OWF, then the function $g$ defined as the above is a PRG.
+Clearly, $g$ is easy to compute if $f$ is.
+For expansion, the input and output sizes of $g$ are:
+- Input: $n^2 + nst + s(1+\log n) + ss'$, for $M$, $x$'s, $r$'s, and $R$.
+- Output: $n^2 + ss' + 2n(t-1)s'$. Since $s' = s/2 + s \cdot \frac{\log}{2n}$, 
+  we have that $ 2n(t-1)s' = n(t-1)s + (t-1)s \log (2n).$
+
+Choosing sufficiently large $t \ge 2n$, 
+we obtain the expansion as the difference between output and input size is
+
+$
+n(t-1)s + (t-1)s \log (2n) - (nst + s(1+\log n))
+= -ns + (2n-2)s \log (2n) > 1,
+$
+
+It remains to show pseudorandomness.
+
 
