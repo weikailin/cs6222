@@ -539,7 +539,7 @@ In this subsection, we begin with describing the construction of Mazor and Pass 
 >   are all inputs ($$r_i$$ is represented in a $$(\log n)$$-bit binary string).
 > 
 >> Function $$g(M, (x_{i,j} : i \in [s], j\in [t]), (r_i : i \in [s]), R)$$:
->> 1. For all $$i \in [s]$$, compute $$y'_i \gets \har h_M(x_{i,1}, ..., x_{i,t})$$.
+>> 1. For all $$i \in [s]$$, compute $$y'_i \gets \bar h_M(x_{i,1}, ..., x_{i,t})$$.
 >>    This is called a "row," which consists of $$2nt$$ bits.
 >> 2. For each $$i \in [s]$$, remove from $$y'_i$$ the prefix $$r_i$$ bits and suffix $$2n - r_i$$ bits;
 >>    call the resulting $$2n(t-1)$$-bit string as $$y_i$$.
