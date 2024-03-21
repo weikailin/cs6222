@@ -220,6 +220,20 @@ which is yet another primitive that we do not know how to obtain from OWF.
 We will use *discrete logarithm* assumption below.
 
 
+{:.proof-title}
+> Example:
+> 
+> Suppose $$H = \set{h_i: \bit^* \to \bit^{|i|}}_{i \in \bit^*}$$ is a family of UOWHF.
+> Let $$(\Gen, \Tag, \Ver)$$ be a MAC for $$2n$$ bit messages,
+> where $$n$$ is the security parameter (given to $$\Gen$$).
+> Then the following is also a MAC for arbitrarily long (polynomial in $$n$$) messages:
+> 
+> - $$\Gen'$$ is identical to $$\Gen$$.
+> - $$\Tag'_k(m)$$: sample $$i \gets \bit^n$$, compute $$y \gets h_i(m)$$, 
+>   then output $$(i \| y \| \Tag_k(i \| y))$$.
+> - $$\Tag'_k(m, \sigma = i' \| y' \| \sigma')$$: 
+>   accept iff $$h_{i'}(m) = y'$$ and $$\Ver_k(i'\|y', \sigma')$$ accepts.
+
 
 Digital Signature Schemes
 -------------------------
