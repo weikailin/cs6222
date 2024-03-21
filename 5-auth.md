@@ -21,8 +21,8 @@ Authentication
 When people communicate through written words,
 signatures and seals are applied to ensure that the written message
 is *exactly* the same from the sender to the receiver.
-Notice that the sender and receiver need to share some information *up front*,
-for example, the receiver must have known the signature of the sender. 
+Notice that the sender must share some information with the receiver *up front*,
+for example, the receiver must have known the signature of the sender.
 
 In this section, we will discuss digital methods which make
 it difficult to “forge” a “signature.” Just as with encryption, there
@@ -37,6 +37,8 @@ who know the secret key can issue signatures. [Ps, p133]
 
 Message Authentication Codes (MAC)
 -------------------------
+
+
 
 #### **Definition:** MAC
 
@@ -79,10 +81,31 @@ Discuss:
   What if the adversary gets some $$(x, \Tag_k(x))$$ pairs but only for challenger-chosen $$x$$'s?
 - The adversary $$A$$ aims to forge a tag for *arbitrary message* $$m$$. Is that too strong since useful messages are not arbitrary?
 - Can we change the definition to that $$A$$ wins only if it outputs a good key?
-- Can this definition defined against an adversary that *replay* a (message, tag) pair? 
+- Can this definition prevent an adversary that *replays* a (message, tag) pair? 
   Replay can be a devastating attack in many applications, such as financial transactions.
 - If we additionally give the adversary oracle access to verification $$\Ver_k$$, is the definition stronger?
 - Does the existence of MAC imply the existence of OWF? If so, what's the construction?
+
+The above questions provide intuitions to our first MAC candidate.
+
+#### **Construction:** Warmup, Information-Theoretic MAC
+
+{:.defn}
+> Define the following functions
+> 
+> - $$\Gen(1^n): k \gets \bit^n$$.
+> - $$\Tag_k(m)$$: Output $$m \oplus k$$.
+> - $$\Ver_k(m, \sigma)$$: Ouptut “accept” if and only if $$m \oplus k = \sigma$$.
+
+This MAC is clearly *insecure* if the adversary can oracle query $$\Tag_k$$ once:
+given any pair $$(m, \sigma = m \oplus k)$$, it is trivial to recover $$k$$.
+However, the MAC is actually *Information-Theoretically* (and perfectly) secure
+when the adversary can not obtain any pair.
+Hence, it is called $$IT-MAC$$ and is used in some cryptographic protocols
+(which we don't have time to cover).
+
+Noticing that the above output of $$\Tag$$ is *uniformly* random,
+we construct a MAC that outputs a *psuedorandom* string.
 
 #### **Construction:** MAC
 
@@ -133,6 +156,70 @@ It is necessary in practice to handle some subtleties, and this is called "domai
 There are other approaches, such as CBC-MAC (which is *only secure when* 
 the message length is "ﬁxed and agreed upon in advance", see [KL, Exercise 4.13]).
 We skip the details of the constructs.
+
+Cryptographic Hash Functions
+-------------------------
+
+Hash functions are used in many areas of computer science, and in general,
+all areas require that the function is *shrinking*;
+that is, the output is shorter than the input of the function.
+
+In cryptographic applications like MAC, we want a hash function $$h$$ to be
+*collision-resistant*.
+That is, give an input $$m$$ and its corresponding output $$h(m)$$, 
+it is computationally hard to find $$m' \neq m$$ such that $$h(m') = h(m)$$.
+There are several formal definitions, and we discuss only two below.
+
+Ref: [Ps 5.5] [KL 9.3]
+
+#### **Definition:** Collision-Resistant Hash Functions
+
+{:.defn}
+> A set of functions $$H = \set{h_i : D_i \to R_i}_{i\in I}$$ and algorithm $$\Gen$$ is 
+> a family of *collision-resistant hash functions (CRHF)* if:
+> 
+> - (ease of sampling) $$i\gets \Gen(1^n)$$ runs in PPT, $$i \in I$$.
+> - (compression) 
+>   $$|R_i| \lt |D_i|$$.
+> - (ease of evaluation) Given $$i \in I$$ and $$x \in R_i$$, the computation of $$h_i(x)$$ can be done in PPT.
+> - (collision resistance) for all NUPPT $$A$$, there exists a negligible $$\eps$$ such that $$\forall n \in \N$$, 
+>   
+>   $$
+>   \Pr[i \gets \Gen(1^n); (x, x') \gets A(1^n, i) ~:~ h_i(x) = h_i(x') \wedge x \neq x'] \le \eps(n).
+>   $$
+
+**Note**{:.label}
+Because the adversary $$A$$ chooses both $$x$$ and $$x'$$,
+the key $$k$$ is necessary to defend against non-uniform adversaries;
+otherwise, a non-uniform $$A$$ can just remember a colliding pair $$(x,x')$$
+for every problem size $$n\in \N$$.
+Many practical hash functions (such as SHA) are unkeyed and do not satisfy this definition.
+
+#### **Definition:** Universal One-Way Hash Functions
+
+{:.defn}
+> A set of functions 
+> $$H = \set{h_k : \bit^{d(n)} \to \bit^{r(n)}, n = |k|}_{k \in \bit^\ast}$$ is 
+> a family of *universal one-way hash functions (UOWHF)* if:
+> 
+> - (compression) $$r(n) \lt d(n)$$.
+> - (ease of evaluation) Given $$k \in \bit^n$$ and $$x \in \bit^{r(n)}$$, the computation of $$h_k(x)$$ can be done in PPT in $$n$$.
+> - (collision resistance) for all NUPPT $$A$$, there exists a negligible $$\eps$$ such that $$\forall n \in \N$$,
+>   $$A$$ wins the following game w.p. $$\le \eps(n)$$:
+>   
+>   1. $$(x, state) \gets A(1^n)$$
+>   2. $$k \gets \bit^n$$
+>   3. $$x' \gets A(1^n, k, state)$$
+>   4. $$A$$ wins if $$x' \neq x$$ and $$f_k(x') = f_k(x)$$
+
+A CRHF is a UOWHF and also a OWF, and we can construct UOWHF from OWF.
+However, it is long open whether we can get CRHF from OWF.
+Instead, CRHF is contructed from various concrete assumptions, 
+and CRHF is also constructed from "trapdoor permutations", 
+which is yet another primitive that we do not know how to obtain from OWF.
+We will use *discrete logarithm* assumption below.
+
+
 
 Digital Signature Schemes
 -------------------------
@@ -359,52 +446,6 @@ see [Zhang, Cui, and Yu](https://eprint.iacr.org/2023/850.pdf "Revisiting the Co
 
 Collision-Resistant Hash Functions
 -------------------------
-
-Ref: [Ps 5.5] [KL 9.3]
-
-#### **Definition:** Collision-Resistant Hash Functions
-
-{:.defn}
-> A set of functions $H = \set{h_i : D_i \to R_i}_{i\in I}$ and algorithm $\Gen$ is 
-> a family of *collision-resistant hash functions (CRHF)* if:
-> 
-> - (ease of sampling) $i\gets \Gen(1^n)$ runs in PPT, $i \in I$.
-> - (compression) 
->   $|R_i| \lt |D_i|$.
-> - (ease of evaluation) Given $i \in I$ and $x \in R_i$, the computation of $h_i(x)$ can be done in PPT.
-> - (collision resistance) for all NUPPT $A$, there exists a negligible $\eps$ such that $\forall n \in \N$, 
->   
->   $$
->   \Pr[i \gets \Gen(1^n); (x, x') \gets A(1^n, i) ~:~ h_i(x) = h_i(x') \wedge x \neq x'] \le \eps(n).
->   $$
-
-**Note**{:.label}
-Key $k$ is necessary to defend against non-uniform adversaries, 
-which is unlike practical unkeyed hash functions such as SHA.
-
-#### **Definition:** Universal One-Way Hash Functions
-
-{:.defn}
-> A set of functions 
-> $H = \set{h_k : \bit^{d(n)} \to \bit^{r(n)}, n = |k|}_{k \in \bit^\ast}$ is 
-> a family of *universal one-way hash functions (UOWHF)* if:
-> 
-> - (compression) $r(n) \lt d(n)$.
-> - (ease of evaluation) Given $k \in \bit^n$ and $x \in \bit^{r(n)}$, the computation of $h_k(x)$ can be done in PPT in $n$.
-> - (collision resistance) for all NUPPT $A$, there exists a negligible $\eps$ such that $\forall n \in \N$,
->   $A$ wins the following game w.p. $\le \eps(n)$:
->   
->   1. $(x, state) \gets A(1^n)$
->   2. $k \gets \bit^n$
->   3. $x' \gets A(1^n, k, state)$
->   4. $A$ wins if $x' \neq x$ and $f_k(x') = f_k(x)$
-
-A CRHF is a UOWHF and also a OWF, and we can construct UOWHF from OWF.
-However, it is long open whether we can get CRHF from OWF.
-Instead, CRHF is contructed from various concrete assumptions, 
-and CRHF is also constructed from "trapdoor permutations", 
-which is yet another primitive that we do not know how to obtain from OWF.
-We will use *discrete logarithm* assumption below.
 
 #### **Definition:** Generator of a Group
 
