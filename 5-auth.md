@@ -292,10 +292,10 @@ Ref: [KL 13.1, 13.2, 13.6]
 
 Discuss:
 
-- $\pk$ must be sent to the verifier through an athenticated way (by definition in the above).
-  If we have that authenticated way, why do we need DS then?
-- Would it be meaningful if $A$ gets no oracle access to $\Sign_\sk$, since $A$ is given $\pk$ as input?
-- Would it be meaningful if $A$ gets oracle access to $\Sign_\sk$ but *only once*?
+- $$\pk$$ must be sent to the verifier through an athenticated way (by definition in the above).
+  If we have that authenticated way, why do we just use MAC?
+- Would it be meaningful if $$A$$ gets no oracle access to $$\Sign_\sk$$, since $$A$$ is given $$\pk$$ as input?
+- Would it be meaningful if $$A$$ gets oracle access to $$\Sign_\sk$$ but *only once*?
 - The definition is a public-key version of MAC.
 - Since the verification uses only public key, $$A$$ can perform verification without oracle queries.
 - Hence, it is clear that DS implies MAC, and then it implies OWF.
@@ -323,7 +323,7 @@ Refs: [KL 14.4], [Lamport'79](https://lamport.azurewebsites.net/pubs/dig-sig.pdf
 > 
 > 1. Sample strings $$x_b^i \gets \bit^n$$ for $$i \in [n], b \in \bit$$.
 > 2. Compute $$y_b^i = f(x_b^i)$$ for all $$i, b$$
-> 3. Output $$\pk := (y\_b^i)\_{i,b}$$ and $$\sk := (x\_b^i)\_{i,b}$$.
+> 3. Output $$\pk := (y_b^i)_{i,b}$$ and $$\sk := (x_b^i)_{i,b}$$.
 > 
 > $$\Sign_\sk(m)$$:
 > 
