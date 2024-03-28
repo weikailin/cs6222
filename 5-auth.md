@@ -294,12 +294,39 @@ Discuss:
 
 - $$\pk$$ must be sent to the verifier through an athenticated way (by definition in the above).
   If we have that authenticated way, why do we just use MAC?
-- Would it be meaningful if $$A$$ gets no oracle access to $$\Sign_\sk$$, since $$A$$ is given $$\pk$$ as input?
+- Would it be meaningful if $$A$$ gets no oracle access to $$\Sign_\sk$$? 
+  The adversary $$A$$ is given $$\pk$$ as input. 
 - Would it be meaningful if $$A$$ gets oracle access to $$\Sign_\sk$$ but *only once*?
 - The definition is a public-key version of MAC.
 - Since the verification uses only public key, $$A$$ can perform verification without oracle queries.
 - Hence, it is clear that DS implies MAC, and then it implies OWF.
 - Can we obtain a digital signature from (public-key) encryption?
+
+The following theorem shows that signing $$n$$-bit messages is sufficient
+because we can extend the message space through hashing.
+
+#### **Theorem:** (Extending message space)
+
+{: .theorem}
+> Suppose that $$(\Gen, \Sign, \Ver)$$ is a digital signature scheme 
+> over the message space $$cM_n$$ such that $$n \in \N$$ is the security parameter
+> (given as input to $$\Gen$$).
+> Also suppose that $$\set{f_k : \bit^* \to \bit^n, n = |k|}_{n\in\N}$$ is 
+> a family of UOWHF.
+> Then, the following is a digital signature scheme over the message space 
+> $$\cM_{\poly(n)}$$ for any polynomial $$\poly$$.
+> 
+> - $$\Gen'$$ is the same as $$\Gen$$
+> - $$\Sign'_\sk(m)$$:
+>   sample $$k\gets \bit^{n/2}$$ uniformly at random,
+>   compute $$h \gets f_k(m)$$,
+>   run $$\sigma' \gets \Sign_\sk(k \| h)$$,
+>   and then output $$\sigma := (k \| \sigma')$$.
+> - $$\Ver'_\pk(m, \sigma)$$:
+>   parse $$\sigma = (k \| \sigma')$$,
+>   compute $$h \gets f_k(m)$$,
+>   accept if $$\Ver_\pk(k \| h, \sigma')$$ accepts.
+
 
 Lamport’s Signature Scheme
 -------------------------
