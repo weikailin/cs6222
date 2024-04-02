@@ -26,6 +26,7 @@ Table of Lecture Notes
 | Mar 12    | [Hard-core lemma](4-gole.md)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
 | Mar 14    | [Hard-core lemma](4-gole.md#warmup-assumption-2)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
 
+| Apr 30    | (last lecture)    |  |
 
 <!-- 
 | Sep 4     | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
