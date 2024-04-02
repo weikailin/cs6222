@@ -494,27 +494,27 @@ Collision-Resistant Hash Functions
 #### **Definition:** Generator of a Group
 
 {:.defn}
-> A element $g$ of a multiplicative group $G$ is a generator 
-> if the set $\set{g, g^2, g^3, ...} = G$.
-> We denote the set of all generators of a group $G$ by $\Gen(G)$.
+> A element $$g$$ of a multiplicative group $$G$$ is a generator 
+> if the set $$\set{g, g^2, g^3, ...} = G$$.
+> We denote the set of all generators of a group $$G$$ by $$\Gen(G)$$.
 
 
 #### **Assumption:** Discrete Log
 
 {:.defn}
-> If $G_q$ is a group of prime order $q$, then for every adversary $A$, there exists a negligible function $\eps$ such that
+> If $$G_q$$ is a group of prime order $$q$$, then for every adversary $$A$$, there exists a negligible function $$\eps$$ such that
 > 
 > $$
 > \Pr [ q \gets \Pi_n; g \gets \Gen(G_q) ; x \gets \Z_q : A(q, g, g^x) = x ] \lt \eps(n).
 > $$
 
-In the above definition, the group $G_q$ is not instantiated.
-Hence the hardness of the DL problem depends on $G_q$, and indeed for some groups such as $(\Z_q, +)$ it is trivial.
-In crypto, it is believed that DL is hard on the subgroup $G_q$ of $\Z^\ast_p$ for prime $p$.
-Notice that the order of $\Z^\ast_p$ is even $p-1$, not prime order (and thus DL may be easy).
-Therefore, we sample a prime of the form $p = 2q + 1$:
-first sample prime $q$ and then let $p = 2q + 1$ if $2q + 1$ is also prime,
-otherwise repeatedly sample another $q$.
+In the above definition, the group $$G_q$$ is not instantiated.
+Hence the hardness of the DL problem depends on $$G_q$$, and indeed for some groups such as $$(\Z_q, +)$$ it is trivial.
+In crypto, it is believed that DL is hard on the subgroup $$G_q$$ of $$\Z^\ast_p$$ for prime $$p$$.
+Notice that the order of $$\Z^\ast_p$$ is even $$p-1$$, not prime order (and thus DL may be easy).
+Therefore, we sample a prime of the form $$p = 2q + 1$$:
+first sample prime $$q$$ and then let $$p = 2q + 1$$ if $$2q + 1$$ is also prime,
+otherwise repeatedly sample another $$q$$.
 Such primes are known as Sophie Germain primes or safe primes.
 
 > Unfortunately,
@@ -522,7 +522,7 @@ Such primes are known as Sophie Germain primes or safe primes.
 > basic theoretical properties are unknown. It is unknown even (a)
 > whether there are an infinite number of Sophie Germain primes,
 > (b) and even so, whether this simple procedure for finding them
-> continues to quickly succeed as the size of $q$ increases.
+> continues to quickly succeed as the size of $$q$$ increases.
 > -- [Ps, Section 2.8.1]
 
 Also notice that DL is a one-to-one mapping, 
@@ -535,41 +535,41 @@ and thus it is not exactly a one-way *permutation* (strictly speaking).
 #### **Theorem:**
 
 {:.theorem}
-> Let $p = 2q + 1$ with $p,q$ prime. Then
+> Let $$p = 2q + 1$$ with $$p,q$$ prime. Then
 > 
 > $$
 > G := \set{ h^2 \mod p : h \in \Z^\ast_p}
 > $$
 > 
-> is a subgroup of $\Z^\ast_p$ of order $q$.
+> is a subgroup of $$\Z^\ast_p$$ of order $$q$$.
 
 {:.proof}
-> It is direct that $G$ is a subgroup.
-> It remains to prove the order, and it suffices to show that $f(h) = h^2 \mod p$ is 2-to-one
-> (because $|G| = |f(\Z^\ast_p)| = (p-1)/2 = q$).
-> Let $g$ be a generator of $\Z^\ast_p$ (proof omitted: the existence of generator of $\Z^\ast_p$)
-> Let $h \in \Z^\ast_p$ such that $h = g^t$ for some $t \le p-1$.
-> Consider any $h_2$ such that $h_2^2  =h^2 \mod p$ where $h_2 = g^{t_2}$.
-> We have $g^{2t_2} = g^{2t}$, and $2(t_2 - t) = 0 \mod (p-1)$.
-> Thus by $p-1 = 2q$, either $t_2 = t$ or $t2 - t = 0 \mod q$.
+> It is direct that $$G$$ is a subgroup.
+> It remains to prove the order, and it suffices to show that $$f(h) = h^2 \mod p$$ is 2-to-one
+> (because $$|G| = |f(\Z^\ast_p)| = (p-1)/2 = q$$).
+> Let $$g$$ be a generator of $$\Z^\ast_p$$ (proof omitted: the existence of generator of $$\Z^\ast_p$$)
+> Let $$h \in \Z^\ast_p$$ such that $$h = g^t$$ for some $$t \le p-1$$.
+> Consider any $$h_2$$ such that $$h_2^2  =h^2 \mod p$$ where $$h_2 = g^{t_2}$$.
+> We have $$g^{2t_2} = g^{2t}$$, and $$2(t_2 - t) = 0 \mod (p-1)$$.
+> Thus by $$p-1 = 2q$$, either $$t_2 = t$$ or $$t2 - t = 0 \mod q$$.
 > 
-> This proof extends to $h^r$ for all even integer $r \ge 2$.
-> Moreover, it also shows that sampling from $G$ uniformly at random is efficient:
-> just sample $h$ and compute $h^2 \mod p$.
+> This proof extends to $$h^r$$ for all even integer $$r \ge 2$$.
+> Moreover, it also shows that sampling from $$G$$ uniformly at random is efficient:
+> just sample $$h$$ and compute $$h^2 \mod p$$.
 
 #### **Construction:** CRHF from DL
 
 {:.defn}
-> $\Gen(1^n)$: output $(p,q,g,y)$, where
+> $$\Gen(1^n)$$: output $$(p,q,g,y)$$, where
 > 
-> - $p,q$ are $n$-bit primes that $p=2q+1$, 
-> - $g$ is the generator of $G_q$, 
-> - $y \gets G_q$, and
-> - $G_q$ is order $q$ subgroup of $\Z^\ast_p$.
+> - $$p,q$$ are $$n$$-bit primes that $$p=2q+1$$, 
+> - $$g$$ is the generator of $$G_q$$, 
+> - $$y \gets G_q$$, and
+> - $$G_q$$ is order $$q$$ subgroup of $$\Z^\ast_p$$.
 > 
-> $h_{p,q,g,y}(x, b)$: Output $y^b g^x \mod p$, where
+> $$h_{p,q,g,y}(x, b)$$: Output $$y^b g^x \mod p$$, where
 > 
-> - $x$ is $n$-bit, $b$ is 1-bit
+> - $$x$$ is $$n$$-bit, $$b$$ is 1-bit
 
 
 #### **Theorem:**
@@ -582,17 +582,17 @@ and thus it is not exactly a one-way *permutation* (strictly speaking).
 
 > Proof sketch:
 > 
-> It is efficient, and the compression follows by $n+1$ to $n$ bits mapping
-> (strictly speaking, that is $2p$ to $p$ as $x \in [p]$).
-> To prove collision resistance, firstly consider the case $h(x,b) = h(x', b)$ but $x \neq x'$.
+> It is efficient, and the compression follows by $$n+1$$ to $$n$$ bits mapping
+> (strictly speaking, that is $$2p$$ to $$p$$ as $$x \in [p]$$).
+> To prove collision resistance, firstly consider the case $$h(x,b) = h(x', b)$$ but $$x \neq x'$$.
 > Then, we have
 > 
 > $$
 > g^{x} = g^{x'} \mod p
 > $$
 > 
-> which means that $x = x'$. Hence, it must be $x \neq x', b \neq b'$ but $h(x,b) = h(x',b')$.
-> Given $b \neq b'$, suppose $b=1, b' = 0$ (this is without loss of generality as $b=0$ otherwise).
+> which means that $$x = x'$$. Hence, it must be $$x \neq x', b \neq b'$$ but $$h(x,b) = h(x',b')$$.
+> Given $$b \neq b'$$, suppose $$b=1, b' = 0$$ (this is without loss of generality as $$b=0$$ otherwise).
 > Then,
 > 
 > $$
@@ -605,8 +605,8 @@ and thus it is not exactly a one-way *permutation* (strictly speaking).
 > y = g^{x'-x} \mod p.
 > $$
 > 
-> Thus, we can compute the DL of $y$ using any adversary $A$ 
-> that on input $y$ outputs a collision $(x,b) \neq (x',b')$.
+> Thus, we can compute the DL of $$y$$ using any adversary $$A$$ 
+> that on input $$y$$ outputs a collision $$(x,b) \neq (x',b')$$.
 
-Note: the above construction is based on the DL assumption w.r.t. the prime order group $G_q$.
-We can analogously construct CRHF from group $\Z^\ast_p$ based on the DL assumption w.r.t. $\Z^\ast_p$.
+Note: the above construction is based on the DL assumption w.r.t. the prime order group $$G_q$$.
+We can analogously construct CRHF from group $$\Z^\ast_p$$ based on the DL assumption w.r.t. $$\Z^\ast_p$$.
