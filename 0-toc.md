@@ -25,7 +25,13 @@ Table of Lecture Notes
 | Feb 29    | [Universal OWF](2-owf.md#a-universal-owf)    | [Ps 2.13], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf) |
 | Mar 12    | [Hard-core lemma](4-gole.md)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
 | Mar 14    | [Hard-core lemma](4-gole.md#warmup-assumption-2)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
-
+| Mar 19    | [Min-entropy, Mazor-Pass](4-gole.md#min-entropy-and-leftover-hash-lemma)    | [Barak@Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf), [Mazor-Pass 2023](https://eprint.iacr.org/2023/1451.pdf) |
+| Mar 21    | [Mazor-Pass PRG](4-gole.md#prg-from-any-owf)    | [Mazor-Pass 2023](https://eprint.iacr.org/2023/1451.pdf) and the [video recording at TCC 2023](https://www.youtube.com/watch?v=o2BPkhdPAg4&t=133s) |
+| Mar 26    | [Message Authentication](5-auth.md)    | [Ps 5.1, 5.2] [KL 4.1-4.3] |
+| Mar 28    | [Digital Signatures](5-auth.md#digital-signature-schemes)    | [Ps 5.3] [KL 13.1, 13.2, 13.6, 14.4], [Lamport'79](https://lamport.azurewebsites.net/pubs/dig-sig.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec12.pdf) |
+| Apr 2     | [Zero-knowledge proof](6-zkp)    | [Ps 4.1-4.6] |
+| Apr 4     | [Application of ZKP](6-zkp#application-identification-with-repudiation)    | [Ps 4.9] |
+| ...       |                 |   |
 | Apr 30    | (last lecture)    |  |
 
 <!-- 
