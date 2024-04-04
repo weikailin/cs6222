@@ -68,7 +68,7 @@ Message Authentication Codes (MAC)
 > \end{array}
 >  ~:~
 > \begin{array}{l}
-> A \text{ did not not query } m \text{, and }\\ 
+> A \text{ did not query } m \text{, and }\\ 
 > \Ver_k(m, \sigma) = \taccept
 > \end{array}
 > \right] \le \eps(n)
@@ -284,7 +284,7 @@ Ref: [KL 13.1, 13.2, 13.6]
 > \end{array}
 >  ~:~
 > \begin{array}{l}
-> A \text{ did not not query } m \text{, and }\\ 
+> A \text{ did not query } m \text{, and }\\ 
 > \Ver_\pk(m, \sigma) = \taccept
 > \end{array}
 > \right] \le \eps(n)
