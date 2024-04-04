@@ -375,17 +375,24 @@ On Server side, a simple way to identify C is to share the same key $$k$$ betwee
 However, shared key is undesirable in the case S could be compromised.
 
 A better way is to store the public key $$pk$$ on S and the secrete key $$sk$$ on C.
-To identify C, S asks C to sign a message and then verifies the signature.
+To identify C, S asks C to sign a message and then verifies the signature, where
+the message shall be sampled randomly and non-repeating 
+(so that no adversary can replay the same signature).
 This is good, but later S can prove to anyone that C has logged in by showing the signature,
 which is undesirable.
 
 Using ZKP, C can prove the identity to S without letting S having the signature.
-Namely, given $$pk$$ and message $$m$$ from S, let $$L_{pk,m}$$ be the language: 
+Let $$\cM$$ be the message space of the above signature scheme.
+Then, define the language $$L$$ to be the following:
 
-- $$(a,b)$$ such that $$Ver_{\pk}(m, Sign_a(m ; b))$$ output Accept.
+$$L := \set{ \pk : \pk \text{ is a valid output from } (\pk, \sk)\gets \Gen(1^n; r)}.$$
 
-Clearly $$L \in NP$$ and C has the witness $$(sk, r)$$.
-Hence, C can convince S that she can sign $$m$$ but S learned nothing more than $$(\pk,m)$$.
+Recall that $$r$$ is the randomness used by $$\Gen$$.
+Clearly, $$L \in NP$$ because for any $$\pk \in L$$, there exists corresponding
+$$w = (\sk,r)$$ as the witness of $$\pk$$.
+
+Hence, C can convince S that she has the signing key $$\sk$$
+but S learned nothing more than $$\pk$$.
 Notice that if S wants to show the trace of C, 
 C can deny because the view of S can totally be simulated by S itself.
 
