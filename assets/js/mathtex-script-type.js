@@ -16,6 +16,7 @@ const my_macros = {
       "\\E": "\\mathop{\\mathbb{E}}",
       "\\ceil": "{\\left\\lceil #1 \\right\\rceil}",
       "\\floor": "{\\left\\lfloor #1 \\right\\rfloor}",
+      "\\brackets": "{\\left[ #1 \\right]}",
       "\\cA": "\\mathcal{A}",
       "\\cB": "\\mathcal{B}",
       "\\cC": "\\mathcal{C}",

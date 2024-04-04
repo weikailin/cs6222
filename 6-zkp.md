@@ -6,6 +6,7 @@ nav_exclude: false
 ---
 
 $$
+\newcommand{\Gen}{\mathsf{Gen}}
 \newcommand{\Enc}{\mathsf{Enc}}
 \newcommand{\Dec}{\mathsf{Dec}}
 \newcommand{\Com}{\mathsf{Com}}
