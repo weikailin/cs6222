@@ -251,7 +251,7 @@ Note: there are also constructions of commitment from OWF.
 > | $$P~\gets ~V$$ |   $$V$$ sends a randomly chosen edge $$(i, j) \in E$$  |
 > | $$P ~\to ~ V$$ |   $$P$$ opens commitments $$c'_i$$ and $$c'_j$$.  |
 > | $$\quad\quad~ V$$ | $$V$$ rejects the proof if and only if $$c'_i = c'_j$$ (continue o.w.)  |
-> | $$P, V$$ |   Repeat the procedure $n \vert E \vert$ times.  |
+> | $$P, V$$ |   Repeat the procedure $$n \vert E \vert$$ times.  |
 
 #### **Theorem:**
 
@@ -366,6 +366,15 @@ Hence we can construct ZK proof for any $$L \in NP$$ from $$GC$$.
 > | $$\quad\qquad V$$ | Let $$G' := R(x)$$  |
 > | $$P ~\leftrightarrow ~ V$$ |   Run the ZKP protocol $$(P',V')$$ of graph 3-coloring, i.e., $$P'(G', w') \leftrightarrow V'(G')$$
 > | $$\quad\qquad V$$ | $$V$$ rejects the proof if and only if $$V'$$ rejects  |
+
+Ref:
+The ZKP for 3-coloring is proposed in the seminal work by Goldreich, Micali, and Wigderson
+[[GMW]](https://dl.acm.org/doi/10.1145/116825.116852).
+Just in this year (2024),
+[Avi Wigderson wins A.M. Turing Award](https://amturing.acm.org/)
+for his contribution to the theory of computation.
+Read [the article of Quanta Magazine](https://www.quantamagazine.org/avi-wigderson-complexity-theory-pioneer-wins-turing-award-20240410/)
+for his contribution (including ZKP and derandomization).
 
 Application: Identification with Repudiation
 ------------------
