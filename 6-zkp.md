@@ -347,7 +347,7 @@ in the [Security Definition](#definition-zero-knowledge)
 ### Any Language in class NP
 
 Recall that since graph 3-coloring ($$GC$$) is NP-complete, 
-we can reduce from $$GC$$ to any language $$L \in NP$$.
+we can reduce from any language $$L \in NP$$ to $$GC$$.
 That is, there exists a deterministic polynomial time reduction $$R$$ such that 
 for any string $$x$$, $$x \in L$$ if and only if $$x' = R(x) \in GC$$;
 moreover, $$w$$ is a witness of $$x \in L$$ if and only if $$w' = R(x, w)$$ is a witness of $$x' \in GC$$.
@@ -366,6 +366,16 @@ Hence we can construct ZK proof for any $$L \in NP$$ from $$GC$$.
 > | $$\quad\qquad V$$ | Let $$G' := R(x)$$  |
 > | $$P ~\leftrightarrow ~ V$$ |   Run the ZKP protocol $$(P',V')$$ of graph 3-coloring, i.e., $$P'(G', w') \leftrightarrow V'(G')$$
 > | $$\quad\qquad V$$ | $$V$$ rejects the proof if and only if $$V'$$ rejects  |
+
+Remark:
+It might be confusing: if the language $$L \in NP$$ is easy to solve,
+the polynomial-time verifier $$V^*$$ can find the witness efficiently,
+then how could we have *zero-knowledge* proof for $$x\in L$$?
+This is indeed captured in the ZK definition---if something is computable by only $$V^*(x)$$ 
+(and the simulator), then the same thing is allowed in the real ZK protocol.
+Indeed in many crypto applications, we need ZKP for some language that 
+is in $$NP$$ but is probablity not NP-complete 
+(see [the next example](#application-identification-with-repudiation)). 
 
 Ref:
 The ZKP for 3-coloring is proposed in the seminal work by Goldreich, Micali, and Wigderson

@@ -31,6 +31,8 @@ Table of Lecture Notes
 | Mar 28    | [Digital Signatures](5-auth.md#digital-signature-schemes)    | [Ps 5.3] [KL 13.1, 13.2, 13.6, 14.4], [Lamport'79](https://lamport.azurewebsites.net/pubs/dig-sig.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec12.pdf) |
 | Apr 2     | [Zero-knowledge proof](6-zkp)    | [Ps 4.1-4.6] |
 | Apr 4     | [Application of ZKP](6-zkp#application-identification-with-repudiation)    | [Ps 4.9] |
+| Apr 9     | [ZKP for graph 3-coloring](6-zkp.md#graph-3-coloring)    | [Ps 4.7-4.9] |
+| Apr 11    | [Commitments](6-zkp.md#commitment)  [ZKP for NP](6-zkp.md#any-language-in-class-np)    | [Ps 4.7] |
 | ...       |                 |   |
 | Apr 30    | (last lecture)    |  |
 

@@ -6,6 +6,7 @@ nav_exclude: false
 ---
 
 $$
+\newcommand{\Gen}{\mathsf{Gen}}
 \newcommand{\Enc}{\mathsf{Enc}}
 \newcommand{\Dec}{\mathsf{Dec}}
 \newcommand{\LWE}{\mathsf{LWE}}
@@ -304,11 +305,12 @@ Public-key Encryption from Additive Homomorphic Encryption
 
 {: .defn}
 > Let $$(G, E, D, \Eval)$$ be a secret-key homomorphic encryption scheme for 
-> the class of inner product between $$\ell$$-bit binary vectors, 
-> where $$\ell:=\ell(n)$$ to be chosen later is a polynomial of the security parameter $$n$$ given to $$G$$.
+> the class of functions $$C_\ell := \set{f_z : z \in \bit^\ell}$$,
+> where $$\ell:=\ell(n)$$ is a polynomial of the security parameter $$n$$ (given to $$G$$ to be chosen later),
+> and $$f_z(x) := z \odot x$$ is the inner product of $$\ell$$-bit vetors.
 > Then, the following $$(\Gen, \Enc, \Dec)$$ is a public-key encryption scheme.
 > 
-> - $$\Gen(1^n)$$: let $$\sk = k \gets G(1^n)$$, sample $$n$$-bit string $$r=(r_1,...,r_\ell) \gets \bit^\ell$$ such that $$r \neq 0^\ell$$, 
+> - $$\Gen(1^n)$$: let $$\sk = k \gets G(1^n)$$, sample $$\ell$$-bit string $$r=(r_1,...,r_\ell) \gets \bit^\ell$$ such that $$r \neq 0^\ell$$, 
 >   compute $$R_1 \gets E_k(r_1), ..., R_\ell \gets E_k(r_\ell)$$.
 >   Output $$\sk$$ and public key 
 >   
@@ -320,14 +322,12 @@ Public-key Encryption from Additive Homomorphic Encryption
 >   Output
 >   
 >   $$
->   c := \Eval(f_u, R_1, ..., R_\ell),
+>   c := \Eval(f_u, R_1, ..., R_\ell).
 >   $$
->   
->   where $$f_u$$ is the inner product $$f_u(x) := u \odot x$$ for any $$x \in \bit^\ell$$.
 > 
 > - $$\Dec_\sk(c)$$: it simply output $$D_\sk(c)$$.
 
-The correctness follows because $$r \neq 0^n$$ implies the existence of $$u$$ and then by the correctness of $$\Eval$$.
+The correctness follows because $$r \neq 0^\ell$$ implies the existence of $$u$$ and then by the correctness of $$\Eval$$.
 The efficiency is also direct (just need to sample $$r$$ and $$u$$ with care).
 The security is sketched below.
 
@@ -340,20 +340,29 @@ The security is sketched below.
 > It could be attemping to think we were finished, but unfortunately as written,
 > $$c$$ depends on $$u$$ and then $$u$$ still depends on $$m$$ 
 > (indeed, different encryptions of 0 might reveal something).
-> To be formal, the key is to observe that $$|c|$$ is short.
+> The key is to observe that $$|c|$$ is short.
 > Let $$t:=|c|$$ be the output size of $$\Eval$$, and let $$\ell := 4t$$.
+> Informally, $$t$$-bit $$c$$ is too short to 
+> provide sufficient information about $$4t$$-bit $$u$$, 
+> and then it is information-theoretically hiding $$m$$.
+> 
+> To be formal, we use Leftover Hash Lemma as follows.
+> Let $$F_R(\cdot) := \Eval(f_{(\odot)}, R_1, ...,R_n)$$.
 > Then, the adversary is given $$(r, F_R(u))$$ and aims to find $$m = r \odot u$$,
-> where $$R$$ is independent of $$r$$ and $$F_R(\cdot)$$ denotes $$\Eval(f_{(\odot)}, R_1, ...,R_n)$$.
+> where $$R$$ is independent of $$r$$.
 > Rewrite the computation as
 > 
 > $$
-> Ext(r, u) := (r, F_R(u), m = r \odot u).
+> Ext(r, u) := (r, m = r \odot u).
 > $$
 > 
 > Notice that $$r$$ is uniform, $$u$$ is subject to $$m$$, and $$F_R(u)$$ is $$t$$-bits.
-> Because the min-entropy of $$u$$ subject to any fixed $$m$$ and any fixed $$F_R(u)$$ is at least $$\ell/2$$,
-> and because $$h_r(u) = r \odot u$$ is a universal hash family,
-> $$r \odot u$$ is statistically close to a uniform bit (by statistical difference $$2^{-\Omega(t)}$$).
+> Observe that, subject to any fixed $$m$$ (of 1 bit) and any fixed $$F_R(u)$$ (of $$t=\ell/4$$ bits),
+> the min-entropy of $$u$$ is at least $$\ell/2$$.
+> Because $$h_r(u) = r \odot u$$ is a universal hash family,
+> by leftover hash lemma,
+> $$r \odot u$$ is statistically close to a uniform bit 
+> by statistical difference $$2^{-\Omega(\ell/2)}$$.
 
 [Ref: Rothblum, TCC 2011, Homomorphic Encryption: From Private-Key to Public-Key](https://www.iacr.org/archive/tcc2011/65970216/65970216.pdf)
 
