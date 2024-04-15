@@ -151,7 +151,11 @@ An useful set of parameter:
   (think $$\psi$$ as a uniform dist);
   the larger $$B$$ compared to $$q$$ the harder LWE
 
-Ref: [KL, 14.3]
+Ref: [KL, 14.3].
+Remark: Chen [[Chen24]](https://eprint.iacr.org/2024/555.pdf)
+recently posted a quantum algorithm that solves LWE for a large range of parameters
+in polynomial time.
+It is not yet fully reviewed, but it would be a huge breakthrough if it holds.
 
 An Encryption Based on LWE
 --------------------------
