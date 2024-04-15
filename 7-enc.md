@@ -156,35 +156,35 @@ Ref: [KL, 14.3]
 An Encryption Based on LWE
 --------------------------
 
-If we have the following decisional $\LWE_{m,q,\psi}$:
+If we have the following decisional $$\LWE_{m,q,\psi}$$:
 
 $$
 \set{A, A\cdot \vec{s} + \vec{e}} \approx \set{A, \vec{t}}
 $$
 
-Then, given $d \in \N$ such that $\gcd(d,q) = 1$, we also have
+Then, given $$d \in \N$$ such that $$\gcd(d,q) = 1$$, we also have
 
 $$
 \set{A, A\cdot \vec{s} + d\vec{e}} \approx \set{A, \vec{t}}
 $$
 
-by a simple reduction that multiply the former indisintinguishability by $d$
-(because $A$ and $\vec{t}$ are both uniform over $\Z_q$).
+by a simple reduction that multiply the former indisintinguishability by $$d$$
+(because $$A$$ and $$\vec{t}$$ are both uniform over $$\Z_q$$).
 Hence, we can construct a *secret-key* encryption.
 
 #### **Construction**: Secret Key Encryption from LWE
 
 {:.defn}
-> Parameters: $m, q \in \N$ as a function of $n$, $\psi$ a distribution over $\Z_q$.
+> Parameters: $$m, q \in \N$$ as a function of $$n$$, $$\psi$$ a distribution over $$\Z_q$$.
 > 
-> $\Gen(1^n)$:
-> output $k := \vec{s} \gets \psi^n$
+> $$\Gen(1^n)$$:
+> output $$k := \vec{s} \gets \psi^n$$
 > 
-> $\Enc_k(m)$:
-> for binary message $m\in\bit$, sample $\vec{a} \gets \Z_q^n$ and $e \gets \phi$,
-> output $c:=(\vec{a}, t = \vec{a} \cdot \vec{s} + 2e + m)$ (where the arithmetic is in $\Z_q$).
+> $$\Enc_k(m)$$:
+> for binary message $$m\in\bit$$, sample $$\vec{a} \gets \Z_q^n$$ and $$e \gets \phi$$,
+> output $$c:=(\vec{a}, t = \vec{a} \cdot \vec{s} + 2e + m)$$ (where the arithmetic is in $$\Z_q$$).
 > 
-> $\Dec_k(c)$:
+> $$\Dec_k(c)$$:
 > output
 > 
 > $$
@@ -193,8 +193,8 @@ Hence, we can construct a *secret-key* encryption.
 
 The correctness is direct.
 The (secret-key) CPA security can be proved by a reduction $R$ such that
-when ever the adversary $A$ of the encryption asks for an encryption,
-$R$ takes the next row from its LWE input and adds $m$.
+when ever the adversary $$A$$ of the encryption asks for an encryption,
+$$R$$ takes the next row from its LWE input and adds $m$.
 The details are skipped here.
 
 Homomorphic Encryption
