@@ -103,7 +103,7 @@ NIST candidate, [CRYSTALS-Kyber](https://eprint.iacr.org/2017/634.pdf):
 
 - $$n = 256 k$$ for $$k=3,4,5$$
 - $$q = 3329$$ so it can be viewed as $$O(n)$$
-- $$\psi$$ binomial distribution, 3 or 5 fair trials (so that $$|e| \le 5$$)
+- $$\psi$$ binomial distribution, 3 or 5 fair trials (so that $$\card{e} \le 5$$)
 
 Ref: [KL, 14.3].
 Remark: Chen [[Chen24]](https://eprint.iacr.org/2024/555.pdf)
