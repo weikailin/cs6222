@@ -48,7 +48,8 @@ Using standard linear algebra, it is efficient to solve $$A \cdot \vec{x} = \vec
 
 The LWE problem considers the following variant:
 $$A$$ and $$\vec{s}$$ are chosen as before, but an additional error vector $$\vec{e} \in \Z_q^m$$
-is sampled such that $$\norm{\vec{e}} = \sqrt{\sum_i e_i^2}$$ is *small*;
+is sampled such that $$\norm{\vec{e}}$$ is *small*
+(we will have each coordinate of $$\vec e$$ small in $$\Z_q$$).
 Then, the goal is to find $$\vec{x}, \vec{y}$$ such that
 
 $$
