@@ -112,6 +112,17 @@ recently posted a quantum algorithm that solves LWE for a large range of paramet
 in polynomial time.
 It is not yet fully reviewed, but it would be a huge breakthrough if it holds.
 
+#### **Corollary**:
+
+{:.defn}
+> Suppose that $$\gcd(q,2)=1$$.
+> If $$(A, A \cdot \vec s + \vec e) \approx (A, \vec t)$$,
+> then $$(A, A \cdot \vec s + 2\cdot \vec e) \approx (A, \vec t)$$.
+
+Proof idea:
+because $$q$$ and $$2$$ coprime, $$A$$ and $$2A$$ are identically distributed 
+(and $$\vec t$$ as well).
+
 An Encryption Based on LWE
 --------------------------
 
