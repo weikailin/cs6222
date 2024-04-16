@@ -28,58 +28,6 @@ We introduced private-key encrytion earlier, but public-key encryption is deferr
 It is because the hardness assumption: private-key encryption and other primitives can be based on 
 the existence of OWFs, but we need other assumptions to obtain PKE. 
 
-#### **Definition:** Public-key encryption.
-
-{: .defn}
-> $$(\Gen,\Enc,\Dec)$$ is said to be a *public-key encryption scheme* 
-> if the following syntax, correctness, and security holds.
-> 
-> 1. $$\Gen$$ is a PPT algorithm, $$(\pk, \sk) \gets \Gen(1^n)$$
-> 2. $$\Enc$$ is a PPT algorithm, for all $$\pk$$ and all $$m \in \bit$$, $$c \gets \Enc_\pk(m)$$
-> 3. $$\Dec$$ is a deterministic algorithm, for all $$\sk$$ and $$c$$, $$m \gets \Dec_\sk(c)$$ such that $$m \in \bit \cup \bot$$.
-> 
-> Correctness: For all $$n \in \N, m \in \bit$$,
->
-> $$
-> \Pr[(\pk, \sk) \gets \Gen(1^n) : \Dec_\sk(\Enc_\pk(m)) = m] = 1.
-> $$  
-> 
-> Security:
-> For all NUPPT $$D$$, there exists a negligible function $$\eps(\cdot)$$ such that
-> for all $$n\in\N$$, $$m_0, m_1 \in \bit$$, $$D$$ distinguishes between the following distributions 
-> with probability at most $$\eps(n)$$:
-> 
-> - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_0))}_n$$
-> - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_1))}_n$$
-
-
-With this definitions, there are some immediate impossibility results:
-
-- Perfect secrecy is impossible: given $$\pk$$, the adversary can try to encrypt all messages with all randomness. 
-- Deterministic encryption is also impossible: the adversary can try to encrypt the same message and get the same ciphertext.
-
-Also, IND-CPA security is implied directly.
-Yet another difference compared to secret-key encryptions is that,
-the security for *long* messages is implied directly.
-
-#### **Lemma:**
-
-{:.theorem}
-> If $$(\Gen,\Enc,\Dec)$$ is secure public-key encryption, then
-> for any polynomial length $$\ell(\cdot)$$, for all $$m_0, m_1 \in \bit^{\ell(n)}$$,
-> the two distributions are indistinguishable:
-> 
-> - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_{0,1}), ..., \Enc_\pk(m_{0,\ell(n)}))}_n$$
-> - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_{1,1}), ..., \Enc_\pk(m_{1,\ell(n)}))}_n$$
-> 
-> where $m_{b,i}$ denotes the $i$-th bit of $m_b$.
-
-Similarly, the adversary may *adaptively* choose $$(m_{0,i}, m_{1,i})$$ *depending on*
-the earlier ciphertexts $$\Enc_\pk(m_{b,i'}), i' \lt i$$. 
-That is called *multi-message* security and is also implied by single-message security.
-
-Ref: [KL, 12.2]
-
 Learning with Errors, LWE
 -------------------------
 
@@ -150,6 +98,12 @@ An useful set of parameter:
   $$\psi$$ outputs $$|a| \le B$$ except with negligible probability
   (think $$\psi$$ as a uniform dist);
   the larger $$B$$ compared to $$q$$ the harder LWE
+
+NIST candidate, [CRYSTALS-Kyber](https://eprint.iacr.org/2017/634.pdf):
+
+- $$n = 256 k$$ for $$k=3,4,5$$
+- $$q = 3329$$ so it can be viewed as $$O(n)$$
+- $$\psi$$ binomial distribution, 3 or 5 fair trials (so that $$|e| \le 5$$)
 
 Ref: [KL, 14.3].
 Remark: Chen [[Chen24]](https://eprint.iacr.org/2024/555.pdf)
@@ -301,6 +255,58 @@ and then still obtain the correct decrytion, where $$B, q$$ are the LWE paramete
 
 Multiplicative homomorphism is more involved.
 We show an application of additive homomorphic encryption first.
+
+#### **Definition:** Public-key encryption.
+
+{: .defn}
+> $$(\Gen,\Enc,\Dec)$$ is said to be a *public-key encryption scheme* 
+> if the following syntax, correctness, and security holds.
+> 
+> 1. $$\Gen$$ is a PPT algorithm, $$(\pk, \sk) \gets \Gen(1^n)$$
+> 2. $$\Enc$$ is a PPT algorithm, for all $$\pk$$ and all $$m \in \bit$$, $$c \gets \Enc_\pk(m)$$
+> 3. $$\Dec$$ is a deterministic algorithm, for all $$\sk$$ and $$c$$, $$m \gets \Dec_\sk(c)$$ such that $$m \in \bit \cup \bot$$.
+> 
+> Correctness: For all $$n \in \N, m \in \bit$$,
+>
+> $$
+> \Pr[(\pk, \sk) \gets \Gen(1^n) : \Dec_\sk(\Enc_\pk(m)) = m] = 1.
+> $$  
+> 
+> Security:
+> For all NUPPT $$D$$, there exists a negligible function $$\eps(\cdot)$$ such that
+> for all $$n\in\N$$, $$m_0, m_1 \in \bit$$, $$D$$ distinguishes between the following distributions 
+> with probability at most $$\eps(n)$$:
+> 
+> - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_0))}_n$$
+> - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_1))}_n$$
+
+
+With this definitions, there are some immediate impossibility results:
+
+- Perfect secrecy is impossible: given $$\pk$$, the adversary can try to encrypt all messages with all randomness. 
+- Deterministic encryption is also impossible: the adversary can try to encrypt the same message and get the same ciphertext.
+
+Also, IND-CPA security is implied directly.
+Yet another difference compared to secret-key encryptions is that,
+the security for *long* messages is implied directly.
+
+#### **Lemma:**
+
+{:.theorem}
+> If $$(\Gen,\Enc,\Dec)$$ is secure public-key encryption, then
+> for any polynomial length $$\ell(\cdot)$$, for all $$m_0, m_1 \in \bit^{\ell(n)}$$,
+> the two distributions are indistinguishable:
+> 
+> - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_{0,1}), ..., \Enc_\pk(m_{0,\ell(n)}))}_n$$
+> - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_{1,1}), ..., \Enc_\pk(m_{1,\ell(n)}))}_n$$
+> 
+> where $m_{b,i}$ denotes the $i$-th bit of $m_b$.
+
+Similarly, the adversary may *adaptively* choose $$(m_{0,i}, m_{1,i})$$ *depending on*
+the earlier ciphertexts $$\Enc_\pk(m_{b,i'}), i' \lt i$$. 
+That is called *multi-message* security and is also implied by single-message security.
+
+Ref: [KL, 12.2]
 
 Public-key Encryption from Additive Homomorphic Encryption
 -----------------------------------
