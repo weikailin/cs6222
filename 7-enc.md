@@ -151,9 +151,9 @@ Hence, we can construct a *secret-key* encryption.
 > $$
 
 The correctness is direct.
-The (secret-key) CPA security can be proved by a reduction $R$ such that
+The (secret-key) CPA security can be proved by a reduction $$R$$ such that
 when ever the adversary $$A$$ of the encryption asks for an encryption,
-$$R$$ takes the next row from its LWE input and adds $m$.
+$$R$$ takes the next row from its LWE input and adds $$m$$.
 The details are skipped here.
 
 Homomorphic Encryption
