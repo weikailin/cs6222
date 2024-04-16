@@ -300,7 +300,7 @@ the security for *long* messages is implied directly.
 > - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_{0,1}), ..., \Enc_\pk(m_{0,\ell(n)}))}_n$$
 > - $$\set{(\pk, \sk)\gets \Gen(1^n) : (\pk, \Enc_\pk(m_{1,1}), ..., \Enc_\pk(m_{1,\ell(n)}))}_n$$
 > 
-> where $m_{b,i}$ denotes the $i$-th bit of $m_b$.
+> where $$m_{b,i}$$ denotes the $$i$$-th bit of $$m_b$$.
 
 Similarly, the adversary may *adaptively* choose $$(m_{0,i}, m_{1,i})$$ *depending on*
 the earlier ciphertexts $$\Enc_\pk(m_{b,i'}), i' \lt i$$. 
