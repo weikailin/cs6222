@@ -15,6 +15,7 @@ You shall also use LaTeX template for each homework on Canvas.
 - [Homework 2](assets/pdf/hw2.pdf). Due: Feb 26, 2023.
 - [Homework 3](assets/pdf/hw3.pdf). Due: Mar 18, 2023.
 - [Homework 4](assets/pdf/hw4.pdf). Due: Apr 9, 2023.
+- [Homework 5](assets/pdf/hw5.pdf). Due: Apr 30, 2023.
 
 
 
