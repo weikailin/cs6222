@@ -392,15 +392,15 @@ Homomorphic Multiplication
 -----------------------------------
 
 Consider the [encryption scheme for LWE](#construction-secret-key-encryption-from-lwe).
-The ciphertext has format $c = (\vec a, b)$,
-and the decrytion is done by $b - \vec a^T \vec s$, where $\vec s$ is the decryption key, and $\mod 2$ is skipped.
+The ciphertext has format $$c = (\vec a, b)$$,
+and the decrytion is done by $$b - \vec a^T \vec s$$, where $$\vec s$$ is the decryption key, and $$\mod 2$$ is skipped.
 We can view the decryption as a function, 
 
 $$
 f_{\vec a, b}(\vec x) := b - \vec a^T \vec x,
 $$
 
-and the decryption is to compute $f_{\vec a, b}(\vec s)$.
+and the decryption is to compute $$f_{\vec a, b}(\vec s)$$.
 To obtain additive homomorphism, we are exactly performing
 
 $$
@@ -419,38 +419,38 @@ $$
 f_{\vec a', b'}(\vec x) := f_{\vec a_1, b_1}(\vec x) \cdot f_{\vec a_2, b_2}(\vec x).
 $$
 
-This would give a correct decrytion when we compute $f_{\vec a', b'}(\vec s)$.
-However, we begin with *linear* functions $f_{\vec a_1, b_1}$, but we end with 
+This would give a correct decrytion when we compute $$f_{\vec a', b'}(\vec s)$$.
+However, we begin with *linear* functions $$f_{\vec a_1, b_1}$$, but we end with 
 
 $$
 (b_1 - \vec a_1^T \vec x)\cdot(b_2 - \vec a_2^T \vec x)
 = b_1 b_2 - (b_1 \vec a_2^T + b_2 \vec a_1^T) \vec x + \sum_{i,j} a_{1,i} a_{2,j} x_i x_j,
 $$
 
-a quadratic function (degree 2 of $\vec x$). 
-Moreover, the ciphertext size goes from $n+1$ to ~$n^2$.
+a quadratic function (degree 2 of $$\vec x$$). 
+Moreover, the ciphertext size goes from $$n+1$$ to ~$$n^2$$.
 This is far from ideal, and there are many techniques to resolve this.
 One is known as "relinearization", and the trick is to provide the encryptions of
 
-- $s_i$ for $i \in [n]$, where $s_i$ is the $i$-th coordinate of $\vec s$.
-- $s_{i}\cdot s_{j}$ for $i,j\in[n]$.
+- $$s_i$$ for $$i \in [n]$$, where $$s_i$$ is the $$i$$-th coordinate of $$\vec s$$.
+- $$s_{i}\cdot s_{j}$$ for $$i,j\in[n]$$.
 
-Since the encryptions (of the above values $s_i\cdot s_j$) are another linear function $g_{c_{i,j}}(\vec y)$, 
+Since the encryptions (of the above values $$s_i\cdot s_j$$) are another linear function $$g_{c_{i,j}}(\vec y)$$, 
 the homomorphic multiplication can then 
 
-1. Compute $f_{\vec a', b'}$ from $f_{\vec a_1, b_1}$ and $f_{\vec a_2, b_2}$
-2. In $f_{\vec a', b'}$, substitute $x_i x_j$ with $g_{c_{i,j}}(\vec y)$, which yields
-   $f_{\vec a'', b''}(\vec y)$, a linear function of size $n+1$.
+1. Compute $$f_{\vec a', b'}$$ from $$f_{\vec a_1, b_1}$$ and $$f_{\vec a_2, b_2}$$
+2. In $$f_{\vec a', b'}$$, substitute $$x_i x_j$$ with $$g_{c_{i,j}}(\vec y)$$, which yields
+   $$f_{\vec a'', b''}(\vec y)$$, a linear function of size $$n+1$$.
 
-The encryption of $s_{i}\cdot s_{j}$ are given as *public evaluation key* in such constructions.
+The encryption of $$s_{i}\cdot s_{j}$$ are given as *public evaluation key* in such constructions.
 
 **Notice**
 This relinearization is oversimplified.
-Actually, the $b_1 b_2$ term in $f_{\vec a', b'}(\vec x)$ consists of products,
-such as $\vec a_1^T \vec s \cdot 2e_2$.
-The naive representation of $\vec a_1^T \vec s$ is a large integer of order $q$,
+Actually, the $$b_1 b_2$$ term in $$f_{\vec a', b'}(\vec x)$$ consists of products,
+such as $$\vec a_1^T \vec s \cdot 2e_2$$.
+The naive representation of $$\vec a_1^T \vec s$$ is a large integer of order $$q$$,
 but that would incur huge error and incorrect decryption.
-A careful bitwise decomposition of $b_1$ and $b_2$ will reduce the error factor to $\poly(n, \log q)$.
+A careful bitwise decomposition of $$b_1$$ and $$b_2$$ will reduce the error factor to $$\poly(n, \log q)$$.
 
 Ref:
 - [Brakerski and Vaikuntanathan, Efficient fully homomorphic encryption from (standard) LWE, FOCS 2011](https://eprint.iacr.org/2011/344.pdf),
