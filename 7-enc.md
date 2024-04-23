@@ -460,17 +460,17 @@ Ref:
 Fully Homomorphic using Bootstrapping
 -------------
 
-The above homomorphic addition and multiplication (over $Z_2$) are amazing
+The above homomorphic addition and multiplication (over $$Z_2$$) are amazing
 because we can continue to perform the operations on the ciphertexts
 repeatedly *even when the ciphertexts comes from the previous homomorphic operation*.
-That correctness / functionality hold as long as the error term $2e$ is $\lt q/4$ before modulo $q$.
+That correctness / functionality hold as long as the error term $$2e$$ is $$\lt q/4$$ before modulo $$q$$.
 
-The [homomorphic addition](#an-encryption-based-on-lwe) incurs a small error: each $\Add$ introduces a factor at most $2$.
-Starting with $B = \poly(n)$ and $q = n^{\poly(n)}$, we have the budget to perform many additions.
+The [homomorphic addition](#an-encryption-based-on-lwe) incurs a small error: each $$\Add$$ introduces a factor at most $$2$$.
+Starting with $$B = \poly(n)$$ and $$q = n^{\poly(n)}$$, we have the budget to perform many additions.
 
 However, the [homomorphic multiplication](#homomorphic-multiplication) incurs a much higher error due to the relinearization.
 Since the error increases exponentially in the number of operations, 
-the $\lt q/4$ bar is indeed a critical limitation.
+the $$\lt q/4$$ bar is indeed a critical limitation.
 
 To this end, [Gentry (STOC 2009)](https://dl.acm.org/doi/10.1145/1536414.1536440) introduced the idea of "bootstrapping."
 That is, to view the high-error ciphertext as a constant string,
@@ -478,40 +478,40 @@ the decryption algorithm plus the string as a circuit,
 and then the decryption key as the input of the circuit.
 That is, define
 
-- Circuit $f_{\Dec, c}(x)$: it takes input $x$ and then run and ouput $\Dec_x(c)$.
+- Circuit $$f_{\Dec, c}(x)$$: it takes input $$x$$ and then run and ouput $$\Dec_x(c)$$.
 
-Then, we can encrypt the decryption key $k_1$ using another key $k_2$, 
-and call the result as the evaluation key $\ek := \Enc_{k_2}(k_1)$.
-With that, we can homomorphically perform decryption on high-error $c$:
+Then, we can encrypt the decryption key $$k_1$$ using another key $$k_2$$, 
+and call the result as the evaluation key $$\ek := \Enc_{k_2}(k_1)$$.
+With that, we can homomorphically perform decryption on high-error $$c$$:
 
-- $c_2 \gets \Eval(f_{\Dec, c}, \ek = \Enc_{k_2}(k_1))$.
+- $$c_2 \gets \Eval(f_{\Dec, c}, \ek = \Enc_{k_2}(k_1))$$.
 
-The above $c_2$ can be later decrypted by $k_2$ as 
+The above $$c_2$$ can be later decrypted by $$k_2$$ as 
 
 $$
 \Dec_{k_2}(c') = f_{\Dec,c}(k_1) = \Dec_{k_1}(c),
 $$
 
-where the first equality holds if the error incurred by $f_{\Dec,c}$ is smaller than $O(q/B)$.
+where the first equality holds if the error incurred by $$f_{\Dec,c}$$ is smaller than $$O(q/B)$$.
 Thus, we need a homomorhic encryption scheme such that
 
-- The circuit depth of $\Dec$ is bounded by small number $d$
-- The $\Eval$ works correctly for circuit depth more than $d+1$ 
-  (because we want to perform at least one operation on $c_2$)
+- The circuit depth of $$\Dec$$ is bounded by small number $$d$$
+- The $$\Eval$$ works correctly for circuit depth more than $$d+1$$ 
+  (because we want to perform at least one operation on $$c_2$$)
 
-The LWE-based encryption has a simple $\Dec$, which computes firstly a linear operation and
-secondly a modulo $q$ division, which takes circuit depth $\poly(\log q)$. 
+The LWE-based encryption has a simple $$\Dec$$, which computes firstly a linear operation and
+secondly a modulo $$q$$ division, which takes circuit depth $$\poly(\log q)$$. 
 This is why we want to minimize the error of homomorphic multiplication.
 
-With that, we can generate a chain of keys $k_1, k_2, ..., k_\ell$ such that
+With that, we can generate a chain of keys $$k_1, k_2, ..., k_\ell$$ such that
 each key encrypts the previous one, so that we can perform many operations.
 This is known as "leveled homomorphic encryption."
 
-Alternatively, let $k_1 = k_2 = k$, and thus $\ek = \Enc_{k}(k)$, which is known as "bootstrapping."
-Because $\ek$ is given to the evaluator (to perform $\Eval$), 
-$\ek$ is essentially public and known to any adversaries.
+Alternatively, let $$k_1 = k_2 = k$$, and thus $$\ek = \Enc_{k}(k)$$, which is known as "bootstrapping."
+Because $$\ek$$ is given to the evaluator (to perform $$\Eval$$), 
+$$\ek$$ is essentially public and known to any adversaries.
 That introduces a significant concern in security: 
-we do not know how to prove or disprove that the encryption is still secure given such $\Enc_{k}(k)$,
+we do not know how to prove or disprove that the encryption is still secure given such $$\Enc_{k}(k)$$,
 and this is called "circular security" and used as an additional assumption.
 Circular security gives a fully homomorphic encryption (and it is still the only known way).
 
@@ -521,23 +521,23 @@ Application: Private Information Retrieval
 #### **Definition**: Private information retrieval (PIR)
 
 {:.defn}
-> A protocol $(\Query, \Resp, \Dec)$ is a PIR if it satisfies the following 
+> A protocol $$(\Query, \Resp, \Dec)$$ is a PIR if it satisfies the following 
 > syntax, correctness, and privacy.
-> Let $N$ be the size of a database $x$ such that $|x| = N$.
+> Let $$N$$ be the size of a database $$x$$ such that $$|x| = N$$.
 > 
-> - $(q,\st) \gets \Query(i)$
-> - $a \gets \Resp(x, q)$
-> - $b \gets \Dec(\st, a)$
+> - $$(q,\st) \gets \Query(i)$$
+> - $$a \gets \Resp(x, q)$$
+> - $$b \gets \Dec(\st, a)$$
 > 
 > Correctness:
-> for all $x$, all $i\in[N]$,
+> for all $$x$$, all $$i\in[N]$$,
 > 
 > $$
 > \Pr[(q,\st) \gets \Query(i), a \gets \Resp(x, q) :  \Dec(\st, a) = x_i] = 1
 > $$
 > 
 > Privacy:
-> for all $x$, all $i_0, i_1 \in [N]$, for all NUPPT $D$,
+> for all $$x$$, all $$i_0, i_1 \in [N]$$, for all NUPPT $$D$$,
 > the following are indistinguishable:
 > 
 > $$
@@ -546,9 +546,9 @@ Application: Private Information Retrieval
 > $$
 > 
 > Moreover, we define the computation time and the communication to be
-> the time and output size of $\Query, \Resp, \Dec$.
+> the time and output size of $$\Query, \Resp, \Dec$$.
 
-There are many settings of PIR, for example, the database $x$ and thus the query may be
+There are many settings of PIR, for example, the database $$x$$ and thus the query may be
 answered by *multiple* servers.
 We consider the simpler single server setting here.
 There is trivial solutions, but we want the protocol to be efficient.
