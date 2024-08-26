@@ -178,4 +178,4 @@ The Joy of Cryptography.
 
 David Evans, Vladimir Kolesnikov and Mike Rosulek.
 A Pragmatic Introduction to Secure Multi-Party Computation.
-[https://securecomputation.org/main/]
+[https://securecomputation.org/main/](https://securecomputation.org/main/)
