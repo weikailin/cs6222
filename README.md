@@ -40,11 +40,7 @@ Instructor and TA Information
 Office Hours
 ------------
 
-**Office hour:** Wednesdays 4-5pm
-Location: Rice 505.
-
-**TA hour:** Tuesdays 9-10am
-Location: TBD.
+See [Canvas](https://canvas.its.virginia.edu)
 
 Course Work
 --------------
