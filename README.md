@@ -43,7 +43,8 @@ Office Hours
 **Office hour:** Wednesdays 4-5pm
 Location: Rice 505.
 
-**TA hour:** TBD
+**TA hour:** Tuesdays 9-10am
+Location: TBD.
 
 Course Work
 --------------
