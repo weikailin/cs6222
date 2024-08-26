@@ -1,6 +1,6 @@
 ---
 layout: home
-title: CS 4501 Cryptography
+title: CS 6222 Cryptography
 nav_exclude: true
 permalink: /:path/
 seo:
@@ -8,7 +8,7 @@ seo:
   name: Cryptography
 ---
 
-Welcome to CS 4501, Cryptography!
+Welcome to CS 6222, Cryptography!
 ----------------------------------------
 
 Cryptographic primitives are applied almost everywhere on the network, for instance, encryption and authentication are necessary. In this course, we will start from the theoretic foundations that consolidates our belief in cryptography, and then we will visit some essential protocols as well as recent advances in cryptography. A major theme of this course is "provable security," that is, to define the desired security and then to rigorously prove the security is achieved. Hence, students are expected to be familiar with algorithms and mathematical proofs.
@@ -26,59 +26,66 @@ Also, reading and writing formal math proofs is necessary.
 Classroom
 ---------
 
-**Days and Times:** Tueday/Thursday 2:00-3:15 pm
+**Days and Times:** Tueday/Thursday 11:00am -- 12:15pm
 
-**Location:** Thornton Hall E303 ![UVA Engineering](assets/images/uva-eng.png){:style="vertical-align: middle;"}
+**Location:** Rice Hall 340 ![UVA Engineering](assets/images/uva-eng.png){:style="vertical-align: middle;"}
 
 Instructor and TA Information
 ------------------------------
 
 **Instructor:** Wei-Kai Lin [(audio)](https://www.name-coach.com/wei-kai-lin-4568fe92-7831-4780-a68c-361f76dee197), email: wklin-course (at virginia dot edu)
 
-**TA:** Elena Long
+**TA:** Arup Sarker
 
 Office Hours
 ------------
 
-**Office hour:** Thursdays 3:30-4:30pm (after Thursday classes).
+**Office hour:** Wednesdays 4-5pm
 Location: Rice 505.
 
-**TA hour:** Tuesdays 3:30-4:30pm (after classes).
+**TA hour:** TBD
 
 Course Work
 --------------
 
 The course work consist of the following.
 
-- (50%) Written homework
-- (24%) Programming project
-- (10%) In class activity and discussion
-- (16%) Final exam, written
-- (5%, bonus) Quizzes, occasional
+- (50%) Written homework 
+- (15%) Scribe notes (this weight may change according to number of students)
+- (20%) Final project (presentation and report)
+- (15%) Final exam, written
+- (10%, bonus) Quizzes and other
 
 The final grade will follow the [CS Department guidelines](https://uvacsadvising.org/policies.html#cs-department-grading-guidelines).
 
 We will use the [Canvas](https://canvas.its.virginia.edu) website to manage homework, exam, and grades. Please also use the discuss page on Canvas if you have course related questions.
 
-### Homework and Project Policy
+### Homework
 
 The homework submissions shall be PDF and typeset in Tex/Latex (template will be provided).
-The programming project will use python.
 
 Every student shall submit homework individually. You are free to discuss with other students in this class, but in that case, you shall add an **Acknowledgement** paragraph explicitly. Similarly, you are allowed to make use of published material as long as you cite it properly with a **References** section. In any case, it is a violation if you copy text directly, or if you are unable to explain your solution orally.
 
 There may be additional rules for some homework questions.
 
+### Scribe notes
+
+We will ask students to scribe lecture notes and typeset in Latex (template will be provided). The notes will be posted publicly on this website. There will be roughly 22 lectures, and for each lecture we will ask at most 2 students to scribe collaborately. The notes shall be submitted in 1 lecture week (that is before the next two lectures). Depending on the number of studenets, we may increase the weight of scribing and reduce the weight of final exam.
+
 ### Final exam
 
-Time: 9am - 12pm, 5/10, Friday, last day of finals.
-Same room. 
-This is the same as [UVA schedule](https://registrar.virginia.edu/exam-schedule-spring-2024).
+The time is the same as [UVA schedule](https://registrar.virginia.edu/exam-schedule-fall-2024).
 
 This will be in person and written one.
 No collaboration is permitted on the exams. 
 Students may construct a one-page (letter-size, two-sided) reference sheet for use 
 during the exam, but all other resources are forbidden (no internet, textbook, other humans, magnification instruments, etc.).
+
+### Final Project
+
+The final project is to read research papers in the area of cryptography, to write a 2-page summary, and then to present the topic in class. In addition to summary, you are encouraged to ask novel questions or to propose novel solutions.
+
+The project is by a group of at most two. Both students in the group get the same grade. Each group is required to submit the authors and the research topic in an 1-page proposal (4%) at mid-semester. The summary (8%) is due at the end of the semester, and the last two to five lectures will be the presentation (8%).
 
 ### Honor System
 
@@ -112,13 +119,12 @@ Textbooks:
   Online access in UVA library:
   [https://search.lib.virginia.edu/sources/uva_library/items/u10203454](https://search.lib.virginia.edu/sources/uva_library/items/u10203454)
 
-Lecture notes will be provided on this website,
-so the textbooks are optional.
+Lecture notes will be provided on this website, so the textbooks are optional.
 
 ### Syllabus (tentative)
 
 In the first half, we focus on the necessary properties behind cryptographic primitives,
-including one-wayness, computational indistinguishability, and pseudo-randomness,
+including computational indistinguishability, pseudo-randomness, and one-wayness,
 and we show the direct implications such as encryption and authentication.
 In the second half, we move on to more applications as well as recent progresses in cryptography.
 The tentative topics are listed below.
@@ -172,4 +178,4 @@ The Joy of Cryptography.
 
 David Evans, Vladimir Kolesnikov and Mike Rosulek.
 A Pragmatic Introduction to Secure Multi-Party Computation.
-https://securecomputation.org/main/
+[https://securecomputation.org/main/]
