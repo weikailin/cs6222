@@ -2,7 +2,7 @@
 layout: page
 title: 5. Authentication
 nav_order: 5
-nav_exclude: false
+nav_exclude: true
 ---
 
 $$

@@ -2,7 +2,7 @@
 layout: page
 title: 2. One-Way Functions
 nav_order: 2
-nav_exclude: false
+nav_exclude: true
 ---
 
 $$

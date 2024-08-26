@@ -2,7 +2,7 @@
 layout: page
 title: 6. Zero Knowledge Proofs
 nav_order: 6
-nav_exclude: false
+nav_exclude: true
 ---
 
 $$

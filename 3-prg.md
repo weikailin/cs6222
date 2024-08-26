@@ -2,7 +2,7 @@
 layout: page
 title: 3. Pseudo-Randomness
 nav_order: 3
-nav_exclude: false
+nav_exclude: true
 ---
 
 $$

@@ -2,7 +2,7 @@
 layout: page
 title: Logistics
 nav_order: 50
-nav_exclude: false
+nav_exclude: true
 ---
 
 About me
@@ -18,7 +18,7 @@ About this course
 
 Logistics
 --------------------------------------------
- - Website (weikailin.github.io/cs4501-crypto-sp24), my email (wklin-course)
+ - Website (weikailin.github.io/cs6222), my email (wklin-course)
  - Office hours
  - Course works
  - HW policies:
