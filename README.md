@@ -75,7 +75,8 @@ We will ask students to scribe lecture notes and typeset in Latex (template will
 
 ### Final exam
 
-The time is the same as [UVA schedule](https://registrar.virginia.edu/exam-schedule-fall-2024).
+The time is the same as [UVA schedule](https://registrar.virginia.edu/exam-schedule-fall-2024): Monday, December 16, 2024 9:00AM-12:00PM
+(Potential alternative: Monday, December 9)
 
 This will be in person and written one.
 No collaboration is permitted on the exams. 
