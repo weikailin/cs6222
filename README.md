@@ -35,12 +35,10 @@ Instructor and TA Information
 
 **Instructor:** Wei-Kai Lin [(audio)](https://www.name-coach.com/wei-kai-lin-4568fe92-7831-4780-a68c-361f76dee197), email: wklin-course (at virginia dot edu)
 
-**TA:** Arup Sarker
-
-Office Hours
+Office Hours and TA
 ------------
 
-See [Canvas](https://canvas.its.virginia.edu)
+See [Canvas](https://canvas.its.virginia.edu).
 
 Course Work
 --------------
