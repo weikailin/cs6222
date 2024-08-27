@@ -26,7 +26,7 @@ Also, reading and writing formal math proofs is necessary.
 Classroom
 ---------
 
-**Days and Times:** Tueday/Thursday 11:00am -- 12:15pm
+**Days and Times:** Tueday/Thursday 11:00am -- 12:15pm (2024)
 
 **Location:** Rice Hall 340 ![UVA Engineering](assets/images/uva-eng.png){:style="vertical-align: middle;"}
 
@@ -60,6 +60,15 @@ We will use the [Canvas](https://canvas.its.virginia.edu) website to manage home
 The homework submissions shall be PDF and typeset in Tex/Latex (template will be provided).
 
 Every student shall submit homework individually. You are free to discuss with other students in this class, but in that case, you shall add an **Acknowledgement** paragraph explicitly. Similarly, you are allowed to make use of published material as long as you cite it properly with a **References** section. In any case, it is a violation if you copy text directly, or if you are unable to explain your solution orally.
+
+Specifically, the purpose of homework (and this course) is to compare and understand security definitions and to rigorously prove or argue the security. Hence, when working on homework, the following approaches are listed from **the more preferred** to **less preferred**:
+
+1. Using in-class materials, including lecture notes, textbook sections that are covered, or office hours.
+2. Discussing with students in this class (must acknowledge it)
+3. Referring to other published literature, including textbook sections that are not yet covered (must reference it)
+4. Using ready-made solutions, including asking other people, using generative AI, finding solutions in previous courses in any school (let's try to avoid this)
+
+For example, you wrote your own answer, then you searched for the problem and and then edited your answer. In this case, you should reference (cite) or acknowledge it. In general, internalize your answer and no direct copying, so that you can explain it orally. Edit history (such as Overleaf or Github) is recommended.
 
 There may be additional rules for some homework questions.
 
