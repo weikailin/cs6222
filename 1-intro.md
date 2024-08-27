@@ -88,7 +88,7 @@ Alice/Bob want to hide the message from Eve. To do so, they share two algorithms
 
 Notice: it is important that which info is *public* (known to all A/B/E) and which is *private*. What if Eve knows $$\Enc$$ or $$\Dec$$?
 
-### Kerchoff's principle
+### Kerckhoffs's principle
 
 > The enemy knows the system.
 >
@@ -98,9 +98,9 @@ Reason: the algorithms are eventually leaked to Eve. We shall be conservative.
 
 Consequence: let algos public, but keep a short secret key $k$.
 
-Generalize: sample key $k \gets \Gen$
+Generalize: sample key $$k \gets \Gen$$
 
-Note: $(\Gen, \Enc, \Dec)$ can not be all deterministic. What if only $\Gen$ is randomized?
+Note: $$(\Gen, \Enc, \Dec)$$ can not be all deterministic. What if only $$\Gen$$ is randomized?
 
 ### Classical encryption
 Rotation, substitution, enigma, .... They are mostly broken now. DES is introduced in 70s and broken 90s.
