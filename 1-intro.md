@@ -97,7 +97,7 @@ Notice: it is important that which info is *public* (known to all A/B/E) and whi
 
 Reason: the algorithms are eventually leaked to Eve. We shall be conservative.
 
-Consequence: let algos public, but keep a short secret key $k$.
+Consequence: let algos public, but keep a short secret key $$k$$.
 
 Generalize: sample key $$k \gets \Gen$$
 
