@@ -1,8 +1,8 @@
 ---
 layout: page
-title: 3. Pseudo-Randomness
-nav_order: 3
-nav_exclude: true
+title: 2. Pseudo-Randomness
+nav_order: 2
+nav_exclude: false
 ---
 
 $$
