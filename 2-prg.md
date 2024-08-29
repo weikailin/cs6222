@@ -45,7 +45,7 @@ m \oplus g(s), ~ |m| = |g(s)|, \text{ but } |s| \ll |m| = |g(s)|.
 $$
 
 We will introduce computational indistinguishability, and then define pseudo-random generator (PRG) and pseudo-random function (PRF).
-
+Prior to that, we need to define efficient algorithms (to model honest procedures) and adversaries.
 
 Efficient Computation and Efficient Adversaries
 ------------------
