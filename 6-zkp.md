@@ -433,3 +433,7 @@ achieved NIZK, [FLS 1999](https://inst.eecs.berkeley.edu/~cs276/fa20/notes/Multi
 It uses Hamiltonian Cycle as the NP-Complete language 
 (which looks more natural than 3-Coloring in the construction);
 see [Katz at Maryland](https://www.cs.umd.edu/~jkatz/gradcrypto2/NOTES/lecture13.pdf) and [Garg at Berkeley](https://people.eecs.berkeley.edu/~sanjamg/classes/cs276-fall14/scribe/lec11.pdf) for details.
+
+In this section (and almost all ZK applications), we consider only *computational* ZK, which means that the adversarial verifier is *computationally* bounded (i.e., NUPPT).
+It is possible to extend the ZK even from *unbounded* verifier, and that is called *statisticl* ZKP (SZK). 
+See the [survey by Vadhan](https://people.seas.harvard.edu/~salil/research/complexityZK.pdf) for the complexity class SZK.
