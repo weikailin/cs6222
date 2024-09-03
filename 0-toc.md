@@ -11,6 +11,8 @@ Table of Lecture Notes
 | Date      | Topic                                     | References  |
 | --------- | ----------------------------------------- | ----------- |
 | Aug 27    | [Course outline, security definition](1-intro.md)  | [Ps 1.1-1.3], [KL 1.1,1.2,1.4,2.1] |
+| Aug 29    | [Perfect security, one-time pads](1-intro.md), [Efficient computation](2-prg.md#efficient-computation-and-efficient-adversaries)    | [Ps 1.3], [KL 2.1-2.3] |
+| Sep 3     | [Non-uniform, computational indistinguishable](2-prg.md#efficient-computation-and-efficient-adversaries)    | [Ps 2.1,3.1-3.2], [KL 3.1-3.3] |
 
 
 <!-- | Jan 23    | [Perfect security, one-time pads](1-intro.md)    | [Ps 1.3], [KL 2.1-2.3] |
@@ -37,7 +39,7 @@ Table of Lecture Notes
 | Apr 11    | [Commitments](6-zkp.md#commitment)  [ZKP for NP](6-zkp.md#any-language-in-class-np)    | [Ps 4.7] |
 | ...       |                 |   |
 | Apr 30    | (last lecture)    |  |
- -->
+
 <!-- 
 | Sep 4     | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
 | Sep 6     | [From weak to strong OWF](2-owf.md#from-weak-owf-to-strong-owf)    | [Ps 2.4], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec7.pdf), [LTW05](https://lucatrevisan.github.io/pubs/LTW05.pdf) |
