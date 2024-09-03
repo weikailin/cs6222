@@ -152,6 +152,8 @@ Example: Turing test, when a machine and a human is indistinguishable in *every*
 
 Observation: they are *not* the same, not even close in any sense; 
 however, the distinguisher "another human" can not tell the difference due to a limited power.
+Notice that it is hard to prove a machine satisfies this definition because we can not pull *every human* in the test. 
+The point is the *falsifiability*: if a machine does not satisfy, we just need one human distinguisher.
 
 Concept: we say a distribution is pseudorandom if for *every* efficient algorithm,
 it can not be distinguished from a (truely) uniform distribution.
@@ -181,7 +183,7 @@ E.g., supposing $$X_n$$ is a distribution over $$n$$-bit strings for all $$n\in\
 > \Big| \Pr[t \gets X_n, D(t) = 1] − \Pr[t \gets Y_n, D(t) = 1] \Big| \lt \eps(n).
 > $$
 
-Note: /
+Note:
 - "=1" is a convention in literature
 - "absolute" is not necessary due to "for all D"
 
