@@ -8,6 +8,8 @@ nav_exclude: false
 Table of Lecture Notes
 ========
 
+"Date" links to scribe notes, and "Topic" links to the note on this website.
+
 | Date      | Topic                                     | References  |
 | --------- | ----------------------------------------- | ----------- |
 | [Aug 27](assets/pdf/0827-scribe-intro.pdf)    | [Course outline, security definition](1-intro.md)  | [Ps 1.1-1.3], [KL 1.1,1.2,1.4,2.1] |
