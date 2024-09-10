@@ -377,6 +377,16 @@ and that some real-world cryptographic constructions are not asymptotic
 and thus they do not fit in
 (e.g., AES and SHA are defined only for 128, 256, and 512)
 
+### Expansion of PRGs
+The above PRG definition does not specify the output length except for longer than the input. 
+Letting the input size be $$n \in \N$$, we denote the output length to be $$\ell(n) > n$$.
+We say $$\ell$$ is the expansion of the PRG, the larger the better.
+
+(For some function $$g$$, the length $$|g(x)|$$ may differ from $$|g(x')|$$ even when $$|x| = |x'|$$.
+In that case, if we know the shortest output length for each $$n$$, then we can truncate the output.
+Otherwise, we can simply truncate the output length to $$n+1$$. 
+Then, the truncation is still a PRG.)
+
 #### **Lemma:** Expansion of a PRG
 
 {:.theorem}
