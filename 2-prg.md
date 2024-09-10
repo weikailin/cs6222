@@ -381,15 +381,15 @@ and thus they do not fit in
 
 {:.theorem}
 > Let $$g:\bit^n \to \bit^{n+1}$$ to be a PRG for all $$n \in\N$$. 
-> For any polynomial $$\ell(n) \gt n$$, define $$g': \bit^n \to \bit^{\ell(n)}$$ as follows:
+> For any polynomial $$\ell(n) \gt n$$, define $$G: \bit^n \to \bit^{\ell(n)}$$ as follows:
 > 
 > $$
-> g'(s) \to b_1 b_2 ... b_{\ell},
+> G(s) \to b_1 b_2 ... b_{\ell},
 > $$
 > 
 > where 
 > $$\ell := \ell(|s|)$$, 
-> $$x_0 \gets s, x_{i+1} \| b_{i+1} \gets g(x_i)$$. Then $$g'$$ is a PRG.
+> $$x_0 \gets s, x_{i+1} \| b_{i+1} \gets g(x_i)$$. Then $$G$$ is a PRG.
 
 {:.proof-title}
 > Proof, warmup:
@@ -398,11 +398,11 @@ and thus they do not fit in
 > Define distributions 
 > 
 > $$
-> H^0_n := g'(s), H^1_n := U_1 \| g(s)[n+1], H^2_n := U_2
+> H^0_n := G(s), H^1_n := U_1 \| g(s)[n+1], H^2_n := U_2
 > $$
 > 
 > for $$n \in \N$$, and define $$\cH^i := \set{H^i_n}_n$$ for $$i=0,1,2$$.
-> Since $$g'(s) = g(s)[n+1] \| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U_{n+1}$$ and closure,
+> Since $$G(s) = g(s)[n+1] \| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U_{n+1}$$ and closure,
 > we have $$\cH^0 \approx \cH^1$$.
 > By $$g(x)$$ is pseudorandom and closure, $$g(U_n)[n+1] \approx U_1$$, which implies $$\cH^1 \approx \cH^2$$.
 > By the corollary of hybrid lemma, we have $$\cH^0 \approx \cH^2$$.
@@ -429,8 +429,8 @@ and thus they do not fit in
 > \end{cases}
 > $$
 > 
-> We have $$g'(x) = s^1 \| s^2 \| ...s^{\ell}$$, and we want to prove it through Hybrid Lemma.
-> Given $$n$$, define hybrid distributions $$H_0 := g'(x)$$, $$H_{\ell} := U_{\ell}$$,
+> We have $$G(x) = s^1 \| s^2 \| ...s^{\ell}$$, and we want to prove it through Hybrid Lemma.
+> Given $$n$$, define hybrid distributions $$H_0 := G(x)$$, $$H_{\ell} := U_{\ell}$$,
 > and define $$H_i$$ for $$i = 1,...,\ell-1$$ as 
 > 
 > $$
