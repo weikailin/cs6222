@@ -610,113 +610,6 @@ of strings (see CPA-secure encryption below).
 
 Note: similar to PRG, the seed $$s$$ is not revealed to $$D$$ (otherwise it is trivial to distinguish).
 
-#### **Theorem:** Construct PRF from PRG [Goldreich-Goldwasser-Micali 84]
-
-{:.theorem}
-> If a pseudorandom generator exists, then pseudorandom functions exist.
-
-We have shown that a PRG with 1-bit expansion implies any PRG with poly expansion.
-So, let $$g$$ be a length-doubling PRG, i.e., $$|g(x)| = 2 |x|$$.
-Also, define $$g_0, g_1$$ to be 
-
-$$
-g_0(x) := g(x)[1...n], \text{ and } g_1:= g(x)[n...2n],
-$$
-
-where 
-$$n := |x|$$ is the input length.
-
-We define $$f_s$$ as follows to be a PRF:
-
-$$
-f_s(b_1 b_2 ... b_n) := g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_1}(s).
-$$
-
-That is, we evaluate $$g$$ on $$s$$, but keep only one side of the output depending on $$b_1$$,
-and then keep applying $$g$$ on the kept side, and then continue to choose the side by $$b_2$$, and so on.
-
-This constructs a binary tree. 
-The intuition is from expanding the 1-bit PRG,
-but now we want that any sub-string of the expansion can be efficiently computed.
-(We CS people love binary trees.)
-Clearly, $$f_s$$ is easy to compute, and we want to prove it is pseudorandom.
-
-{:.proof}
-> There are $$2^n$$ leaves in the tree, too many so that we can not use the
-> "switch one more PRG to uniform in each hybrid" technique as in expanding PRG.
-> The trick is that the distinguisher $$D$$ can only query $$f_s$$ at most polynomial many times
-> since $$D$$ is poly-time.
-> Each query correspond to a path in the binary tree, and there are at most 
-> polynomial many nodes in all queries.
-> Hence, we will switch the $$g(x)$$ evaluations from root to leaves of the tree
-> and from the first query to the last query.
-> 
-> Note: switching *each instance* of $$g(x)$$ (for each $$x$$) is a reduction
-> that runs $$D$$ to distinguish *one instance* of $$g(x)$$; 
-> therefore, we switch *exactly one* in each hybrid.
-> 
-> More formally, assume for contra (AC), there exists NUPPT $$D$$, poly $$p$$ s.t.
-> for inf many $$n\in\N$$, $$D$$ distinguishes $$f_s$$ from RF (in the oracle interaction).
-> We want to construct $$D'$$ that distinguishes $$g(x)$$.
-> We define hybrid oracles $$H_i(b_1 ... b_n)$$ as follows:
-> 
-> 1. the map $$m$$ is initialized to empty
-> 2. if the prefix $$b_1 ... b_i \notin m$$, then sample $$s(b_{i} b_{i-1} ... b_{1}) \gets \bit^n$$ 
->    and set $$m[b_i ... b_1] \gets s(b_{i} b_{i-1} ... b_{1})$$
-> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i-1}}(m[b_{i} ... b_{1}])$$
-> 
-> Notice that $$H_i$$ is a function defined using the computational view.
-> 
-> Let $$\PRF_n := \set{f_s : s \gets \bit^n}$$ be the distribution of $$f_s$$ for short.
-> We have $$H_0 \equiv \PRF_n$$ and $$H_n \equiv \RF_n$$, 
-> but there are still too many switches between $$H_i, H_{i+1}$$.
-> The key observation is that,
-> given $$D$$ is PPT, we know a poly $$T(n)$$ that is the running time of $$D$$ on $$1^n$$,
-> and then we just need to switch at most $$T(n)$$ instances of $$g(x)$$.
-> That is to define sub-hybrids $$H_{i,j}$$,
-> 
-> 1. the map $$m$$ is initialized to empty
-> 2. if the prefix $$b_1 ... b_i b_{i+1} \notin m$$, 
->    then depending on the "number of queries" that are made to $$H_{i,j}$$ so far, including the current query,
->    do the following:
->    sample $$s \gets \bit^n$$, set 
->    
->    $$
->    m[b_{i+1} b_i ... b_1] \gets 
->    \begin{cases}
->      \bit^n   & \text{number of queries} \le j \\
->      g_{b_{i+1}}(s)     & \text{otherwise}
->    \end{cases},
->    $$
->    
->    and set
->    
->    $$
->    m[\overline{b_{i+1}} b_i ... b_1] \gets 
->    \begin{cases}
->      \bit^n   & \text{number of queries} \le j \\
->      g_{\overline{b_{i+1}}}(s)     & \text{otherwise}
->    \end{cases}.
->    $$
->    
-> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i}}(m[b_{i+1} ... b_{1}])$$
-> 
-> We have $$H_{i,0} \equiv H_i$$. 
-> Moreover for any $$D$$ runs in time $$T(n)$$, we have $$H_{i,T(n)} \equiv H_{i+1}$$
-> (their combinatorial views differ, but their computational views are identical for $$T(n)$$ queries).
-> Now we have $$n \cdot T(n)$$ hybrids, so we can construct $$D'(t)$$:
-> 
-> 1. sample $$i \gets \set{0,1,...,n-1}$$ and $$j\gets\set{0,...,T(n)-1}$$ uniformly at random
-> 2. define oracle $$O\_{i,j,t}(\cdot)$$ such that is similar to $$H\_{i,j}$$ but 
->    "injects" $$t$$ to the map $$m$$ in the $$j$$-th query if the prefix $$b\_1 ... b\_i b\_{i+1} \notin m$$.
->    (This is constructable and computable only in the *next step* when queries come from $$D$$.)
-> 3. run and output $$D^{O\_{i,j,t}(\cdot)}(1^n)$$, that is running $$D$$ on input $$1^n$$ 
->    when providing $$D$$ with oracle queries to $$O\_{i,j,t}$$
->
-> It remains to calculate the probabilities, namely, 
-> given (AC), $$D'$$ distinguishes $$g(x)$$ from uniformly sampled string w.p. $$\ge \frac{1}{nT(n)p(n)}$$,
-> a contradiction.
-> The calculation is almost identical to [the proof of PRG expansion](#lemma-expansion-of-a-prg) and left as an exercise.
 
 Secure Encryption Scheme
 ------------------------
@@ -865,3 +758,114 @@ It remains to prove CPA security.
 Notice that we could have constructed an efficient CPA-secure encryption from PRG, 
 but using a PRF significantly simplified the construction and the proof.
 
+
+GGM Construction of PRF
+------------------------
+
+#### **Theorem:** Construct PRF from PRG [Goldreich-Goldwasser-Micali 84]
+
+{:.theorem}
+> If a pseudorandom generator exists, then pseudorandom functions exist.
+
+We have shown that a PRG with 1-bit expansion implies any PRG with poly expansion.
+So, let $$g$$ be a length-doubling PRG, i.e., $$|g(x)| = 2 |x|$$.
+Also, define $$g_0, g_1$$ to be 
+
+$$
+g_0(x) := g(x)[1...n], \text{ and } g_1:= g(x)[n...2n],
+$$
+
+where 
+$$n := |x|$$ is the input length.
+
+We define $$f_s$$ as follows to be a PRF:
+
+$$
+f_s(b_1 b_2 ... b_n) := g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_1}(s).
+$$
+
+That is, we evaluate $$g$$ on $$s$$, but keep only one side of the output depending on $$b_1$$,
+and then keep applying $$g$$ on the kept side, and then continue to choose the side by $$b_2$$, and so on.
+
+This constructs a binary tree. 
+The intuition is from expanding the 1-bit PRG,
+but now we want that any sub-string of the expansion can be efficiently computed.
+(We CS people love binary trees.)
+Clearly, $$f_s$$ is easy to compute, and we want to prove it is pseudorandom.
+
+{:.proof}
+> There are $$2^n$$ leaves in the tree, too many so that we can not use the
+> "switch one more PRG to uniform in each hybrid" technique as in expanding PRG.
+> The trick is that the distinguisher $$D$$ can only query $$f_s$$ at most polynomial many times
+> since $$D$$ is poly-time.
+> Each query correspond to a path in the binary tree, and there are at most 
+> polynomial many nodes in all queries.
+> Hence, we will switch the $$g(x)$$ evaluations from root to leaves of the tree
+> and from the first query to the last query.
+> 
+> Note: switching *each instance* of $$g(x)$$ (for each $$x$$) is a reduction
+> that runs $$D$$ to distinguish *one instance* of $$g(x)$$; 
+> therefore, we switch *exactly one* in each hybrid.
+> 
+> More formally, assume for contra (AC), there exists NUPPT $$D$$, poly $$p$$ s.t.
+> for inf many $$n\in\N$$, $$D$$ distinguishes $$f_s$$ from RF (in the oracle interaction).
+> We want to construct $$D'$$ that distinguishes $$g(x)$$.
+> We define hybrid oracles $$H_i(b_1 ... b_n)$$ as follows:
+> 
+> 1. the map $$m$$ is initialized to empty
+> 2. if the prefix $$b_1 ... b_i \notin m$$, then sample $$s(b_{i} b_{i-1} ... b_{1}) \gets \bit^n$$ 
+>    and set $$m[b_i ... b_1] \gets s(b_{i} b_{i-1} ... b_{1})$$
+> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i-1}}(m[b_{i} ... b_{1}])$$
+> 
+> Notice that $$H_i$$ is a function defined using the computational view.
+> 
+> Let $$\PRF_n := \set{f_s : s \gets \bit^n}$$ be the distribution of $$f_s$$ for short.
+> We have $$H_0 \equiv \PRF_n$$ and $$H_n \equiv \RF_n$$, 
+> but there are still too many switches between $$H_i, H_{i+1}$$.
+> The key observation is that,
+> given $$D$$ is PPT, we know a poly $$T(n)$$ that is the running time of $$D$$ on $$1^n$$,
+> and then we just need to switch at most $$T(n)$$ instances of $$g(x)$$.
+> That is to define sub-hybrids $$H_{i,j}$$,
+> 
+> 1. the map $$m$$ is initialized to empty
+> 2. if the prefix $$b_1 ... b_i b_{i+1} \notin m$$, 
+>    then depending on the "number of queries" that are made to $$H_{i,j}$$ so far, including the current query,
+>    do the following:
+>    sample $$s \gets \bit^n$$, set 
+>    
+>    $$
+>    m[b_{i+1} b_i ... b_1] \gets 
+>    \begin{cases}
+>      \bit^n   & \text{number of queries} \le j \\
+>      g_{b_{i+1}}(s)     & \text{otherwise}
+>    \end{cases},
+>    $$
+>    
+>    and set
+>    
+>    $$
+>    m[\overline{b_{i+1}} b_i ... b_1] \gets 
+>    \begin{cases}
+>      \bit^n   & \text{number of queries} \le j \\
+>      g_{\overline{b_{i+1}}}(s)     & \text{otherwise}
+>    \end{cases}.
+>    $$
+>    
+> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i}}(m[b_{i+1} ... b_{1}])$$
+> 
+> We have $$H_{i,0} \equiv H_i$$. 
+> Moreover for any $$D$$ runs in time $$T(n)$$, we have $$H_{i,T(n)} \equiv H_{i+1}$$
+> (their combinatorial views differ, but their computational views are identical for $$T(n)$$ queries).
+> Now we have $$n \cdot T(n)$$ hybrids, so we can construct $$D'(t)$$:
+> 
+> 1. sample $$i \gets \set{0,1,...,n-1}$$ and $$j\gets\set{0,...,T(n)-1}$$ uniformly at random
+> 2. define oracle $$O\_{i,j,t}(\cdot)$$ such that is similar to $$H\_{i,j}$$ but 
+>    "injects" $$t$$ to the map $$m$$ in the $$j$$-th query if the prefix $$b\_1 ... b\_i b\_{i+1} \notin m$$.
+>    (This is constructable and computable only in the *next step* when queries come from $$D$$.)
+> 3. run and output $$D^{O\_{i,j,t}(\cdot)}(1^n)$$, that is running $$D$$ on input $$1^n$$ 
+>    when providing $$D$$ with oracle queries to $$O\_{i,j,t}$$
+>
+> It remains to calculate the probabilities, namely, 
+> given (AC), $$D'$$ distinguishes $$g(x)$$ from uniformly sampled string w.p. $$\ge \frac{1}{nT(n)p(n)}$$,
+> a contradiction.
+> The calculation is almost identical to [the proof of PRG expansion](#lemma-expansion-of-a-prg) and left as an exercise.
