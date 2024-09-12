@@ -611,12 +611,13 @@ of strings (see CPA-secure encryption below).
 Note: similar to PRG, the seed $$s$$ is not revealed to $$D$$ (otherwise it is trivial to distinguish).
 
 **Remark**{: .label}
-The input and output lenths of PRF is parameterizable. For any functions $$\ell_1, \ell_2$$,
+The above definition requires both the input and output length to be $$n$$, the seed legnth.
+However, the input and output lenths of PRF can be parameterized. For any functions $$\ell_1, \ell_2$$,
 consider the family of functions
 
 $$\set{f_s: \bit^{\ell_1(n)} \to \bit^{\ell_2(n)}, n = |s|}_{s \in \bits}.$$
 
-We also call this a family of PRF if it is easy to compute (in time polynomial in $$n$$) and pseudorandom.
+We also call this a family of PRF if it is easy to compute (in time polynomial in $$n$$) and pseudorandom. PRFs of various input/output length can be obtained from any length-$$n$$ PRF. It is an exercise to define such PRFs and to construct them from standard (length-$$n$$) PRFs.
 
 **Discuss**{: .label}
 - Suppose $$g$$ is a PRG. Is $$g$$ a PRF?
