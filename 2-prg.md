@@ -605,11 +605,23 @@ of strings (see CPA-secure encryption below).
 > A family of functions $$\set{f_s: \bit^{|s|} \to \bit^{|s|}}_{s \in \bits}$$
 > is *pseudo-random* if
 > 
-> - (Easy to compute): $$f_s(x)$$ can be computed by a PPT algo that is given input $$s,x$$.
+> - (Easy to compute): $$f_s(x)$$ can be computed by a PPT algo that is given input $$(s,x)$$.
 > - (Pseudorandom): $$\set{s\gets \bit^n : f_s}_n \approx \set{F \gets \RF_n : F}_n$$.
 
 Note: similar to PRG, the seed $$s$$ is not revealed to $$D$$ (otherwise it is trivial to distinguish).
 
+**Remark**{: .label}
+The input and output lenths of PRF is parameterizable. For any functions $$\ell_1, \ell_2$$,
+consider the family of functions
+
+$$\set{f_s: \bit^{\ell_1(n)} \to \bit^{\ell_2(n)}, n = |s|}_{s \in \bits}.$$
+
+We also call this a family of PRF if it is easy to compute (in time polynomial in $$n$$) and pseudorandom.
+
+**Discuss**{: .label}
+- Suppose $$g$$ is a PRG. Is $$g$$ a PRF?
+- Why a PRF must be a keyed function?
+- The AES encryption is a deterministic algorithm $$\Enc(k,m)$$ that takes a 256-bit key $$k$$ and an arbitrary-length message $$m$$. Is $$\Enc$$ a PRF?
 
 Secure Encryption Scheme
 ------------------------
