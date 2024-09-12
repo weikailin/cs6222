@@ -621,7 +621,7 @@ We also call this a family of PRF if it is easy to compute (in time polynomial i
 **Discuss**{: .label}
 - Suppose $$g$$ is a PRG. Is $$g$$ a PRF?
 - Why a PRF must be a keyed function?
-- The AES encryption is a deterministic algorithm $$\Enc(k,m)$$ that takes a 256-bit key $$k$$ and an arbitrary-length message $$m$$. Is $$\Enc$$ a PRF?
+- The AES encryption is a deterministic algorithm $$\Enc(k,m)$$ that takes a 256-bit key $$k$$ and an arbitrary-length message $$m$$. (We omit the initial vector and the block modes and just use the default.) Is $$\Enc$$ a PRF?
 
 Secure Encryption Scheme
 ------------------------
