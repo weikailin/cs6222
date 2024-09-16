@@ -17,7 +17,7 @@ Table of Lecture Notes
 | [Sep 3](assets/pdf/0903-comp-ind.pdf)     | [Non-uniform, computational indistinguishability](2-prg.md#computational-indistinguishability)    | [Ps 2.1,3.1-3.2], [KL 3.1-3.3] |
 | [Sep 5](assets/pdf/0905-prg.pdf)     | [Hybrid lemma, PRGs](3-prg.md#pseudo-random-generator)    | [Ps 3.1-3.3], [KL 3.3] |
 | Sep 10    | [PRG expansion](3-prg.md#lemma-expansion-of-a-prg)    | [Ps 3.3], [KL 3.3] |
-| [Sep 12](assets/pdf/0912_prs.pdf)    | [Pseudorandom functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 3.5] |
+| [Sep 12](assets/pdf/0912_psr.pdf)    | [Pseudorandom functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 3.5] |
 
 
 <!-- 
