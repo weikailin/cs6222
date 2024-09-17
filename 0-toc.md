@@ -8,16 +8,19 @@ nav_exclude: false
 Table of Lecture Notes
 ========
 
+"Date" links to scribe notes, and "Topic" links to the note on this website.
+
 | Date      | Topic                                     | References  |
 | --------- | ----------------------------------------- | ----------- |
-| Aug 27    | [Course outline, security definition](1-intro.md)  | [Ps 1.1-1.3], [KL 1.1,1.2,1.4,2.1] |
+| [Aug 27](assets/pdf/0827-scribe-intro.pdf)    | [Course outline, security definition](1-intro.md)  | [Ps 1.1-1.3], [KL 1.1,1.2,1.4,2.1] |
+| [Aug 29](assets/pdf/cs6222_scribe_1.pdf)     | [Perfect security, one-time pads](1-intro.md), [Efficient computation](2-prg.md#efficient-computation-and-efficient-adversaries)    | [Ps 1.3], [KL 2.1-2.3] |
+| [Sep 3](assets/pdf/0903-comp-ind.pdf)     | [Non-uniform, computational indistinguishability](2-prg.md#computational-indistinguishability)    | [Ps 2.1,3.1-3.2], [KL 3.1-3.3] |
+| [Sep 5](assets/pdf/0905-prg.pdf)     | [Hybrid lemma, PRGs](3-prg.md#pseudo-random-generator)    | [Ps 3.1-3.3], [KL 3.3] |
+| Sep 10    | [PRG expansion](3-prg.md#lemma-expansion-of-a-prg)    | [Ps 3.3], [KL 3.3] |
+| [Sep 12](assets/pdf/0912_psr.pdf)    | [Pseudorandom functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 3.5] |
 
 
-<!-- | Jan 23    | [Perfect security, one-time pads](1-intro.md)    | [Ps 1.3], [KL 2.1-2.3] |
-| Jan 25    | [Efficient computation, adversary](2-owf.md#efficient-computation-and-efficient-adversaries), [PRG](3-prg#pseudo-random-generator)    | [Ps 2.1,3.1-3.2], [KL 3.1-3.3] |
-| Jan 30    | [Computational indistinguishability](3-prg.md)    | [Ps 3.1] |
-| Feb 1     | [Computational indistinguishability](3-prg.md)    | [Ps 3.1] |
-| Feb 6     | [PRG](3-prg#pseudo-random-generator)    | [Ps 3.3], [KL 3.3] |
+<!-- 
 | Feb 8     | [Pseudo-random functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 8.5] |
 | Feb 13    | [CPA-secure encryption](3-prg.md#secure-encryption-scheme)    | [Ps 3.9] [KL 3.2, 3.4] |
 | Feb 15    | [Pseudo-random functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 8.5], [Abhishek@JHU](https://www.cs.jhu.edu/~abhishek/classes/CS600-642-442-Fall2018/L05.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec5.pdf), [Wichs@Northeastern](https://www.khoury.northeastern.edu/home/wichs/class/crypto-fall15/lecture9.pdf) |
@@ -37,7 +40,7 @@ Table of Lecture Notes
 | Apr 11    | [Commitments](6-zkp.md#commitment)  [ZKP for NP](6-zkp.md#any-language-in-class-np)    | [Ps 4.7] |
 | ...       |                 |   |
 | Apr 30    | (last lecture)    |  |
- -->
+
 <!-- 
 | Sep 4     | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
 | Sep 6     | [From weak to strong OWF](2-owf.md#from-weak-owf-to-strong-owf)    | [Ps 2.4], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec7.pdf), [LTW05](https://lucatrevisan.github.io/pubs/LTW05.pdf) |

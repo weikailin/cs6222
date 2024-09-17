@@ -1,8 +1,8 @@
 ---
 layout: page
-title: 3. Pseudo-Randomness
-nav_order: 3
-nav_exclude: true
+title: 2. Pseudo-Randomness
+nav_order: 2
+nav_exclude: false
 ---
 
 $$
@@ -45,6 +45,100 @@ m \oplus g(s), ~ |m| = |g(s)|, \text{ but } |s| \ll |m| = |g(s)|.
 $$
 
 We will introduce computational indistinguishability, and then define pseudo-random generator (PRG) and pseudo-random function (PRF).
+Prior to that, we need to define efficient algorithms (to model honest procedures) and adversaries.
+
+Efficient Computation and Efficient Adversaries
+------------------
+
+We want to provide "efficient computation" to the honest users.
+
+#### **Definition:** Deterministic Algorithm
+
+{: .defn}
+> An algorithm $$\cA$$ is defined to be a deterministic Turing Machine with input and output as bit strings, $$\bit^\ast$$.
+
+Recall that a Turing Machine is by definition *uniform*, that is, 
+
+- The description length of $$\cA$$ is constant for all inputs (no matter how long it is).
+
+Also notice that the definitiona of algorithm here is different from some algorithm textbooks, e.g.,
+we do not require an algorithm to halt in finite time (unless explicitly specified, see next).
+
+#### **Definition:** Polynomial Running-Time
+
+{: .defn}
+> $$\cA$$ runs in time $$T(n)$$ if $$\forall x \in \bits$$, 
+> $$\cA(x)$$ halts within $$T(|x|)$$ steps. 
+> $$\cA$$ runs in *polynomial time* if there exists a constant $$c$$ such that $$\cA$$ runs
+> in time $$T(n) = n^c$$.
+
+#### **Definition:** Efficient Computation
+
+{: .defn}
+> We say an algorithm is *efficient* if it runs in polynomial time.
+
+Justification of poly time:
+
+- Indep of computation models (TM, circuit, ...)
+- Closed under compositions of algorithms
+- From human experience: many poly-time algorithms are improved later to cubic time, but many super-polynomial time algorithm/problems are unclear if we can solve in polynomial time.
+
+As discussed in perfect secrecy, we need randomized algorithms to construct encryption (and more generally crypto).
+
+#### **Definition:** Randomized (or Probabilistic) Algorithm
+
+{: .defn}
+> A *randomized* algorithm $$\cA$$, also called a *probabilistic* polynomial-time Turing Machine
+> and abbreviated as PPT, is a deterministic algorithm equipped with an extra random tape. 
+> Each bit of the random tape is uniformly and independently chosen.
+> 
+> We denote the computation by $$y \gets \cA(x ; r)$$ but sometimes omit $$r$$. 
+> When we say a randomized algorithm runs in time $$T(n)$$, 
+> the running time shall be $$\le T$$ for all $$(x,r)$$.
+
+As an example, we define efficient and correct encryption.
+
+#### **Example:** Efficient Private-key Encryption.
+
+{: .defn}
+> $$(\Gen, \Enc, \Dec)$$ is called an *efficient private-key encryption scheme* w.r.t. message space $$\cM$$ if:
+> 1. $$k \gets \Gen(1^n)$$ is PPT s.t. for every $$n \in \N$$, it samples $$k$$.
+> 2. $$c \gets \Enc_k(m)$$ is PPT s.t. $$k, m \in \cM$$, outputs $$c$$.
+> 3. $$m \gets \Dec_k(c)$$ is PPT s.t. $$c, k$$, outputs $$m \in \cM \cup\bot$$.
+> 4. Correctness: $$\forall n \in \N$$, $$m \in \cM$$,
+> 
+> $$
+> \Pr \left[k \gets \Gen(1^n) : \Dec_k(\Enc_k(m)) = m \right] = 1.
+> $$
+
+Note: the notation $$1^n$$ means the string of $$n$$ copies 1's, it is called the *security parameter*.
+The purpose is to instantiate the "security" of the scheme, e.g., $$n$$-bit key.
+We write unary $$1^n$$ (but not $$n$$ as binary) because "poly-time" is defined by the input length.
+
+### Adversaries: Non-Uniform
+
+Next we want to model adversaries with a stronger capability than honest.
+
+#### **Definition:** Non-Uniform PPT
+
+{: .defn}
+> A *non-uniform* PPT machine (abbreviated nuPPT) $$\cA$$ is a sequence
+> of algos $$\cA = \set{\cA_1, \cA_2, \dots}$$ s.t.:
+> - $$\cA_i$$ computes on inputs of length $$i$$, and
+> - exists a polynomial $$d$$ s.t. the description size $$|A_i| \lt d(i)$$ 
+>   and the time $$\cA_i$$ is also less than $$d(i)$$. 
+> We write $$\cA(x)$$ to denote the computation $$\cA_{|x|}(x)$$.
+> 
+> Alternatively, an nuPPT algo can be defined as a *uniform* PPT $$\cA$$ that
+> takes an additional *advice* string of poly length $$d(i)$$ for each input length $$i$$.
+
+Purpose: 
+non-uniform gives adv extra power and models many real scenario, 
+e.g., Eve may have a list of known (plain, cipher) pairs.
+
+Discuss: the advice may not be computable in poly time 
+(if poly-time, then no need to take advice as input). NU is closed under reduction.
+
 
 Computational Indistinguishability
 ------------------------
@@ -58,6 +152,8 @@ Example: Turing test, when a machine and a human is indistinguishable in *every*
 
 Observation: they are *not* the same, not even close in any sense; 
 however, the distinguisher "another human" can not tell the difference due to a limited power.
+Notice that it is hard to prove a machine satisfies this definition because we can not pull *every human* in the test. 
+The point is the *falsifiability*: if a machine does not satisfy, we just need one human distinguisher.
 
 Concept: we say a distribution is pseudorandom if for *every* efficient algorithm,
 it can not be distinguished from a (truely) uniform distribution.
@@ -87,7 +183,7 @@ E.g., supposing $$X_n$$ is a distribution over $$n$$-bit strings for all $$n\in\
 > \Big| \Pr[t \gets X_n, D(t) = 1] − \Pr[t \gets Y_n, D(t) = 1] \Big| \lt \eps(n).
 > $$
 
-Note: /
+Note:
 - "=1" is a convention in literature
 - "absolute" is not necessary due to "for all D"
 
@@ -281,19 +377,29 @@ and that some real-world cryptographic constructions are not asymptotic
 and thus they do not fit in
 (e.g., AES and SHA are defined only for 128, 256, and 512)
 
+### Expansion of PRGs
+The above PRG definition does not specify the output length except for longer than the input. 
+Letting the input size be $$n \in \N$$, we denote the output length to be $$\ell(n) > n$$.
+We say $$\ell$$ is the expansion of the PRG, the larger the better.
+
+(For some function $$g$$, the length $$|g(x)|$$ may differ from $$|g(x')|$$ even when $$|x| = |x'|$$.
+In that case, if we know the shortest output length for each $$n$$, then we can truncate the output.
+Otherwise, we can simply truncate the output length to $$n+1$$. 
+Then, the truncation is still a PRG.)
+
 #### **Lemma:** Expansion of a PRG
 
 {:.theorem}
 > Let $$g:\bit^n \to \bit^{n+1}$$ to be a PRG for all $$n \in\N$$. 
-> For any polynomial $$\ell(n) \gt n$$, define $$g': \bit^n \to \bit^{\ell(n)}$$ as follows:
+> For any polynomial $$\ell(n) \gt n$$, define $$G: \bit^n \to \bit^{\ell(n)}$$ as follows:
 > 
 > $$
-> g'(s) \to b_1 b_2 ... b_{\ell},
+> G(s) \to b_1 b_2 ... b_{\ell},
 > $$
 > 
 > where 
 > $$\ell := \ell(|s|)$$, 
-> $$x_0 \gets s, x_{i+1} \| b_{i+1} \gets g(x_i)$$. Then $$g'$$ is a PRG.
+> $$x_0 \gets s, x_{i+1} \| b_{i+1} \gets g(x_i)$$. Then $$G$$ is a PRG.
 
 {:.proof-title}
 > Proof, warmup:
@@ -302,11 +408,11 @@ and thus they do not fit in
 > Define distributions 
 > 
 > $$
-> H^0_n := g'(s), H^1_n := U_1 \| g(s)[n+1], H^2_n := U_2
+> H^0_n := G(s), H^1_n := U_1 \| g(s)[n+1], H^2_n := U_2
 > $$
 > 
 > for $$n \in \N$$, and define $$\cH^i := \set{H^i_n}_n$$ for $$i=0,1,2$$.
-> Since $$g'(s) = g(s)[n+1] \| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U_{n+1}$$ and closure,
+> Since $$G(s) = g(s)[n+1] \| g(g(s)[1...n])[n+1]$$, by $$g(s) \approx U_{n+1}$$ and closure,
 > we have $$\cH^0 \approx \cH^1$$.
 > By $$g(x)$$ is pseudorandom and closure, $$g(U_n)[n+1] \approx U_1$$, which implies $$\cH^1 \approx \cH^2$$.
 > By the corollary of hybrid lemma, we have $$\cH^0 \approx \cH^2$$.
@@ -333,8 +439,8 @@ and thus they do not fit in
 > \end{cases}
 > $$
 > 
-> We have $$g'(x) = s^1 \| s^2 \| ...s^{\ell}$$, and we want to prove it through Hybrid Lemma.
-> Given $$n$$, define hybrid distributions $$H_0 := g'(x)$$, $$H_{\ell} := U_{\ell}$$,
+> We have $$G(x) = s^1 \| s^2 \| ...s^{\ell}$$, and we want to prove it through Hybrid Lemma.
+> Given $$n$$, define hybrid distributions $$H_0 := G(x)$$, $$H_{\ell} := U_{\ell}$$,
 > and define $$H_i$$ for $$i = 1,...,\ell-1$$ as 
 > 
 > $$
@@ -499,118 +605,24 @@ of strings (see CPA-secure encryption below).
 > A family of functions $$\set{f_s: \bit^{|s|} \to \bit^{|s|}}_{s \in \bits}$$
 > is *pseudo-random* if
 > 
-> - (Easy to compute): $$f_s(x)$$ can be computed by a PPT algo that is given input $$s,x$$.
+> - (Easy to compute): $$f_s(x)$$ can be computed by a PPT algo that is given input $$(s,x)$$.
 > - (Pseudorandom): $$\set{s\gets \bit^n : f_s}_n \approx \set{F \gets \RF_n : F}_n$$.
 
 Note: similar to PRG, the seed $$s$$ is not revealed to $$D$$ (otherwise it is trivial to distinguish).
 
-#### **Theorem:** Construct PRF from PRG [Goldreich-Goldwasser-Micali 84]
+**Remark**{: .label}
+The above definition requires both the input and output length to be $$n$$, the seed legnth.
+However, the input and output lenths of PRF can be parameterized. For any functions $$\ell_1, \ell_2$$,
+consider the family of functions
 
-{:.theorem}
-> If a pseudorandom generator exists, then pseudorandom functions exist.
+$$\set{f_s: \bit^{\ell_1(n)} \to \bit^{\ell_2(n)}, n = |s|}_{s \in \bits}.$$
 
-We have shown that a PRG with 1-bit expansion implies any PRG with poly expansion.
-So, let $$g$$ be a length-doubling PRG, i.e., $$|g(x)| = 2 |x|$$.
-Also, define $$g_0, g_1$$ to be 
+We also call this a family of PRF if it is easy to compute (in time polynomial in $$n$$) and pseudorandom. PRFs of various input/output length can be obtained from any length-$$n$$ PRF. It is an exercise to define such PRFs and to construct them from standard (length-$$n$$) PRFs.
 
-$$
-g_0(x) := g(x)[1...n], \text{ and } g_1:= g(x)[n...2n],
-$$
-
-where 
-$$n := |x|$$ is the input length.
-
-We define $$f_s$$ as follows to be a PRF:
-
-$$
-f_s(b_1 b_2 ... b_n) := g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_1}(s).
-$$
-
-That is, we evaluate $$g$$ on $$s$$, but keep only one side of the output depending on $$b_1$$,
-and then keep applying $$g$$ on the kept side, and then continue to choose the side by $$b_2$$, and so on.
-
-This constructs a binary tree. 
-The intuition is from expanding the 1-bit PRG,
-but now we want that any sub-string of the expansion can be efficiently computed.
-(We CS people love binary trees.)
-Clearly, $$f_s$$ is easy to compute, and we want to prove it is pseudorandom.
-
-{:.proof}
-> There are $$2^n$$ leaves in the tree, too many so that we can not use the
-> "switch one more PRG to uniform in each hybrid" technique as in expanding PRG.
-> The trick is that the distinguisher $$D$$ can only query $$f_s$$ at most polynomial many times
-> since $$D$$ is poly-time.
-> Each query correspond to a path in the binary tree, and there are at most 
-> polynomial many nodes in all queries.
-> Hence, we will switch the $$g(x)$$ evaluations from root to leaves of the tree
-> and from the first query to the last query.
-> 
-> Note: switching *each instance* of $$g(x)$$ (for each $$x$$) is a reduction
-> that runs $$D$$ to distinguish *one instance* of $$g(x)$$; 
-> therefore, we switch *exactly one* in each hybrid.
-> 
-> More formally, assume for contra (AC), there exists NUPPT $$D$$, poly $$p$$ s.t.
-> for inf many $$n\in\N$$, $$D$$ distinguishes $$f_s$$ from RF (in the oracle interaction).
-> We want to construct $$D'$$ that distinguishes $$g(x)$$.
-> We define hybrid oracles $$H_i(b_1 ... b_n)$$ as follows:
-> 
-> 1. the map $$m$$ is initialized to empty
-> 2. if the prefix $$b_1 ... b_i \notin m$$, then sample $$s(b_{i} b_{i-1} ... b_{1}) \gets \bit^n$$ 
->    and set $$m[b_i ... b_1] \gets s(b_{i} b_{i-1} ... b_{1})$$
-> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i-1}}(m[b_{i} ... b_{1}])$$
-> 
-> Notice that $$H_i$$ is a function defined using the computational view.
-> 
-> Let $$\PRF_n := \set{f_s : s \gets \bit^n}$$ be the distribution of $$f_s$$ for short.
-> We have $$H_0 \equiv \PRF_n$$ and $$H_n \equiv \RF_n$$, 
-> but there are still too many switches between $$H_i, H_{i+1}$$.
-> The key observation is that,
-> given $$D$$ is PPT, we know a poly $$T(n)$$ that is the running time of $$D$$ on $$1^n$$,
-> and then we just need to switch at most $$T(n)$$ instances of $$g(x)$$.
-> That is to define sub-hybrids $$H_{i,j}$$,
-> 
-> 1. the map $$m$$ is initialized to empty
-> 2. if the prefix $$b_1 ... b_i b_{i+1} \notin m$$, 
->    then depending on the "number of queries" that are made to $$H_{i,j}$$ so far, including the current query,
->    do the following:
->    sample $$s \gets \bit^n$$, set 
->    
->    $$
->    m[b_{i+1} b_i ... b_1] \gets 
->    \begin{cases}
->      \bit^n   & \text{number of queries} \le j \\
->      g_{b_{i+1}}(s)     & \text{otherwise}
->    \end{cases},
->    $$
->    
->    and set
->    
->    $$
->    m[\overline{b_{i+1}} b_i ... b_1] \gets 
->    \begin{cases}
->      \bit^n   & \text{number of queries} \le j \\
->      g_{\overline{b_{i+1}}}(s)     & \text{otherwise}
->    \end{cases}.
->    $$
->    
-> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i}}(m[b_{i+1} ... b_{1}])$$
-> 
-> We have $$H_{i,0} \equiv H_i$$. 
-> Moreover for any $$D$$ runs in time $$T(n)$$, we have $$H_{i,T(n)} \equiv H_{i+1}$$
-> (their combinatorial views differ, but their computational views are identical for $$T(n)$$ queries).
-> Now we have $$n \cdot T(n)$$ hybrids, so we can construct $$D'(t)$$:
-> 
-> 1. sample $$i \gets \set{0,1,...,n-1}$$ and $$j\gets\set{0,...,T(n)-1}$$ uniformly at random
-> 2. define oracle $$O\_{i,j,t}(\cdot)$$ such that is similar to $$H\_{i,j}$$ but 
->    "injects" $$t$$ to the map $$m$$ in the $$j$$-th query if the prefix $$b\_1 ... b\_i b\_{i+1} \notin m$$.
->    (This is constructable and computable only in the *next step* when queries come from $$D$$.)
-> 3. run and output $$D^{O\_{i,j,t}(\cdot)}(1^n)$$, that is running $$D$$ on input $$1^n$$ 
->    when providing $$D$$ with oracle queries to $$O\_{i,j,t}$$
->
-> It remains to calculate the probabilities, namely, 
-> given (AC), $$D'$$ distinguishes $$g(x)$$ from uniformly sampled string w.p. $$\ge \frac{1}{nT(n)p(n)}$$,
-> a contradiction.
-> The calculation is almost identical to [the proof of PRG expansion](#lemma-expansion-of-a-prg) and left as an exercise.
+**Discuss**{: .label}
+- Suppose $$g$$ is a PRG. Is $$g$$ a PRF?
+- Why a PRF must be a keyed function?
+- The AES encryption is a deterministic algorithm $$\Enc(k,m)$$ that takes a 256-bit key $$k$$ and an arbitrary-length message $$m$$. (We omit the initial vector and the block modes and just use the default.) Is $$\Enc$$ a PRF?
 
 Secure Encryption Scheme
 ------------------------
@@ -759,3 +771,114 @@ It remains to prove CPA security.
 Notice that we could have constructed an efficient CPA-secure encryption from PRG, 
 but using a PRF significantly simplified the construction and the proof.
 
+
+GGM Construction of PRF
+------------------------
+
+#### **Theorem:** Construct PRF from PRG [Goldreich-Goldwasser-Micali 84]
+
+{:.theorem}
+> If a pseudorandom generator exists, then pseudorandom functions exist.
+
+We have shown that a PRG with 1-bit expansion implies any PRG with poly expansion.
+So, let $$g$$ be a length-doubling PRG, i.e., $$|g(x)| = 2 |x|$$.
+Also, define $$g_0, g_1$$ to be 
+
+$$
+g_0(x) := g(x)[1...n], \text{ and } g_1:= g(x)[n...2n],
+$$
+
+where 
+$$n := |x|$$ is the input length.
+
+We define $$f_s$$ as follows to be a PRF:
+
+$$
+f_s(b_1 b_2 ... b_n) := g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_1}(s).
+$$
+
+That is, we evaluate $$g$$ on $$s$$, but keep only one side of the output depending on $$b_1$$,
+and then keep applying $$g$$ on the kept side, and then continue to choose the side by $$b_2$$, and so on.
+
+This constructs a binary tree. 
+The intuition is from expanding the 1-bit PRG,
+but now we want that any sub-string of the expansion can be efficiently computed.
+(We CS people love binary trees.)
+Clearly, $$f_s$$ is easy to compute, and we want to prove it is pseudorandom.
+
+{:.proof}
+> There are $$2^n$$ leaves in the tree, too many so that we can not use the
+> "switch one more PRG to uniform in each hybrid" technique as in expanding PRG.
+> The trick is that the distinguisher $$D$$ can only query $$f_s$$ at most polynomial many times
+> since $$D$$ is poly-time.
+> Each query correspond to a path in the binary tree, and there are at most 
+> polynomial many nodes in all queries.
+> Hence, we will switch the $$g(x)$$ evaluations from root to leaves of the tree
+> and from the first query to the last query.
+> 
+> Note: switching *each instance* of $$g(x)$$ (for each $$x$$) is a reduction
+> that runs $$D$$ to distinguish *one instance* of $$g(x)$$; 
+> therefore, we switch *exactly one* in each hybrid.
+> 
+> More formally, assume for contra (AC), there exists NUPPT $$D$$, poly $$p$$ s.t.
+> for inf many $$n\in\N$$, $$D$$ distinguishes $$f_s$$ from RF (in the oracle interaction).
+> We want to construct $$D'$$ that distinguishes $$g(x)$$.
+> We define hybrid oracles $$H_i(b_1 ... b_n)$$ as follows:
+> 
+> 1. the map $$m$$ is initialized to empty
+> 2. if the prefix $$b_1 ... b_i \notin m$$, then sample $$s(b_{i} b_{i-1} ... b_{1}) \gets \bit^n$$ 
+>    and set $$m[b_i ... b_1] \gets s(b_{i} b_{i-1} ... b_{1})$$
+> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i-1}}(m[b_{i} ... b_{1}])$$
+> 
+> Notice that $$H_i$$ is a function defined using the computational view.
+> 
+> Let $$\PRF_n := \set{f_s : s \gets \bit^n}$$ be the distribution of $$f_s$$ for short.
+> We have $$H_0 \equiv \PRF_n$$ and $$H_n \equiv \RF_n$$, 
+> but there are still too many switches between $$H_i, H_{i+1}$$.
+> The key observation is that,
+> given $$D$$ is PPT, we know a poly $$T(n)$$ that is the running time of $$D$$ on $$1^n$$,
+> and then we just need to switch at most $$T(n)$$ instances of $$g(x)$$.
+> That is to define sub-hybrids $$H_{i,j}$$,
+> 
+> 1. the map $$m$$ is initialized to empty
+> 2. if the prefix $$b_1 ... b_i b_{i+1} \notin m$$, 
+>    then depending on the "number of queries" that are made to $$H_{i,j}$$ so far, including the current query,
+>    do the following:
+>    sample $$s \gets \bit^n$$, set 
+>    
+>    $$
+>    m[b_{i+1} b_i ... b_1] \gets 
+>    \begin{cases}
+>      \bit^n   & \text{number of queries} \le j \\
+>      g_{b_{i+1}}(s)     & \text{otherwise}
+>    \end{cases},
+>    $$
+>    
+>    and set
+>    
+>    $$
+>    m[\overline{b_{i+1}} b_i ... b_1] \gets 
+>    \begin{cases}
+>      \bit^n   & \text{number of queries} \le j \\
+>      g_{\overline{b_{i+1}}}(s)     & \text{otherwise}
+>    \end{cases}.
+>    $$
+>    
+> 3. output $$g_{b_n} \circ g_{b_{n-1}} \circ ... g_{b_{i}}(m[b_{i+1} ... b_{1}])$$
+> 
+> We have $$H_{i,0} \equiv H_i$$. 
+> Moreover for any $$D$$ runs in time $$T(n)$$, we have $$H_{i,T(n)} \equiv H_{i+1}$$
+> (their combinatorial views differ, but their computational views are identical for $$T(n)$$ queries).
+> Now we have $$n \cdot T(n)$$ hybrids, so we can construct $$D'(t)$$:
+> 
+> 1. sample $$i \gets \set{0,1,...,n-1}$$ and $$j\gets\set{0,...,T(n)-1}$$ uniformly at random
+> 2. define oracle $$O\_{i,j,t}(\cdot)$$ such that is similar to $$H\_{i,j}$$ but 
+>    "injects" $$t$$ to the map $$m$$ in the $$j$$-th query if the prefix $$b\_1 ... b\_i b\_{i+1} \notin m$$.
+>    (This is constructable and computable only in the *next step* when queries come from $$D$$.)
+> 3. run and output $$D^{O\_{i,j,t}(\cdot)}(1^n)$$, that is running $$D$$ on input $$1^n$$ 
+>    when providing $$D$$ with oracle queries to $$O\_{i,j,t}$$
+>
+> It remains to calculate the probabilities, namely, 
+> given (AC), $$D'$$ distinguishes $$g(x)$$ from uniformly sampled string w.p. $$\ge \frac{1}{nT(n)p(n)}$$,
+> a contradiction.
+> The calculation is almost identical to [the proof of PRG expansion](#lemma-expansion-of-a-prg) and left as an exercise.
