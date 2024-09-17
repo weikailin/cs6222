@@ -682,7 +682,7 @@ Can we get a PRG/PRF? Can we get a OWF?
 **Discuss**{: .label}
 In the above experiment $$\Expr$$, the adversary $$A$$ chooses only one pair of challenge $$(m_0, m_1)$$ (and then has to distinguish the ciphertext). But there are other alternative definitions.
 
-- We can define $$\Expr'$$ so that $$A$$ chooses *many pairs* $$(m_0^{(1)}, m_1^{(1)}), (m_0^{(2)}, m_1^{(2)}), \dots, (m_0^{(n)}, m_1^{(n)})$$ and then has to distinguish the sequence $$(\Enc(m_b^{(1)}), \Enc(m_b^{(2)}), \dots, m_b^{(n)})$$. 
+- We can define $$\Expr'$$ so that $$A$$ chooses *many pairs* $$(m_0^{(1)}, m_1^{(1)}), (m_0^{(2)}, m_1^{(2)}), \dots, (m_0^{(n)}, m_1^{(n)})$$ and then has to distinguish the sequence $$(\Enc(m_b^{(1)}), \Enc(m_b^{(2)}), \dots, \Enc(m_b^{(n)}))$$. 
 - Moreover, we can also define and allow $$A$$ to query the oracle $$\Enc_k(\cdot)$$ between the pairs so that each pair $$(m_0^{(i)}, m_1^{(i)})$$ are chosen *adaptively*. 
 
 What's the difference between the definitions?
