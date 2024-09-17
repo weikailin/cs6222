@@ -680,7 +680,7 @@ Suppose that we have a secure encryption even without CPA oracle but the key is 
 Can we get a PRG/PRF? Can we get a OWF?
 
 **Discuss**{: .label}
-In the above experiment $$\Expr$$, the adversary $$A$$ chooses only one pair of challenge $$(m_0, m_1)$$ (and then has to distinguish the ciphertext). We can alternatively define $$\Expr'$$ so that $$A$$ chooses *many pairs* $$(m_0^{(1)}, m_1^{(1)}), (m_0^{(2)}, m_1^{(2)}), \dots, (m_0^{(n)}, m_1^{(n)})$$ and then has to distinguish the sequence $$(\Enc(m_b^{(1)}), \Enc(m_b^{(2)}), \dots, m_b^{(n)})$$. What's the difference between the definitions?
+In the above experiment $$\Expr$$, the adversary $$A$$ chooses only one pair of challenge $$(m_0, m_1)$$ (and then has to distinguish the ciphertext). We can alternatively define $$\Expr'$$ so that $$A$$ chooses *many pairs* $$(m_0^{(1)}, m_1^{(1)}), (m_0^{(2)}, m_1^{(2)}), \dots, (m_0^{(n)}, m_1^{(n)})$$ and then has to distinguish the sequence $$(\Enc(m_b^{(1)}), \Enc(m_b^{(2)}), \dots, m_b^{(n)})$$. What's the difference between the two definitions?
 
 #### **Theorem:** CPA-Secure Encryption from PRF
 
@@ -739,32 +739,32 @@ It remains to prove CPA security.
 > Define $$R$$ to be the set 
 > 
 > $$
-> R := \set{r \in \bit^n : r \text{ is sampled when } A^{O_F(\cdot)}},
+> R := \set{r \in \bit^n : F(r) \text{ is queried by } A^{O_F(\cdot)}},
 > $$
 > 
-> and let $$r$$ be the random variable sampled for the cipher $$c$$.
+> and let $$r^*$$ be the random variable sampled for the cipher $$c$$.
 > We want to show that $$|\Pr[H_0^A(1^n)=1] - \Pr[H_0^A(1^n)=1]|$$ is negligible for all NUPPT $$A$$.
 > Let $$H_0$$ and $$H_1$$ be the events for short.
 > 
 > $$
 > \begin{align*}
 > \Pr[H_0]
-> & = \Pr[H_0 \cap r \in R] + \Pr[H_0 \cap r \notin R] \\
-> & \le \Pr[r \in R] + \Pr[H_0 | r \notin R] \cdot \Pr[r \notin R] \\
-> & = \gamma + \Pr[H_0 | r \notin R] \cdot (1 - \gamma),
+> & = \Pr[H_0 \cap r^* \in R] + \Pr[H_0 \cap r^* \notin R] \\
+> & \le \Pr[r^* \in R] + \Pr[H_0 | r^* \notin R] \cdot \Pr[r^* \notin R] \\
+> & = \gamma + \Pr[H_0 | r^* \notin R] \cdot (1 - \gamma),
 > \end{align*}
 > $$
 > 
 > where 
 > $$\gamma := |R| / 2^n$$.
-> We also have $$\Pr[H_0 | r \notin R] = \Pr[H_1 | r \notin R]$$,
+> We also have $$\Pr[H_0 | r^* \notin R] = \Pr[H_1 | r^* \notin R]$$,
 > thus
 > 
 > $$
 > \begin{align*}
 > \Pr[H_0]
-> & \le \gamma + \Pr[H_1 | r \notin R] \cdot (1 - \gamma)\\
-> & = \gamma + \Pr[H_1 \cap r \notin R]\\
+> & \le \gamma + \Pr[H_1 | r^* \notin R] \cdot (1 - \gamma)\\
+> & = \gamma + \Pr[H_1 \cap r^* \notin R]\\
 > & \le \gamma + \Pr[H_1].
 > \end{align*}
 > $$
