@@ -679,7 +679,11 @@ Compared to Shannon/perfect secrecy, what are the differences?
 Suppose that we have a secure encryption even without CPA oracle but the key is shorter than the message.
 Can we get a PRG/PRF? Can we get a OWF?
 
+**Discuss**{: .label}
+In the above experiment $$\Expr$$, the adversary $$A$$ chooses only one pair of challenge $$(m_0, m_1)$$ (and then has to distinguish the ciphertext). We can alternatively define $$\Expr'$$ so that $$A$$ chooses *many pairs* $$(m_0^{(1)}, m_1^{(1)}), (m_0^{(2)}, m_1^{(2)}), \dots, (m_0^{(n)}, m_1^{(n)})$$ and then has to distinguish the sequence $$(\Enc(m_b^{(1)}), \Enc(m_b^{(2)}), \dots, m_b^{(n)})$$. What's the difference between the definitions?
+
 #### **Theorem:** CPA-Secure Encryption from PRF
+
 
 {: .theorem}
 > Let $$\PRF = \set{f_s : \bit^{|s|} \to \bit^{|s|}}_{s\in\bit^\ast}$$ be a family of PRFs.
