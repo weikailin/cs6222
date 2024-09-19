@@ -815,6 +815,9 @@ but now we want that any sub-string of the expansion can be efficiently computed
 (We CS people love binary trees.)
 Clearly, $$f_s$$ is easy to compute, and we want to prove it is pseudorandom.
 
+**Discuss**{: .label}
+Why not use 2, 4, 8, or more seeds on 2, 4, 8, or more trees?
+
 {:.proof}
 > There are $$2^n$$ leaves in the tree, too many so that we can not use the
 > "swap one more PRG to uniform in each hybrid" technique as in expanding PRG.
