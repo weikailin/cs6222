@@ -18,7 +18,8 @@ Table of Lecture Notes
 | [Sep 5](assets/pdf/0905-prg.pdf)     | [Hybrid lemma, PRGs](3-prg.md#pseudo-random-generator)    | [Ps 3.1-3.3], [KL 3.3] |
 | Sep 10    | [PRG expansion](3-prg.md#lemma-expansion-of-a-prg)    | [Ps 3.3], [KL 3.3] |
 | [Sep 12](assets/pdf/0912_psr.pdf)    | [Pseudorandom functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 3.5] |
-| Sep 17    | [CPA-secure encryption](2-prg.md#secure-encryption-scheme)    | [Ps 3.9] [KL 3.2, 3.4] |
+| Sep 17    | [CPA-secure encryption](-prg.md#secure-encryption-scheme)    | [Ps 3.9] [KL 3.2, 3.4] |
+| Sep 19    | [GGM PRF](2-prg.md#ggm-construction-of-prf)    | [Ps 3.7, 3.8] [KL 8.5], [Abhishek@JHU](https://www.cs.jhu.edu/~abhishek/classes/CS600-642-442-Fall2018/L05.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec5.pdf), [Wichs@Northeastern](https://www.khoury.northeastern.edu/home/wichs/class/crypto-fall15/lecture9.pdf) |
 
 
 <!-- 
@@ -41,6 +42,7 @@ Table of Lecture Notes
 | Apr 11    | [Commitments](6-zkp.md#commitment)  [ZKP for NP](6-zkp.md#any-language-in-class-np)    | [Ps 4.7] |
 | ...       |                 |   |
 | Apr 30    | (last lecture)    |  |
+ -->
 
 <!-- 
 | Sep 4     | [Factoring, reduction](2-owf.md#primes-and-factoring)    | [Ps 2.3-2.4], [KL 9.2.3] |
