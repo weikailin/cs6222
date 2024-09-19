@@ -1,8 +1,8 @@
 ---
 layout: page
-title: 2. One-Way Functions
-nav_order: 2
-nav_exclude: true
+title: 3. One-Way Functions
+nav_order: 3
+nav_exclude: false
 ---
 
 $$
