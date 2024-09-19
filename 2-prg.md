@@ -817,17 +817,17 @@ Clearly, $$f_s$$ is easy to compute, and we want to prove it is pseudorandom.
 
 {:.proof}
 > There are $$2^n$$ leaves in the tree, too many so that we can not use the
-> "switch one more PRG to uniform in each hybrid" technique as in expanding PRG.
+> "swap one more PRG to uniform in each hybrid" technique as in expanding PRG.
 > The trick is that the distinguisher $$D$$ can only query $$f_s$$ at most polynomial many times
 > since $$D$$ is poly-time.
 > Each query correspond to a path in the binary tree, and there are at most 
 > polynomial many nodes in all queries.
-> Hence, we will switch the $$g(x)$$ evaluations from root to leaves of the tree
+> Hence, we will swap the $$g(x)$$ evaluations from root to leaves of the tree
 > and from the first query to the last query.
 > 
-> Note: switching *each instance* of $$g(x)$$ (for each $$x$$) is a reduction
+> Note: swapping *each instance* of $$g(x)$$ (for each $$x$$) is a reduction
 > that runs $$D$$ to distinguish *one instance* of $$g(x)$$; 
-> therefore, we switch *exactly one* in each hybrid.
+> therefore, we swap *exactly one* in each hybrid.
 > 
 > More formally, assume for contra (AC), there exists NUPPT $$D$$, poly $$p$$ s.t.
 > for inf many $$n\in\N$$, $$D$$ distinguishes $$f_s$$ from RF (in the oracle interaction).
@@ -843,10 +843,10 @@ Clearly, $$f_s$$ is easy to compute, and we want to prove it is pseudorandom.
 > 
 > Let $$\PRF_n := \set{f_s : s \gets \bit^n}$$ be the distribution of $$f_s$$ for short.
 > We have $$H_0 \equiv \PRF_n$$ and $$H_n \equiv \RF_n$$, 
-> but there are still too many switches between $$H_i, H_{i+1}$$.
+> but there are still too many swaps between $$H_i, H_{i+1}$$.
 > The key observation is that,
 > given $$D$$ is PPT, we know a poly $$T(n)$$ that is the running time of $$D$$ on $$1^n$$,
-> and then we just need to switch at most $$T(n)$$ instances of $$g(x)$$.
+> and then we just need to swap at most $$T(n)$$ instances of $$g(x)$$.
 > That is to define sub-hybrids $$H_{i,j}$$,
 > 
 > 1. the map $$m$$ is initialized to empty
