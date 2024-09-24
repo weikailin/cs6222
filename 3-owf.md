@@ -91,7 +91,7 @@ Randomize $$x$$:
 Still too strong: $$\cA$$ can take poly time to slash some of the possible $$x$$.
 
 We may relax by $$poly(n) / 2^n$$ or $$2^{-0.1 n}$$ on the RHS, but they still too strong to find a candidate.
-We formalize "very small" as follows.
+We formalize "very small" by negligible functions, recalled below.
 
 #### **Definition:** Negligible Function
 
@@ -102,6 +102,8 @@ We formalize "very small" as follows.
 Note: $$\eps$$ is smaller than any inverse poly for sufficiently large $$n$$.
 
 Note: when the probability is $$\ge 1-\eps(n)$$, we often call it "overwhelming".
+
+Now we are ready to define OWFs.
 
 #### **Definition:** (Strong) One-Way Function
 
