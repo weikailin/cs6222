@@ -171,6 +171,12 @@ but in the strong OWF, the prob. $$\eps$$ is different and *depends* on $$\cA$$.
 > Clearly, such padding is poly-time computable since $$\ell$$ is polynomial.
 > The proof of "hard to invert" is a standard reduction.
 
+#### **Example:** Any PRG is one-way
+
+{:.theorem}
+> If $$g: \bit^* \to \bit^*$$ is a PRG, then $$g$$ is a OWF.
+
+
 #### **Fact:** $$\exists OWF \Rightarrow NP \neq P$$
 
 {:.theorem}
