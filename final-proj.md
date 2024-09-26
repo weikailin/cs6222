@@ -10,8 +10,16 @@ Some Papers for Final Projects
 
 Reminder: all following papers are accessible through UVA online library, and you can search for the "authors' version" that are open access. For recent papers that are published in conferences, you can often find video recordings of the talks. For example, if paper X is published in "Crypto 24", you can find X in a session Y on the program of Crypto 24 and then find the session Y on Youtube.
 
+- [The Pseudorandom Oracle Model and Ideal Obfuscation](https://eprint.iacr.org/2022/1204.pdf).
+  Aayush Jain, Huijia Lin, Ji Luo, Daniel Wichs. 
+
+  Indistinguishability obfuscation.
+  
+
 - [A Note on Non-Interactive Zero-Knowledge from CDH](https://eprint.iacr.org/2023/970.pdf). 
   Geoffroy Couteau, Abhishek Jain, Zhengzhong Jin, Willy Quach. Crypto 2023.
+
+  NIZK.
 
 - [Non-Adaptive Universal One-Way Hash Functions from Arbitrary One-Way Functions](https://eprint.iacr.org/2022/431.pdf). Xinyu Mao, Noam Mazor, and Jiapeng Zhang. Eurocrypt 2023.
   
@@ -25,6 +33,9 @@ Reminder: all following papers are accessible through UVA online library, and yo
 
   This can be a starting point for active / malicious security.
 
+- [Universal arguments and their applications](https://www.wisdom.weizmann.ac.il/~oded/R6/ua.pdf). 
+  Boaz Barak and Oded Goldreich. SIAM J. Comput., 38(5):1661–1694, 2008.
+  
 - [Notions of reducibility between cryptographic primitives](https://link.springer.com/chapter/10.1007/978-3-540-24638-1_1). Omer Reingold, Luca Trevisan, and Salil Vadhan. TCC 2004.
 
   This is a good paper that revisits important black-box separations.
@@ -37,12 +48,11 @@ Reminder: all following papers are accessible through UVA online library, and yo
 
   The efficiency of hardness amplification.
 
+- [Extractors and Pseudorandom Generators](https://lucatrevisan.github.io/pubs/extractor-full.pdf). Luca Trevisan. STOC 1999.
+  
+  A break through in pseudorandomness (which is needed literally everywhere in crypto).
+
 <!-- 
-NIZK?
-Extractors?
 Shor's?
-IO?
 MPC?
-GGM?
-prev papers?
 -->
