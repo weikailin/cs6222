@@ -20,7 +20,7 @@ Table of Lecture Notes
 | [Sep 12](assets/pdf/0912_psr.pdf)    | [Pseudorandom functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 3.5] |
 | Sep 17    | [CPA-secure encryption](-prg.md#secure-encryption-scheme)    | [Ps 3.9] [KL 3.2, 3.4] |
 | Sep 19    | [GGM PRF](2-prg.md#ggm-construction-of-prf)    | [Ps 3.7, 3.8] [KL 8.5], [Abhishek@JHU](https://www.cs.jhu.edu/~abhishek/classes/CS600-642-442-Fall2018/L05.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec5.pdf), [Wichs@Northeastern](https://www.khoury.northeastern.edu/home/wichs/class/crypto-fall15/lecture9.pdf) |
-| Sep 24    | [One-way functions](2-owf.md#definition-of-one-way-functions)    | [Ps 2.2] [KL 8.1] |
+| Sep 24    | [One-way functions](3-owf.md#definition-of-one-way-functions)    | [Ps 2.2] [KL 8.1] |
 | Sep 26    | [Factoring](3-owf.md#primes-and-factoring), [From weak to strong OWF](3-owf.md#from-weak-owf-to-strong-owf)    | [Ps 2.3-2.4], [KL 9.2.3], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec7.pdf), [LTW05](https://lucatrevisan.github.io/pubs/LTW05.pdf) |
 
 
