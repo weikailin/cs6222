@@ -219,6 +219,29 @@ but in the strong OWF, the prob. $$\eps$$ is different and *depends* on $$\cA$$.
 Primes and Factoring
 --------------------
 
+### The Prime Number Theorem
+
+Define $$\pi(x)$$ as the number of primes $$\le x$$.
+PNT states that primes are dense.
+
+#### **Theorem:** (Chebychev, 1848)
+
+{: .theorem}
+> For all $$x>1$$, $$\pi(x) \gt \frac{x}{2 \log x}$$.
+
+Note: the above is easier to prove, but the famous *Prime Number Theorem* is $$\pi(x) \sim x / \ln x$$ when $$x \to \infty$$. The above $$\log$$ is base 2.
+
+#### **Assumption:** Factoring
+
+{: .defn}
+> For any adv $$\cA$$, there exists a negligible function $$\eps$$ s.t.
+> 
+> $$
+> \Pr[(p,q) \gets \Pi_n^2; r \gets pq : \cA(r) \in \set{p,q}] \lt \eps(n),
+> $$
+> 
+> where $$\Pi_n := \set{p \lt 2^n : p \text{ prime}}$$ is the set of primes less than $$2^n$$.
+
 Define $$f_\mul: \N^2 \to \N$$ by
 
 $$
@@ -230,30 +253,6 @@ $$
 
 Easy to compute. For many $$(x,y)$$ are "easy" to invert: w.p. at least 3/4 when $$xy$$ even.
 It is not strong OWF.
-
-#### **Assumption:** Factoring
-
-{: .defn}
-> For any adv $$\cA$$, there exists a negligible function $$\eps$$ s.t.
-> 
-> $$
-> \Pr[(p,q) \gets \Pi_n^2; N \gets pq : \cA(N) \in \set{p,q}] \lt \eps(n),
-> $$
-> 
-> where $$\Pi_n := \set{p \lt 2^n : p \text{ prime}}$$ is the set of primes less than $$2^n$$.
-
-### The Prime Number Theorem
-
-Define $$\pi(x)$$ as the number of primes $$\le x$$.
-PNT states that primes are dense.
-
-#### **Theorem:** (Chebychev, 1848)
-
-{: .theorem}
-> For all $$x>1$$, $$\pi(x) \gt \frac{x}{2 \log x}$$.
-
-Note: the above is easier to prove, but the famous *Prime Number Theorem* is $$\pi(x) \sim x / \ln x$$ when $$x \to \infty$$.
-The above $$\log$$ is base 2.
 
 #### **Theorem:**
 
