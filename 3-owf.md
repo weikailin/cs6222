@@ -246,7 +246,7 @@ Define $$\mul: \N^2 \to \N$$ by
 
 $$
 \mul(x,y) = \begin{cases}
-1  & \text{if } x = 1 \text{ or } y = 1 \text{(eliminating trivial invert)}\\
+1  & \text{if } x = 1 \text{ or } y = 1 \text{(eliminating the trivial factor)}\\
 x \cdot y & \text{o.w.}
 \end{cases}
 $$
