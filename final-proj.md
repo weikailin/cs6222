@@ -30,6 +30,10 @@ Reminder: all following papers are accessible through UVA online library, and yo
 
   A solid work on (statistical) ZK.
 
+- [On Hardness Amplification of One-Way Functions](https://lucatrevisan.github.io/pubs/LTW05.pdf). Henry Lin, Luca Trevisan, and Hoeteck Wee. TCC 2005.
+
+  The efficiency of hardness amplification.
+
 <!-- 
 NIZK?
 Extractors?
