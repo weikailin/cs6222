@@ -242,10 +242,10 @@ Note: the above is easier to prove, but the famous *Prime Number Theorem* is $$\
 > 
 > where $$\Pi_n := \set{p \lt 2^n : p \text{ prime}}$$ is the set of primes less than $$2^n$$.
 
-Define $$f_\mul: \N^2 \to \N$$ by
+Define $$\mul: \N^2 \to \N$$ by
 
 $$
-f_\mul(x,y) = \begin{cases}
+\mul(x,y) = \begin{cases}
 1  & \text{if } x = 1 \text{ or } y = 1 \text{(eliminating trivial invert)}\\
 x \cdot y & \text{o.w.}
 \end{cases}
@@ -257,15 +257,15 @@ It is not strong OWF.
 #### **Theorem:**
 
 {: .theorem}
-> If the factoring assumption is true, then $$f_\mul$$ is a weak OWF.
+> If the factoring assumption is true, then $$\mul$$ is a weak OWF.
 
 {: .proof} 
-> $$f_\mul$$ is easy to compute. Hard to invert?
+> $$\mul$$ is easy to compute. Hard to invert?
 > 
 > Assume for contradiction (AC), for all poly $$q$$, exists nuPPT $$A$$, s.t. for infinitely many $$n\in \N$$,
 > 
 > $$
-> \Pr[(x,y)\gets \bit^n; z = xy : f_\mul(A(1^{2n}, z)) = z] \gt 1- \frac{1}{q(n)}.
+> \Pr[(x,y)\gets \bit^n; z = xy : \mul(A(1^{2n}, z)) = z] \gt 1- \frac{1}{q(n)}.
 > $$
 > 
 > Note: the negation of weak OWF.
@@ -276,7 +276,7 @@ It is not strong OWF.
 >> Algorithm $$B(1^{2n}, z)$$:
 >> 
 >> 1. Sample $$(x,y) \gets \bit^n$$
->> 2. If both $$x,y$$ prime, let $$\bar z \gets z$$; otherwise, let $$\bar z \gets f_\mul(x,y)$$.
+>> 2. If both $$x,y$$ prime, let $$\bar z \gets z$$; otherwise, let $$\bar z \gets \mul(x,y)$$.
 >> 3. Run $$(\bar x, \bar y) \gets A(1^{2n}, \bar z)$$
 >> 4. Output $$(\bar x, \bar y)$$ if both $$x,y$$ are prime and $$z = \bar x \bar y$$.
 > 
