@@ -513,6 +513,10 @@ It remains to prove the claim.
 > We choose $$r_2(n) = 2m \cdot p(n)$$ so that $$\Pr[A \tinv] \lt 1/p$$, contradicting (AC).
 
 
+**Discuss**{: .label}
+The above parameter $$m(n) := n\cdot 2q(n)$$ is number of repetition on the weak OWF $$f$$. Hence, the smaller the $$m$$, the more efficienct the $$g$$. Can we achieve a smaller $$m$$?
+
+
 A Universal OWF
 --------------------
 
