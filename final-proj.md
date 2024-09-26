@@ -2,7 +2,7 @@
 layout: page
 title: Papers for Final Projects 
 nav_order: 90
-nav_exclude: true
+nav_exclude: false
 ---
 
 Some Papers for Final Projects
