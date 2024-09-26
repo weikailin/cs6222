@@ -20,8 +20,6 @@ $$
 $$
 {: .d-none}
 
-1. TOC
-{:toc}
 
 One-Way Functions
 =================
