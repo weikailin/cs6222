@@ -16,7 +16,7 @@ Table of Lecture Notes
 | [Aug 29](assets/pdf/cs6222_scribe_1.pdf)     | [Perfect security, one-time pads](1-intro.md), [Efficient computation](2-prg.md#efficient-computation-and-efficient-adversaries)    | [Ps 1.3], [KL 2.1-2.3] |
 | [Sep 3](assets/pdf/0903-comp-ind.pdf)     | [Non-uniform, computational indistinguishability](2-prg.md#computational-indistinguishability)    | [Ps 2.1,3.1-3.2], [KL 3.1-3.3] |
 | [Sep 5](assets/pdf/0905-prg.pdf)     | [Hybrid lemma, PRGs](3-prg.md#pseudo-random-generator)    | [Ps 3.1-3.3], [KL 3.3] |
-| Sep 10    | [PRG expansion](3-prg.md#lemma-expansion-of-a-prg)    | [Ps 3.3], [KL 3.3] |
+| [Sep 10](assets/pdf/0910_PRG.pdf)     | [PRG expansion](3-prg.md#lemma-expansion-of-a-prg)    | [Ps 3.3], [KL 3.3] |
 | [Sep 12](assets/pdf/0912_psr.pdf)    | [Pseudorandom functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 3.5] |
 | [Sep 17](assets/pdf/0917_SES.pdf)    | [CPA-secure encryption](-prg.md#secure-encryption-scheme)    | [Ps 3.9] [KL 3.2, 3.4] |
 | [Sep 19](assets/pdf/0919_IDR.pdf)    | [GGM PRF](2-prg.md#ggm-construction-of-prf)    | [Ps 3.7, 3.8] [KL 8.5], [Abhishek@JHU](https://www.cs.jhu.edu/~abhishek/classes/CS600-642-442-Fall2018/L05.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec5.pdf), [Wichs@Northeastern](https://www.khoury.northeastern.edu/home/wichs/class/crypto-fall15/lecture9.pdf) |
