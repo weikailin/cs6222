@@ -520,9 +520,9 @@ The above parameter $$m(n) := n\cdot 2q(n)$$ is number of repetition on the weak
 A Universal OWF
 --------------------
 
-> Cryptgraphers seldom sleep well
+> Cryptographers seldom sleep well
 > 
-> --Silvio Micali
+> --Silvio Micali, personal communication to Joe Kilian, 1988
 
 The above shows that, if we believe factoring is hard, then we can construct a one-way function.
 Unfortunately, we do not know how to prove factoring is hard,
@@ -649,6 +649,8 @@ Suppose there exists a OWF that is easy to compute by a TM of 1000 bits.
 The above needs a "sufficiently long" input so that $$\log n \ge 1000$$ to be a weak OWF, 
 but that means the universal OWF is only hard for $$n = |x| \ge 2^{1000}$$.
 
+**Discuss**{: .label}
+Can we find a more efficient construction of UOWF? 
 
 Collection of OWFs
 --------------------
