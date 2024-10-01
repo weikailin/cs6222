@@ -38,12 +38,15 @@ So far we have not yet have a candidate construction of PRG (even with 1-bit exp
 We will next construct a PRG from one-way *permutations* (which is easier).
 
 The construct of PRG comes from two properties of OWF:
-- The output of $$f(x)$$ must be sufficiently random when the input $$x$$ is uniform.
+- The output of $$f(x)$$ must be sufficiently random (given the input $$x$$ is uniform).
+  
   (If the random variable $$y := f(x)$$ is constant or taken over a small support for most $$x$$, 
   then we can invert $$y$$ with good probability.)
-- A sufficiently random $$f(x)$$ can still be easily inverted (such as indentity function).
-  By hard to invert, there must be *some bits* of $$x$$ 
+
+- By hard to invert, there must be *some bits* of $$x$$ 
   that are hard to guess even when $$f(x)$$ is given.
+  
+  A sufficiently random $$f(x)$$ can still be easily inverted (such as indentity function).
   How many bits are hard to guess for any polynomial-time adversary? 
   Must be $$\omega(\log n)$$ (otherwise, it can be guessed correctly w.p. $$1/poly(n)$$).
 
