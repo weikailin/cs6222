@@ -17,8 +17,6 @@ You shall also use LaTeX template for each homework on Canvas.
 
 
 <!-- 
-- [Homework 2](assets/pdf/hw2.pdf). Due: TBD
-- [Homework 3](assets/pdf/hw3.pdf). Due: TBD
 - [Homework 4](assets/pdf/hw4.pdf). Due: TBD
  -->
 
