@@ -45,7 +45,7 @@ The construct of PRG comes from two properties of OWF:
 
 - By hard to invert, there must be *some bits* of $$x$$ 
   that are hard to guess even when $$f(x)$$ is given.
-  
+
   A sufficiently random $$f(x)$$ can still be easily inverted (such as indentity function).
   How many bits are hard to guess for any polynomial-time adversary? 
   Must be $$\omega(\log n)$$ (otherwise, it can be guessed correctly w.p. $$1/poly(n)$$).
@@ -315,13 +315,10 @@ Now we are ready to prove the full theorem.
 >> 0. Let $$m(n)$$ be a polynomial to choose later. 
 >> 1. Let $$\ell := \log m$$, $$(u_1, ..., u_\ell)$$ be fully independent and $$(r_1,..., r_m)$$ be pairwise independent
 >>    $$n$$-bit random strings as in [sampling pairwise independent](#fact-sampling-pairwise-independent-random-strings).
->> 2. For each $$k \in [\ell]$$, sample guess bit $$b_k$$ uniformly. For each $$j \in [m]$$, 
->>    compute the pairwise independent bits $$g_{i,j}$$ from $$(b_1, ..., b_\ell)$$ in the same way as $$r_j$$
->>    (so that for any $$x$$, $$g_{i,j} = x \odot r_j$$ and $$b_k = x \odot u_k$$ for all $$k$$).
+>> 2. Let $$(b_1, ..., b_\ell)$$ be fully independent and $$(g_1,..., g_m)$$ be pairwise independent random 1-bit strings (symmetricall as in the previous step) 
 >> 3. For each $$i=1,2, .., n$$,
 >>    1. For each $$j=1,2,..., m$$,
->>       - Run $$z_{i,j} \gets A(1^{2n}, y \| e_i \oplus r_j) \oplus g_{i,j}$$.
->>
+>>       - Run $$z_{i,j} \gets A(1^{2n}, y \| e_i \oplus r_j) \oplus g_{j}$$.
 >>    2. Let $$x'_i$$ be the majority of $$\set{z_{i,j}}_{j\in[m]}$$
 >> 4. Output $$x' := x'_1 x'_2 ... x'_n$$
 > 
@@ -346,17 +343,17 @@ Now we are ready to prove the full theorem.
 > We condition on the good event that $$x \in G$$.
 > Next, we condition on the "lucky event" that 
 > for all $$k$$, the guess $$b_k$$ equals to $$x \odot u_k$$, which happens w.p. $$1/m$$.
-> That implies $$(g_{i,1}, ..., g_{i,m})$$ are all correct:
-> for any $$j \in [m]$$, let $$S := \set{k : k\text{-th bit of } j \text{ is 1}}$$,
+> That implies that for all $$j$$, we have the correct guess $$g_j = x \odot r_j$$;
+> that is, for any $$j \in [m]$$, let $$S := \set{k : k\text{-th bit of } j \text{ is 1}}$$,
 > we have that
 > 
 > $$
-> g_{i,j} = \bigoplus_{k \in S} b_{i,k} = \bigoplus_{k \in S} x \odot u_k = x \odot r_j.
+> g_{j} = \bigoplus_{k \in S} b_{k} = \bigoplus_{k \in S} x \odot u_k = x \odot r_j.
 > $$
 > 
-> With the conditioning, for any $$j \neq j'$$, $$r_j$$ and $$r_{j'}$$ are still pairwise independent,
-> and thus $$(g_{i,j}, g_{i,j'})$$ are pairwise independent as well.
-> Therefore, by Chebychev's inequality, the majority of $$g_{i,j}$$ equals to $$x \odot e_i$$
+> With the conditioning, for any $$j \neq j'$$, $$r_j$$ and $$r_{j'}$$ are still pairwise independent, and similarly $$(A(y \| e_i \oplus r_j), A(y\|e_i \oplus r_{j'}))$$.
+<!-- > and thus $$(g_{i,j}, g_{i,j'})$$ are pairwise independent as well. -->
+> Therefore, by Chebychev's inequality, the majority of $$z_{i,j}$$ equals to $$x \odot e_i$$
 > w.p.
 > 
 > $$
@@ -364,10 +361,10 @@ Now we are ready to prove the full theorem.
 > $$
 > 
 > where $$X = \sum_j X_j$$, and $$X_j$$ denotes the event that $$A$$ outputs $$x\odot(e_i \oplus r_j)$$ correctly.
-> Choosing $$m(n) := 8n p^2(n)$$, we have that $$\Pr[x'_i \neq x_i] \le 1/2n$$.
+> Choosing sufficiently large $$m(n) := 8n p^2(n)$$, we have that $$\Pr[x'_i \neq x_i] \le 1/2n$$.
 > 
 > The above shows that each bit $$x_i$$ is correctly recovered with a good marginal probability.
-> We want that all bits $$x'_i$$'s are correct with a good joint probability,
+> We want that *all bits $$x'_i$$'s are correct* with a good joint probability,
 > but the different $$x'_i$$'s come from the *same* randomness $$u_k$$'s and $$b_k$$'s.
 > (It is necessary to use the same $$b_k$$'s 
 > because we want the number of guessed bits to be strictly logarithmic in $$n$$).
