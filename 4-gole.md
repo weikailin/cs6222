@@ -573,7 +573,39 @@ and they didn't even need to be independent.
 PRG from any OWF
 ---------------------------
 
-In this subsection, we begin with describing the construction of Mazor and Pass [[MP23](https://eprint.iacr.org/2023/1451.pdf)].
+We assume that the OWF $f: \bit^n \to \bit^n$.
+This is w.l.o.g.: if input is shorter, then we pad the input with unused random bits;
+if the output is shorter, then we pad the output with fixed bits.
+The same applies to the new notions in this section, namely weak PEG and PEG.
+
+Historically, the first construction of PRG from OWF is given by [HILL'99](https://epubs.siam.org/doi/10.1137/S0097539793244708),
+which was initiated by [IL'89](https://ieeexplore.ieee.org/document/63483) and [ILL'89](https://dl.acm.org/doi/10.1145/73007.73009).
+The construction here is presented by [a lecture of Barak at Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf),
+which followed the paper of [Holenstein'06](https://link.springer.com/chapter/10.1007/11681878_23).
+Later, [HRV'13](https://epubs.siam.org/doi/10.1137/100814421) and [VZ'12](https://dl.acm.org/doi/10.1145/2213977.2214051) improved the efficiency.
+Interestingly in constructions of PRG, 
+there are several novel tools that are useful later, e.g.,
+the Leftover Hash Lemma, due to [ILL'89].
+
+Even the result is impactful, the full construction is often skipped in textbooks
+and graduate-level cryptography.
+Many books and courses cover the Goldreich-Levin hard-core lemma [Ps, KL], 
+but only few of them goes beyond that
+(such as [the lecture of Bellare, 1999](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf)).
+The book of [Goldreich, Section 3.5](https://doi.org/10.1017/CBO9780511546891)
+is one that goes much deeper, which constructs PRG from any "regular" OWF,
+where regular means that for the same length $x$, 
+the pre-image set $f^{-1}(f(x))$ is the same cardinality.
+Still, the full construction
+
+> ... is even more complex and is not suitable for a book of this nature.
+> 
+> -- <cite>Goldreich, Section 3.5</cite>
+
+The only teaching material we found is
+the lecture of [Barak](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf).
+
+In this subsection, we describe the construction of Mazor and Pass [[MP23]](https://eprint.iacr.org/2023/1451.pdf).
 
 #### **Construction:** Mazor-Pass PRG
 
