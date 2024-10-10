@@ -407,6 +407,10 @@ The questions are highly relevant when we want to construct PRG from any one-way
 Min-Entropy and Leftover Hash Lemma 
 ---------------------------
 
+We will use pairwise independent hash functions.
+The following facts are borrowed from the book of Salil Vadhan, 
+[*Pseudorandomness*](https://people.seas.harvard.edu/~salil/pseudorandomness/pseudorandomness-published-Dec12.pdf), cited as [V].
+
 #### **Definition:** statistical difference
 
 {:.defn}
@@ -428,6 +432,47 @@ Min-Entropy and Leftover Hash Lemma
 > $$
 > 
 > where $$\Supp(X) := \set{x : \Pr[X = x] \gt 0}$$ denotes the support of $$X$$.
+
+
+#### **Definition:** Pairwise independent hash family.
+
+{:.defn}
+> A family of functions $\cH = \set{h : \bit^n \to \bit^m}$ is *pairwise independent* 
+> if the following two conditions hold when $h \gets \cH$ is a function chosen uniformly at random from $\cH$:
+> 
+> 1. For all $x \in \bit^n$, the random variable $h(x)$ is uniform in $\bit^m$.
+> 2. For all $x_1\neq x_2 \in \bit^n$, the random variables $h(x_1)$ and $h(x_2)$ are independent.
+> 
+> [V, Definition 3.21, p64]
+
+#### **Lemma:** Pairwise independent hash from linear mapping.
+
+{:.theorem}
+> For any finite field $F$, define $\cH$ to be the following set:
+> 
+> $$
+> \cH := \set{h_{a,b} : h_{a,b}(x) = a x + b, a,b\in F}.
+> $$
+> 
+> $\cH$ is a pairwise independent hash family.
+> We often abuse notation, denoting $h \in \cH$ to be the seed
+> and $h(x)$ to be the evaluation of the hash function.
+> 
+> [V, Construction 3.23, p65]
+
+If $m \ge n$,
+choosing the field to be $F_{2^m}$ gives a construction such that 
+each function takes $2m$ bits to describe.
+If $m \lt n$,
+choosing $F_{2^n}$ and chopping the output to $m$ bits is still pairwise independent.
+
+#### **Corollary:**
+
+{:.theorem}
+> For any $n,m\in\N$, there exists a pairwise independent hash family $\cH_{n,m}$
+> such that each $h \in \cH$ is $2 \max(n,m)$ bits.
+> 
+> [V, Theorem 3.26, p66]
 
 #### **Definition:** Min-entropy
 
@@ -459,6 +504,17 @@ Min-Entropy and Leftover Hash Lemma
 > - Given $$f(x)$$, we can guess $$x$$ correctly w.p. $$2^{-m}$$.
 >   Thus, $$m$$ is viewed as the min-entropy of $$x$$ given $$f(x)$$
 >   (we avoid the formalization of conditional min-entropy).
+
+
+#### **Theorem:** Leftover Hash Lemma
+
+{:.theorem}
+> Let $$n,m,k \in \N$$ and $$\eps > 0$$.
+> Suppose that $$\cH = \set{h : \bit^n \to \bit^m}$$ is a pairwise independent family of hash functions and that $$X \in \bit^n$$ is a random variable. If $$H_\infty(X) \ge k$$ and $$m = k − 2 \log(1/\eps)$$, then $$(h, h(X))$$ $$\eps$$-close to an uniformly random string of $$|h| + m$$ bits.
+> 
+> [V, Theorem 6.18, p179]
+
+Another look at Goldreich-Levin.
 
 #### **Theorem:** Leftover Hash Lemma [Mazor-Pass 2023, Lemma 3.4]
 
