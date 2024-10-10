@@ -437,40 +437,40 @@ The following facts are borrowed from the book of Salil Vadhan,
 #### **Definition:** Pairwise independent hash family.
 
 {:.defn}
-> A family of functions $\cH = \set{h : \bit^n \to \bit^m}$ is *pairwise independent* 
-> if the following two conditions hold when $h \gets \cH$ is a function chosen uniformly at random from $\cH$:
+> A family of functions $$\cH = \set{h : \bit^n \to \bit^m}$$ is *pairwise independent* 
+> if the following two conditions hold when $$h \gets \cH$$ is a function chosen uniformly at random from $$\cH$$:
 > 
-> 1. For all $x \in \bit^n$, the random variable $h(x)$ is uniform in $\bit^m$.
-> 2. For all $x_1\neq x_2 \in \bit^n$, the random variables $h(x_1)$ and $h(x_2)$ are independent.
+> 1. For all $$x \in \bit^n$$, the random variable $$h(x)$$ is uniform in $$\bit^m$$.
+> 2. For all $$x_1\neq x_2 \in \bit^n$$, the random variables $$h(x_1)$$ and $$h(x_2)$$ are independent.
 > 
 > [V, Definition 3.21, p64]
 
 #### **Lemma:** Pairwise independent hash from linear mapping.
 
 {:.theorem}
-> For any finite field $F$, define $\cH$ to be the following set:
+> For any finite field $$F$$, define $$\cH$$ to be the following set:
 > 
 > $$
 > \cH := \set{h_{a,b} : h_{a,b}(x) = a x + b, a,b\in F}.
 > $$
 > 
-> $\cH$ is a pairwise independent hash family.
-> We often abuse notation, denoting $h \in \cH$ to be the seed
-> and $h(x)$ to be the evaluation of the hash function.
+> $$\cH$$ is a pairwise independent hash family.
+> We often abuse notation, denoting $$h \in \cH$$ to be the seed
+> and $$h(x)$$ to be the evaluation of the hash function.
 > 
 > [V, Construction 3.23, p65]
 
-If $m \ge n$,
-choosing the field to be $F_{2^m}$ gives a construction such that 
-each function takes $2m$ bits to describe.
-If $m \lt n$,
-choosing $F_{2^n}$ and chopping the output to $m$ bits is still pairwise independent.
+If $$m \ge n$$,
+choosing the field to be $$F_{2^m}$$ gives a construction such that 
+each function takes $$2m$$ bits to describe.
+If $$m \lt n$$,
+choosing $$F_{2^n}$$ and chopping the output to $$m$$ bits is still pairwise independent.
 
 #### **Corollary:**
 
 {:.theorem}
-> For any $n,m\in\N$, there exists a pairwise independent hash family $\cH_{n,m}$
-> such that each $h \in \cH$ is $2 \max(n,m)$ bits.
+> For any $$n,m\in\N$$, there exists a pairwise independent hash family $$\cH_{n,m}$$
+> such that each $$h \in \cH$$ is $$2 \max(n,m)$$ bits.
 > 
 > [V, Theorem 3.26, p66]
 
@@ -594,8 +594,8 @@ but only few of them goes beyond that
 (such as [the lecture of Bellare, 1999](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf)).
 The book of [Goldreich, Section 3.5](https://doi.org/10.1017/CBO9780511546891)
 is one that goes much deeper, which constructs PRG from any "regular" OWF,
-where regular means that for the same length $x$, 
-the pre-image set $f^{-1}(f(x))$ is the same cardinality.
+where regular means that for the same length $$x$$, 
+the pre-image set $$f^{-1}(f(x))$$ is the same cardinality.
 Still, the full construction
 
 > ... is even more complex and is not suitable for a book of this nature.
