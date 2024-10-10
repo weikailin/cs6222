@@ -377,7 +377,7 @@ Now we are ready to prove the full theorem.
 > 
 > \* For any events $$A,B,C$$, $$\Pr[A] \ge \Pr[A | B \cap C] \Pr[B \cap C]$$.
 > The above applied that $$A$$ is $$x' = x$$, $$B$$ is $$x \in G$$, and
-> $$C$$ is the event that $$b_k = A(y\| u_k)$$ is correct for all $$k \in [\ell].
+> $$C$$ is the event that $$b_k = A(y\| u_k)$$ is correct for all $$k \in [\ell]$$.
 
 **Discuss**{:.label}
 The number of bits we guessed is $$\log m = O(\log p(n)) = O(\log n)$$, 
