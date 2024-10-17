@@ -807,7 +807,7 @@ i.e., $$F$$ is a *weak* OWF.
 PRG from any OWF
 ---------------------------
 
-We assume that the OWF $f: \bit^n \to \bit^n$.
+We assume that the OWF $$f: \bit^n \to \bit^n$$.
 This is w.l.o.g.: if input is shorter, then we pad the input with unused random bits;
 if the output is shorter, then we pad the output with fixed bits.
 The same applies to the new notions in this section, namely weak PEG and PEG.
