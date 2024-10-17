@@ -514,6 +514,20 @@ choosing $$F_{2^n}$$ and chopping the output to $$m$$ bits is still pairwise ind
 > 
 > [V, Theorem 6.18, p179]
 
+
+#### **Corollary:** Guessing the hash value
+
+{:.theorem}
+> Let $$\cH$$ be a pairwise independent hash family, from $$n$$-bit strings to $$n$$-bit strings.
+> For any random variable $$X \in \bit^n$$ such that $$H_\infty(X) = k \le n$$,
+> 
+> $$
+> \Pr[h\gets \cH, y \gets U_{k-d}: \exists x \in \Supp(X), h_{k-d}(x) = y ] \ge 1-2^{-d/2}
+> $$
+> 
+> where $$h_t(x)$$ denotes the prefix $$t$$ bits of $$h(x)$$.
+
+
 Another look at Goldreich-Levin.
 
 #### **Theorem:** Leftover Hash Lemma [Mazor-Pass 2023, Lemma 3.4]
@@ -569,6 +583,226 @@ Another look at Goldreich-Levin.
 
 Notice that in the above example, $$x_1$$ and $$x_2$$ did not need to be the same distribution,
 and they didn't even need to be independent.
+
+Weak Pseudo-Entropy Generator (PEG)
+----------------------------
+
+The first step, a gap in Shannon entropy and pseudo-entropy.
+
+#### **Definition:** weak PEG
+
+{:.defn}
+> A function $$F : \bit^n \to \bit^m$$ is called a *weak pseudo-entropy generator(PEG)*, 
+> if there exists a $$k$$ such that
+> 1. There exists $$Y_n$$ such that $$\set{F(U\_n)}\_n \approx \set{Y\_n}\_n$$ and
+>  $$H(Y_n) \ge k + \frac{1}{100n}$$.
+>  (This is called *pseudo Shannon entropy*.)
+> 2. $$H(F(U_n)) \le k$$.
+
+
+**Discuss**{:.label}
+Is a weak PEG also a weak OWF?
+
+#### **Theorem:** Weak PEG from OWF
+
+{: .theorem}
+> Let $$f: \bit^n \to \bit^n$$ for all $$n\in\N$$ be a OWF,
+> let $$\cH$$ be a pairwise independent hash family that for each $$h \in \cH$$, 
+> $$h : \bit^n \to \bit^n$$ and $$|h| = 2n$$.
+> Define function $$f$$ to be the following:
+> 
+> $$
+> F(x,i,h,r) := (f(x), i, h, h_i(x), r, x \odot r), \text{ and }
+> $$
+> 
+> where $$h$$ is abused to denote the description of $$h \in \cH$$, 
+> $$h_i(x)$$ denotes the $$i$$-bit prefix of $$h(x)$$.
+> Then, $$f$$ is a weak PEG.
+
+Intuition for the construct:
+- $$f(x), r, x \odot r$$ is GL hardcore lemma, the starting point to obtain 
+  a pseudo-random bit (i.e., pseudo-entropy). 
+  However, $$x \odot r$$ gives no extra pseudo-entropy for many-to-one $$f$$.
+- $$f(x), r, x, h(x)$$ is attempting to obtain PE by
+  "identifying different" $$x' \in f^{-1}(f(x))$$ through $$h(x)$$.
+  However, by randomizing $$h$$, any $$x''$$ may map to $$h(x)$$ (like OTP), bad identification.
+- $$f(x), r, x, h, h(x)$$ is giving $$h$$, and we get good identification.
+  However, too good to be easy to invert $$x$$ since solving $$h(x) = a x + b$$ is easy.
+- $$f(x), r, x, h, h_{i^\ast}(x), i^\ast$$ is cutting $$h(x)$$ short to make inverting hard.
+  For proper choice of $$i^\ast(x)$$, this works, but $$i^\ast(x)$$ is hard to compute.
+- We end up with guessing random $$i$$. It works, the proof follows below.
+
+For each $$x \in \bit^n$$, let 
+$$i^\ast(x) := \ceil{\log |f^{-1}(f(x))|}+1$$.
+Let $$i^\ast$$ to be $$i^\ast(x)$$ and $$Z'$$ to be $$Z'\_{i^\ast(x)}$$ for short.
+Let random variables $$Y,Z,Z\_{i^\ast}'$$ be the following
+
+$$
+Y := (f(x), i, h, h_i(x), r), ~ Z := x \odot r, \text{ and}
+$$
+
+$$
+Z' := \begin{cases}
+ \text{random bit} & \text{if } i = i^*\\
+ x \odot r  & \text{otherwise.}
+\end{cases}
+$$
+
+#### **Claim:** Low Shannon entropy
+
+{: .theorem}
+> $$
+> H(YZ') \ge H(YZ) + \frac{1}{2n}
+> $$
+
+{:.proof}
+> We have 
+> $$H(YX) = H(Y) + H(X | Y)$$ for all $$X,Y$$ (proof left as exercise).
+> Hence, it suffices to show that 
+> $$H(Z' | Y) \ge H(Z | Y) + \frac{1}{2n}$$.
+> Conditioned on $$i \neq i^\ast$$, we have $$H(Z' | Y) = H(Z | Y)$$.
+> We want to show that when conditioned on $$i = i^\ast$$, 
+> $$H(Z' | Y) = 1 \ge H(Z | Y) + \frac{1}{2}$$, which happens w.p. $$1/n$$.
+> It remains to show that $$H(Z | Y) \le 1/2$$.
+> We will show that given $$(f(x), i^\ast, h, h_i(x), r)$$, w.h.p. it holds that $$x$$ is uniquely determined,
+> and thus $$Z = x \odot r$$ is also determined (and gives 0 Shannon entropy).
+> 
+> For any $$x \in \bit^n$$ and $$y \gets f(x)$$, define the pre-image set 
+> $$S := f^{-1}(f(x)) \setminus \set{x}$$.
+> Notice that $$|S| \le 2^{i^\ast -1}$$.
+> By $$h$$ is pairwise independent, for any $$x' \in S$$,
+> 
+> $$
+> \Pr_h[h_i(x') = h_i(x)] = 1/2^{i^\ast}.
+> $$
+> 
+> To see $$x$$ is determined over the random $$h$$,
+> 
+> $$
+> \begin{align*}
+> \Pr_h[\nexists x' \in S \text{ s.t. }  h(x') = h(x)]
+> & = 1 - \Pr[\exists x' \in S \text{ s.t. } h(x') = h(x)] \\
+> & \ge 1 - |S|/2^{i^\ast} \ge 1/2,
+> \end{align*}
+> $$
+> 
+> by union bound and then 
+> by $$|S|$$ is small.
+> 
+> (The calculation of conditional entropy is left as exercise.)
+
+#### **Claim:** High pseudo-entropy
+
+{: .theorem}
+> $$
+> \set{YZ}_n \approx \set{YZ'_{i^\ast(x)}}_n.
+> $$
+
+{: .proof-title}
+> Proof Sketch.
+> 
+> Because $$YZ, YZ'$$ differ only when $$i = i^\ast$$, 
+> assume for contradiction, there exists NUPPT $$A$$, polynomial $$p$$, such that for inf many $$n$$,
+> 
+> $$
+> \Pr_{x,h,r} [A(f(x),i^*,h,h_{i^*}(x),r) = x\odot r] \ge 1/2 + \alpha,
+> $$
+> 
+> where $$\alpha = 1/p(n)$$.
+> 
+> We want to construct $$B$$ that inverts $$y \gets f(x)$$.
+> We have a similar claim of good $$x$$'s:
+> let $$G$$ to be the set
+> 
+> $$
+> G := \set{ x \in \bit^n ~|~ \Pr_{h,r}[A(f(x),i^*,h,h_{i^*}(x),r) = x \odot r] \ge 1/2 + \alpha / 2 }.
+> $$
+> 
+> Then, 
+> $$|G| \ge 2^n \cdot \alpha / 2$$.
+> We can next fix $$h$$ similarly:
+> for each $$x\in G$$,
+> let $$G_x$$ to be the set
+> 
+> $$
+> \cH_x := \set{ h \in \cH ~|~ \Pr_{r}[A(f(x),i^*,h,h_{i^*}(x),r) = x \odot r] \ge 1/2 + \beta }.
+> $$
+> 
+> Then, 
+> $$|\cH_x| \ge |\cH| \cdot \beta$$, where $$\beta := \alpha/4$$.
+> 
+> Now, we can condition on $$x \in G$$ and $$h \in \cH_x$$.
+> Namely, given $$y \gets f(x)$$, $$B$$ tries all $$i \gets [n]$$ and samples $$h \gets \cH$$ uniformly,
+> and we have that $$i=i^\ast$$ and $$h \in \cH_x$$ w.p. $$\beta$$.
+> It remains to find the correct $$h(x)$$ so that $$B$$ can run $$A$$ repeatedly using
+> pairwise independent $$r$$'s.
+> 
+> Suppose that $$x$$ is fixed and $$h$$ is sampled uniformly and independently from $$\cH$$.
+> Given $$y = f(x)$$, the min-entropy of $$x$$ is $$\ge i^\ast(x)-1$$ because 
+> each $$x' \in f^{-1}(y)$$ can be mapped to $$y$$.
+> By the corollary of Leftover Hash Lemma, "guessing the hash value",
+> the first $$i^\ast - d$$ bits of $$h(x)$$ is $$2^{-(d-1)/2}$$-close to uniform.
+> This implies that we can hit the first $$i^\ast - d$$ bits of $$h_{i^*}(x)$$
+> w.p. $$1 - 2^{-(d-1)/2}$$ by sampling them uniformly at random.
+> 
+> However, to apply $$A$$, we also conditioned on $$h \in \cH_x$$ (instead of uniform $$h$$).
+> Hence, we need to take union bound:
+> 
+> - $$h \notin \cH_x$$ w.p. $$\le 1 - \beta$$
+> - the guess is not the first $$i^\ast - d$$ bits of $$h(x')$$ for all $$x' \in f^{-1}(y)$$
+>   w.p. $$2^{-(d-1)/2}$$.
+> 
+> Thus, choosing $$d$$ such that $$2^{-(d-1)/2} \le \beta/2$$,
+> we will sample a "good" input $$(y = f(x'), i^\ast, h, h_{i^\ast})$$ to $$A$$ w.p. $$\ge \beta/2$$
+> (only conditioned on $$x \in G$$).
+> With the above, we can try all remaining $$d = O(2 \log \beta) = O(\log n)$$ bits 
+> and then 
+> check if the outcome $$x'$$ satisfies $$f(x') = y$$.
+> 
+> {: .defn-title}
+>> Algorithm $$B(y)$$:
+>> 
+>> 1. $$h \gets \cH$$
+>> 2. $$d := -\log (\alpha / 4) + 1$$
+>> 3. For each $$i=1,...,n$$,
+>>    1. $$t_1 \gets \bit^{i - d}$$
+>>    2. For each $$t_2 \in \bit^d$$,
+>>       - Let $$t := t_1 \\| t_2$$.
+>>       - Run $$x' \gets B_0(y, i, h, t)$$.
+>>       - Output $$x'$$ if $$f(x') = y$$.
+>
+> The subroutine $$B_0$$ performs almost identical to the standard Goldreich-Levin,
+> and the only difference is that $$A$$ takes additional input $$(i, h, h_i)$$.
+> 
+> {: .defn-title}
+>> Algorithm $$B_0(y, i, h, h_i)$$
+>> 
+>> 1. Let $$\ell := \log m$$, $$(u_1, ..., u_\ell)$$ be fully independent and 
+>>    $$(r_1,..., r_m)$$ be pairwise independent $$n$$-bit random strings.
+>> 2. For each $$k \in [\ell]$$, sample guess bit $$b_k$$ uniformly. For each $$j \in [m]$$, 
+>>    compute the bit $$g_{i,j}$$ from $$(b_1, ..., b_\ell)$$ in the same way as $$r_j$$
+>>    (so that for any $$x$$, $$g_{i,j} = x \odot r_j$$ and $$b_k = x \odot u_k$$ for all $$k$$).
+>> 3. For each $$i=1,2, .., n$$,
+>>    1. For each $$j=1,2,..., m$$,
+>>       - Run $$z_{i,j} \gets A(y, i, h, h_i, e_i \oplus r_j) \oplus g_{i,j}$$.
+>>
+>>    2. Let $$x'\_i$$ be the majority of $$\set{z\_{i,j}}\_{j\in[m]}$$
+>> 4. Output $$x' := x'_1 x'_2 ... x'_n$$
+> 
+> The parameter $$m$$ is choosen according to the success probability of $$A$$
+> conditioned on $$x \in G$$ and $$h\in \cH_x$$ and $$(i, h_i)$$ are consistent.
+> Notice that conditioned on $$x \in G$$, the events $$h \in \cH_x$$ and $$t_1$$ hits $$h_i(x)$$
+> are independent, w.p. $$\beta$$ and $$1/2$$.
+> Also, $$B$$ runs over all possible $$i$$ and $$t_2$$.
+> Hence, the overall success probability is $$\poly(1/n, 1/p(n))$$.
+
+**Discuss**{: .label}
+Is $$F$$ a OWF?
+No, consider the case $$i=n$$, which happens w.p. $$1/n$$,
+and then w.h.p. over $$h$$, we can solve $$x$$ from $$(h,h_i(x))$$.
+However, the above claim also showed that $$F$$ is hard to invert when $$i = i^\ast(x)$$,
+i.e., $$F$$ is a *weak* OWF.
+
 
 PRG from any OWF
 ---------------------------
