@@ -608,7 +608,7 @@ Throughout the construction, it is easier to think that the given OWF is a $$K$$
 
 {:.defn}
 > Let $$k := k(n)$$.
-> A OWF $$f$$ is called $$k$$-regular if for all $$x \in \bit^n$$, it holds that $$\log |f^{-1}(f(x))| = k$$.
+> A OWF $$f$$ is called $$k$$-regular iff for all $$x \in \bit^n$$, it holds that $$\log |f^{-1}(f(x))| = k$$.
 
 #### **Theorem:** Weak PEG from OWF
 
