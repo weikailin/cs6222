@@ -594,14 +594,21 @@ The first step, a gap in Shannon entropy and pseudo-entropy.
 {:.defn}
 > A function $$F : \bit^n \to \bit^m$$ is called a *weak pseudo-entropy generator(PEG)*, 
 > if there exists a $$k$$ such that
-> 1. There exists $$Y_n$$ such that $$\set{F(U\_n)}\_n \approx \set{Y\_n}\_n$$ and
+> 1. $$H(F(U_n)) \le k$$.
+> 2. There exists $$Y_n$$ such that $$\set{F(U\_n)}\_n \approx \set{Y\_n}\_n$$ and
 >  $$H(Y_n) \ge k + \frac{1}{100n}$$.
 >  (This is called *pseudo Shannon entropy*.)
-> 2. $$H(F(U_n)) \le k$$.
-
 
 **Discuss**{:.label}
 Is a weak PEG also a weak OWF?
+
+Throughout the construction, it is easier to think that the given OWF is a $$K$$-to-one mapping for some known $$K=2^k$$.
+
+#### **Definition:** $$k$$-regular OWFs
+
+{:.defn}
+> Let $$k := k(n)$$.
+> A OWF $$f$$ is called $$k$$-regular if for all $$x \in \bit^n$$, it holds that $$\log |f^{-1}(f(x))| = k$$.
 
 #### **Theorem:** Weak PEG from OWF
 
