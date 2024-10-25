@@ -25,7 +25,10 @@ Table of Lecture Notes
 | [Oct 1](assets/pdf/1001_UOF.pdf)    | [Universal OWF](2-owf.md#a-universal-owf)    | [Ps 2.13], [Wichs@NEU](https://www.ccs.neu.edu/home/wichs/class/crypto-fall17/lecture10.pdf) |
 | [Oct 3](assets/pdf/1003_HCP.pdf)    | [Hard-core lemma](4-gole.md)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
 | [Oct 8](assets/pdf/1008_OWF.pdf)    | [Hard-core lemma, proof](4-gole.md)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
-| [Oct 10](assets/pdf/1010_GLL.pdf)    | [PRG from any OWF](4-gole.md)    | [Ps 3.4] [KL 8.3.3] [Bellare@UCSD](https://cseweb.ucsd.edu/~mihir/papers/gl.pdf) |
+| [Oct 10](assets/pdf/1010_GLL.pdf)    | [PRG from any OWF](4-gole.md#min-entropy-and-leftover-hash-lemma)    | [Vadhan12, Sec 6](https://people.seas.harvard.edu/~salil/pseudorandomness/pseudorandomness-published-Dec12.pdf) |
+| Oct 17    | [Leftover Hash Lemma](4-gole.md#min-entropy-and-leftover-hash-lemma)    | [Vadhan12, Sec 6](https://people.seas.harvard.edu/~salil/pseudorandomness/pseudorandomness-published-Dec12.pdf), [Barak@Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf) |
+| Oct 22    | [Weak Pseudor-Entropy Generator](4-gole.md#prg-from-any-owf)    | [Barak@Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf) |
+| Oct 24    | [Regular OWFs to PEG](4-gole.md#weak-pseudo-entropy-generator-peg)    | [Barak@Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf) |
 
 <!-- 
 | Feb 8     | [Pseudo-random functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 8.5] |
