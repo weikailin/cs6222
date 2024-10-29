@@ -101,7 +101,7 @@ This MAC is clearly *insecure* if the adversary can oracle query $$\Tag_k$$ once
 given any pair $$(m, \sigma = m \oplus k)$$, it is trivial to recover $$k$$.
 However, the MAC is actually *Information-Theoretically* (and perfectly) secure
 when the adversary can not obtain any pair.
-Hence, it is called $$IT-MAC$$ and is used in some cryptographic protocols
+Hence, it is called IT-MAC and is indeed used in some cryptographic protocols
 (which we don't have time to cover).
 
 Noticing that the above output of $$\Tag$$ is *uniformly* random,
@@ -259,9 +259,9 @@ Ref: [KL 13.1, 13.2, 13.6]
 > $$(\Gen, \Sign, \Ver)$$ is a digital signature scheme over the message space $$\set{\cM_n}_n$$ 
 > if the following syntax, correctness, and security are satisfied:
 > 
-> - $$\Gen(1^n)$$ is a PPT which on input $$n$$ outputs a public key $$\pk$$ and a secret key $$\sk$$: $$\pk, \sk \gets \Gen(1^n)$$. 
+> - $$\Gen(1^n)$$ is a PPT which on input $$n$$ outputs a public key $$\pk$$ and a secret key $$\sk$$, $$(\pk, \sk) \gets \Gen(1^n)$$. 
 > - $$\Sign$$ is PPT algorithm which on input a secret key $$\sk$$ and message $$m \in \cM_n$$ 
->   outputs a signature $$\sigma$$: $$\sigma \gets \Sign_\sk(m)$$.
+>   outputs a signature $$\sigma \gets \Sign_\sk(m)$$.
 > - $$\Ver$$ is a deterministic poly-time algorithm which on input a public key $$\pk$$, 
 >   a message $$m$$ and a signature $$\sigma$$ returns either “accept” or “reject”.
 > 
