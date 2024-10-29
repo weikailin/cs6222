@@ -29,6 +29,7 @@ Table of Lecture Notes
 | Oct 17    | [Leftover Hash Lemma](4-gole.md#min-entropy-and-leftover-hash-lemma)    | [Vadhan12, Sec 6](https://people.seas.harvard.edu/~salil/pseudorandomness/pseudorandomness-published-Dec12.pdf), [Barak@Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf) |
 | Oct 22    | [Weak Pseudor-Entropy Generator](4-gole.md#prg-from-any-owf)    | [Barak@Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf) |
 | Oct 24    | [Regular OWFs to PEG](4-gole.md#weak-pseudo-entropy-generator-peg)    | [Barak@Princeton](https://www.cs.princeton.edu/courses/archive/spr08/cos598D/scribe3.pdf) |
+| Oct 29    | [MAC and digital signatures](5-auth.md)    | [Ps 5.1-5.3] [KL 4.1-4.3, 13.1] |
 
 <!-- 
 | Feb 8     | [Pseudo-random functions](3-prg.md#pseudo-random-functions)    | [Ps 3.7, 3.8] [KL 8.5] |
