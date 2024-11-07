@@ -238,6 +238,9 @@ and CRHF is also constructed from "trapdoor permutations",
 which is yet another primitive that we do not know how to obtain from OWF.
 We will use [*discrete logarithm* assumption](#Assumption-Discrete-Log) below.
 
+{:.label}*Discuss:*
+Suppose that $$H_k$$ is a CRHF or UOWHF (for some corresponding key $$k$$ and key generation). Let $$H'_k$$ be the function that truncates the last output bit of $$H_k$$. Is the resulting $$H'$$ and the key generation a good CRHF (or UOWHF)? Is there a counterexample such that $$H$$ is secure but $$H'$$ is not?
+
 ### Hash-and-MAC
 Using either collision-resistant hash functions (CRHF) or even UOWHF, we have a standard way to extend the message space of any MAC scheme (or digital signature, discussed later). That is, whenever we want to sign (or tag) a message $$m$$, we sample a key $$s$$ of the hash function $$h$$ then compute the hash value $$v := h_s(m)$$ and then compute the signature as $$\sigma:=(s, \Tag_k(v))$$, where $$\Tag$$ and $$k$$ are the tagging algorithm and the key of the given MAC scheme. The verification of $$(m,\sigma)$$ is contructed accordingly.
 
