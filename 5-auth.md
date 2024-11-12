@@ -244,10 +244,10 @@ Suppose that $$H_k$$ is a CRHF or UOWHF (for some corresponding key $$k$$ and ke
 ### Hash-and-MAC
 Using either collision-resistant hash functions (CRHF) or even UOWHF, we have a standard way to extend the message space of any MAC scheme (or digital signature, discussed later). That is, whenever we want to sign (or tag) a message $$m$$, we sample a key $$s$$ of the hash function $$h$$ then compute the hash value $$v := h_s(m)$$ and then compute the signature as $$\sigma:=(s, \Tag_k(v))$$, where $$\Tag$$ and $$k$$ are the tagging algorithm and the key of the given MAC scheme. The verification of $$(m,\sigma)$$ is contructed accordingly.
 
-{: .label}*Note:*
+**Note:**{: .label}
 In the textbook [KL, Construction 6.5], the key $$s$$ of the hash function is generated once for all messages, and thus $$s$$ is kept secret from the adversary. (CRHF and UOWHF both gives the key to the adversary, so the proof does not use the full property.)
 
-{: .label}*Note:*
+**Note:**{: .label}
 Practical hash functions are typically using variants of SHA that are currently implemented directly in mainstream processors, including AMD, Intel, and Arm since 2015--2017. Also notice that SHA is a function but NOT keyed, while people have not find any collision.
 
 
