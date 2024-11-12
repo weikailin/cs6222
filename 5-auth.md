@@ -247,6 +247,8 @@ Using either collision-resistant hash functions (CRHF) or even UOWHF, we have a 
 {: .label}*Note:*
 In the textbook [KL, Construction 6.5], the key $$s$$ of the hash function is generated once for all messages, and thus $$s$$ is kept secret from the adversary. (CRHF and UOWHF both gives the key to the adversary, so the proof does not use the full property.)
 
+{: .label}*Note:*
+Practical hash functions are typically using variants of SHA that are currently implemented directly in mainstream processors, including AMD, Intel, and Arm since 2015--2017. Also notice that SHA is a function but NOT keyed, while people have not find any collision.
 
 
 Digital Signature Schemes
