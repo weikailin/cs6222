@@ -2,7 +2,7 @@
 layout: page
 title: 6. Zero Knowledge Proofs
 nav_order: 6
-nav_exclude: true
+nav_exclude: false
 ---
 
 $$
@@ -55,6 +55,11 @@ See [Ps, Sec 4.2] for proof.
 
 Interactive Proofs
 ------------------
+
+What is a proof? Historically, a proof separates "calculation" and mathematics. For computers, mathematical proofs are nothing more than bit strings. Still, we human want a good proof to satisfy some propoerties.
+- There is a well-defined *statement* to be proved.
+- If the statement is true, then a good proof shall convice "any" reader, i.e., verifiable.
+- Else, the statement is false, then ideally there shall be no verifiable proof.
 
 We consider interactions between *interactive* Turing machines (ITM) that run in multiple *rounds*.
 Each ITM has the following tapes:
