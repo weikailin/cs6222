@@ -501,6 +501,10 @@ improved the construction to be *non-adaptive* (ie parallel) calls to OWF.
 see [Zhang, Cui, and Yu](https://eprint.iacr.org/2023/850.pdf "Revisiting the Constant-Sum Winternitz One-Time Signature with Applications to SPHINCS+ and XMSS, Crypto 2023").
  -->
 
+**Postscript**{. label}
+Leslie Lamport wrote a great note on ["How To Present a Paper"](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/How-to-Present-a-Paper.pdf) in 1979. That is decades old and just two pages, but it is still inspiring and pure gold on good presentations.
+
+
 Collision-Resistant Hash Functions
 -------------------------
 
