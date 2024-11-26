@@ -106,7 +106,7 @@ NIST candidate, [CRYSTALS-Kyber](https://eprint.iacr.org/2017/634.pdf):
 - $$q = 3329$$ so it can be viewed as $$O(n)$$
 - $$\psi$$ binomial distribution, 3 or 5 fair trials (so that $$\card{e} \le 5$$)
 
-Ref: [KL, 14.3]. [Regev05](https://arxiv.org/pdf/2401.03703) proposed LWE, following the "learning from parity with error" problem.
+Ref: [KL, 14.3]. [Regev05](https://arxiv.org/pdf/2401.03703) proposed LWE, following the "learning from parity with error" problem. [Regev10](https://cims.nyu.edu/~regev/papers/lwesurvey.pdf) is a good survey.
 
 <!-- 
 Remark: Chen [[Chen24]](https://eprint.iacr.org/2024/555.pdf)
