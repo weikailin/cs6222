@@ -242,6 +242,8 @@ to different values when different decryption keys are used.
 
 Note: there are also constructions of commitment from OWF.
 
+Not exactly the same as: [Construct PRP from PRF](https://theory.stanford.edu/~trevisan/cs276/lecture15.pdf)
+
 ### Graph 3-Coloring
 
 #### **Protocol:** ZKP for Graph 3-Coloring

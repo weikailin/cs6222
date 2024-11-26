@@ -2,7 +2,7 @@
 layout: page
 title: 7. Encryptions
 nav_order: 7
-nav_exclude: true
+nav_exclude: false
 ---
 
 $$
