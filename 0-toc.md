@@ -34,9 +34,12 @@ Table of Lecture Notes
 | [Nov 07](assets/pdf/1107_OWF_UOWHF.pdf)    | [Hash and MAC](5-auth.md#collision-resistant-hash-functions)    | [Ps 5.5] [KL 6.3] |
 | Nov 12    | [Digital Signature](5-auth.md#digital-signature-schemes)    | [Ps 5.3] [KL 13.1, 13.2, 13.6, 14.4], [Lamport'79](https://lamport.azurewebsites.net/pubs/dig-sig.pdf), [Goldwasser@Berkeley](https://inst.eecs.berkeley.edu/~cs276/fa20/slides/lec12.pdf) |
 | Nov 14    | [Zero-knowledge proof, definition](6-zkp.md)    | [Ps 4.1-4.6] |
-| Nov 19    | [ZKP for graph 3-coloring](6-zkp.md#zero-knowledge-proofs-1)    | [Ps 4.7] |
-| Nov 21    | [ZKP and NP reduction](6-zkp.md#any-language-in-class-np)    | [Ps 4.7-4.9] |
-| Nov 26    | [Learning with errors, homomorphic encryption](7-enc.md)    | [KL 14.3] |
+| [Nov 19](assets/pdf/1119_Coloring.pdf)    | [ZKP for graph 3-coloring](6-zkp.md#zero-knowledge-proofs-1)    | [Ps 4.7] |
+| [Nov 21](assets/pdf/1121_ZKP.pdf)    | [ZKP and NP reduction](6-zkp.md#any-language-in-class-np)    | [Ps 4.7-4.9] |
+| [Nov 26-Part1](assets/pdf/1126_PKE1.pdf)    | [ZKP and NP reduction](6-zkp.md#any-language-in-class-np)    | [Ps 4.7-4.9] |
+| [Nov 26-Part2](assets/pdf/1126_PKE2.pdf)    | [ZKP and NP reduction](6-zkp.md#any-language-in-class-np)    | [Ps 4.7-4.9] |
+| [Dec 03-Part2](assets/pdf/1203_LWE1.pdf)    | [Learning with errors, homomorphic encryption](7-enc.md)    | [KL 14.3] |
+| [Dec 03-Part2](assets/pdf/1203_LWE2.pdf)    | [Learning with errors, homomorphic encryption](7-enc.md)    | [KL 14.3] |
 
 
 <!-- 
